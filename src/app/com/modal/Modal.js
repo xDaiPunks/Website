@@ -212,6 +212,10 @@ class Modal extends PureComponent {
 	connectWeb3Service(type) {
 		const vm = this;
 
+		if (type === 'walletConnect') {
+			web3Service.connectWalletConnect();
+		}
+
 		if (type === 'metaMask') {
 			eventService.off('preloader:show', vm.guid);
 			eventService.on('preloader:show', vm.guid, () => {
@@ -241,10 +245,6 @@ class Modal extends PureComponent {
 			});
 
 			eventService.dispatchObjectEvent('show:preloader');
-		}
-
-		if (type === 'walletConnect') {
-			web3Service.connectWalletConnect();
 		}
 	}
 
@@ -307,7 +307,7 @@ class Modal extends PureComponent {
 						<button
 							onClick={(event) => {
 								event.preventDefault();
-								vm.connectWeb3Service('walletConnnect');
+								vm.connectWeb3Service('walletConnect');
 							}}
 							className={'WalletConnector'}>
 							<div className="WalletConnectorIcon">
@@ -330,7 +330,7 @@ class Modal extends PureComponent {
 						<button
 							onClick={(event) => {
 								event.preventDefault();
-								vm.connectWeb3Service('walletConnnect');
+								vm.connectWeb3Service('walletConnect');
 							}}
 							className={'WalletConnector'}>
 							<div className="WalletConnectorIcon">

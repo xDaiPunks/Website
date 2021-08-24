@@ -1,6 +1,9 @@
 import { ethers } from 'ethers';
 import { BigNumber } from 'bignumber.js';
 
+import WalletConnect from '@walletconnect/client';
+import QRCodeModal from '@walletconnect/qrcode-modal';
+
 import UserService from 'src/app/services/UserService';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
@@ -21,7 +24,11 @@ class Web3Service {
 			Instance.signer = null;
 			Instance.chainId = null;
 			Instance.provider = null;
+			Instance.connector = null;
+
 			Instance.web3Provider = null;
+
+			Instance.connectorType = null;
 
 			Instance.guid = utilityService.guid();
 		}
@@ -37,26 +44,48 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
+			let connector;
+
 			let ethereum;
 			let connected;
 
-			if (!window.ethereum) {
-				resolve({ result: 'success' });
+			if (vm.connector) {
+				connector = vm.connector;
 			} else {
-				ethereum = window.ethereum;
+				connector = new WalletConnect({
+					bridge: 'https://bridge.walletconnect.org',
+					qrcodeModal: QRCodeModal,
+				});
+			}
 
-				connected = ethereum.isConnected();
+			if (connector.connected) {
+				vm.connector = connector;
 
-				if (connected !== true) {
+				vm.addWeb3Events();
+
+				if (connector.accounts && connector.accounts.length > 0) {
+					userService.address = connector.accounts[0];
+					resolve({ result: 'success' });
+				}
+			} else {
+				if (!window.ethereum) {
 					resolve({ result: 'success' });
 				} else {
-					vm.addWeb3Events();
+					ethereum = window.ethereum;
 
-					if (!ethereum.selectedAddress) {
+					connected = ethereum.isConnected();
+
+					if (connected !== true) {
 						resolve({ result: 'success' });
 					} else {
-						userService.address = ethereum.selectedAddress;
-						resolve({ result: 'success' });
+						vm.addWeb3Events();
+
+						if (!ethereum.selectedAddress) {
+							resolve({ result: 'success' });
+						} else {
+							userService.address = ethereum.selectedAddress;
+							resolve({ result: 'success' });
+						}
 					}
 				}
 			}
@@ -67,6 +96,44 @@ class Web3Service {
 		let ethereum;
 
 		const vm = this;
+
+		if (vm.connector) {
+			vm.connector.off('connect');
+			vm.connector.off('disconnect');
+			vm.connector.off('session_update');
+
+			vm.connector.on('connect', (error, payload) => {
+				if (error) {
+					throw error;
+				}
+
+				// Get provided accounts and chainId
+				const { accounts, chainId } = payload.params[0];
+
+				console.log(chainId);
+				console.log(accounts);
+			});
+
+			vm.connector.on('session_update', (error, payload) => {
+				if (error) {
+					throw error;
+				}
+
+				// Get updated accounts and chainId
+				const { accounts, chainId } = payload.params[0];
+
+				console.log(chainId);
+				console.log(accounts);
+			});
+
+			vm.connector.on('disconnect', (error, payload) => {
+				vm.connector.off('connect');
+				vm.connector.off('disconnect');
+				vm.connector.off('session_update');
+
+				vm.connector = null;
+			});
+		}
 
 		if (window.ethereum) {
 			ethereum = window.ethereum;
@@ -246,7 +313,7 @@ class Web3Service {
 						params: [xdaiConfig],
 					})
 					.then((response) => {
-						reject({ result: 'success' });
+						resolve({ result: 'success' });
 					})
 					.catch((responseError) => {
 						reject({
@@ -258,7 +325,65 @@ class Web3Service {
 		});
 	}
 
-	connectWalletConnect() {}
+	connectWalletConnect() {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			let connector;
+			if (vm.connector) {
+				connector = vm.connector;
+			} else {
+				connector = new WalletConnect({
+					bridge: 'https://bridge.walletconnect.org',
+					qrcodeModal: QRCodeModal,
+				});
+			}
+
+
+
+			if (!connector.connected) {
+				// create new session
+				connector.createSession();
+			}
+
+            vm.connector = connector;
+
+			if (connector.accounts && connector.accounts.length > 0) {
+				userService.address = connector.accounts[0];
+			}
+
+			// Subscribe to connection events
+			connector.on('connect', (error, payload) => {
+				if (error) {
+					throw error;
+				}
+
+				// Get provided accounts and chainId
+				const { accounts, chainId } = payload.params[0];
+
+				console.log(accounts, chainId);
+			});
+
+			connector.on('session_update', (error, payload) => {
+				if (error) {
+					throw error;
+				}
+
+				// Get updated accounts and chainId
+				const { accounts, chainId } = payload.params[0];
+				console.log(accounts, chainId);
+			});
+
+			connector.on('disconnect', (error, payload) => {
+				if (error) {
+					throw error;
+				}
+
+				// Delete connector
+			});
+
+            resolve({ result: 'success' });
+		});
+	}
 }
 
 export default Web3Service;

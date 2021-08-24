@@ -20,6 +20,8 @@
 	},
 	"dependencies": {
 		"@react-native-community/art": "^1.2.0",
+		"@walletconnect/client": "^1.6.3",
+		"@walletconnect/qrcode-modal": "^1.6.3",
 		"axios": "^0.21.1",
 		"bignumber.js": "^9.0.1",
 		"copy-webpack-plugin": "^5.1.1",
