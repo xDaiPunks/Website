@@ -1,0 +1,661 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
+}
+@-ms-viewport {
+	width: device-width;
+}
+
+article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+	display: block;
+}
+
+[tabindex='-1']:focus {
+	outline: none !important;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	margin-block-end: 0;
+	margin-block-start: 0;
+}
+
+p {
+	margin: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	margin-block-end: 0;
+	margin-block-start: 0;
+}
+
+abbr[data-original-title],
+abbr[title] {
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	text-decoration: underline dotted;
+	cursor: help;
+	border-bottom: 0;
+}
+
+address {
+	margin-bottom: 1rem;
+	font-style: normal;
+	line-height: inherit;
+}
+
+dl,
+ol,
+ul {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+	margin-bottom: 0;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-bottom: 0.5rem;
+	margin-left: 0;
+}
+
+blockquote {
+	margin: 0 0 1rem;
+}
+
+dfn {
+	font-style: italic;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:not([href]):not([tabindex]) {
+	text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+	text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+	outline: 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+pre {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	overflow: auto;
+	-ms-overflow-style: scrollbar;
+}
+
+figure {
+	margin: 0 0 1rem;
+}
+
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+[role='button'],
+a,
+area,
+button,
+input:not([type='range']),
+label,
+select,
+summary,
+textarea {
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+caption {
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	color: #868e96;
+	text-align: left;
+	caption-side: bottom;
+}
+
+th {
+	text-align: inherit;
+}
+
+label {
+	display: inline-block;
+	margin-bottom: 0.5rem;
+}
+
+button {
+	border-radius: 0;
+}
+
+button:focus {
+	outline: 1px dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+button,
+input {
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+[type='reset'],
+[type='submit'],
+button,
+html [type='button'] {
+	-webkit-appearance: button;
+}
+
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner,
+button::-moz-focus-inner {
+	padding: 0;
+	border-style: none;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='time'] {
+	-webkit-appearance: listbox;
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
+
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+legend {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	line-height: inherit;
+	color: inherit;
+	white-space: normal;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+[type='search'] {
+	outline-offset: -2px;
+	-webkit-appearance: none;
+}
+
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	font: inherit;
+	-webkit-appearance: button;
+}
+
+output {
+	display: inline-block;
+}
+
+summary {
+	display: list-item;
+}
+
+template {
+	display: none;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+/*
+Fix button defaults
+*/
+
+button {
+	cursor: pointer;
+
+	border: 0;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+
+	appearance: none;
+	background: transparent;
+}
+
+.ScreenHidden {
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+a,
+button,
+a:focus,
+button:focus {
+	outline: none;
+}
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+/*
+Show overflow in Edge
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+
+button,
+input {
+	overflow: visible;
+}
+
+/*
+Remove inner border and padding from Firefox
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+	padding: 0;
+	border-style: none;
+}
+
+/*
+Remove padding in IE 10-
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+input[type='radio'],
+input[type='checkbox'] {
+	padding: 0;
+}
+
+/*
+Remove the default appearance of temporal inputs to avoid a Mobile Safari bug where setting a custom line-height prevents text from being vertically
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+See https://bugs.webkit.org/show_bug.cgi?id=139848
+*/
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
+	-webkit-appearance: listbox;
+}
+
+/*
+1. Remove default vertical scrollbar in IE
+2. Textareas should really only resize vertically so they don't break their (horizontal) containers
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+ */
+textarea {
+	overflow: auto; /* 1 */
+	resize: vertical; /* 2 */
+}
+
+/*
+Correct cursor style of increment and decrement buttons in Chrome
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+/*
+Overrides extra rounded corners on search inputs in iOS
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+[type='search'] {
+	outline-offset: -2px;
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+}
+
+/*
+Remove inner padding and cancel buttons in Chrome and Safari on macOS
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+*/
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/*
+1. Correct inability to style clickable types in iOS and Safari
+2. Change font properties to `inherit` in Safari
+Source: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+ */
+::-webkit-file-upload-button {
+	font: inherit; /* 2 */
+	-webkit-appearance: button; /* 1 */
+}
+
+/*
+ * Remove IE/ Edge clear "X" & eye icons
+ */
+input::-ms-clear,
+input::-ms-reveal {
+	display: none;
+}
+
+/* Remove Safari contacts icon */
+input::-webkit-contacts-auto-fill-button {
+	display: none;
+}
+
+/* Remove Safari password & caps lock icons */
+input[type='password']::-webkit-credentials-auto-fill-button,
+input[type='password']::-webkit-caps-lock-indicator {
+	display: none;
+}
+
+/*
+ * Disable WebKit's banana-yellow input fields
+ * Combination of techniques from:
+ * https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+ */
+@keyframes autofill {
+	to {
+		background: transparent !important;
+	}
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+textarea:autofill:active,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus,
+select:autofill:active {
+	background: transparent !important;
+	color: #5604c8 !important;
+	text-fill-color: #5604c8 !important;
+
+	animation-name: autofill !important;
+	animation-fill-mode: both !important;
+	transition-delay: 9999s !important;
+	transition-property: background-color, color !important;
+}
+
+@-webkit-keyframes autofill {
+	to {
+		background: transparent !important;
+	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+	background: transparent !important;
+	color: #5604c8 !important;
+	-webkit-text-fill-color: #5604c8 !important;
+
+	-webkit-animation-name: autofill !important;
+	-webkit-animation-fill-mode: both !important;
+	-webkit-transition-delay: 9999s !important;
+	-webkit-transition-property: background-color, color !important;
+}
+
+input::-moz-clear-button {
+	background-color: #fff !important;
+}
+
+input::-moz-caps-lock-indicator {
+	background-color: #fff !important;
+}
+
+input::-moz-search-cancel-button {
+	background-color: #fff !important;
+}
+
+input::-moz-contacts-auto-fill-button {
+	background-color: #fff !important;
+}
+
+input::-webkit-clear-button {
+	background-color: #fff !important;
+}
+
+input::-webkit-caps-lock-indicator {
+	background-color: #fff !important;
+}
+
+input::-webkit-search-cancel-button {
+	background-color: #fff !important;
+}
+
+input::-webkit-contacts-auto-fill-button {
+	background-color: #fff !important;
+}
+
+input::-webkit-credentials-auto-fill-button {
+	background-color: #fff !important;
+}
+
+/* date input */
+input[type='date']:-moz-placeholder {
+	color: #fff !important;
+}
+
+input[type='date']:-moz-placeholder {
+	color: #fff !important;
+}
+
+input[type='date']::-moz-placeholder {
+	color: #fff !important;
+}
+
+input[type='date']:-ms-input-placeholder {
+	color: #fff !important;
+}
+
+input[type='date']::-webkit-input-placeholder {
+	color: #fff !important;
+}
+
+input[type='date']::-webkit-inner-spin-button {
+	display: none !important;
+	-webkit-appearance: none !important;
+}
+
+@-moz-document url-prefix() {
+	input[type='date'] {
+		text-indent: -3px !important;
+	}
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+	input[type='date'] {
+		margin-left: -1px !important;
+	}
+
+	input[type='date'].mobile {
+		margin-left: -4px !important;
+	}
+}
+
+/* select input */
+select::-ms-expand {
+	display: none !important;
+}
+
+select:focus::-ms-value {
+	background-color: transparent !important;
+	color: #fff !important;
+}
+
+@-moz-document url-prefix() {
+	select {
+		text-indent: -2px !important;
+	}
+}
+
+@supports (-ms-ime-align: auto) {
+	select {
+		margin-left: -3px !important;
+	}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	select {
+		margin-left: -3px !important;
+	}
+}

@@ -1,0 +1,40 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Compile scss",
+			"skipFiles": ["<node_internals>/**"],
+			"program": "${workspaceFolder}/scripts/scss.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Translations",
+			"skipFiles": ["<node_internals>/**"],
+			"program": "${workspaceFolder}/scripts/translations.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Build app",
+			"env": {
+				"NODE_ENV": "production",
+				"GENERATE_SOURCEMAP": "false"
+			},
+			"skipFiles": ["<node_internals>/**"],
+			"program": "${workspaceFolder}/scripts/build.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Program",
+			"skipFiles": ["<node_internals>/**"],
+			"program": "${workspaceFolder}/scripts/start.js"
+		}
+	]
+}

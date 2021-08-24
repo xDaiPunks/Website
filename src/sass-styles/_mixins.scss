@@ -1,0 +1,15 @@
+@mixin responsiveMin($width) {
+	 @media screen and (min-width:$width){
+		@content;
+	}
+}
+
+@mixin responsiveMax($width) {
+	 @media screen and (max-width:$width){
+		@content;
+	}
+}
+
+@mixin frameAnimation() {
+	 @content;
+}

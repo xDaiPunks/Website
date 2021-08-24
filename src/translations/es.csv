@@ -1,0 +1,323 @@
+ES TRANSLATION;
+menu.logo.label;Muevo
+menu.about.label;Sobre
+menu.dollarmuevo.label;Dólares Muevo
+menu.remittances.label;Remesas
+menu.business.label;Para Negocios
+menu.action.label;Descarga Muevo
+;
+button.action.learnmore;Conocer más
+;
+footer.language.title;Cambiar idioma
+footer.language.label;Idioma: Español
+footer.terms.label;Condiciones
+footer.privacy.label;Privacidad y Cookies
+footer.help.label;Ayuda
+footer.contact.label;Contáctanos
+footer.business.label;Para Negocios
+footer.frequentasked.label;Preguntas frecuentes
+footer.followus.label;Síguenos
+footer.bottomregister.label;Compañia registrada en Inglaterra y Gales: 12115957.
+footer.bottomaddress.label;Oficina registrada: 86-90 Paul Street, London EC2A 4NE, U.K.
+;
+modal.language.title;Cambiar idioma
+modal.language.en;English
+modal.language.es;Español
+modal.error.title;¡Ups!
+modal.error.email;Introduce una dirección de correo electrónico válida
+modal.error.message;Ingresa tu mensaje
+modal.error.fullname;Ingresa tu nombre completo
+modal.error.okbutton;Okay
+;
+form.subscribe.result.header;¡Listo! Estas en lista de espera
+form.subscribe.result.headerText;Le enviaremos un enlace de descarga cuando sea su turno
+form.subscribe.error.header;¡Ups!
+form.subscribe.error.headerText;Parece que algo salió mal.
+form.subscribe.error.buttonText;Inténtalo de nuevo, por favor.
+;
+form.contact.result.header;¡Listo!
+form.contact.result.headerText;Te contactaremos lo antes posible.
+form.contact.error.header;¡Ups!
+form.contact.error.headerText;Parece que algo salió mal.
+form.contact.error.buttonText;Inténtalo de nuevo, por favor.
+;
+home.intro.header.one.text;La cuenta 
+home.intro.header.two.text;de dólares
+home.intro.header.three.text;en tu bolsillo
+home.intro.header.four.text;Envía, recibe o paga con dólares digitales sin banco
+;
+home.intro.phone.one;enviar
+home.intro.phone.two;recibir
+home.intro.phone.three;cambiar
+;
+home.mapview.title;Estés donde estés
+home.mapview.subtitle;…y sin intermediarios!
+;
+home.effective.header.one;Más efectivo
+home.effective.header.two;que el efectivo
+home.effective.header.subtext;Olvídate de billetes rotos, falsos, y del riesgo de llevarlos contigo. Con muevo tus dólares están resguardados y disponibles en todo momento.
+home.effective.phone.text;Jessica te envió
+;
+home.explain.title;Muevo es
+home.explain.easy.title;Fácil
+home.explain.easy.content;Has utilizado una cuenta bancaria y un móvil inteligente? Entonces ya sabes como usar Muevo!
+home.explain.fast.title;Rápido
+home.explain.fast.content;Envía dólares desde cualquier parte del mundo de forma inmediata y sin intermediarios.
+home.explain.economic.title;Económico
+home.explain.economic.content;Bajas tarifas de recarga y pagos en bancos nacionales. Transferencias entre cuentas Muevo son totalmente gratis.
+home.explain.secure.title;Seguro
+home.explain.secure.content;Con encriptación del más alto nivel, toda transferencia está respaldada en la Blockchain. Verifícalas tú mismo!
+;
+home.howitworks.title;Como funciona?
+home.howitworks.funds.title;Recarga
+home.howitworks.funds.content;Recarga tu cuenta a través de tarjeta de débito/crédito o transferencia bancaria.
+home.howitworks.send.title;Envía
+home.howitworks.send.content;Pagar o enviar dinero con Muevo es instantáneo y sin cargos ocultos.
+home.howitworks.receive.title;Recibe
+home.howitworks.receive.content;Recibe fondos con tu móvil a través de códigos QR, o envía peticiones de pago a través de mensajería.
+home.howitworks.withdraw.title;Retira
+home.howitworks.withdraw.content;Cambia tus dólares Muevo a moneda local y en tu cuenta bancaria.
+;
+home.business.header.one;Mueve tu negocio
+home.business.header.two;al cambio
+home.business.header.subtext;Acepta pagos a través de códigos QR y olvídate de billetes rotos y falsos.
+home.business.phone.text;Carlos ha pagado
+;
+home.getmuevo.title;Obtén nuestra versión beta
+home.getmuevo.subtitle;Regístrate hoy mismo
+home.getmuevo.input.fullname;Nombre completo
+home.getmuevo.input.email;Correo electrónico
+home.getmuevo.sendtitle;Quiero enviar dólares Muevo…
+home.getmuevo.input.os;Sistema operativo
+home.getmuevo.input.origin;De
+home.getmuevo.input.destination;A
+home.getmuevo.button.submit;Enviar
+;
+about.header;Sobre nosotros
+about.content.one;"Muevo es partidario de que todos deberían poder administrar su dinero de manera conveniente, rápida, segura y sin restricciones. Les presentamos nuestra billetera digital para smartphones, basada en la tecnología de cadena de bloques (blockchain) y respaldada por moneda estable (stablecoin). El futuro está aquí, en la palma de tu mano.<br />
+<br />La billetera opera con dólares Muevo (USDm). El dólar Muevo está vinculado, 1: 1, al valor del dólar estadounidense. La billetera te permite enviar o recibir fondos y pagar por productos/servicios rápidamente, con la misma conveniencia que los billetes de dólares físicos, pero con las características adicionales y la seguridad de una moneda digital.<br /><br />Nuestra misión es brindar un servicio de pago que funcione como una cuenta bancaria, pero sin largas colas de espera, sin tarjetas de débito plásticas difíciles de reemplazar, sin costosos cargos de transferencias internacionales y sin intermediarios, de manera que tengas el control absoluto de tus fondos.<br /><br />Para tu comodidad, ofrecemos servicios de valor agregado como compra de dólares Muevo con moneda local, conversion y depósito en tu cuenta bancaria local, y pago de subscripciones como Amazon y Netflix. En resumen, Muevo combina el poder de blockchain con la facilidad de uso de los servicios de pago tradicionales."
+;
+muevodollar.header;Dólares Muevo
+muevodollar.content.one;"El dólar Muevo, o USDm para abreviar, es una unidad de valor que vive en una cadena de bloques (blockchain) basada en la red de Ethereum. Debido a que una moneda basada en la blockchain no son controladas o administradas centralmente por bancos, la hace extremadamente resistente a su censura o devaluación. <br /><br />El USDm está vinculado al dólar norteamericano, la principal moneda de reserva del mundo. El valor del dólar Muevo es verificable y garantizado, ya que está respaldado, a través de contratos inteligentes, por Dai. Dai es una de las monedas digitales estables (stablecoin) más conocidas, confiables y transparentes. <br /><br />Las monedas estables tienen propiedades similares a las monedas fiduciarias (aquellas que son emitidas por un banco), pero no tienen una forma física como los billetes. Al no tener forma física, las monedas digitales permiten transacciones casi instantáneas entre cuentas, a cualquier hora del día, y sin regirse por horarios bancarios. Además, puedes compartir USDm tan rápido como una publicacion en redes sociales, y sin ningún tipo de restricciones. <br /><br />La billetera Muevo es fácil de usar. Todas las complejidades técnicas ocurren “bajo el capó”. Puedes enviarle dólares Muevo a otras personas, almacenarlos de forma segura en su cuenta y compartir enlaces de pago a través de las aplicaciones de chat (WhatsApp, Telegram o Signal) o incluso redes sociales. También puedes convertir dólares Muevo a moneda local a tarifas competitivas, pagar por productos y servicios en tiendas o proveedores participantes, y enviar pagos a terceros a través de Zelle entre muchas otras cosas. <br /><br />La monedas digitales no son divisas de curso legal, no están respaldadas por el gobierno. Las cuentas de moneda digital y los saldos de valor en dólares Muevo tampoco no están sujetos a la protección de ningún banco. Muevo no es un banco y no ofrece servicios fiduciarios."
+;
+business.header;Para Negocios
+business.content.one;"Muevo Business es una cuenta con beneficios adicionales diseñada para tiendas minoristas y empresarios que desean aceptar dólares digitales como pago por sus productos y/o servicios. <br />
+<br />
+Beneficios incluídos: <br />
+<ul>
+<li> Opera sin la necesidad de terminales POS, sus recargos o tarifas de mantenimiento </li>
+<li> Facturación detallada por cuenta </li>
+<li> Pagos automatizados </li>
+<li> Pagos de nómina </li>
+<li> Cobra tus propias tarifas de pago a clientes. </li>
+<li> Sin costos de transferencia a otras billeteras Muevo </li>
+<li> Evita las cancelaciones de pagos </li>
+</ul>
+<br />
+Más las ventajas ya conocidas de Muevo: <br />
+<ul>
+<li> Sub-cuentas separadas bajo la cuenta principal </li>
+<li> Transacciones seguras y verificables </li>
+<li> Ahórrate los cargos de transferencia de dinero </li>
+<li> Olvídate de la custodia de la moneda física </li>
+<li> Pagos locales e internacionales rápidos </li>
+</ul>"
+;
+remittances.header;Remesas
+remittances.content.one;"Una característica vital de Muevo son las remesas. La billetera fue diseñada especialmente para las diásporas que requieren un método seguro, rápido, fácil y confiable para enviarle dólares digitales a sus seres queridos. <br />
+<br />Descarga la aplicación, regístrate con una dirección de correo electrónico, recarga fondos mediante tarjeta de débito/crédito o transferencia bancaria, y luego envíale dólares Muevo a otros cuenta-habientes Muevo en (casi) cualquier parte el mundo en segundos. ¡Es ASÍ de simple! <br /><br />Muevo no tiene un horario de operación, por lo que puedes enviar fondos las 24 horas del día, los 7 días de la semana sin tener que esperar horas o días para que las transferencias le lleguen al destinatario. <br /><br />Descarga Muevo hoy mismo y olvídate de la búsqueda estresante de “amigos de amigos” o intermediarios (potencialmente fraudulentos) para hacerle llegar dólares a tus seres queridos."
+;
+terms.header;Condiciones
+terms.content.one;"Las presentes Condiciones de uso (las ""Condiciones"") rigen el uso del Sitio Web, la App de Muevo y de todo otro servicio online que tenga un enlace a las Condiciones (colectivamente, el ""Servicio""). Las Condiciones constituyen un acuerdo entre tú y* *Muevo (""Muevo"" o ""nosotros""), por lo que es importante que las leas con atención.<br />
+<br />
+<b>Contenido</b><br />
+El Sitio web solo está disponible para tus fines personales y con fines informativos. No realizamos afirmaciones ni ofrecemos garantías de ningún tipo en relación con la exactitud, la vigencia ni la integridad de la información y otros materiales que se proporcionan a través del Servicio. Muevo no se hace responsable de las decisiones que tomes a partir del contenido.<br />
+<br />
+<b>Tus compromisos</b><br />
+Ofrecemos estos servicios tanto a ti como a otras personas. Te pedimos que asumas los siguientes compromisos:<br />
+<ul>
+<li>Brinda información fidedigna sobre ti.</li>
+<li>No uses el Servicio si tienes menos de 13 años de edad (o la edad mínima legal para usar el Servicio en tu país).</li>
+<li>Procura que las leyes, políticas y condiciones pertinentes no prohíban que recibas nuestros productos, servicios o software.</li>
+</ul>
+<br />
+<b>Conductas prohibidas</b><br />
+No accederás al Servicio ni lo utilizarás, ni tratarás de acceder a él o de utilizarlo, con la finalidad de realizar acciones que nos perjudiquen a nosotros o a un tercero, interfieran en su funcionamiento o impliquen un uso del Servicio que infrinja la ley. Los siguientes son ejemplos de algunas acciones que no se permiten:<br />
+<ul>
+<li>Realizar o compartir cualquier cosa que infrinja estas Condiciones u otras aplicables.</li>
+<li>Subir virus o códigos maliciosos, o realizar actividades que puedan impedir, sobrecargar o afectar el correcto funcionamiento de nuestros productos y servicios.</li>
+<li>Acceder a datos de nuestros productos o recopilar datos de ellos a través de medios automatizados (sin nuestro permiso previo), o intentar acceder a dichos datos sin el permiso correspondiente.</li>
+<li>Enviar contenido que infrinja los derechos de autor, la marca comercial, la patente u otro derecho de propiedad intelectual de un tercero; que sea falso, engañoso, injurioso, difamatorio, obsceno, abusivo o sexualmente explícito, o que incite al odio; que infrinja el derecho a la privacidad o publicidad de un tercero; o que denigre a terceros por cuestiones de género, raza, clase, etnia, nacionalidad, religión, preferencia sexual, discapacidad u otra clasificación.</li>
+<li>Participar en cualquier otra conducta que restrinja o impida el uso o el goce del Sitio web a cualquier persona o que, a nuestro criterio, nos exponga a nosotros, a alguno de nuestros usuarios o empresas afiliadas, o a un tercero a cualquier tipo de obligación, daño o perjuicio.</li>
+</ul>
+<br />
+La vulneración de las medidas de seguridad del sistema o la red puede acarrear responsabilidades para la persona infractora. Podremos llevar a cabo investigaciones y colaborar con las autoridades para procesar penalmente a los usuarios que infrinjan las Condiciones. Asimismo, podremos suspender o terminar tu acceso al Servicio en cualquier momento y por cualquier motivo sin previo aviso.<br />
+<br />
+<b>Limitación de responsabilidad</b><br />
+El Servicio se ofrece en el estado en el que se encuentra, sin garantías explícitas o implícitas de ningún tipo, lo que incluye las garantías de comerciabilidad, idoneidad para un fin determinado, título, no infracción u otra vulneración de derechos. No garantizamos la idoneidad, la vigencia, la exactitud, los resultados probables ni la integridad del Servicio ni de los sitios de terceros que incluyan un enlace al Servicio o a los que se pueda acceder desde él, así como tampoco garantizamos que las funciones que se ofrecen serán ininterrumpidas, seguras o libres de errores o de virus. Renunciamos de forma explícita a toda responsabilidad por errores u omisiones en el contenido incluido en el Servicio o en sitios de terceros a los que se llegue desde el Servicio o que incluyan enlaces al Servicio. Algunas jurisdicciones no admiten la exclusión de garantías implícitas, por lo que es posible que algunas de las exclusiones anteriores no se apliquen en tu caso.<br />
+<br />
+En ningún caso asumiremos responsabilidades por daños, pérdidas de ganancias o perjuicios directos, indirectos, especiales, incidentales, consecuentes o punitivos que surjan en relación con el uso del Servicio. Lo mismo se aplica a nuestro propietario y nuestras empresas subsidiarias y afiliadas, directores, funcionarios, empleados y cesionarios. Eso incluye toda interrupción de la disponibilidad del Servicio; demoras en la operación o la transmisión; virus informáticos; pérdida de datos; o uso, mal uso, dependencia, revisión, manipulación o cualquier otra utilización del Servicio o de los datos recopilados mediante el Servicio, aunque se le haya notificado a este la posibilidad de tales daños o pérdidas.<br />
+<br />
+<b>Indemnización</b><br />
+Aceptas indemnizarnos, defendernos y eximirnos de toda responsabilidad a nosotros, a nuestro propietario, a nuestras empresas subsidiarias y afiliadas, y a nuestros directores, administradores, empleados, agentes y cesionarios por todas las pérdidas, los costos, los gastos (incluidos los honorarios y gastos razonables de abogados), las demandas, los daños y las responsabilidades relacionados con el uso que hagas del Servicio y cualquier supuesta infracción que cometas respecto a estas Condiciones. Nos reservamos el derecho a asumir la defensa exclusiva de cualquier demanda por la que tengamos derecho a recibir una indemnización en virtud de la presente sección. En tal caso, deberás cooperar siempre que nuestro pedido sea razonable."
+;
+privacycookies.header;Privacidad y Cookies
+privacycookies.content.one;"Fecha de entrada en vigor: 26 de mayo de 2020<br />
+Actualizamos nuestra Política de datos para incluir más detalles acerca de cómo utilizamos tu información y de lo que ocurre si modificamos esa política. Si sigues usando nuestro Servicio, aceptas nuestra Política de Datos actualizada.<br />
+<br />
+Muevo es un producto de pagos digitales propiedad de Muevo ltd. (“Muevo"") y administrado por la misma empresa. El sitio web y app de Muevo (el ""Servicio"") ayuda a Muevo (""nosotros"", ""nuestro"") a compartir información y novedades acerca del producto (el ""Producto"").<br />
+<br />
+<h2>Privacidad</h2><br />
+<b>Recopilación de información</b><br />
+Cuando interactúes con nosotros a través del Servicio, es posible que recopilemos o recibamos los siguientes tipos de información:<br />
+<br />
+Información que nos envías directamente. Recopilaremos tu nombre completo, tu dirección de correo electrónico y los países que seleccionaste como países de interés.<br />
+<br />
+Información que recopilamos automáticamente. Según las acciones que lleves a cabo, también recopilaremos información como la siguiente de forma automática cuando interactúes con el Servicio:<br />
+<ul>
+<li>Atributos del dispositivo: información como el sistema operativo, las versiones de hardware y software, y el tipo de navegador.</li>
+<li>Operaciones del dispositivo: información acerca de los elementos con los que interactuaste en el Servicio, los movimientos del mouse (que nos ayudan a distinguir a los humanos de los bots) y las páginas que visitaste en el Servicio.</li>
+<li>Información del píxel: información capturada por el píxel de Google, como cuántas visitas únicas tuvo el Servicio.</li>
+<li>Red y conexiones: información como el nombre de tu operador de telefonía celular o proveedor de servicios de internet, el idioma, la zona horaria y la dirección IP.</li>
+<li>Datos de cookies: datos provenientes de las cookies de origen almacenadas en tu dispositivo, incluidos la configuración y los identificadores de cookies. Obtén más información acerca de cómo usamos las cookies en nuestra Política de Cookies.</li>
+</ul>
+<br />
+<b>Cómo usamos la información</b><br />
+Podemos usar la información que proporciones o que recopilemos de otra manera con fines como los siguientes:<br />
+<ul>
+<li>Analizar el uso del Sitio web. Usamos tu información para entender cómo usas el Sitio web y cómo podemos mejorar.</li>
+<li>Cumplir con obligaciones legales. Utilizamos tu información para cumplir con obligaciones legales.</li>
+<li>Proporcionarte materiales de marketing. Utilizamos tu nombre y tu dirección de correo electrónico para enviar correos electrónicos promocionales acerca de nuestro Producto, en caso de que te hayas registrado para recibir novedades enviando tu dirección de correo electrónico en el Sitio web.</li>
+</ul>
+<b>Cómo compartimos información</b><br />
+En determinadas circunstancias, es posible que compartamos tu información con terceros sin previa notificación, tal como se describe a continuación:<br />
+<ul>
+<li>Proveedores y prestadores de servicios externos autorizados. Compartimos información con proveedores y prestadores de servicios externos (incluido Muevo) que ofrecen, por ejemplo, servicios técnicos de infraestructura, análisis comercial, procesamiento de datos y administración del Servicio.</li>
+<li>Empresas afiladas. Es posible que compartamos información con nuestras empresas afiliadas (por ejemplo, otros productos de las empresas de Muevo). No obstante, no compartiremos tu dirección de correo electrónico con nuestras empresas afiliadas por motivos relacionados con los objetivos de esas empresas.</li>
+<li>Propósitos legales. Podemos divulgar información para responder a citaciones, órdenes judiciales, procesos legales, solicitudes de las autoridades, demandas o investigaciones gubernamentales; para detectar fraudes; y para proteger y defender los derechos, los intereses y la seguridad del Servicio, nuestras empresas afiliadas, el propietario, los usuarios o el público general.</li>
+<li>Transferencias comerciales. Podemos compartir información en relación con una transacción corporativa importante, como la venta de un sitio web, una fusión, una integración o la venta de activos, o en el improbable caso de una quiebra.</li>
+<li>Con tu consentimiento. Podemos compartir información con cualquier otra finalidad que te indiquemos al momento de recopilar dicha información o con tu consentimiento.</li>
+</ul>
+Si accedes a servicios de terceros, como Google o Twitter, a través del Servicio para iniciar sesión en él o para compartir información con otras personas acerca de tu experiencia en él, ten presente que esos servicios escapan a nuestro control. Esos servicios de terceros podrían recopilar información acerca de ti, por ejemplo, sobre tu actividad en el Servicio, y notificar a las conexiones que tengas en esos servicios sobre tu uso del Servicio, de acuerdo con sus propias políticas de privacidad.<br />
+<br />
+<b>Modificaciones de la Política de datos</b><br />
+La presente Política de datos puede ser objeto de modificaciones ocasionales. Cuando actualicemos la Política de datos, revisaremos la fecha de entrada en vigor que figura al inicio y publicaremos la nueva Política de Datos. Para que estés al tanto de nuestras prácticas relacionadas con la privacidad, te recomendamos que consultes la Política de Datos cada vez que visites el Servicio.<br />
+<br />
+<b>Preguntas</b><br />
+Si tienes preguntas acerca de la presente Política de Datos o nuestras prácticas, comunícate con nosotros online o por correo postal, a la siguiente dirección:<br />
+<br />
+Muevo ltd<br />
+86-90 Paul Street <br />
+London EC2A 4NE<br />
+United Kingdom<br />
+<br />
+<b>Nuestros fundamentos legales para procesar información</b><br />
+<br />
+Procesamos datos de acuerdo con distintos fundamentos legales, como los siguientes:<br />
+<ul>
+<li>según lo exija el cumplimiento de nuestras Condiciones;</li>
+<li>de conformidad con tu consentimiento, que puedes revocar en cualquier momento;</li>
+<li>según sea necesario para cumplir con nuestras obligaciones legales;</li>
+<li>para proteger tus intereses vitales o los de otras personas;</li>
+<li>según sea necesario para el interés público; y</li>
+<li>según sea necesario para nuestros intereses legítimos (o los de otras personas), incluidos nuestros intereses en ofrecer un servicio innovador, personalizado, seguro y rentable a nuestros usuarios y socios, a menos que se vean supeditados a tus intereses o los derechos o libertades fundamentales que requieren la protección de los datos personales.</li>
+</ul>
+<br />
+Puedes retirar tu consentimiento en cualquier momento. Dicho retiro de tu consentimiento no afectará la legalidad del procesamiento basado en el consentimiento previo a su retiro.<br />
+<br />
+<b>Cómo ejerces tus derechos</b><br />
+De conformidad con las leyes pertinentes, tienes derecho a acceder a tu información, así como a rectificarla, transmitirla y suprimirla, y a limitar determinados tratamientos de tu información u oponerte a ellos. También tienes derecho a objetar o restringir determinados tratamientos de tus datos. Esto incluye lo siguiente:<br />
+<ul>
+<li>el derecho a oponerte al tratamiento de tus datos para fines de marketing directo mediante el enlace ""Cancelar suscripción"" que figura en las comunicaciones de marketing;</li>
+<li>el derecho a oponerte al tratamiento de tus datos cuando realicemos una tarea en pos del interés público o de nuestros intereses legítimos o aquellos de un tercero; y</li>
+<li>el derecho a eliminar la información que nos proporcionaste.</li>
+</ul>
+<br />
+<b>Conservación de datos</b><br />
+Por lo general, conservamos la información hasta que ya no sea necesaria para los fines con los que se recopiló. Esto se determina caso por caso y depende de diversos factores, como la naturaleza de los datos, el motivo de la recopilación y el procesamiento, y las necesidades operativas o legales de conservación pertinentes.<br />
+<br />
+<b>Transferencias de datos</b><br />
+De conformidad con esta política, compartimos información de forma internacional, tanto internamente con las empresas de Muevo como externamente con nuestros socios y con las personas de todo el mundo con las que te conectas y compartes contenido. Utilizamos cláusulas contractuales estándar aprobadas por la Comisión Europea y respetamos las decisiones en materia de adecuación de este organismo sobre determinados países, según corresponda, en lo referente a la transferencia de datos del EEE a los Estados Unidos y a otros países.<br />
+<br />
+<b>Información de contacto</b><br />
+La empresa responsable del tratamiento de tus datos es Muevo ltd. Puedes comunicarte con ella online o por correo postal, a la siguiente dirección:<br />
+<br />
+Muevo ltd<br />
+86-90 Paul Street <br />
+London EC2A 4NE<br />
+United Kingdom<br />
+<br />
+Comunícate con el delegado de protección de datos de Muevo Ltd.<br />
+Asimismo, tienes derecho a presentar una demanda ante la autoridad de control principal de Muevo ltd, la comisión de protección de datos del Reino Unido o la autoridad de control local.<br />
+<br />
+<h2>Política de cookies</h2><br />
+<b>Cookies</b><br />
+Nuestra Política de datos detalla nuestros principios para la recopilación, el tratamiento y el almacenamiento de tu información. Allí se explica específicamente cómo nosotros, nuestros socios y los usuarios de nuestros servicios empleamos cookies, además de las opciones que tienes para controlarlas.<br />
+<br />
+<b>¿Qué son las cookies?</b><br />
+Las cookies son pequeños fragmentos de datos almacenados en archivos de texto que se guardan en tu navegador u otros dispositivos cuando un sitio web se carga en el navegador. Se usan para que el sistema te ""recuerde"" a ti y a tus preferencias cuando visites el Servicio, ya sea una sola vez (mediante ""cookies de sesión"") o varias veces sucesivas (lo que se conoce como ""cookies persistentes"").<br />
+<br />
+Utilizamos cookies para garantizar que la experiencia del Sitio web sea coherente y eficiente para todos. Las cookies también permiten que los participantes dejen su sesión iniciada en el Servicio, si corresponde. En la siguiente tabla, puedes encontrar más información sobre los tipos de cookies que usamos y con qué finalidad lo hacemos:<br />
+<br />
+<h3>Tipo de cookie</h3><br />
+<b>Estrictamente necesarias</b><br />	
+Estas cookies son fundamentales para usar el Servicio y sus funciones. La información que recopilan estas cookies se relaciona con el funcionamiento del Servicio, por ejemplo, el lenguaje de los scripts del Servicio y los tokens de seguridad que permiten proteger áreas específicas.<br />
+<br />
+<b>Rendimiento</b><br />
+Estas cookies recopilan información acerca de cómo usas el Servicio, por ejemplo, qué páginas visitas con más frecuencia, si recibes mensajes de error y cómo llegaste al Servicio. La información que recopilan estas cookies se utiliza únicamente para mejorar el uso del Servicio; nunca se utiliza para identificarte. En ocasiones, las cookies son instaladas por proveedores externos de servicios de análisis de tráfico web, como Google Analytics.<br />
+<b>Análisis</b><br />
+Estas cookies corresponden a redes de terceros de confianza (por ejemplo, Google Analytics) que hacen un seguimiento de detalles como el número de visitantes únicos y de visitas a la página con el fin de mejorar la experiencia del usuario<br />
+<b>Funcionalidad</b><br />
+Estas cookies registran las elecciones que hiciste, por ejemplo, el país desde el que visitas el Sitio web, tu idioma y todo cambio que hayas realizado en el tamaño del texto u otras partes de las páginas web que puedan personalizarse. De esta manera, permiten mejorar tu experiencia en el Sitio web y hacer que tus visitas se ajusten más a tus preferencias y sean más agradables. La información que reúnen estas cookies puede registrarse de forma anónima y no puede utilizarse para hacer un seguimiento de tu actividad de navegación en otros sitios web.<br />
+<br />
+<b>Contenido de terceros/insertado</b><br />
+Estas cookies mejoran la experiencia de los usuarios del Servicio. Estas cookies te permiten compartir lo que hiciste en el Servicio con organizaciones de medios sociales, como Facebook y Twitter. No tenemos control sobre la información que recopilan esas cookies.<br />
+<br />
+<b>¿Qué cookies se usan? ¿Por qué?</b><br />
+El Servicio de Muevo usa cookies estrictamente necesarias, de rendimiento, de análisis, de funcionalidad y de contenido insertado para ofrecer contenido relevante, analizar nuestro tráfico y habilitar distintas funciones para los usuarios.<br />
+<br />
+<b>¿Cómo desactivo las cookies?</b>
+La mayoría de los navegadores de internet están configurados de forma predeterminada para aceptar las cookies. Sin embargo, si quieres rechazar o eliminar las cookies (u otra tecnología similar), consulta el contenido de ayuda de tu navegador de internet para acceder a información sobre cómo bloquear o eliminar las cookies. Ten presente que, si eliminas o desactivas las cookies, es posible que no puedas utilizar todas las funciones del Servicio, incluidas algunas funciones personalizadas.<br />
+<br />
+<b>Balizas web</b><br />
+Es posible que nosotros o nuestros socios externos utilicemos una tecnología de software denominada ""baliza web"" (también conocida como ""web bugs"", ""gif invisibles"" o ""píxeles""), que nos ayuda a entender qué contenido es eficaz (por ejemplo, contando el número de usuarios que visitan las páginas) y los patrones de uso. Las balizas web son gráficos diminutos con un identificador único, similares a las cookies en términos de funciones, y se utilizan para notificarnos si un contenido se visualiza. A diferencia de las cookies, que se almacenan en el disco duro de la computadora del usuario, las balizas web suelen insertarse en páginas web, anuncios y correos electrónicos. Es posible que nosotros o nuestros socios externos vinculemos la información generada por las balizas web con otros datos que recopilemos acerca de ti."
+;
+contact.header;Contáctanos
+contact.content.one;Estamos aquí para ti. Si tienes alguna pregunta o comentario, puedes contactarnos mediante el formulario a continuación.<br />Clientes de Muevo: para una atención inmediata, contáctanos a través del canal de Telegram.
+;
+faq.header;Preguntas frecuentes
+faq.content.one;Consulte nuestra lista a continuación para conocer nuestras principales preguntas frecuentes. Si tiene comentarios u otras preguntas, no dudes en contactarnos.
+faq.list.faq1.question;Qué es Muevo?
+faq.list.faq1.answer;Muevo es una billetera digital que opera con dólares Muevo (o USDm) y la manejas como una aplicación de cuenta bancaria en tu smartphone – pero sin la necesidad de un banco.
+faq.list.faq2.question;A cuanto equivale un dólar Muevo?
+faq.list.faq2.answer;El dólar Muevo (USDm) nuestro activo digital, diseñado para adherirse al valor de la divisa norteamericana que todos conocemos. Aunque un dólar Muevo no es idéntico a un dólar en una cuenta en dólares en un banco estadounidense, este posee varias de sus propiedades – más otras que te benefician aún más – pero la más importante siendo que el dólar Muevo siempre garantiza su valor de $1.00 USD, ya que está respaldado con Dai (criptomoneda estable descentralizada que opera en la red principal de Ethereum).
+faq.list.faq3.question;Cuales operaciones puedo hacer con Muevo?
+faq.list.faq3.answer;"<ul>
+    <li>Puedes realizar transferencias, inmediata y gratuitamente, a otros cuenta-habientes Muevo;</li>
+    <li>Puedes pagar el monto exacto con tu móvil – como si fuera una tarjeta bancaria – en establecimientos participantes, a través de códigos QR y sin tener que revelar tu cédula o código de seguridad;</li>
+    <li>Puedes mantener tus dólares Muevo en tu cuenta y resguardarlos de la inflación;</li>
+    <li>Puedes cambiarlos a Bolívares (VES) a tasas competitivas y depositados en tu cuenta bancaria en Venezuela el mismo día;</li>
+</ul>"
+faq.list.faq4.question;Como recargo saldo en muevo?
+faq.list.faq4.answer;"Simplemente recarga dólares Muevo a través de nuestra app desde 170 países, y una vez que sean acreditados a tu cuenta (usualmente en minutos) puedes usarlos para pagos o transferencias.<br />
+<br />
+Utiliza la aplicación Muevo para recargar dólares Muevo con tu dinero fiduciario (dólares, euros, libras esterlinas, coronas suecas, francos suizo, etc) desde 120+ países, a través de tu tarjeta de debito/crédito* o transferencia bancaria** y en menos de 5 minutos.<br />
+<br />
+* La disponibilidad de recargas a través de tarjetas de crédito depende del país y monto que desees recargar. Algunos bancos/tarjetas tienen límites de pagos pre-establecidos y fuera de nuestro control.<br />
+** Las recargas realizadas a través de transferencias bancarias usualmente toman entre 1-3 días, dependiendo del país, el banco y la fecha en la cual se efectúe (fin de semana, por ejemplo)."
+faq.list.faq5.question;Cómo me registro con Muevo?
+faq.list.faq5.answer;Simplemente regístrate con tu correo electrónico y datos personales en la página principal. Te avisaremos apenas nuestra app esté disponible en al App Store de Apple y PlayStore de Google.
+faq.list.faq6.question;Con qué bancos Venezolanos trabaja Muevo?
+faq.list.faq6.answer;Trabajamos con los 9 principales bancos en Venezuela (Banesco, Bancaribe, Banco de Venezuela, Banco Occidental de Descuento, Banco Nacional de Crédito, Bicentenario, Banco Mercantil, Banco Provincial/BBVA).
+faq.list.faq7.question;Cómo retiro dólares Muevo en Venezuela?
+faq.list.faq7.answer;"Estamos trabajando con varios proveedores de ""delivery"" para poder ofrecerte dólares estadounidenses en efectivo llevados a tu casa, sin embargo este servicio operará sólo en las ciudades más grandes y tendrá un costo adicional. Dichos delivery serán limitados a un mínimo de $30 y un máximo de $200 por delivery, y hasta $200 por semana/por cuenta – para tu seguridad y la del motorizado."
+;
+request.text.content;Hola, esta es mi cuenta en muevo
+request.text.contentAmount;[name] quiere recibir [amount] vía Muevo
+request.text.business;Hola, esta es nuestra cuenta en Muevo
+request.text.businessAmount;[name] quiere recibir [amount] vía Muevo
+request.text.openApp;Abre la app
+request.text.getApp;Descarga la app
+request.text.errorHeader;Ups!
+request.text.errorContent;Este parece ser un enlace no válido
+request.text.errorButton;página de inicio

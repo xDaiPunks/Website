@@ -1,0 +1,632 @@
+.AppButton {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+
+	height: 36px;
+	border-radius: 18px;
+
+	background-color: #0ff;
+
+	flex-direction: row;
+	justify-content: center;
+
+	font-family: 'Roboto', sans-serif;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		height: 36px;
+		text-align: center;
+		line-height: 36px;
+
+		color: #330080;
+
+		padding-left: 25px;
+		padding-right: 25px;
+
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+	}
+}
+
+.AppButtonOutline {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+
+	height: 36px;
+	border-radius: 18px;
+
+	border: 2px solid;
+	border-color: #0ff;
+
+	background-color: transparent;
+
+	flex-direction: row;
+	justify-content: center;
+
+	font-family: 'Roboto', sans-serif;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		height: 32px;
+		text-align: center;
+		line-height: 32px;
+
+		color: #0ff;
+
+		padding-left: 25px;
+		padding-right: 25px;
+
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+	}
+}
+
+.FormButton {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+
+	height: 44px;
+	border-radius: 22px;
+
+	flex-direction: row;
+	justify-content: space-between;
+
+	font-family: 'Roboto', sans-serif;
+
+	background-color: #5604c8;
+
+	padding-left: 20px;
+	padding-right: 15px;
+
+	@include responsiveMax($responsiveMed) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		height: 44px;
+		text-align: left;
+		line-height: 44px;
+
+		color: #fff;
+
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 44px;
+
+		flex-direction: row;
+		align-items: center;
+
+		padding-left: 10px;
+
+		.IconImage {
+			display: block;
+			position: relative;
+
+			height: 14px;
+		}
+	}
+}
+
+.HeaderButton {
+	display: flex;
+	position: absolute;
+
+	overflow: hidden;
+
+	align-items: center;
+
+	height: $heightHeader;
+
+	padding-left: $padding;
+	padding-right: $padding;
+
+	@include responsiveMax($responsiveMed) {
+		height: $heightHeaderMed;
+
+		padding-left: $paddingMed;
+		padding-right: $paddingMed;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		height: $heightHeaderSmall;
+
+		padding-left: $paddingSmall;
+		padding-right: $paddingSmall;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		flex-direction: row;
+		align-items: center;
+
+		.IconImage {
+			display: block;
+			position: relative;
+		}
+	}
+}
+
+.FooterButton {
+	display: block;
+	position: relative;
+
+	width: 100%;
+	height: 32px;
+
+	font-family: 'Roboto', sans-serif;
+
+	.Txt {
+		display: block;
+		position: relative;
+
+		user-select: none;
+
+		height: 32px;
+		text-align: left;
+		line-height: 32px;
+
+		color: rgba(17, 17, 17, 0.7);
+
+		font-size: 14px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+.FormPageButton {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+
+	height: 36px;
+
+	flex-direction: row;
+	justify-content: space-between;
+
+	font-family: 'Roboto', sans-serif;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		height: 36px;
+		text-align: left;
+		line-height: 36px;
+
+		color: #5604c8;
+
+		font-size: 18px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+
+		@include responsiveMax($responsiveMed) {
+			font-size: 18px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			font-size: 16px;
+		}
+	}
+}
+
+.NavigationButton {
+	display: flex;
+	position: relative;
+
+	width: auto;
+	height: 46px;
+
+	font-family: 'Gilroy', sans-serif;
+
+	padding-left: 0;
+	padding-right: 0;
+
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+
+	@include responsiveMax($responsiveMed) {
+		height: 46px;
+		width: auto;
+
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		height: 32px;
+		width: 100%;
+
+		padding-left: $paddingSmall;
+		padding-right: $paddingSmall;
+	}
+
+	.Txt {
+		display: flex;
+		position: relative;
+
+		user-select: none;
+
+		height: 46px;
+		text-align: left;
+		line-height: 46px;
+
+		color: #111;
+
+		font-size: 14px;
+		font-weight: 500;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+
+		padding-left: 5px;
+		padding-right: 20px;
+
+		@include responsiveMax($responsiveMed) {
+			padding-left: 5px;
+			padding-right: 20px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			padding-left: 5px;
+			padding-right: 20px;
+		}
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 46px;
+
+		align-items: center;
+		justify-content: center;
+
+		padding-left: 0px;
+
+		@include responsiveMax($responsiveMed) {
+			padding-left: 0px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			padding-left: 3px;
+		}
+
+		.IconImage {
+			width: 18px;
+		}
+	}
+
+	.Icon::after {
+		content: '';
+		position: absolute;
+
+		height: 4px;
+		border-radius: 2px;
+
+		left: 2px;
+		top: 32px;
+
+		width: 0px;
+		background-color: #0fffff;
+		transition: width 0.4s $easeOutQuad;
+
+		@include responsiveMax($responsiveMed) {
+			left: 2px;
+			top: 32px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			left: 4px;
+			top: 32px;
+		}
+	}
+}
+
+.NavigationButton:hover {
+	.Icon::after {
+		width: 16px;
+
+		@include responsiveMax($responsiveMed) {
+			width: 16px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			width: 16px;
+		}
+	}
+}
+
+.NavigationButton.Active {
+	.Icon::after {
+		width: 16px;
+
+		@include responsiveMax($responsiveMed) {
+			width: 16px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			width: 16px;
+		}
+	}
+}
+
+.NavigationButtonAction {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	flex-direction: row-reverse;
+
+	align-items: center;
+	justify-content: center;
+
+	height: 35px;
+	border-radius: 20px;
+
+	padding-left: 16px;
+	padding-right: 18px;
+
+	font-family: 'Roboto', sans-serif;
+
+	border: 2px solid #0fffff;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		text-align: center;
+
+		user-select: none;
+
+		color: #111;
+
+		font-size: 14px;
+		font-weight: 500;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+
+		padding-left: 5px;
+
+		@include responsiveMax($responsiveMed) {
+			padding-left: 5px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			padding-left: 5px;
+		}
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 33px;
+
+		align-items: center;
+		justify-content: center;
+
+		.IconImage {
+			width: 18px;
+		}
+	}
+}
+
+.IntroStartButtonAction {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	height: 40px;
+	border-radius: 20px;
+
+	flex-direction: row;
+
+	align-items: center;
+	justify-content: center;
+
+	font-family: 'Roboto', sans-serif;
+
+	border: 2px solid #0ff;
+
+	padding-left: 20px;
+	padding-right: 15px;
+
+	@include responsiveMax($responsiveMed) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		text-align: left;
+
+		color: #fff;
+
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		padding-left: 10px;
+
+		.IconImage {
+			display: block;
+			position: relative;
+
+			height: 14px;
+		}
+	}
+}
+
+.FooterItemButtonAction {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	height: 40px;
+	border-radius: 20px;
+
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	font-family: 'Roboto', sans-serif;
+
+	border: 2px solid #5604c8;
+
+	padding-left: 20px;
+	padding-right: 15px;
+
+	@include responsiveMax($responsiveMed) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	.Txt {
+		display: block;
+		position: static;
+
+		user-select: none;
+
+		text-align: left;
+
+		color: #5604c8;
+
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		padding-left: 10px;
+
+		.IconImage {
+			display: block;
+			position: relative;
+
+			height: 14px;
+		}
+	}
+}
+
+.FooterItemButtonAction.Azure {
+	border: 2px solid #0fff;
+	.Txt {
+		color: #fff;
+	}
+}

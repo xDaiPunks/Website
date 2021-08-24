@@ -1,0 +1,314 @@
+EN TRANSLATION;
+menu.logo.label;Muevo
+menu.about.label;About
+menu.dollarmuevo.label;Muevo Dollar
+menu.remittances.label;Remittances
+menu.business.label;For Business
+menu.action.label;Get Muevo
+;
+button.action.learnmore;Learn more
+;
+footer.language.title;Change language
+footer.language.label;Language: English
+footer.terms.label;Terms
+footer.help.label;Help
+footer.privacy.label;Privacy & Cookies
+footer.contact.label;Contact
+footer.business.label;For Business
+footer.frequentasked.label;Frequently Asked Questions
+footer.followus.label;Follow us
+footer.bottomregister.label;Muevo ltd is registered in England and Wales: 12115957.
+footer.bottomaddress.label;Registered office: 86-90 Paul Street, London EC2A 4NE, U.K.
+;
+modal.language.title;Change language
+modal.language.en;English
+modal.language.es;Español
+modal.error.title;Oops!
+modal.error.email;Please enter a valid email address
+modal.error.message;Please enter a message
+modal.error.fullname;Please enter your full name
+modal.error.okbutton;Ok
+;
+form.subscribe.result.header;You are on the waiting list
+form.subscribe.result.headerText;We’ll send you a download link when it is your turn
+form.subscribe.error.header;Oops!
+form.subscribe.error.headerText;It seems something went wrong
+form.subscribe.error.buttonText;Try again
+;
+form.contact.result.header;All done!
+form.contact.result.headerText;We will get back to you as soon as possible.
+form.contact.error.header;Oops!
+form.contact.error.headerText;It seems something went wrong
+form.contact.error.buttonText;Try again
+;
+home.intro.header.one.text;The dollar 
+home.intro.header.two.text;account in
+home.intro.header.three.text;your pocket
+home.intro.header.four.text;Send, receive or pay with digital dollars without a bank
+;
+home.intro.phone.one;send
+home.intro.phone.two;receive
+home.intro.phone.three;exchange
+;
+home.mapview.title;Wherever you are
+home.mapview.subtitle;…and without intermediaries!
+;
+home.effective.header.one;More effective
+home.effective.header.two;than cash
+home.effective.header.subtext;Forget about torn, fake bills or the danger of carrying cash with you. With Muevo, your dollars are safe and available at any time.
+home.effective.phone.text;Jessica sent you
+;
+home.explain.title;Muevo is
+home.explain.easy.title;Easy
+home.explain.easy.content;Have you used a bank account and a smartphone? That is all you need to know to use Muevo!
+home.explain.fast.title;Fast
+home.explain.fast.content;You can send Muevo dollars from anywhere in the world. Transactions happen immediately and without intermediaries.
+home.explain.economic.title;Economic
+home.explain.economic.content;Low fees for adding funds and local bank transfers. No hidden fees for transfers between Muevo accounts.
+home.explain.secure.title;Secure
+home.explain.secure.content;Muevo is completely blockchain-based. Your funds are secure and your transactions are encrypted and verifiable.
+;
+home.howitworks.title;How does it work?
+home.howitworks.funds.title;Add funds
+home.howitworks.funds.content;Add funds to your account with your debit/credit card or by bank transfer.
+home.howitworks.send.title;Send
+home.howitworks.send.content;Sending or paying with Muevo dollars is quick and with no hidden costs.
+home.howitworks.receive.title;Receive
+home.howitworks.receive.content;Receive money by generating a QR code that can be scanned or by sending a payment link.
+home.howitworks.withdraw.title;Withdraw
+home.howitworks.withdraw.content;Change your Muevo dollars to local currency and into your bank account.
+;
+home.business.header.one;Ready your business
+home.business.header.two;for change
+home.business.header.subtext;Start accepting payments via QR codes – forget ripped, fake bills or safeguarding cash.
+home.business.phone.text;Carlos has paid
+;
+home.getmuevo.title;Get our beta version
+home.getmuevo.subtitle;Register now
+home.getmuevo.input.fullname;Full name
+home.getmuevo.input.email;Email
+home.getmuevo.sendtitle;I want to send Muevo dollars…
+home.getmuevo.input.os;Operating system
+home.getmuevo.input.origin;From
+home.getmuevo.input.destination;To
+home.getmuevo.button.submit;Let’s go!
+;
+about.header;About
+about.content.one;"Muevo believes that everyone should be able to manage their money quickly, conveniently, and without restrictions. We are introducing our blockchain-powered, stablecoin-based smartphone wallet app. The future is here, right in the palm of your hand.<br />
+<br />
+Our wallet holds the Muevo Dollar or USDm. The Muevo dollar is pegged, 1:1, to the value of the U.S. dollar. It enables you to send, receive and pay for products and services quickly, with the same convenience as using dollars bills, but with the added features and security of a digital currency.<br />
+<br />
+Our mission is to provide a payment service that works just like a bank account, but without the wait in long queues, hard-to-replace plastic debit cards, or expensive cross-border wire-transfer charges, without intermediaries and in full ownership and custody of your funds.<br />
+<br />
+For your convenience, we offer value-added services like purchasing Muevo dollars with local currency, conversions, and deposits in your local bank account and payments for subscription services such as Amazon and Netflix. In short, Muevo combines the power of blockchain technology with the convenience and ease-of-use of traditional payment services."
+;
+muevodollar.header;Muevo Dollar
+muevodollar.content.one;"The Muevo dollar, or USDm for short, is a unit of value that lives on the xDai chain of the Ethereum network. In other words, the Muevo dollar is a blockchain-based digital currency with no centralized control or ownership, which makes it extremely censorship-resistant.<br />
+<br />
+The Muevo dollar is designed to adhere to the value of the U.S. dollar – the world's leading reserve currency – and this value is 100% guaranteed, as every Muevo dollar is backed by Dai through smart contracts. Dai is one of the best-known and most transparent stable digital currencies. We chose Dai as our underlying asset to ensure that the value of a Muevo dollar will never be as volatile as that of Bitcoin, for example. <br />
+<br />
+Digital currencies exhibit similar properties to fiat currencies (U.S. dollars, Pound Sterling, Euros, etc) but do not have a physical form like banknotes. This allows for nearly instantaneous transactions between accounts at any time of the day, without the typical bank transfer delays or costs.<br />
+<br />We have made the Muevo wallet super easy to use. All the technical complexities happen behind the scenes. We made sure all the basic functions of the wallet are as easy (if not easier!) to understand as simply using your bank’s mobile app. You can pay for goods and services at participating stores or suppliers, send Muevo dollars to other Muevo account holders, share payment links via social networks (to collect funds from friends for a cause, for example), convert your USDm to local currency at competitive rates, send payments to 3rd parties via Zelle, or simply store them safely in your account. Your money, your choice!"
+;
+business.header;For Business
+business.content.one;"Muevo Business is an account with added benefits, tailored for retail stores and entrepreneurs who wish to accept digital dollars as payment for their products and services.<br />
+<br />
+Benefits include:<br />
+<ul>
+<li>No need for POS terminals, their surcharges, or maintenance fees</li>
+<li>Itemized billing per account</li>
+<li>Automated payments</li>
+<li>Payroll payments</li>
+<li>Charge your own payment fees to customers</li>
+<li>No transfer fees to other Muevo wallets</li>
+<li>Avoid payment reversals</li>
+</ul>
+<br />
+Plus the usual advantages of Muevo:<br />
+<ul>
+<li>Separate sub-accounts under the main account</li>
+<li>Secure and verifiable transactions</li>
+<li>Save on money transfer charges</li>
+<li>Forget about the safe-keeping of physical currency</li>
+<li>Fast local and international payments</li>
+</ul>"
+;
+remittances.header;Remittances
+remittances.content.one;"A core feature of Muevo is remittances. It was designed especially for diasporas needing a safe, quick, easy and reliable method to send digital dollars to their loved ones.<br />
+<br />
+Download the app, register with an email address, load funds via debit/credit or bank transfer, and then send Muevo dollars to other Muevo account holders around the globe in seconds. It's THAT simple!<br />
+<br />
+Muevo has no schedule of operation, so you can send funds 24/7 without having to wait hours or days for transfers to reach the recipient.<br />
+<br />
+Download Muevo today and forget that stressful search for friends of friends (or potentially fraudulent channels) and intermediaries to help you get dollars to your loved ones."
+;
+terms.header;Terms of Use
+terms.content.one;"These Terms of Use (""Terms"") govern the use of Muevo and any other website or app that links to these Terms (collectively, the “Service”). These terms constitute an agreement between you and* *Muevo. (“Muevo,” “us,” “our”) so it is important that you review them carefully.<br />
+<br />
+<b>Content</b> <br />
+The Service is available only for your personal and informational purposes. We make no representations or warranties of any kind as to the accuracy, currency, or completeness of the information and other materials made available through the Service. Muevo is not liable for any decisions you may make in reliance of this content. <br />
+<br />
+<b>Your Commitments</b><br />
+We provide these services to you and others. We ask that you make the following commitments: <br />
+- Provide accurate information about yourself. <br />
+- To not use the app if you are under 18 years old. <br />
+You are not prohibited from receiving our products, services, or software under applicable laws or other applicable policies and terms. <br />
+<br />
+<b>Prohibited Conduct </b><br />
+You may not access or use, or attempt to access or use, the Service to take any action that could harm us or any third party, interfere with the operation of the Service, or use the Service in a manner that violates any laws. For example, and without limitation, you may not: <br />
+Do or share anything that breaches these Terms or other applicable terms; <br />
+Upload viruses or malicious code or do anything that could disable, overburden, or impair the proper working or appearance of our products and services; <br />
+Access or collect data from our Products using automated means (without our prior permission) or attempt to access data you do not have permission to access; <br />
+Submit content that infringes on the copyright, trademark, patent, or other intellectual property rights of any third party, are false, misleading, libellous, defamatory, obscene, abusive, hateful, or sexually-explicit, violate a third party’s right to privacy or publicity, or degrade others on the basis of gender, race, class, ethnicity, national origin, religion, sexual preference, disability, or other classification; and <br />
+Engage in any other conduct that restricts or inhibits any person from using or enjoying the Service or that, in our sole judgment, exposes us or any of our users, affiliates, or any other third party to any liability, damages, or detriment of any type. <br />
+<br />
+Violations of system or network security may result in liability. We may investigate and work with law enforcement authorities to prosecute users who violate the Terms. We may suspend or terminate your access to the Service for any reason at any time without notice. <br />
+<br />
+<b>Limitation of Liabilities</b> <br />
+The Service is provided “as is” without warranties of any kind, either express or implied, including without limitation warranties of merchantability, fitness for a particular purpose, title, non-infringement, or other violation of rights. We do not warrant the adequacy, currency, accuracy, likely results, or completeness of the Service or any third-party sites linked to or from the Service, or that the functions provided will be uninterrupted, virus, or error-free. We expressly disclaim any liability for any errors or omissions in the content included in the Website or any third-party sites linked to or from the Website. Some jurisdictions may not allow the exclusion of implied warranties, so some of the above exclusions may not apply to you. <br />
+<br />
+In no event will we, or our owner, subsidiaries, affiliates, directors, officers, employees, agents, and assigns be liable for any direct or indirect, special, incidental, consequential or punitive damages, lost profits, or other damages whatsoever arising in connection with the use of the Service. Any interruption in availability of the Service, delay in operation or transmission, computer virus, loss of data, or use, misuse, reliance, review, manipulation, or other utilization in any manner whatsoever of the Service or the data collected through the Service, even if one or more of them has been advised of the possibility of such damages or loss. <br />
+<br />
+<b>Indemnification</b> <br />
+You agree to indemnify, defend, and hold us and our owner, subsidiaries, affiliates, directors, officers, employees, agents and assigns harmless from and against any and all loss, costs, expenses (including reasonable attorneys’ fees and expenses), claims, damages, and liabilities related to or associated with your use of the Service and any alleged violation by you of these Terms. We reserve the right to assume the exclusive defense of any claim for which we are entitled to indemnification under this section. In such event, you shall provide us with such cooperation as we reasonably request. <br />"
+;
+privacycookies.header;Privacy & cookies
+privacycookies.content.one;"Effective Date: July 26th, 2020<br />
+We updated our Data Policy to add more detail about how we use your information and what happens when we make changes to our Data Policy. By continuing to use our Service, you acknowledge our updated Data Policy.<br />
+<br />
+Muevo is a digital wallet owned and operated by Muevo ltd (“Muevo”). The Muevo website and app (“Service”) helps Muevo (together, “us,” “our”) share information with you about the product (“Product”) and updates.<br />
+<br /><h1>Privacy</h1><br />
+<b>Collection of Information</b><br />
+When you interact with us through the Service, we may collect or receive the following types of information:<br />
+Information you provide directly to us. We will collect your full name, email address, and countries you selected as of interest to you.<br /><br />
+Information we collect automatically. Depending on your actions, we will also collect certain information automatically when you interact with the Service, such as:<br />
+<ul><li>Device attributes: information such as the operating system, hardware and software versions, and browser type.</li>
+<li>Device operations: information about elements you’ve interacted with on the Service, mouse movements (which can help distinguish humans from bots), and pages visited on the Service.</li>
+<li>Pixel information: information captured from the Google pixel such as how many unique visitors viewed the Service.</li>
+<li>Network and connections: information such as the name of your mobile operator or ISP, language, time zone, and IP address.</li>
+<li>Cookie data: data from first party cookies stored on your device, including cookie IDs and settings. Learn more about how we use cookies in our Cookie Policy.</li></ul>
+<br />
+<b>How We Use Information</b><br />
+We may use the information you provide or we otherwise collect to:<br />
+<ul><li>Analyze the use of the Website. We use your information to understand how you use the Service and how to help us improve.</li>
+<li>Comply with legal obligations. We use your information to comply with legal obligations.</li>
+<li>Provide you with marketing materials. We use your name and email address to send you promotional emails about our Product if you have signed up for updates by submitting your email address on the Service.</li></ul>
+<br />
+<b>How We Share Information</b><br />
+There are certain circumstances in which we may share your information with certain third parties without further notice to you, as set forth below:<br />
+<ul><li>Authorized third-party vendors and service providers. We share information with third-party vendors and service providers, including Muevo, who support the Service, such as by providing technical infrastructure services, business analytics, conducting the Service, and data processing.</li>
+<li>Affiliates. We may share information with our affiliates, such as with other Muevo products; however, we will not share your email address with our affiliates for their own purposes.</li>
+<li>Legal purposes. We may disclose information to respond to subpoenas, court orders, legal process, law enforcement requests, legal claims or government inquiries, detect fraud, and to protect and defend the rights, interests, safety, and security of the Service, our affiliates, owner, users, or the public.</li>
+<li>Business transfers. We may share information in connection with a substantial corporate transaction, such as the sale of a website, a merger, consolidation, asset sale, or in the unlikely event of bankruptcy.</li>
+<li>With your consent. We may share information for any other purposes disclosed to you at the time we collect the information or pursuant to your consent.</li></ul>
+If you access third-party services, such as Google or Twitter, through the Service to login to the Service or to share information about your experience on the Service with others, these services are outside our control. These third-party services may be able to collect information about you, including information about your activity on the Service, and they may notify your connections on the third-party services about your use of the Service, in accordance with their own privacy policies.<br />
+<br />
+<b>Changes to the Data Policy</b><br />
+We may modify this Data Policy from time to time. When we update the Data Policy, we will revise the “Effective Date” above and post the new Data Policy. We recommend that you review the Data Policy each time you visit the Service to stay informed of our privacy practices.<br />
+<br />
+<b>Questions</b><br />
+If you have any questions about this Data Policy or our practices, please contact us online or by mail at:<br />
+<br />
+Muevo ltd<br />
+86-90 Paul Street<br />
+London EC2A 4NE<br />
+United Kingdom<br />
+<br />
+<b>Our Legal Bases For Processing Information</b><br />
+We rely on a variety of legal bases to process data, including:<br />
+as necessary to fulfill our Terms;<br />
+consistent with your consent, which you can revoke at any time;<br />
+as necessary to comply with our legal obligations;<br />
+to protect your vital interests, or those of others;<br />
+as necessary in the public interest; and<br /
+as necessary for our (or others’) legitimate interests, including our interests in providing an innovative personalised, safe and profitable service to our users and partners, unless those interests are overridden by your interests or fundamental rights or freedoms that require protection of personal data.<br />
+You may withdraw consent at any time. Such withdrawal of consent will not affect the lawfulness of processing based on consent before its withdrawal.<br />
+<br />
+<b>How You Exercise Your Rights</b><br />
+Under applicable laws, you have the right to access, rectify, port, and erase your information, as well as the right to restrict and object to certain processing of your information. You also have the right to object to and restrict certain processing of your data. This includes:<br />
+the right to object to our processing of your data for direct marketing, which you can exercise by using the “unsubscribe” link in such marketing communications,<br />
+the right to object to our processing of your data where we are performing a task in the public interest or pursuing our legitimate interests or those of a third party, and<br />
+the right to delete information you have provided us.<br />
+<br />
+<b>Data Retention</b><br />
+We generally retain information until it is no longer necessary to serve the purposes for which it was collected. This is a case-by-case determination that depends on things like the nature of the data, why it is collected and processed, and relevant legal or operational retention needs.<br />
+<br />
+<b>Data Transfers</b><br />
+We share information globally, both internally within the Muevo and externally with our partners and with those you connect and share with around the world in accordance with this policy. We utilize standard contract clauses approved by the European Commission and rely on the European Commission’s adequacy decisions about certain countries, as applicable, for data transfers from the EEA to the United States and other countries.<br />
+<br />
+<b>Contact Information</b><br />
+The data controller responsible for your information is Muevo, which you can contact online, or by mail at:<br />
+<br />
+Muevo ltd<br />
+86-90 Paul Street<br />
+London EC2A 4NE<br />
+United Kingdom<br />
+<br />
+Contact the Data Protection Officer for Muevo Ltd<br />
+<br />
+You also have the right to lodge a complaint with Muevo’s lead supervisory authority, the UK's Information Commissioner, or your local supervisory authority.<br />
+<br />
+<br />
+<h1>Cookies Policy</h1><br />
+<b>Cookies</b><br />
+Our Data Policy explains our principles when it comes to the collection, processing, and storage of your information. This policy specifically explains how we, our partners, and users of our services deploy cookies, as well as the options you have to control them.<br />
+<br />
+<b>What are cookies?</b><br />
+A cookie is a small piece of data, stored in text files, that are stored on your browser or other device when websites are loaded in the browser. Cookies are used to “remember” you and your preferences when you visit the Service either for a single visit (through a “session cookie”) or for multiple repeat visits (called a “persistent cookie”).<br />
+We use cookies to ensure consistent and efficient experiences for participants in the Service. Cookies also perform functions like allowing participants to remain logged into the Service, if applicable. You can find more information about the types of cookies we use and the purposes for which we use them in the table below:<br />
+<br />
+<h2>Type of Cookie</h2><br />
+<b>Strictly Necessary</b><br />
+These cookies are essential in order to enable you to use the Service and its features. The information collected by these cookies relate to the operation of the Service, for example website scripting language and security tokens to maintain secure areas of our Service.<br />
+<b>Performance</b><br />	
+These cookies collect anonymous information about how you use our Service, for example which pages you visit most often, whether you receive any error messages, and how you arrived at our Site. Information collected by these cookies is used only to improve your use of Service and never to identify you. These cookies are sometimes placed by third-party providers of web traffic analysis services, such as Google Analytics.<br />
+<b>Analytics</b><br />	
+These cookies are placed by trusted third party networks, like Google Analytics, to track details like number of unique visitors and pageviews to improve user experience<br />
+<b>Functionality</b><br />
+These cookies remember choices you make, for example the country you visit our Site from, your language and any changes you have made to text size or other parts of web pages that you can customize, in order to improve your experience of our Service and to make your visits more tailored and enjoyable. The information these cookies collect may be anonymized and cannot be used to track your browsing activity on other websites.<br />
+<b>Third Party / Embedded Content</b><br />
+These cookies enhance the experience of Service users. These cookies allow you to share what you’ve been doing on our Service with social media organizations such as Facebook and Twitter. We have no control over the information collected by these cookies.<br />
+<br />
+<b>Which cookies are used and why?</b><br />
+The Muevo Service uses strictly necessary, performance, analytics, functionality, and embedded content cookies for the purposes of: providing relevant content, analyzing our traffic, and providing a variety of features to you.<br />
+<br />
+<b>How do I disable cookies?</b><br />
+Most internet browsers are automatically set up to accept cookies. However, if you want to refuse or delete any cookies (or similar technologies), please refer to the help and support area on your internet browser for instructions on how to block or delete cookies. Please note you may not be able to take advantage of all the features of our Website, including certain personalized features, if you delete or disable cookies.<br />
+<br />
+<b>Web Beacons</b><br />
+We, or our third party partners, may employ a software technology called web beacons (also known as web bugs, clear gifs or pixels) which helps us understand what content is effective, for example by counting the number of users who have visited these pages, and to understand usage patterns. Web beacons are tiny graphics with a unique identifier, similar in function to cookies, and are used to let us know when content is viewed. In contrast to cookies, which are stored on a user’s computer hard drive, web beacons are embedded on web pages, ads, and e-mail. We, or our third party partners, may tie the information gathered by web beacons to the other information we collect about you."
+;
+contact.header;Contact
+contact.content.one;We are here for you. If you have any questions, please contact us by using the form below. <br />Muevo account holders: please use our Telegram channel for a faster response.
+;
+faq.header;Frequently Asked Questions
+faq.content.one;Please see our list below for our top frequently asked questions. If you have other questions, please feel free to contact us.
+faq.list.faq1.question;What is Muevo?
+faq.list.faq1.answer;Muevo is a digital wallet that operates in Muevo dollars (or USDm) and you manage it like a bank account app on your smartphone – but without a bank!
+faq.list.faq2.question;How much is a Muevo dollar worth?
+faq.list.faq2.answer;The Muevo dollar (or USDm) is a digital asset designed to adhere to the value of the U.S. dollar. Although a Muevo dollar is not fiduciary nor identical to a U.S. dollar in a bank account in the United States, it has several of its properties - plus additional benefits - but the most important being that the dollar Muevo is always worth $1.00 USD, as it is backed by Dai (DAI), a decentralized stablecoin that operates on the Ethereum mainnet.
+faq.list.faq3.question;What operations can I do with Muevo?
+faq.list.faq3.answer;"<ul>
+    <li>You can make transfers, which are immediate and almost free, to other Muevo account holders;</li>
+    <li>You can pay exact amounts with your smartphone - as if it was a bank card - through QR codes (in participating establishments) and without having to reveal your identity card or security code;</li>
+    <li>You can keep your Muevo dollars in your account and protect yourself from hyperinflation;</li>
+    <li>You can convert them to local currency (Bolívares/VES) at competitive rates and deposited in your bank account in Venezuela within an hour;</li>
+</ul>"
+faq.list.faq4.question;How do I load funds onto my Muevo account?
+faq.list.faq4.answer;You can load funds with a debit/credit card or a bank transfer through our app, operational in 170 countries, and credited to your Muevo account in minutes.
+faq.list.faq5.question;How do I register with Muevo?
+faq.list.faq5.answer;Simply download the application from the AppleStore or PlayStore, and register with your email, no matter where you are. Follow the simple activation instructions, and that's it ... it's that easy!
+faq.list.faq6.question;Which Venezuelan banks does Muevo work with?
+faq.list.faq6.answer;"Muevo dollars are designed to hold the value of your earnings, against the hyperinflation in Venezuela. You can convert Muevo dollars to Bolívares (VES) whenever you need it, and deposited in the largest banks in Venezuela at competitive rates and in minutes.<br />
+<br />
+We work with: Banesco, Bancaribe, Banco de Venezuela, Banco Occidental de Descuento, Banco Nacional de Crédito, Banco Bicentenario, Banco Mercantil and Banco Provincial BBVA."
+;
+request.text.content;Hi, this is my account on Muevo
+request.text.contentAmount;[name] wants to receive [amount] via Muevo
+request.text.business;Hi, this is our account on Muevo
+request.text.businessAmount;[name] wants to receive [amount] via Muevo
+request.text.openApp;Open app
+request.text.getApp;Get the app
+request.text.errorHeader;Oops!
+request.text.errorContent;This seems to be an invalid link
+request.text.errorButton;Go to homepage

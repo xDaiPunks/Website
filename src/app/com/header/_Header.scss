@@ -1,0 +1,67 @@
+.Header {
+    display: block;
+    position: fixed;
+
+    z-index: 40;
+
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    height: $heightHeader;
+    
+    @include responsiveMax($responsiveMed) {
+        height: $heightHeaderMed;
+    }
+
+    @include responsiveMax($responsiveSmall) {
+        height: $heightHeaderSmall;
+    }
+
+    .HeaderContent {
+        display: block;
+        position: relative;
+
+        z-index: 1;
+
+        width: 100%;
+
+        height: $heightHeader;
+    
+        @include responsiveMax($responsiveMed) {
+            height: $heightHeaderMed;
+        }
+    
+        @include responsiveMax($responsiveSmall) {
+            height: $heightHeaderSmall;
+        }
+    
+    }
+
+    .HeaderBackground {
+        display: block;
+        position: absolute;
+
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+
+        top: 0;
+        left: 0;
+
+        transition: opacity 0.35s $easeIn;
+
+        height: $heightHeader;
+    
+        @include responsiveMax($responsiveMed) {
+            height: $heightHeaderMed;
+        }
+    
+        @include responsiveMax($responsiveSmall) {
+            height: $heightHeaderSmall;
+        }
+    }
+
+    .HeaderBackground.Request {
+        background-color: rgba(43, 0, 102, 0.9);
+    }
+}

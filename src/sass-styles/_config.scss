@@ -1,0 +1,105 @@
+/* responsive sizes */
+$responsiveMed: 1070px;
+$responsiveSmall: 780px;
+$responsiveSmallMini: 380px;
+$responsiveSmallMiniMax: 350px;
+
+/* min height screen */
+$minHeightScreen: 640px;
+$minHeightScreenMed: 640px;
+$minHeightScreenSmall: 520px;
+
+/* main vars */
+$fontFamilyBig: 'Gilroy', sans-serif;
+$fontFamilyRegular: 'Roboto', sans-serif;
+
+$fontSizeRegular: 16px;
+
+$padding: 48px;
+$paddingMed: 40px;
+$paddingSmall: 30px;
+
+$margin: 48px;
+$marginMed: 40px;
+$marginSmall: 30px;
+
+$heightHeader: 90px;
+$heightHeaderMed: 90px;
+$heightHeaderSmall: 70px;
+
+/* main vars */
+$appBackgroundColor: #fff;
+$defaultBackgroundColor: #fff;
+
+/* color */
+$fontColor: rgba(40, 40, 40, 1);
+$fontColorDark: rgba(40, 40, 40, 1);
+$fontColorLight: rgba(255, 255, 255, 1);
+
+/* navigationn colors */
+$underlineColor: #0fffff;
+$underlineGlowColor: #0fffff;
+
+/* backgrounds */
+$backgroundColor: #fff;
+$backgroundColorGradient: linear-gradient(
+	125deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+$backgroundColorGradientMed: linear-gradient(
+	125deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+$backgroundColorGradientSmall: linear-gradient(
+	125deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+$backgroundColorEffective: rgb(125, 83, 255);
+$backgroundColorEffectiveGradient: linear-gradient(
+	125deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+$backgroundColorEffectiveGradientMed: linear-gradient(
+	125deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+$backgroundColorEffectiveGradientSmall: linear-gradient(
+	135deg,
+	#400495 0%,
+	#5904ae 45%,
+	#e600e5 100%
+);
+
+/* easing equations */
+$ease: ease;
+
+$linear: linear;
+
+$easeIn: ease-in;
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeInQubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+
+$easeOut: ease-out;
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeOutQubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+
+$easeAnimation: cubic-bezier(0.535, 0.005, 0, 1);

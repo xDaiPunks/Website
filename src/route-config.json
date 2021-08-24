@@ -1,0 +1,24 @@
+{
+	"home": {
+		"path": "/",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "underlay",
+		"component": "app/com/views/home/Home"
+	},
+	"about": {
+		"path": "/about",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/about/About"
+	},
+	"notfound": {
+		"type": "notfound",
+		"useRedirect": true,
+		"useAuthentication": true,
+		"animationType": "underlay",
+		"foundRedirect": "/",
+		"foundAuthRedirect": "/"
+	}
+}

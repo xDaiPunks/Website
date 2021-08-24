@@ -1,0 +1,21 @@
+{
+	"root": true,
+	"extends": ["react-app"],
+	"env": {
+		"browser": true
+	},
+	"globals": {
+		"$": "writable"
+	},
+	"rules": {
+		"strict": [0, "global"],
+		"quotes": ["warn", "single"],
+		"quote-props": ["warn", "consistent"],
+		"consistent-this": [2, "Instance", "self", "vm"]
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}

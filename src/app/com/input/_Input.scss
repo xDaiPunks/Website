@@ -1,0 +1,532 @@
+.Input {
+	display: block;
+	position: relative;
+
+	height: 46px;
+
+	margin-bottom: 28px;
+
+	border: 2px solid #5604c8;
+	border-radius: 23px;
+
+	@include responsiveMax($responsiveMed) {
+		margin-bottom: 28px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		margin-bottom: 18px;
+	}
+
+	input {
+		display: block;
+		box-sizing: border-box;
+
+		width: 100%;
+
+		height: 42px;
+		line-height: 42px;
+
+		font-size: 16px;
+		font-weight: 600;
+
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+
+		text-align: left;
+
+		border: 0;
+
+		background: 0 0;
+		background-color: transparent;
+
+		margin: 0;
+		padding: 0;
+
+		border-radius: 0;
+
+		outline: none;
+		appearance: none;
+
+		background-color: transparent;
+
+		padding-left: 20px;
+		padding-right: 20px;
+
+		color: rgba(86, 5, 199, 1);
+		font-family: 'Roboto', sans-serif;
+	}
+
+	input::placeholder {
+		color: rgba(86, 5, 199, 1);
+		opacity: 0.7;
+	}
+
+	input:-ms-input-placeholder {
+		color: rgba(86, 5, 199, 1);
+		opacity: 0.7;
+	}
+
+	input::-ms-input-placeholder {
+		color: rgba(86, 5, 199, 1);
+		opacity: 0.7;
+	}
+}
+
+.Select {
+	display: block;
+	position: relative;
+
+	height: 46px;
+
+	margin-bottom: 28px;
+
+	border: 2px solid #5604c8;
+	border-radius: 23px;
+
+	@include responsiveMax($responsiveMed) {
+		margin-bottom: 28px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		margin-bottom: 18px;
+	}
+
+	select {
+		display: block;
+		position: relative;
+
+		appearance: none;
+		border-radius: 0px;
+
+		z-index: 3;
+
+		top: 0px;
+		width: 100%;
+
+		height: 42px;
+		line-height: 42px;
+
+		font-size: 16px;
+		font-weight: 400;
+
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+
+		opacity: 0;
+
+		border: 0;
+
+		background: 0 0;
+
+		margin: 0;
+		padding: 0;
+
+		border-radius: 0;
+
+		outline: none;
+		appearance: none;
+
+		background-color: transparent;
+
+		color: #333;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.SelectOverlay {
+		display: block;
+		position: absolute;
+
+		width: 100%;
+		height: 42px;
+
+		top: 0px;
+		left: 0px;
+
+		color: rgba(86, 5, 199, 1);
+		line-height: 42px;
+		font-family: 'Roboto', sans-serif;
+
+		input {
+			display: block;
+			box-sizing: border-box;
+
+			width: 100%;
+
+			height: 42px;
+			line-height: 42px;
+
+			font-size: 16px;
+			font-weight: 600;
+
+			white-space: nowrap;
+			letter-spacing: normal;
+			text-overflow: ellipsis;
+
+			text-align: left;
+
+			border: 0;
+
+			background: 0 0;
+			background-color: transparent;
+
+			margin: 0;
+			padding: 0;
+
+			border-radius: 0;
+
+			outline: none;
+			appearance: none;
+
+			background-color: transparent;
+
+			padding-left: 20px;
+			padding-right: 20px;
+
+			color: #5604c8;
+			font-family: 'Roboto', sans-serif;
+		}
+	}
+
+	.SelectOverlay.Placeholder {
+		input {
+			color: rgba(61, 4, 174, 0.7);
+		}
+	}
+}
+
+.InputUnderline {
+	display: block;
+	position: relative;
+
+	padding-top: 20px;
+	padding-bottom: 2px;
+
+	label {
+		display: block;
+		position: absolute;
+
+		width: 100%;
+
+		height: 36px;
+		line-height: 36px;
+
+		font-size: 18px;
+		font-weight: 600;
+
+		user-select: none;
+
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+
+		text-align: left;
+
+		opacity: 1;
+
+		border: 0;
+
+		background: 0 0;
+		background-color: transparent;
+
+		margin: 0;
+		padding: 0;
+		appearance: none;
+		border-radius: 0;
+
+		perspective: 0;
+
+		transform-origin: top center;
+		transition: all 0.4s $easeOutQuart;
+
+		color: #5604c8;
+		font-family: 'Roboto', sans-serif;
+
+		@include responsiveMax($responsiveMed) {
+			font-size: 18px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			font-size: 16px;
+		}
+	}
+
+	input {
+		display: block;
+		width: 100%;
+
+		height: 36px;
+		line-height: 36px;
+
+		font-size: 18px;
+		font-weight: 400;
+
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+
+		text-align: left;
+
+		opacity: 0;
+
+		border: 0;
+
+		background: 0 0;
+		background-color: transparent;
+
+		margin: 0;
+		padding: 0;
+
+		border-radius: 0;
+
+		outline: none;
+		appearance: none;
+
+		background-color: transparent;
+
+		appearance: none;
+
+		color: #5604c8;
+		font-family: 'Roboto', sans-serif;
+
+		@include responsiveMax($responsiveMed) {
+			font-size: 18px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			font-size: 16px;
+		}
+	}
+
+	.Underlines {
+		display: block;
+		position: absolute;
+
+		width: 100%;
+		height: 2px;
+
+		left: 0px;
+		bottom: 0px;
+
+		.Underline,
+		.UnderlineAnimate {
+			display: block;
+			position: absolute;
+
+			left: 50%;
+			top: 0px;
+
+			height: 2px;
+			border-radius: 1px;
+
+			width: calc(100% - 2px);
+			transform: translateX(-50%);
+
+			background-color: rgba(86, 4, 200, 0.6);
+		}
+
+		.UnderlineAnimate {
+			width: 0px;
+			opacity: 0;
+
+			background-color: #5604c8;
+
+			perspective: 0;
+
+			transition: opacity 0.4s $linear, width 0.4s $easeOutQuart;
+		}
+	}
+}
+
+.InputUnderline.Active {
+	input {
+		opacity: 1;
+		background-color: transparent;
+	}
+
+	label {
+		transform-origin: top left;
+
+		opacity: 0.7;
+		font-weight: 600;
+
+		transform: translateY(-15px) scale(0.7);
+	}
+
+	.Underlines {
+		.Underline,
+		.UnderlineAnimate {
+			opacity: 1;
+			width: calc(100% - 2px);
+		}
+	}
+}
+
+.TextareaUnderline {
+	display: block;
+	position: relative;
+
+	padding-top: 20px;
+	padding-bottom: 2px;
+
+	label {
+		display: block;
+		position: absolute;
+
+		width: 100%;
+
+		height: 36px;
+		line-height: 36px;
+
+		font-size: 18px;
+		font-weight: 600;
+
+		user-select: none;
+
+		white-space: nowrap;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+
+		text-align: left;
+
+		opacity: 1;
+
+		border: 0;
+
+		background: 0 0;
+		background-color: transparent;
+
+		margin: 0;
+		padding: 0;
+		appearance: none;
+		border-radius: 0;
+
+		perspective: 0;
+
+		transform-origin: top center;
+		transition: all 0.4s $easeOutQuart;
+
+		color: #5604c8;
+		font-family: 'Roboto', sans-serif;
+
+		@include responsiveMax($responsiveMed) {
+			font-size: 18px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			font-size: 16px;
+		}
+	}
+
+	textarea {
+		display: block;
+		width: 100%;
+
+		overflow: auto;
+		resize: vertical;
+
+		height: 30px;
+		line-height: 24px;
+
+		font-size: 18px;
+		font-weight: 400;
+
+		text-align: left;
+
+		opacity: 1;
+
+		border: 0;
+
+		background: 0 0;
+		background-color: transparent;
+
+		margin: 0;
+		padding: 0;
+
+		border-radius: 0;
+
+		outline: none;
+		appearance: none;
+
+		background-color: transparent;
+
+		appearance: none;
+
+		margin-top: 6px;
+
+		color: #5604c8;
+		font-family: 'Roboto', sans-serif;
+
+		@include responsiveMax($responsiveMed) {
+			font-size: 18px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			font-size: 16px;
+		}
+	}
+
+	.Underlines {
+		display: block;
+		position: absolute;
+
+		width: 100%;
+		height: 2px;
+
+		left: 0px;
+		bottom: 0px;
+
+		.Underline,
+		.UnderlineAnimate {
+			display: block;
+			position: absolute;
+
+			left: 50%;
+			top: 0px;
+
+			height: 2px;
+			border-radius: 1px;
+
+			width: calc(100% - 2px);
+			transform: translateX(-50%);
+
+			background-color: rgba(86, 4, 200, 0.6);
+		}
+
+		.UnderlineAnimate {
+			width: 0px;
+			opacity: 0;
+
+			background-color: #5604c8;
+
+			perspective: 0;
+
+			transition: opacity 0.4s $linear, width 0.4s $easeOutQuart;
+		}
+	}
+}
+
+.TextareaUnderline.Active {
+	input {
+		opacity: 1;
+		background-color: transparent;
+	}
+
+	label {
+		transform-origin: top left;
+
+		opacity: 0.7;
+		font-weight: 600;
+
+		transform: translateY(-15px) scale(0.7);
+	}
+
+	.Underlines {
+		.Underline,
+		.UnderlineAnimate {
+			opacity: 1;
+			width: calc(100% - 2px);
+		}
+	}
+}

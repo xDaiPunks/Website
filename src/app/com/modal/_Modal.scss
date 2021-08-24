@@ -1,0 +1,271 @@
+.Modal {
+	display: block;
+	position: fixed;
+
+	overflow: hidden;
+
+	z-index: 50;
+
+	width: 100vw;
+	height: 100vh;
+
+	max-width: 100%;
+
+	.ModalContent {
+		display: flex;
+		position: absolute;
+
+		z-index: 1;
+
+		width: 100vw;
+		height: 100%;
+
+		max-width: 100%;
+
+		align-items: center;
+		justify-content: center;
+
+		padding-left: 0;
+		padding-right: 0;
+
+		@include responsiveMax($responsiveMed) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			padding-left: $paddingSmall;
+			padding-right: $paddingSmall;
+		}
+
+		.ModalContentBlock {
+			display: block;
+			position: relative;
+
+			width: 100%;
+			max-width: 400px;
+
+			perspective: 0;
+
+			border-radius: 30px;
+			background-color: #fff;
+			box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+			.CloseModalButton {
+				display: flex;
+				position: absolute;
+
+				width: 56px;
+				height: 56px;
+
+				right: 0px;
+				top: 0px;
+
+				z-index: 5;
+
+				align-items: center;
+				justify-content: center;
+
+				.CloseCrossLine {
+					display: block;
+					position: absolute;
+
+					width: 16px;
+					height: 3px;
+					border-radius: 1.5px;
+
+					background-color: #5604c8;
+				}
+
+				.CloseCrossLine.Left {
+					transform: rotate(-45deg);
+				}
+
+				.CloseCrossLine.Right {
+					transform: rotate(225deg);
+				}
+			}
+
+			.ModalHeader {
+				display: block;
+				position: relative;
+
+				color: #5604c8;
+
+				font-size: 24px;
+				font-weight: 600;
+				font-family: 'Roboto', sans-serif;
+
+				padding-top: 20px;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-bottom: 10px;
+			}
+
+			.ModalContentText {
+				display: block;
+				position: relative;
+
+				color: #5604c8;
+
+				text-align: center;
+
+				font-size: 16px;
+				font-weight: 600;
+				font-family: 'Roboto', sans-serif;
+
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+
+			.ModalButton {
+				display: flex;
+				position: relative;
+
+				flex-direction: row;
+				justify-content: center;
+
+				padding-top: 40px;
+
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-bottom: 20px;
+
+				.ModalContentButton {
+					display: flex;
+					position: relative;
+					overflow: hidden;
+
+					width: 100%;
+					height: 40px;
+					border-radius: 20px;
+
+					flex-direction: row;
+					justify-content: center;
+
+					background-color: #f2f2f2;
+
+					
+					.ModalContentButtonText {
+						display: block;
+						position: static;
+
+						user-select: none;
+						height: 40px;
+						text-align: center;
+						line-height: 40px;
+						color: #5604c8;
+
+						font-size: 16px;
+						font-weight: 600;
+						letter-spacing: normal;
+						white-space: nowrap;
+						font-family: 'Roboto', sans-serif;
+					}
+				}
+			}
+
+			.LanguageSelector {
+				display: flex;
+				position: relative;
+
+				cursor: pointer;
+
+				width: 100%;
+				height: 40px;
+
+				padding-left: 20px;
+				padding-right: 20px;
+
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+
+				.LanguageSelectorIcon {
+					display: block;
+					position: relative;
+
+					width: 20px;
+					height: 20px;
+
+					border-radius: 50%;
+
+					border: 3px solid #5604c8;
+				}
+
+				.LanguageSelectorText {
+					display: block;
+					position: relative;
+
+					height: 40px;
+					line-height: 40px;
+
+					padding-left: 10px;
+
+					color: #5604c8;
+
+					font-size: 16px;
+					font-weight: 600;
+					font-family: 'Roboto', sans-serif;
+				}
+			}
+
+			.LanguageSelector.Selected {
+				.LanguageSelectorIcon {
+					background-color: #5604c8;
+				}
+			}
+
+			.LanguageButtonSpacer {
+				display: block;
+				position: relative;
+
+				height: $padding;
+			}
+		}
+
+		.ModalContentBlock.Hidden {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+	}
+
+	.ModalBackground {
+		display: block;
+		position: relative;
+
+		top: 0;
+		left: 0;
+
+		width: 100vw;
+		height: 100vh;
+		max-width: 100%;
+
+		opacity: 1;
+
+		perspective: 0;
+
+		background-color: rgba(70, 10, 130, 0.5);
+	}
+
+	.ModalBackground.Hidden {
+		opacity: 0;
+	}
+}
+
+.Modal.Hidden {
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.Modal.Animate {
+	.ModalContent {
+		.ModalContentBlock {
+			transition: opacity 0.4s $linear, transform 0.4s $easeOutQuart;
+		}
+	}
+	.ModalBackground {
+		transition: opacity 0.4s $linear;
+	}
+}

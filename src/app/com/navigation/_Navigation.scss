@@ -1,0 +1,540 @@
+.Navigation {
+	display: block;
+	position: fixed;
+
+	z-index: 90;
+
+	width: 100vw;
+	max-width: 100%;
+
+	height: $heightHeader;
+
+	@include responsiveMax($responsiveMed) {
+		height: $heightHeaderMed;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		height: $heightHeaderSmall;
+
+		background: rgba(0, 0, 0, 0);
+		transition: background 0.4s;
+	}
+
+	.Content {
+		display: flex;
+		position: absolute;
+
+		z-index: 10;
+
+		width: 100vw;
+		max-width: 100%;
+
+		height: $heightHeader;
+
+		padding-left: $padding;
+		padding-right: $padding;
+
+		justify-content: space-between;
+
+		@include responsiveMax($responsiveMed) {
+			height: $heightHeaderMed;
+
+			padding-left: $paddingMed;
+			padding-right: $paddingMed;
+		}
+		@include responsiveMax($responsiveSmall) {
+			height: $heightHeaderSmall;
+
+			padding-left: $paddingSmall;
+			padding-right: 0;
+		}
+
+		.ButtonLogo {
+			display: flex;
+			position: relative;
+
+			align-items: center;
+			flex-direction: row;
+
+			padding-right: 20px;
+			padding-bottom: 4px;
+
+			height: $heightHeader;
+
+			@include responsiveMax($responsiveMed) {
+				height: $heightHeaderMed;
+				padding-bottom: 4px;
+			}
+
+			@include responsiveMax($responsiveSmall) {
+				height: $heightHeaderSmall;
+				padding-bottom: 4px;
+			}
+
+			.ButtonLogoImage {
+				display: block;
+				height: 31px;
+
+				-ms-interpolation-mode: nearest-neighbor;
+				image-rendering: pixelated;
+				image-rendering: -moz-crisp-edges;
+
+				@include responsiveMax($responsiveMed) {
+					height: 31px;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					width: 27px;
+					height: 27px;
+				}
+			}
+		}
+
+		.NavigationMain {
+			.HamburgerButton {
+				display: none;
+
+				@include responsiveMax($responsiveMed) {
+					display: none;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					display: flex;
+					position: relative;
+
+					z-index: 10;
+
+					height: $heightHeaderSmall;
+					padding-left: $paddingSmall;
+					padding-right: $paddingSmall;
+				}
+
+				.Spacer {
+					display: block;
+					position: relative;
+
+					width: 22px;
+					height: $heightHeaderSmall;
+				}
+
+				.Hamburger {
+					display: flex;
+					position: absolute;
+
+					width: 22px;
+					height: 22px;
+
+					top: 50%;
+					left: 50%;
+
+					align-items: center;
+					justify-content: center;
+
+					transform: translate(-50%, -50%);
+
+					.HamburgerLine {
+						display: flex;
+						position: relative;
+
+						width: 20px;
+						height: 2px;
+						border-radius: 0px;
+
+						background-color: #111;
+
+						flex: none;
+						align-items: center;
+						justify-content: center;
+
+						transition: transform 0.22s
+							cubic-bezier(0.55, 0.055, 0.675, 0.19);
+					}
+
+					.HamburgerLine:before {
+						content: '';
+						position: absolute;
+
+						top: 6px;
+						left: 0px;
+
+						width: 20px;
+						height: 2px;
+						border-radius: 1px;
+
+						background-color: #111;
+
+						transition: top 0.1s 0.25s $easeIn, opacity 0.1s $easeIn;
+					}
+
+					.HamburgerLine:after {
+						content: '';
+						position: absolute;
+
+						bottom: 6px;
+						left: 0px;
+
+						width: 20px;
+						height: 2px;
+						border-radius: 1px;
+
+						background-color: #111;
+
+						transition: bottom 0.1s 0.25s $easeIn,
+							transform 0.22s
+								cubic-bezier(0.55, 0.055, 0.675, 0.19);
+					}
+				}
+
+				.Hamburger.Active {
+					.HamburgerLine {
+						background-color: #111;
+
+						transform: rotate(225deg);
+
+						transition: transform 0.22s 0.12s
+							cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+
+					.HamburgerLine:before {
+						top: 0;
+						opacity: 0;
+
+						background-color: #111;
+
+						transition: top 0.1s $easeOut,
+							opacity 0.1s 0.12s $easeOut;
+					}
+
+					.HamburgerLine:after {
+						bottom: 0;
+
+						background-color: #111;
+
+						transform: rotate(-90deg);
+						transition: bottom 0.1s $easeOut,
+							transform 0.22s 0.12s
+								cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+
+			.NavigationContent {
+				display: block;
+				position: relative;
+
+				@include responsiveMax($responsiveMed) {
+					display: block;
+					position: relative;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					display: block;
+					position: fixed;
+
+					top: 0;
+					left: 0;
+
+					width: 100vw;
+					height: 100%;
+					max-width: 100%;
+
+					overflow-x: hidden;
+					overflow-y: visible;
+
+					visibility: hidden;
+
+					transition: visibility 1.1s;
+				}
+
+				.MobileHeader {
+					display: none;
+
+					@include responsiveMax($responsiveMed) {
+						display: none;
+					}
+
+					@include responsiveMax($responsiveSmall) {
+						display: block;
+						position: fixed;
+
+						z-index: 4;
+
+						top: 0;
+						left: 0;
+
+						width: 100vw;
+						max-width: 100%;
+						height: $heightHeaderSmall;
+
+						.LogoNavigation {
+							display: flex;
+							position: relative;
+
+							flex-direction: row;
+							align-items: center;
+
+							top: 0px;
+							left: 0px;
+
+							height: $heightHeaderSmall;
+
+							padding-left: $paddingSmall;
+							padding-bottom: 4px;
+
+							opacity: 0;
+							transform: translate3d(100vw, 0, 0);
+
+							transition: opacity 0.4s $easeOut,
+								transform 0.4s 0.6s $easeOutQuint;
+
+							.ButtonLogoNavigation {
+								display: block;
+								position: relative;
+								height: 26px;
+
+								.LogoNavigationImage {
+									display: block;
+									height: 26px;
+									width: 26px;
+
+									-ms-interpolation-mode: nearest-neighbor;
+									image-rendering: pixelated;
+									image-rendering: -moz-crisp-edges;
+								}
+							}
+						}
+					}
+				}
+
+				ul {
+					display: flex;
+					position: relative;
+
+					flex-direction: row;
+
+					z-index: 2;
+
+					left: 0px;
+
+					margin: 0;
+					padding: 0;
+
+					list-style-type: none;
+
+					height: $heightHeader;
+
+					@include responsiveMax($responsiveMed) {
+						flex-direction: row;
+
+						margin: 0;
+						padding: 0;
+
+						height: $heightHeaderMed;
+					}
+
+					@include responsiveMax($responsiveSmall) {
+						flex-direction: column;
+
+						height: 100%;
+
+						margin: 0;
+						padding: 0;
+
+						padding-top: $heightHeaderSmall;
+					}
+
+					li {
+						display: flex;
+						position: relative;
+
+						list-style-type: none;
+
+						flex-direction: row;
+						align-items: center;
+
+						height: $heightHeader;
+
+						@include responsiveMax($responsiveMed) {
+							height: $heightHeaderMed;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							height: auto;
+
+							opacity: 0;
+							transform: translate3d(0, 60px, 0);
+							transition: opacity 0.4s $easeOut,
+								transform 0s 0.4s
+									cubic-bezier(0.075, 0.82, 0.165, 1);
+						}
+					}
+
+					li.Action {
+						display: flex;
+
+						@include responsiveMax($responsiveMed) {
+							display: flex;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							display: block;
+							position: absolute;
+
+							bottom: $paddingSmall;
+						}
+
+						.NavigationButton.MobileMenu {
+							display: none;
+
+							@include responsiveMax($responsiveMed) {
+								display: none;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								display: flex;
+							}
+						}
+
+						.NavigationButtonAction.MobileMenu {
+							display: flex;
+
+							@include responsiveMax($responsiveMed) {
+								display: flex;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								display: none;
+							}
+						}
+					}
+				}
+
+				.NavigationContentBackground {
+					display: none;
+
+					@include responsiveMax($responsiveMed) {
+						display: none;
+					}
+
+					@include responsiveMax($responsiveSmall) {
+						display: block;
+						position: absolute;
+
+						top: 0px;
+						left: 0px;
+
+						width: 100vw;
+						max-width: 100%;
+
+						height: 100%;
+
+						transform: translate3d(100vw, 0, 0);
+
+						background-color: #fafafa;
+
+						transition: transform 0.6s 0.4s $easeOutQuint;
+					}
+				}
+			}
+		}
+	}
+
+	.NavigationBackground {
+		display: block;
+		position: relative;
+
+		top: 0px;
+
+		width: 100%;
+		height: $heightHeader;
+
+		background-color: rgba(255, 255, 255, 0.95);
+
+		transition: opacity 0.35s $easeIn;
+
+		@include responsiveMax($responsiveMed) {
+			height: $heightHeaderMed;
+		}
+		@include responsiveMax($responsiveSmall) {
+			height: $heightHeaderSmall;
+		}
+	}
+}
+
+.Navigation.Active {
+	@include responsiveMax($responsiveSmall) {
+		background: rgba(1, 1, 1, 0);
+		transition: background 0.4s;
+	}
+
+	.Content {
+		.NavigationMain {
+			.NavigationContent {
+				@include responsiveMax($responsiveSmall) {
+					visibility: visible;
+					transition: visibility 0s;
+
+					.MobileHeader {
+						.LogoNavigation {
+							@include responsiveMax($responsiveSmall) {
+								opacity: 1;
+								transform: translate3d(0, 0, 0);
+
+								transition: opacity 0.4s $linear,
+									transform 0.6s $easeOutQuint;
+							}
+						}
+					}
+
+					ul {
+						li {
+							opacity: 1;
+							transform: translate3d(0, 0, 0);
+							transition: opacity 0.6s $linear,
+								transform 0.6s
+									cubic-bezier(0.075, 0.82, 0.165, 1);
+						}
+
+						li:nth-of-type(1) {
+							@include responsiveMax($responsiveSmall) {
+								transition-delay: 0.3s;
+							}
+						}
+
+						li:nth-of-type(2) {
+							@include responsiveMax($responsiveSmall) {
+								transition-delay: 0.35s;
+							}
+						}
+
+						li:nth-of-type(3) {
+							@include responsiveMax($responsiveSmall) {
+								transition-delay: 0.4s;
+							}
+						}
+
+						li:nth-of-type(4) {
+							@include responsiveMax($responsiveSmall) {
+								transition-delay: 0.45s;
+							}
+						}
+
+						li:nth-of-type(5) {
+							@include responsiveMax($responsiveSmall) {
+								transition-delay: 0.5s;
+							}
+						}
+					}
+
+					.NavigationContentBackground {
+						@include responsiveMax($responsiveSmall) {
+							transform: translate3d(0, 0, 0);
+
+							transition: transform 0.6s $easeOutQuint;
+						}
+					}
+				}
+			}
+		}
+	}
+}

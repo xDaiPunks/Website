@@ -1,0 +1,29 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+
+	width: 100vw;
+	height: 100vh;
+
+	min-height: 0;
+
+	max-width: 100%;
+}
+
+html {
+	-webkit-overflow-scrolling: touch;
+
+	font-smooth: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	background-color: $appBackgroundColor;
+}
+
+body {
+	font-size: $fontSizeRegular;
+	font-family: $fontFamilyRegular;
+
+	background-color: $appBackgroundColor;
+}

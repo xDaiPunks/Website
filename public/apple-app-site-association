@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+
+    "details": [
+      {
+        "appID": "8239YK98X2.co.muevo",
+
+        "paths": ["/app/*"]
+      }
+    ]
+  }
+}

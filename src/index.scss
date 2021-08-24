@@ -1,0 +1,32 @@
+// Scss core constansts
+@import 'sass-styles/fonts';
+@import 'sass-styles/icons';
+@import 'sass-styles/config';
+
+@import 'sass-styles/mixins';
+@import 'sass-styles/reboot';
+@import 'sass-styles/layout';
+
+// Component specific imports
+@import 'app/App';
+
+@import 'app/preloader/Preloader';
+
+@import 'app/com/input/Input';
+@import 'app/com/button/Button';
+
+@import 'app/com/modal/Modal';
+@import 'app/com/header/Header';
+@import 'app/com/footer/Footer';
+@import 'app/com/navigation/Navigation';
+
+@import 'app/com/views/home/Home';
+@import 'app/com/views/about/About';
+@import 'app/com/views/request/Request';
+@import 'app/com/views/contact/Contact';
+@import 'app/com/views/business/Business';
+@import 'app/com/views/remittances/Remittances';
+@import 'app/com/views/dollarMuevo/DollarMuevo';
+@import 'app/com/views/frequentAskedQuestions/FrequentAskedQuestions';
+@import 'app/com/views/terms/Terms';
+@import 'app/com/views/privacyCookies/PrivacyCookies';
