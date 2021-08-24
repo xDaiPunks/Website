@@ -1,4 +1,4 @@
-# Muevo WebApp
+# xDaiPunks WebApp
 
 ## Graphics
 * Nunito font for header and copy
