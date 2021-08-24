@@ -14,22 +14,10 @@ class UserService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
-
-			Instance.requestStore = {};
-
-			//utilityService.addObjectEventDispatcher(this);
+			Instance.address = null;
+			
 		}
 		return Instance;
-	}
-
-	get requestData() {
-		const vm = this;
-		return vm.requestStore;
-	}
-
-	set requestData(object) {
-		const vm = this;
-		vm.requestStore = object;
 	}
 }
 

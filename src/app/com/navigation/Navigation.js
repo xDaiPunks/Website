@@ -3,18 +3,22 @@ import React, { PureComponent } from 'react';
 import Button from 'src/app/com/button/Button';
 
 import Animate from 'src/app/services/Animate';
+
+import UserService from 'src/app/services/UserService';
+import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
 import ScrollService from 'src/app/services/ScrollService';
 import UtilityService from 'src/app/services/UtilityService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const animate = new Animate();
+
+const userService = new UserService();
+const web3Service = new Web3Service();
 const eventService = new EventService();
 const routeService = new RouteService();
 const scrollService = new ScrollService();
 const utilityService = new UtilityService();
-const translationService = new TranslationService();
 
 class Navigation extends PureComponent {
 	constructor(props) {
@@ -39,6 +43,8 @@ class Navigation extends PureComponent {
 		this.connectWallet = this.connectWallet.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
 
+		this.actionButtonComponent = this.actionButtonComponent.bind(this);
+
 		eventService.on('force:state', this.guid, () => {
 			this.setState(this.state);
 			this.forceUpdate();
@@ -48,8 +54,6 @@ class Navigation extends PureComponent {
 			this.setState(this.state);
 			this.forceUpdate();
 		});
-
-
 
 		eventService.on('set:view', this.guid, (view) => {
 			let currentView;
@@ -113,7 +117,11 @@ class Navigation extends PureComponent {
 	}
 
 	connectWallet(event) {
+		const vm = this;
 		event.preventDefault();
+
+		vm.hideMobileMenu();
+
 		eventService.dispatchObjectEvent('show:modal', {
 			type: 'walletModal',
 		});
@@ -190,6 +198,68 @@ class Navigation extends PureComponent {
 		}
 	}
 
+	actionButtonComponent() {
+		let label;
+
+		const vm = this;
+		const address = userService.address;
+
+		if (!address || web3Service.isAddress(address) !== true) {
+			return (
+				<>
+					<Button
+						type={'navigationButton'}
+						label={'Connect wallet'}
+						title={'Connect wallet'}
+						onClick={(event) => {
+							vm.connectWallet(event);
+						}}
+						cssClass={'NavigationButton MobileMenu'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+
+					<Button
+						type={'navigationButton'}
+						label={'Connect wallet'}
+						title={'Connect wallet'}
+						onClick={(event) => {
+							vm.connectWallet(event);
+						}}
+						cssClass={'NavigationButtonAction MobileMenu'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+				</>
+			);
+		} else {
+			label = address.substr(0, 8) + '...';
+			return (
+				<>
+					<Button
+						type={'navigationButton'}
+						label={'My punk collection'}
+						title={'My punk collection'}
+						onClick={(event) => {
+							event.preventDefault();
+						}}
+						cssClass={'NavigationButton MobileMenu'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+
+					<Button
+						type={'navigationButton'}
+						label={label}
+						title={'My punk collection'}
+						onClick={(event) => {
+							event.preventDefault();
+						}}
+						cssClass={'NavigationButtonAction MobileMenu'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+				</>
+			);
+		}
+	}
+
 	componentWillUnmount() {
 		const vm = this;
 
@@ -202,6 +272,8 @@ class Navigation extends PureComponent {
 	render() {
 		const vm = this;
 		const currentView = vm.state.currentView;
+
+		const ActionButtonComponent = vm.actionButtonComponent;
 
 		console.log('CurrentView Render', currentView);
 
@@ -294,29 +366,7 @@ class Navigation extends PureComponent {
 								</li>
 
 								<li className="Action">
-									<Button
-										type={'navigationButton'}
-										label={'Connect wallet'}
-										title={'Connect wallet'}
-										onClick={(event) => {
-											vm.connectWallet(event);
-										}}
-										cssClass={'NavigationButton MobileMenu'}
-										iconImage="/static/media/images/icon-wallet.svg"
-									/>
-
-									<Button
-										type={'navigationButton'}
-										label={'Connect wallet'}
-										title={'Connect wallet'}
-										onClick={(event) => {
-											vm.connectWallet(event);
-										}}
-										cssClass={
-											'NavigationButtonAction MobileMenu'
-										}
-										iconImage="/static/media/images/icon-wallet.svg"
-									/>
+									<ActionButtonComponent />
 								</li>
 							</ul>
 							<div className="NavigationContentBackground"></div>

@@ -3,6 +3,7 @@
 import axios from 'axios';
 
 import UserService from 'src/app/services/UserService';
+import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
 import ConfigService from 'src/app/services/ConfigService';
@@ -13,6 +14,7 @@ import TranslationService from 'src/app/services/TranslationService';
 let Instance;
 
 const userService = new UserService();
+const web3Service = new Web3Service();
 const eventService = new EventService();
 const routeService = new RouteService();
 const configService = new ConfigService();
@@ -40,11 +42,15 @@ class AppService {
 				window.location.href
 			);
 
+			promiseArray.push(vm.checkWeb3());
+
+			/*
 			promiseArray.push(vm.getRates());
 
 			if (location.pathname.indexOf('/app/request/') !== -1) {
 				promiseArray.push(vm.getUserData());
 			}
+			*/
 
 			Promise.all(promiseArray)
 				.then((responses) => {
@@ -53,37 +59,16 @@ class AppService {
 				.catch((responsesError) => {
 					reject({ result: 'error', errorType: 'initializeError' });
 				});
+
+			function getUserPunks() {}
 		});
 	}
 
-	getRates() {
-		const vm = this;
-		const apiUrl = configService.apiUrl;
-
+	checkWeb3() {
 		return new Promise((resolve, reject) => {
-			resolve({ result: 'success' });
-		});
-	}
-
-	getUserData() {
-		const search = utilityService.getSearch();
-
-		return new Promise((resolve, reject) => {
-			axios
-				.post(configService.apiUrl + '/getRequestData', {
-					proof: search.p,
-					amount: search.v,
-
-					userId: search.i,
-					address: search.a,
-				})
+			web3Service
+				.checkWeb3()
 				.then((response) => {
-					const data = response.data;
-
-					if (data && data.requestData) {
-						userService.requestData = data.requestData;
-					}
-
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {

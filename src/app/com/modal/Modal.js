@@ -213,6 +213,7 @@ class Modal extends PureComponent {
 		const vm = this;
 
 		if (type === 'metaMask') {
+			eventService.off('preloader:show', vm.guid);
 			eventService.on('preloader:show', vm.guid, () => {
 				eventService.off('preloader:show', vm.guid);
 				web3Service
@@ -250,6 +251,8 @@ class Modal extends PureComponent {
 	walletButtons(props) {
 		const vm = this;
 
+		const ethereum = window.ethereum;
+
 		const mobileDevice = utilityService.browserSupport.mobileDevice;
 
 		const iconImageMetaMask = '/static/media/images/icon-metamask.svg';
@@ -281,45 +284,87 @@ class Modal extends PureComponent {
 				</>
 			);
 		} else {
-			return (
-				<>
-					<button
-						onClick={(event) => {
-							event.preventDefault();
-							vm.connectWeb3Service('metaMask');
-						}}
-						className={'WalletConnector'}>
-						<div className="WalletConnectorIcon">
-							<img
-								className="IconImage"
-								alt={''}
-								src={iconImageMetaMask}
-							/>
-						</div>
-						<span className="WalletConnectorText">
-							{'MetaMask'}
-						</span>
-					</button>
-					<button
-						onClick={(event) => {
-							event.preventDefault();
-							vm.connectWeb3Service('walletConnnect');
-						}}
-						className={'WalletConnector'}>
-						<div className="WalletConnectorIcon">
-							{' '}
-							<img
-								className="IconImage"
-								alt={''}
-								src={iconImageWalletConnect}
-							/>
-						</div>
-						<span className="WalletConnectorText">
-							{'Wallet connnect'}
-						</span>
-					</button>
-				</>
-			);
+			if (ethereum) {
+				return (
+					<>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('metaMask');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageMetaMask}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'MetaMask'}
+							</span>
+						</button>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('walletConnnect');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								{' '}
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageWalletConnect}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'Wallet connnect'}
+							</span>
+						</button>
+					</>
+				);
+			} else {
+				return (
+					<>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('walletConnnect');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								{' '}
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageWalletConnect}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'Wallet connnect'}
+							</span>
+						</button>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								window.open('https://metamask.io/download');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageMetaMask}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'Install MetaMask'}
+							</span>
+						</button>
+					</>
+				);
+			}
 		}
 	}
 
