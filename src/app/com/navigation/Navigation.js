@@ -36,11 +36,20 @@ class Navigation extends PureComponent {
 		this.guid = utilityService.guid();
 
 		this.navigate = this.navigate.bind(this);
+		this.connectWallet = this.connectWallet.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
 
-		eventService.on('change:language', this.guid, () => {
-			this.setState({ state: this.state });
+		eventService.on('force:state', this.guid, () => {
+			this.setState(this.state);
+			this.forceUpdate();
 		});
+
+		eventService.on('change:language', this.guid, () => {
+			this.setState(this.state);
+			this.forceUpdate();
+		});
+
+
 
 		eventService.on('set:view', this.guid, (view) => {
 			let currentView;
@@ -100,6 +109,13 @@ class Navigation extends PureComponent {
 				domElement = $('.' + targetData.split(':')[1]);
 				routeService.navigateScrollPosition(domElement);
 			}
+		});
+	}
+
+	connectWallet(event) {
+		event.preventDefault();
+		eventService.dispatchObjectEvent('show:modal', {
+			type: 'walletModal',
 		});
 	}
 
@@ -178,6 +194,7 @@ class Navigation extends PureComponent {
 		const vm = this;
 
 		eventService.off('set:view', vm.guid);
+		eventService.off('force:state', vm.guid);
 		eventService.off('change:language', vm.guid);
 		scrollService.removeScrollTriggers('navigation');
 	}
@@ -281,8 +298,9 @@ class Navigation extends PureComponent {
 										type={'navigationButton'}
 										label={'Connect wallet'}
 										title={'Connect wallet'}
-										data="scroll:IntroFormGetMuevo"
-										onClick={this.navigate}
+										onClick={(event) => {
+											vm.connectWallet(event);
+										}}
 										cssClass={'NavigationButton MobileMenu'}
 										iconImage="/static/media/images/icon-wallet.svg"
 									/>
@@ -291,8 +309,9 @@ class Navigation extends PureComponent {
 										type={'navigationButton'}
 										label={'Connect wallet'}
 										title={'Connect wallet'}
-										data="scroll:IntroFormGetMuevo"
-										onClick={this.navigate}
+										onClick={(event) => {
+											vm.connectWallet(event);
+										}}
 										cssClass={
 											'NavigationButtonAction MobileMenu'
 										}

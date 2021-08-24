@@ -79,8 +79,14 @@ class Home extends PureComponent {
 			pageElement.removeClass('Load');
 		});
 
+		eventService.on('force:state', vm.guid, () => {
+			this.setState(this.state);
+			this.forceUpdate();
+		});
+
 		eventService.on('change:language', vm.guid, () => {
-			this.setState({ state: this.state });
+			this.setState(this.state);
+			this.forceUpdate();
 		});
 	}
 
@@ -458,6 +464,7 @@ class Home extends PureComponent {
 
 		eventService.off('resize', vm.guid);
 		eventService.off('route:home', vm.guid);
+		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 		eventService.off('change:language', vm.guid);
 	}

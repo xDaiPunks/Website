@@ -44,16 +44,22 @@ class About extends PureComponent {
 			pageElement.removeClass('Load');
 		});
 
+		eventService.on('force:state', vm.guid, () => {
+			this.setState(this.state);
+			this.forceUpdate();
+		});
+
 		eventService.on('change:language', vm.guid, () => {
-			this.setState({ state: this.state });
+			this.setState(this.state);
+			this.forceUpdate();
 		});
 	}
 
 	componentWillUnmount() {
 		const vm = this;
 		eventService.off('resize', vm.guid);
+		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
-
 		eventService.off('change:language', vm.guid);
 	}
 

@@ -14,6 +14,20 @@ class ConfigService {
 			Instance.apiUrl =
 				process.env.REACT_APP_API_DOMAIN +
 				process.env.REACT_APP_API_PREFIX;
+
+			Instance.web3 = {
+				xdaiConfig: {
+					chainId: '0x64',
+					chainName: 'xDai',
+					nativeCurrency: {
+						name: 'xDai',
+						symbol: 'xDai',
+						decimals: 18,
+					},
+					rpcUrls: ['https://rpc.xdaichain.com/'],
+					blockExplorerUrls: ['https://blockscout.com/xdai/mainnet'],
+				},
+			};
 		}
 
 		return Instance;

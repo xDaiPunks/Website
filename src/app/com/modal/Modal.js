@@ -5,6 +5,7 @@ import React, { PureComponent } from 'react';
 import Animate from 'src/app/services/Animate';
 
 import AppService from 'src/app/services/AppService';
+import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
 import HistoryService from 'src/app/services/HistoryService';
@@ -14,6 +15,7 @@ import TranslationService from 'src/app/services/TranslationService';
 const animate = new Animate();
 
 const appService = new AppService();
+const web3Service = new Web3Service();
 const eventService = new EventService();
 const configService = new ConfigService();
 const historyService = new HistoryService();
@@ -38,11 +40,14 @@ class Modal extends PureComponent {
 		this.hideModal = this.hideModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 
+		this.languageSelect = this.languageSelect.bind(this);
+
+		this.walletButtons = this.walletButtons.bind(this);
+		this.languageButtons = this.languageButtons.bind(this);
+
 		this.emptyModal = this.emptyModal.bind(this);
 		this.alertModal = this.alertModal.bind(this);
-
-		this.languageSelect = this.languageSelect.bind(this);
-		this.languageButtons = this.languageButtons.bind(this);
+		this.walletModal = this.walletModal.bind(this);
 		this.languageSwitchModal = this.languageSwitchModal.bind(this);
 	}
 
@@ -163,6 +168,195 @@ class Modal extends PureComponent {
 		});
 	}
 
+	languageSelect(event) {
+		event.preventDefault();
+
+		let language;
+
+		if (!event || !event.currentTarget) {
+			this.hideModal({
+				type: this.state.type,
+				animate: true,
+			});
+			return;
+		}
+
+		if (!event.currentTarget.getAttribute('data')) {
+			this.hideModal({
+				type: this.state.type,
+				animate: true,
+			});
+			return;
+		}
+
+		language = event.currentTarget.getAttribute('data');
+
+		if (
+			language === configService.selectedLanguage ||
+			configService.availableLanguages.includes(language) === false
+		) {
+			this.hideModal({
+				type: this.state.type,
+				animate: true,
+			});
+		} else {
+			this.hideModal({
+				type: this.state.type,
+				animate: true,
+			});
+
+			appService.changeLanguageConfig(language);
+		}
+	}
+
+	connectWeb3Service(type) {
+		const vm = this;
+
+		if (type === 'metaMask') {
+			eventService.on('preloader:show', vm.guid, () => {
+				eventService.off('preloader:show', vm.guid);
+				web3Service
+					.connectMetaMask()
+					.then((response) => {
+						console.log(response);
+						vm.hideModal({
+							type: this.state.type,
+							animate: false,
+						});
+
+						eventService.dispatchObjectEvent('force:state');
+
+						eventService.dispatchObjectEvent('hide:preloader');
+					})
+					.catch((responseError) => {
+						vm.hideModal({
+							type: this.state.type,
+							animate: false,
+						});
+
+						console.log(responseError);
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+			});
+
+			eventService.dispatchObjectEvent('show:preloader');
+		}
+
+		if (type === 'walletConnect') {
+			web3Service.connectWalletConnect();
+		}
+	}
+
+	walletButtons(props) {
+		const vm = this;
+
+		const mobileDevice = utilityService.browserSupport.mobileDevice;
+
+		const iconImageMetaMask = '/static/media/images/icon-metamask.svg';
+		const iconImageWalletConnect =
+			'/static/media/images/icon-walletconnect.svg';
+
+		console.log(mobileDevice);
+
+		if (mobileDevice === true) {
+			return (
+				<>
+					<button
+						onClick={(event) => {
+							event.preventDefault();
+							vm.connectWeb3Service('walletConnect');
+						}}
+						className={'WalletConnector'}>
+						<div className="WalletConnectorIcon">
+							<img
+								className="IconImage"
+								alt={''}
+								src={iconImageWalletConnect}
+							/>
+						</div>
+						<span className="WalletConnectorText">
+							{'Wallet connnect'}
+						</span>
+					</button>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<button
+						onClick={(event) => {
+							event.preventDefault();
+							vm.connectWeb3Service('metaMask');
+						}}
+						className={'WalletConnector'}>
+						<div className="WalletConnectorIcon">
+							<img
+								className="IconImage"
+								alt={''}
+								src={iconImageMetaMask}
+							/>
+						</div>
+						<span className="WalletConnectorText">
+							{'MetaMask'}
+						</span>
+					</button>
+					<button
+						onClick={(event) => {
+							event.preventDefault();
+							vm.connectWeb3Service('walletConnnect');
+						}}
+						className={'WalletConnector'}>
+						<div className="WalletConnectorIcon">
+							{' '}
+							<img
+								className="IconImage"
+								alt={''}
+								src={iconImageWalletConnect}
+							/>
+						</div>
+						<span className="WalletConnectorText">
+							{'Wallet connnect'}
+						</span>
+					</button>
+				</>
+			);
+		}
+	}
+
+	languageButtons(props) {
+		return configService.availableLanguages.map((language, key) => {
+			let onClick;
+
+			let buttonClassName;
+			let languageButtonText;
+
+			onClick = this.languageSelect;
+
+			if (language !== configService.selectedLanguage) {
+				buttonClassName = 'LanguageSelector';
+			} else {
+				buttonClassName = 'LanguageSelector Selected';
+			}
+
+			languageButtonText = translationService.translate(
+				'modal.language.' + language
+			);
+
+			return (
+				<button
+					key={key}
+					data={language}
+					onClick={onClick}
+					className={buttonClassName}>
+					<div className="LanguageSelectorIcon"></div>
+					<span className="LanguageSelectorText">
+						{languageButtonText}
+					</span>
+				</button>
+			);
+		});
+	}
+
 	emptyModal(props) {
 		return (
 			<div className="Modal Hidden">
@@ -212,79 +406,36 @@ class Modal extends PureComponent {
 		);
 	}
 
-	languageSelect(event) {
-		event.preventDefault();
+	walletModal(props) {
+		let modalClass;
+		let onClick = this.closeModal;
 
-		let language;
+		const WalletButtons = this.walletButtons;
 
-		if (!event || !event.currentTarget) {
-			this.hideModal({
-				type: this.state.type,
-				animate: true,
-			});
-			return;
-		}
-
-		if (!event.currentTarget.getAttribute('data')) {
-			this.hideModal({
-				type: this.state.type,
-				animate: true,
-			});
-			return;
-		}
-
-		language = event.currentTarget.getAttribute('data');
-
-		if (
-			language === configService.selectedLanguage ||
-			configService.availableLanguages.includes(language) === false
-		) {
-			this.hideModal({
-				type: this.state.type,
-				animate: true,
-			});
+		if (props.animate !== true) {
+			modalClass = 'Modal';
 		} else {
-			this.hideModal({
-				type: this.state.type,
-				animate: true,
-			});
-
-			appService.changeLanguageConfig(language);
+			modalClass = 'Modal Animate';
 		}
-	}
 
-	languageButtons() {
-		return configService.availableLanguages.map((language, key) => {
-			let onClick;
-
-			let buttonClassName;
-			let languageButtonText;
-
-			onClick = this.languageSelect;
-
-			if (language !== configService.selectedLanguage) {
-				buttonClassName = 'LanguageSelector';
-			} else {
-				buttonClassName = 'LanguageSelector Selected';
-			}
-
-			languageButtonText = translationService.translate(
-				'modal.language.' + language
-			);
-
-			return (
-				<button
-					key={key}
-					data={language}
-					onClick={onClick}
-					className={buttonClassName}>
-					<div className="LanguageSelectorIcon"></div>
-					<span className="LanguageSelectorText">
-						{languageButtonText}
-					</span>
-				</button>
-			);
-		});
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">
+							{'Connect to a wallet'}
+						</span>
+						<WalletButtons />
+						<div className="LanguageButtonSpacer"></div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
 	}
 
 	languageSwitchModal(props) {
@@ -327,6 +478,7 @@ class Modal extends PureComponent {
 
 		eventService.off('show:modal', vm.guid);
 		eventService.off('hide:modal', vm.guid);
+		eventService.off('preloader:show', vm.guid);
 	}
 
 	render() {
@@ -336,6 +488,7 @@ class Modal extends PureComponent {
 
 		const EmptyModal = this.emptyModal;
 		const AlertModal = this.alertModal;
+		const WalletModal = this.walletModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
 
 		props = utilityService.extendObject(this.state, this.stateProps);
@@ -346,6 +499,9 @@ class Modal extends PureComponent {
 
 			case 'alertModal':
 				return <AlertModal {...props} />;
+
+			case 'walletModal':
+				return <WalletModal {...props} />;
 
 			case 'languageModal':
 				return <LanguageSwitchModal {...props} />;

@@ -24,8 +24,10 @@ class Footer extends PureComponent {
 
 	componentDidMount() {
 		const vm = this;
+		
 		eventService.on('change:language', vm.guid, () => {
-			this.setState({ state: this.state });
+			this.setState(this.state);
+			this.forceUpdate();
 		});
 	}
 
