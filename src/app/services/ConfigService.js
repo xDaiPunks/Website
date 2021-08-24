@@ -16,16 +16,32 @@ class ConfigService {
 				process.env.REACT_APP_API_PREFIX;
 
 			Instance.web3 = {
+				gas: process.env.REACT_APP_WEB3_GAS,
+				gasPrice: process.env.REACT_APP_WEB3_GAS_PRICE,
+				gasLimit: process.env.REACT_APP_WEB3_GAS_LIMIT,
+				gasMultiply: process.env.REACT_APP_WEB3_GAS_MULTIPLY,
+				gasServiceLimit: process.env.REACT_APP_WEB3_GAS_SERVICE_LIMIT,
+
+				gasOracleUrl: process.env.REACT_APP_WEB3_GAS_ORACLE_URL,
+
+				httpProvider: process.env.REACT_APP_WEB3_HTTP_PROVIDER,
+				socketProvider: process.env.REACT_APP_WEB3_SOCKET_PROVIDER,
+
 				xdaiConfig: {
-					chainId: '0x64',
-					chainName: 'xDai',
+					chainId: process.env.REACT_APP_WEB3_XDAI_CHAIN_ID,
+					chainName: process.env.REACT_APP_WEB3_XDAI_CHAIN_NAME,
 					nativeCurrency: {
-						name: 'xDai',
-						symbol: 'xDai',
-						decimals: 18,
+						name: process.env.REACT_APP_WEB3_XDAI_CURRENCY_NAME,
+						symbol: process.env.REACT_APP_WEB3_XDAI_CURRENCY_SYMBOL,
+						decimals: parseInt(
+							process.env.REACT_APP_WEB3_XDAI_CURRENCY_DECIMALS,
+							10
+						),
 					},
-					rpcUrls: ['https://rpc.xdaichain.com/'],
-					blockExplorerUrls: ['https://blockscout.com/xdai/mainnet'],
+					rpcUrls: [process.env.REACT_APP_WEB3_XDAI_RPC_URL],
+					blockExplorerUrls: [
+						process.env.REACT_APP_WEB3_XDAI_BLOCKCHAIN_EXPLORER_URL,
+					],
 				},
 			};
 		}

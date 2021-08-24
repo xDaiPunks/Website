@@ -1,9 +1,12 @@
+import axios from 'axios';
+
 import { ethers } from 'ethers';
 import { BigNumber } from 'bignumber.js';
 
 import WalletConnect from '@walletconnect/client';
 import QRCodeModal from '@walletconnect/qrcode-modal';
 
+import AbiService from 'src/app/services/AbiService';
 import UserService from 'src/app/services/UserService';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
@@ -11,6 +14,10 @@ import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
+const bip39 = require('bip39');
+const hdkey = require('ethereumjs-wallet').hdkey;
+
+const abiService = new AbiService();
 const userService = new UserService();
 const eventService = new EventService();
 const configService = new ConfigService();
@@ -21,16 +28,20 @@ class Web3Service {
 		if (!Instance) {
 			Instance = this;
 
-			Instance.signer = null;
-			Instance.chainId = null;
-			Instance.provider = null;
-			Instance.connector = null;
+			Instance.walletSigner = null;
+			Instance.walletChainId = null;
+			Instance.walletProvider = null;
+			Instance.walletConnector = null;
+			Instance.walletConnectorType = null; // mm or wc
 
-			Instance.web3Provider = null;
-
-			Instance.connectorType = null;
+			Instance.gasStatusTimeout = null;
 
 			Instance.guid = utilityService.guid();
+
+			Instance.httpProvider = configService.web3.httpProvider;
+			Instance.socketProvider = configService.web3.socketProvider;
+
+			Instance.checkGasStatus();
 		}
 
 		return Instance;
@@ -38,6 +49,14 @@ class Web3Service {
 
 	isAddress(address) {
 		return ethers.utils.isAddress(address);
+	}
+
+	addProvider() {
+		const vm = this;
+
+		vm.provider = new ethers.providers.JsonRpcProvider({
+			url: configService.web3.web3HttpProvider,
+		});
 	}
 
 	checkWeb3() {
@@ -49,8 +68,8 @@ class Web3Service {
 			let ethereum;
 			let connected;
 
-			if (vm.connector) {
-				connector = vm.connector;
+			if (vm.walletConnector) {
+				connector = vm.walletConnector;
 			} else {
 				connector = new WalletConnect({
 					bridge: 'https://bridge.walletconnect.org',
@@ -59,7 +78,7 @@ class Web3Service {
 			}
 
 			if (connector.connected) {
-				vm.connector = connector;
+				vm.walletConnector = connector;
 
 				vm.addWeb3Events();
 
@@ -97,12 +116,12 @@ class Web3Service {
 
 		const vm = this;
 
-		if (vm.connector) {
-			vm.connector.off('connect');
-			vm.connector.off('disconnect');
-			vm.connector.off('session_update');
+		if (vm.walletConnector) {
+			vm.walletConnector.off('connect');
+			vm.walletConnector.off('disconnect');
+			vm.walletConnector.off('session_update');
 
-			vm.connector.on('connect', (error, payload) => {
+			vm.walletConnector.on('connect', (error, payload) => {
 				if (error) {
 					throw error;
 				}
@@ -114,7 +133,7 @@ class Web3Service {
 				console.log(accounts);
 			});
 
-			vm.connector.on('session_update', (error, payload) => {
+			vm.walletConnector.on('session_update', (error, payload) => {
 				if (error) {
 					throw error;
 				}
@@ -126,12 +145,12 @@ class Web3Service {
 				console.log(accounts);
 			});
 
-			vm.connector.on('disconnect', (error, payload) => {
-				vm.connector.off('connect');
-				vm.connector.off('disconnect');
-				vm.connector.off('session_update');
+			vm.walletConnector.on('disconnect', (error, payload) => {
+				vm.walletConnector.off('connect');
+				vm.walletConnector.off('disconnect');
+				vm.walletConnector.off('session_update');
 
-				vm.connector = null;
+				vm.walletConnector = null;
 			});
 		}
 
@@ -190,15 +209,15 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			vm.provider = new ethers.providers.Web3Provider(
+			vm.walletProvider = new ethers.providers.Web3Provider(
 				window.ethereum,
 				'any'
 			);
 
-			vm.provider
+			vm.walletProvider
 				.send('eth_requestAccounts', [])
 				.then((response) => {
-					vm.signer = vm.provider.getSigner();
+					vm.walletSigner = vm.walletProvider.getSigner();
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
@@ -211,10 +230,10 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			if (!vm.signer) {
+			if (!vm.walletSigner) {
 				reject({ result: 'error', errorType: 'noSigner' });
 			} else {
-				vm.signer
+				vm.walletSigner
 					.getAddress()
 					.then((signerResponse) => {
 						userService.address = signerResponse;
@@ -329,8 +348,8 @@ class Web3Service {
 		const vm = this;
 		return new Promise((resolve, reject) => {
 			let connector;
-			if (vm.connector) {
-				connector = vm.connector;
+			if (vm.walletConnector) {
+				connector = vm.walletConnector;
 			} else {
 				connector = new WalletConnect({
 					bridge: 'https://bridge.walletconnect.org',
@@ -338,14 +357,12 @@ class Web3Service {
 				});
 			}
 
-
-
 			if (!connector.connected) {
 				// create new session
 				connector.createSession();
 			}
 
-            vm.connector = connector;
+			vm.walletConnector = connector;
 
 			if (connector.accounts && connector.accounts.length > 0) {
 				userService.address = connector.accounts[0];
@@ -381,8 +398,283 @@ class Web3Service {
 				// Delete connector
 			});
 
-            resolve({ result: 'success' });
+			resolve({ result: 'success' });
 		});
+	}
+
+	parseNumber(value, unit) {
+		if (!unit) {
+			unit = 'ether';
+		}
+
+		return ethers.utils.parseUnits(value, unit);
+	}
+
+	formatNumber(value, unit) {
+		if (!unit) {
+			unit = 'ether';
+		}
+
+		return ethers.utils.formatUnits(value, unit);
+	}
+
+	convertKeccak256(string) {
+		return ethers.utils.keccak256(ethers.utils.toUtf8Bytes(string));
+	}
+
+	calculateGasCost(gasUsed, gasPrice, formatCount) {
+		formatCount = formatCount || 6;
+
+		const gasUsedBN = BigNumber(gasUsed);
+		const gasPriceBN = BigNumber(gasPrice);
+
+		return gasUsedBN.times(gasPriceBN).div(1e18).toFormat(formatCount);
+	}
+
+	calculateGas(turbo, gasPrice, estimateGas, transaction) {
+		let mul;
+
+		let gasLimit;
+		let gasPriceTurbo;
+
+		const minGasPriceTurbo = ethers.BigNumber.from(
+			configService.web3.gasPrice
+		);
+
+		if (turbo !== true) {
+			mul = 1;
+		} else {
+			mul = configService.web3.gasMultiply;
+		}
+
+		// 15 div 10 is 1.5. ethers.BigNumber only takes integers
+		gasLimit = estimateGas.mul(ethers.BigNumber.from(15)).div(10);
+		gasPriceTurbo = gasPrice.div(10).mul(ethers.BigNumber.from(mul));
+
+		if (gasPriceTurbo.lt(minGasPriceTurbo)) {
+			gasPriceTurbo = minGasPriceTurbo;
+		}
+
+		return {
+			gasLimit: gasLimit,
+			gasPrice: gasPriceTurbo,
+		};
+	}
+
+	checkGasStatus() {
+		const vm = this;
+
+		clearTimeout(vm.gasStatusTimeout);
+
+		axios
+			.get(configService.web3.gasOracleUrl)
+			.then((response) => {
+				if (!response || !response.data || !response.data.fast) {
+					vm.gasPrice = configService.web3.gasPrice;
+				} else {
+					vm.gasPrice = BigNumber(10e9)
+						.times(BigNumber(response.data.fast))
+						.toString();
+				}
+
+				vm.gasStatusTimeout = setTimeout(() => {
+					vm.checkGasStatus();
+				}, 150000);
+			})
+			.catch((responseError) => {
+				vm.gasPrice = configService.web3.gasPrice;
+
+				vm.gasStatusTimeout = setTimeout(() => {
+					vm.checkGasStatus();
+				}, 150000);
+			});
+	}
+
+	getCode(accountAddress) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.provider
+				.getCode(accountAddress)
+				.then((code) => {
+					resolve(code);
+				})
+				.catch((codeError) => {
+					reject(codeError);
+				});
+		});
+	}
+
+	getBlock(blockNumber, includeTransactions) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			if (includeTransactions === false) {
+				vm.provider
+					.getBlock(blockNumber)
+					.then((block) => {
+						resolve(block);
+					})
+					.catch((blockError) => {
+						reject(blockError);
+					});
+			} else {
+				vm.provider
+					.getBlockWithTransactions(blockNumber)
+					.then((block) => {
+						resolve(block);
+					})
+					.catch((blockError) => {
+						reject(blockError);
+					});
+			}
+		});
+	}
+
+	getBlockNumber() {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.provider
+				.getBlockNumber()
+				.then((blockNumber) => {
+					resolve(blockNumber);
+				})
+				.catch((blockNumberError) => {
+					reject(blockNumberError);
+				});
+		});
+	}
+
+	getBalance(accountAddress) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.provider
+				.getBalance(accountAddress)
+
+				.then((balance) => {
+					resolve(balance.toString());
+				})
+				.catch((balanceError) => {
+					reject(balanceError);
+				});
+		});
+	}
+
+	getTransaction(transactionHash) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.provider
+				.getTransaction(transactionHash)
+				.then((transaction) => {
+					resolve(transaction);
+				})
+				.catch((transactionError) => {
+					reject(transactionError);
+				});
+		});
+	}
+
+	getTransactionCount(address, blockTag) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			if (!blockTag) {
+				blockTag = 'latest';
+			}
+
+			vm.provider
+				.getTransactionCount(address, blockTag)
+				.then((transactionCount) => {
+					resolve(transactionCount);
+				})
+				.catch((transactionCountError) => {
+					reject(transactionCountError);
+				});
+		});
+	}
+
+	getTransactionReceipt(transactionHash) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.provider
+				.getTransactionReceipt(transactionHash)
+				.then((transactionReceipt) => {
+					resolve(transactionReceipt);
+				})
+				.catch((transactionReceiptError) => {
+					reject(transactionReceiptError);
+				});
+		});
+	}
+
+	generateAccount(privateKey) {
+		let wallet;
+
+		let accountAddress;
+		let accountPrivateKey;
+
+		if (!privateKey) {
+			wallet = ethers.Wallet.createRandom();
+		} else {
+			wallet = new ethers.Wallet(privateKey);
+		}
+
+		accountAddress = wallet.address;
+		accountPrivateKey = wallet.privateKey;
+
+		return {
+			accountAddress,
+			accountPrivateKey,
+		};
+	}
+
+	generateAccountMnemonic(mnemonic) {
+		const seed = bip39.mnemonicToSeedSync(mnemonic);
+		const hdWallet = hdkey.fromMasterSeed(seed);
+
+		// eslint-disable-next-line quotes
+		const hdPathWallet = "m/44'/60'/0'/0/";
+
+		const wallet = hdWallet.derivePath(hdPathWallet + 0).getWallet();
+		const accountAddress = '0x' + wallet.getAddress().toString('hex');
+		const accountPrivateKey = wallet.getPrivateKey().toString('hex');
+
+		return {
+			accountAddress,
+			accountPrivateKey,
+		};
+	}
+
+	generateAccountsMnemonic(mnemonic, count) {
+		let i;
+
+		const accounts = [];
+
+		const seed = bip39.mnemonicToSeedSync(mnemonic);
+		const hdWallet = hdkey.fromMasterSeed(seed);
+
+		// eslint-disable-next-line quotes
+		const hdPathWallet = "m/44'/60'/0'/0/";
+
+		// eslint-disable-next-line no-restricted-globals
+		if (isNaN(parseInt(count, 10))) {
+			count = 1;
+		} else {
+			count = parseInt(count, 10);
+		}
+
+		for (i = 0; i < count; i++) {
+			const wallet = hdWallet.derivePath(hdPathWallet + i).getWallet();
+			const accountAddress = '0x' + wallet.getAddress().toString('hex');
+			const accountPrivateKey = wallet.getPrivateKey().toString('hex');
+
+			accounts.push({
+				accountAddress,
+				accountPrivateKey,
+			});
+		}
+
+		return accounts;
 	}
 }
 
