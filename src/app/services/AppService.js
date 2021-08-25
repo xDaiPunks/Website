@@ -43,6 +43,8 @@ class AppService {
 			);
 
 			promiseArray.push(vm.checkWeb3());
+			promiseArray.push(vm.publicSale());
+			promiseArray.push(vm.mintsRemaining());
 
 			/*
 			promiseArray.push(vm.getRates());
@@ -72,6 +74,36 @@ class AppService {
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
+					resolve({ result: 'success' });
+				});
+		});
+	}
+
+	publicSale() {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.publicSale()
+				.then((response) => {
+					console.log('Public sale', response);
+					resolve({ result: 'success' });
+				})
+				.catch((responseError) => {
+					console.log('Public sale', responseError);
+					resolve({ result: 'success' });
+				});
+		});
+	}
+
+	mintsRemaining() {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.mintsRemaining()
+				.then((response) => {
+					console.log('Mints remaining', response);
+					resolve({ result: 'success' });
+				})
+				.catch((responseError) => {
+					console.log('Mints remaining', responseError);
 					resolve({ result: 'success' });
 				});
 		});

@@ -23,6 +23,7 @@ class ConfigService {
 				gasServiceLimit: process.env.REACT_APP_WEB3_GAS_SERVICE_LIMIT,
 
 				gasOracleUrl: process.env.REACT_APP_WEB3_GAS_ORACLE_URL,
+				xDaiPunksAddress: process.env.REACT_APP_WEB3_XDAI_PUNKS_ADDRESS,
 
 				httpProvider: process.env.REACT_APP_WEB3_HTTP_PROVIDER,
 				socketProvider: process.env.REACT_APP_WEB3_SOCKET_PROVIDER,

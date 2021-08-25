@@ -195,7 +195,7 @@
 											background: radial-gradient(
 												32px 32px at 50% 100%,
 												transparent,
-												#5500cc
+												#8000ff
 											);
 
 											.ConfettiPunkImage {
@@ -428,14 +428,24 @@
 								flex-grow: 1;
 								width: 100%;
 
-								align-items: center;
+								align-items: flex-start;
 								justify-content: center;
+
+								padding-top: $heightHeader + 30px;
+
+								@include responsiveMax($responsiveMed) {
+									padding-top: $heightHeaderMed + 30px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									padding-top: $heightHeaderSmall;
+								}
 
 								.PunkItem {
 									display: flex;
 									position: relative;
 									flex-direction: column;
-									align-content: center;
+									align-items: center;
 									justify-content: center;
 
 									.PunkImage {
@@ -468,7 +478,7 @@
 											background: radial-gradient(
 												200px 200px at 50% 100%,
 												transparent,
-												#5500cc
+												#8000ff
 											);
 
 											.Punk {
@@ -492,7 +502,7 @@
 										font-weight: 900;
 										font-size: 40px;
 
-										padding-top: 30px;
+										padding-top: 10px;
 										text-align: center;
 
 										.TextDark {
@@ -502,6 +512,18 @@
 										.TextLight {
 											color: #00ffff;
 										}
+									}
+
+									.PunkSubText {
+										display: block;
+										font-family: 'Gilroy';
+										font-weight: 700;
+										font-size: 14px;
+
+										padding-top: 0px;
+										text-align: center;
+
+										color: #111;
 									}
 								}
 							}

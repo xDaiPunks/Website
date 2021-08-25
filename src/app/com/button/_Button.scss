@@ -207,7 +207,7 @@
 	width: 100%;
 	height: 32px;
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Gilro', sans-serif;
 
 	.Txt {
 		display: block;
@@ -222,7 +222,7 @@
 		color: rgba(17, 17, 17, 0.7);
 
 		font-size: 14px;
-		font-weight: 600;
+		font-weight: 800;
 		letter-spacing: normal;
 
 		white-space: nowrap;
@@ -323,12 +323,12 @@
 		color: #111;
 
 		font-size: 14px;
-		font-weight: 500;
+		font-weight: 600;
 		letter-spacing: normal;
 
 		white-space: nowrap;
 
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Gilroy', sans-serif;
 
 		padding-left: 5px;
 		padding-right: 20px;
@@ -349,6 +349,7 @@
 		position: relative;
 
 		height: 46px;
+		padding-bottom: 3px;
 
 		align-items: center;
 		justify-content: center;
@@ -373,9 +374,9 @@
 		position: absolute;
 
 		height: 4px;
-		border-radius: 2px;
+		border-radius: 0px;
 
-		left: 2px;
+		left: 1px;
 		top: 32px;
 
 		width: 0px;
@@ -383,7 +384,7 @@
 		transition: width 0.4s $easeOutQuad;
 
 		@include responsiveMax($responsiveMed) {
-			left: 2px;
+			left: 1px;
 			top: 32px;
 		}
 
@@ -433,15 +434,16 @@
 	align-items: center;
 	justify-content: center;
 
-	height: 35px;
+	height: 36px;
 	border-radius: 20px;
 
 	padding-left: 16px;
 	padding-right: 18px;
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Gilroy', sans-serif;
 
 	border: 2px solid #0fffff;
+	background-color: #111;
 
 	.Txt {
 		display: block;
@@ -451,15 +453,15 @@
 
 		user-select: none;
 
-		color: #111;
+		color: #fff;
 
 		font-size: 14px;
-		font-weight: 500;
+		font-weight: 600;
 		letter-spacing: normal;
 
 		white-space: nowrap;
 
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Gilroy', sans-serif;
 
 		padding-left: 5px;
 
@@ -477,6 +479,7 @@
 		position: relative;
 
 		height: 33px;
+		padding-bottom: 3px;
 
 		align-items: center;
 		justify-content: center;

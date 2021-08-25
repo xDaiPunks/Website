@@ -40,6 +40,7 @@ class Navigation extends PureComponent {
 		this.guid = utilityService.guid();
 
 		this.navigate = this.navigate.bind(this);
+		this.xDaiOnRamp = this.xDaiOnRamp.bind(this);
 		this.connectWallet = this.connectWallet.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
 
@@ -116,9 +117,27 @@ class Navigation extends PureComponent {
 		});
 	}
 
-	connectWallet(event) {
-		const vm = this;
+	xDaiOnRamp(event) {
 		event.preventDefault();
+
+		const vm = this;
+		const address = userService.address;
+
+		const url = 'https://buy.ramp.network/?defaultAsset=xDAI';
+
+		vm.hideMobileMenu();
+
+		if (!address || web3Service.isAddress(address) === false) {
+			window.open(url);
+		} else {
+			window.open(url + '&userAddress=' + address);
+		}
+	}
+
+	connectWallet(event) {
+		event.preventDefault();
+
+		const vm = this;
 
 		vm.hideMobileMenu();
 
@@ -199,8 +218,6 @@ class Navigation extends PureComponent {
 	}
 
 	actionButtonComponent() {
-		let label;
-
 		const vm = this;
 		const address = userService.address;
 
@@ -215,7 +232,7 @@ class Navigation extends PureComponent {
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButton MobileMenu'}
-						iconImage="/static/media/images/icon-wallet.svg"
+						iconImage="/static/media/images/icon-wallet-white.svg"
 					/>
 
 					<Button
@@ -226,18 +243,17 @@ class Navigation extends PureComponent {
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
-						iconImage="/static/media/images/icon-wallet.svg"
+						iconImage="/static/media/images/icon-wallet-white.svg"
 					/>
 				</>
 			);
 		} else {
-			label = address.substr(0, 8) + '...';
 			return (
 				<>
 					<Button
 						type={'navigationButton'}
-						label={'My punk collection'}
-						title={'My punk collection'}
+						label={'My account'}
+						title={'My account'}
 						onClick={(event) => {
 							event.preventDefault();
 						}}
@@ -247,13 +263,13 @@ class Navigation extends PureComponent {
 
 					<Button
 						type={'navigationButton'}
-						label={label}
-						title={'My punk collection'}
+						label={'My account'}
+						title={'My account'}
 						onClick={(event) => {
 							event.preventDefault();
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
-						iconImage="/static/media/images/icon-wallet.svg"
+						iconImage="/static/media/images/icon-wallet-white.svg"
 					/>
 				</>
 			);
@@ -362,6 +378,18 @@ class Navigation extends PureComponent {
 										onClick={this.navigate}
 										cssClass={'NavigationButton'}
 										iconImage="/static/media/images/icon-cart.svg"
+									/>
+								</li>
+
+								<li>
+									<Button
+										type={'navigationButton'}
+										label={'Buy xDai'}
+										title={'Market place'}
+										data="/remittances"
+										onClick={this.xDaiOnRamp}
+										cssClass={'NavigationButton'}
+										iconImage="/static/media/images/icon-card.svg"
 									/>
 								</li>
 

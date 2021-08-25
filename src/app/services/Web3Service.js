@@ -13,9 +13,12 @@ import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
+let xDaiPunksAddress;
 
 const bip39 = require('bip39');
 const hdkey = require('ethereumjs-wallet').hdkey;
+
+const xDaiPunksAbi = require('src/app//abi/xDaiPunks.json');
 
 const abiService = new AbiService();
 const userService = new UserService();
@@ -41,74 +44,39 @@ class Web3Service {
 			Instance.httpProvider = configService.web3.httpProvider;
 			Instance.socketProvider = configService.web3.socketProvider;
 
+			Instance.initialize();
 			Instance.checkGasStatus();
 		}
 
 		return Instance;
 	}
 
-	isAddress(address) {
-		return ethers.utils.isAddress(address);
+	initialize() {
+		const vm = this;
+
+		vm.addABI();
+		vm.addAddress();
+		vm.addProvider();
+	}
+
+	addABI() {
+		abiService.addABI(xDaiPunksAbi);
+	}
+
+	addAddress() {
+		xDaiPunksAddress = configService.web3.xDaiPunksAddress;
 	}
 
 	addProvider() {
 		const vm = this;
 
 		vm.provider = new ethers.providers.JsonRpcProvider({
-			url: configService.web3.web3HttpProvider,
+			url: configService.web3.httpProvider,
 		});
 	}
 
-	checkWeb3() {
-		const vm = this;
-
-		return new Promise((resolve, reject) => {
-			let connector;
-
-			let ethereum;
-			let connected;
-
-			if (vm.walletConnector) {
-				connector = vm.walletConnector;
-			} else {
-				connector = new WalletConnect({
-					bridge: 'https://bridge.walletconnect.org',
-					qrcodeModal: QRCodeModal,
-				});
-			}
-
-			if (connector.connected) {
-				vm.walletConnector = connector;
-
-				vm.addWeb3Events();
-
-				if (connector.accounts && connector.accounts.length > 0) {
-					userService.address = connector.accounts[0];
-					resolve({ result: 'success' });
-				}
-			} else {
-				if (!window.ethereum) {
-					resolve({ result: 'success' });
-				} else {
-					ethereum = window.ethereum;
-
-					connected = ethereum.isConnected();
-
-					if (connected !== true) {
-						resolve({ result: 'success' });
-					} else {
-						vm.addWeb3Events();
-
-						if (!ethereum.selectedAddress) {
-							resolve({ result: 'success' });
-						} else {
-							userService.address = ethereum.selectedAddress;
-							resolve({ result: 'success' });
-						}
-					}
-				}
-			}
-		});
+	isAddress(address) {
+		return ethers.utils.isAddress(address);
 	}
 
 	addWeb3Events() {
@@ -116,6 +84,7 @@ class Web3Service {
 
 		const vm = this;
 
+		/*
 		if (vm.walletConnector) {
 			vm.walletConnector.off('connect');
 			vm.walletConnector.off('disconnect');
@@ -153,6 +122,7 @@ class Web3Service {
 				vm.walletConnector = null;
 			});
 		}
+		*/
 
 		if (window.ethereum) {
 			ethereum = window.ethereum;
@@ -675,6 +645,130 @@ class Web3Service {
 		}
 
 		return accounts;
+	}
+
+	/* xDaiPunks specific contract calls
+	 *
+	 */
+
+	checkWeb3() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let connector;
+
+			let ethereum;
+			let connected;
+
+			if (!window.ethereum) {
+				resolve({ result: 'success' });
+			} else {
+				ethereum = window.ethereum;
+
+				connected = ethereum.isConnected();
+
+				if (connected !== true) {
+					resolve({ result: 'success' });
+				} else {
+					vm.addWeb3Events();
+
+					if (!ethereum.selectedAddress) {
+						resolve({ result: 'success' });
+					} else {
+						userService.address = ethereum.selectedAddress;
+						resolve({ result: 'success' });
+					}
+				}
+			}
+
+			/*
+
+			if (vm.walletConnector) {
+				connector = vm.walletConnector;
+			} else {
+				connector = new WalletConnect({
+					bridge: 'https://bridge.walletconnect.org',
+					qrcodeModal: QRCodeModal,
+				});
+			}
+
+			if (connector.connected) {
+				vm.walletConnector = connector;
+
+				vm.addWeb3Events();
+
+				if (connector.accounts && connector.accounts.length > 0) {
+					userService.address = connector.accounts[0];
+					resolve({ result: 'success' });
+				}
+			} else {
+				if (!window.ethereum) {
+					resolve({ result: 'success' });
+				} else {
+					ethereum = window.ethereum;
+
+					connected = ethereum.isConnected();
+
+					if (connected !== true) {
+						resolve({ result: 'success' });
+					} else {
+						vm.addWeb3Events();
+
+						if (!ethereum.selectedAddress) {
+							resolve({ result: 'success' });
+						} else {
+							userService.address = ethereum.selectedAddress;
+							resolve({ result: 'success' });
+						}
+					}
+				}
+			}
+			*/
+		});
+	}
+
+	publicSale() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			const contract = new ethers.Contract(
+				xDaiPunksAddress,
+				xDaiPunksAbi,
+				vm.provider
+			);
+
+			contract
+				.publicSale()
+
+				.then((publicSale) => {
+					resolve(publicSale);
+				})
+				.catch((publicSaleError) => {
+					reject(publicSaleError);
+				});
+		});
+	}
+
+	mintsRemaining() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			const contract = new ethers.Contract(
+				xDaiPunksAddress,
+				xDaiPunksAbi,
+				vm.provider
+			);
+
+			contract
+				.mintsRemaining()
+
+				.then((mintsRemaining) => {
+					resolve(mintsRemaining);
+				})
+				.catch((mintsRemainingError) => {
+					reject(mintsRemainingError);
+				});
+		});
 	}
 }
 

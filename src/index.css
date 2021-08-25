@@ -1400,7 +1400,7 @@ body {
   position: relative;
   width: 100%;
   height: 32px;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Gilro', sans-serif; }
   .FooterButton .Txt {
     display: block;
     position: relative;
@@ -1410,7 +1410,7 @@ body {
     line-height: 32px;
     color: rgba(17, 17, 17, 0.7);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: normal;
     white-space: nowrap;
     font-family: 'Roboto', sans-serif;
@@ -1477,10 +1477,10 @@ body {
     line-height: 46px;
     color: #111;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding-left: 5px;
     padding-right: 20px; }
     @media screen and (max-width: 1070px) {
@@ -1495,6 +1495,7 @@ body {
     display: flex;
     position: relative;
     height: 46px;
+    padding-bottom: 3px;
     align-items: center;
     justify-content: center;
     padding-left: 0px; }
@@ -1510,15 +1511,15 @@ body {
     content: '';
     position: absolute;
     height: 4px;
-    border-radius: 2px;
-    left: 2px;
+    border-radius: 0px;
+    left: 1px;
     top: 32px;
     width: 0px;
     background-color: #0fffff;
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     @media screen and (max-width: 1070px) {
       .NavigationButton .Icon::after {
-        left: 2px;
+        left: 1px;
         top: 32px; } }
     @media screen and (max-width: 780px) {
       .NavigationButton .Icon::after {
@@ -1550,23 +1551,24 @@ body {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
-  height: 35px;
+  height: 36px;
   border-radius: 20px;
   padding-left: 16px;
   padding-right: 18px;
-  font-family: 'Roboto', sans-serif;
-  border: 2px solid #0fffff; }
+  font-family: 'Gilroy', sans-serif;
+  border: 2px solid #0fffff;
+  background-color: #111; }
   .NavigationButtonAction .Txt {
     display: block;
     position: static;
     text-align: center;
     user-select: none;
-    color: #111;
+    color: #fff;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding-left: 5px; }
     @media screen and (max-width: 1070px) {
       .NavigationButtonAction .Txt {
@@ -1578,6 +1580,7 @@ body {
     display: flex;
     position: relative;
     height: 33px;
+    padding-bottom: 3px;
     align-items: center;
     justify-content: center; }
     .NavigationButtonAction .Icon .IconImage {
@@ -2592,7 +2595,7 @@ body {
                 height: 32px;
                 border-radius: 16px;
                 overflow: hidden;
-                background: radial-gradient(32px 32px at 50% 100%, transparent, #5500cc); }
+                background: radial-gradient(32px 32px at 50% 100%, transparent, #8000ff); }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .Confetti .ConfettiItem .ConfettiItemContainer .ConfettiBackground .ConfettiPunkImage {
                   width: 32px;
                   height: 32px;
@@ -2731,13 +2734,20 @@ body {
           z-index: 4;
           flex-grow: 1;
           width: 100%;
-          align-items: center;
-          justify-content: center; }
+          align-items: flex-start;
+          justify-content: center;
+          padding-top: 120px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem {
+              padding-top: 120px; } }
+          @media screen and (max-width: 780px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem {
+              padding-top: 70px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem {
             display: flex;
             position: relative;
             flex-direction: column;
-            align-content: center;
+            align-items: center;
             justify-content: center; }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkImage {
               display: flex;
@@ -2757,7 +2767,7 @@ body {
                 height: 200px;
                 overflow: hidden;
                 border-radius: 100px;
-                background: radial-gradient(200px 200px at 50% 100%, transparent, #5500cc); }
+                background: radial-gradient(200px 200px at 50% 100%, transparent, #8000ff); }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkImage .PunkImageCircle .Punk {
                   display: block;
                   z-index: 1;
@@ -2772,12 +2782,20 @@ body {
               font-family: 'Gilroy';
               font-weight: 900;
               font-size: 40px;
-              padding-top: 30px;
+              padding-top: 10px;
               text-align: center; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextDark {
                 color: #111; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextLight {
                 color: #00ffff; }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkSubText {
+              display: block;
+              font-family: 'Gilroy';
+              font-weight: 700;
+              font-size: 14px;
+              padding-top: 0px;
+              text-align: center;
+              color: #111; }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView {
         display: flex;
         position: relative;
