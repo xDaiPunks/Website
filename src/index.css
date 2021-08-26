@@ -532,8 +532,8 @@ select:autofill:hover,
 select:autofill:focus,
 select:autofill:active {
   background: transparent !important;
-  color: #5604c8 !important;
-  text-fill-color: #5604c8 !important;
+  color: #111 !important;
+  text-fill-color: #111 !important;
   animation-name: autofill !important;
   animation-fill-mode: both !important;
   transition-delay: 9999s !important;
@@ -556,8 +556,8 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
   background: transparent !important;
-  color: #5604c8 !important;
-  -webkit-text-fill-color: #5604c8 !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
   -webkit-animation-name: autofill !important;
   -webkit-animation-fill-mode: both !important;
   -webkit-transition-delay: 9999s !important;
@@ -932,7 +932,7 @@ body {
   position: relative;
   height: 46px;
   margin-bottom: 28px;
-  border: 2px solid #5604c8;
+  border: 2px solid #111;
   border-radius: 23px; }
   @media screen and (max-width: 1070px) {
     .Input {
@@ -979,8 +979,20 @@ body {
   display: block;
   position: relative;
   height: 36px;
+  flex-grow: 1;
   border: 2px solid #111;
   border-radius: 18px; }
+  .InputSearch .SearchIcon {
+    display: flex;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center; }
+    .InputSearch .SearchIcon .SearchIconImage {
+      display: block;
+      width: 19px;
+      height: 19px; }
   .InputSearch input {
     display: block;
     box-sizing: border-box;
@@ -1002,26 +1014,23 @@ body {
     outline: none;
     appearance: none;
     background-color: transparent;
-    padding-left: 26px;
+    padding-left: 36px;
     padding-right: 36px;
     color: #111;
     font-family: 'Gilroy', sans-serif; }
   .InputSearch input::placeholder {
-    color: #111;
-    opacity: 0.7; }
+    color: #b4b4b4; }
   .InputSearch input:-ms-input-placeholder {
-    color: #111;
-    opacity: 0.7; }
+    color: #b4b4b4; }
   .InputSearch input::-ms-input-placeholder {
-    color: #111;
-    opacity: 0.7; }
+    color: #b4b4b4; }
 
 .Select {
   display: block;
   position: relative;
   height: 46px;
   margin-bottom: 28px;
-  border: 2px solid #5604c8;
+  border: 2px solid #111;
   border-radius: 23px; }
   @media screen and (max-width: 1070px) {
     .Select {
@@ -1088,7 +1097,7 @@ body {
       background-color: transparent;
       padding-left: 20px;
       padding-right: 20px;
-      color: #5604c8;
+      color: #111;
       font-family: 'Roboto', sans-serif; }
   .Select .SelectOverlay.Placeholder input {
     color: rgba(61, 4, 174, 0.7); }
@@ -1122,7 +1131,7 @@ body {
     perspective: 0;
     transform-origin: top center;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: #5604c8;
+    color: #111;
     font-family: 'Roboto', sans-serif; }
     @media screen and (max-width: 1070px) {
       .InputUnderline label {
@@ -1152,7 +1161,7 @@ body {
     appearance: none;
     background-color: transparent;
     appearance: none;
-    color: #5604c8;
+    color: #111;
     font-family: 'Roboto', sans-serif; }
     @media screen and (max-width: 1070px) {
       .InputUnderline input {
@@ -1181,7 +1190,7 @@ body {
     .InputUnderline .Underlines .UnderlineAnimate {
       width: 0px;
       opacity: 0;
-      background-color: #5604c8;
+      background-color: #111;
       perspective: 0;
       transition: opacity 0.4s linear, width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
 
@@ -1229,7 +1238,7 @@ body {
     perspective: 0;
     transform-origin: top center;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: #5604c8;
+    color: #111;
     font-family: 'Roboto', sans-serif; }
     @media screen and (max-width: 1070px) {
       .TextareaUnderline label {
@@ -1259,7 +1268,7 @@ body {
     background-color: transparent;
     appearance: none;
     margin-top: 6px;
-    color: #5604c8;
+    color: #111;
     font-family: 'Roboto', sans-serif; }
     @media screen and (max-width: 1070px) {
       .TextareaUnderline textarea {
@@ -1288,7 +1297,7 @@ body {
     .TextareaUnderline .Underlines .UnderlineAnimate {
       width: 0px;
       opacity: 0;
-      background-color: #5604c8;
+      background-color: #111;
       perspective: 0;
       transition: opacity 0.4s linear, width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
 
@@ -1373,7 +1382,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   font-family: 'Roboto', sans-serif;
-  background-color: #5604c8;
+  background-color: #111;
   padding-left: 20px;
   padding-right: 15px; }
   @media screen and (max-width: 1070px) {
@@ -1474,7 +1483,7 @@ body {
     height: 36px;
     text-align: left;
     line-height: 36px;
-    color: #5604c8;
+    color: #111;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: normal;
@@ -1681,7 +1690,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  border: 2px solid #5604c8;
+  border: 2px solid #111;
   padding-left: 20px;
   padding-right: 15px; }
   @media screen and (max-width: 1070px) {
@@ -1697,7 +1706,7 @@ body {
     position: static;
     user-select: none;
     text-align: left;
-    color: #5604c8;
+    color: #111;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: normal;
@@ -1772,7 +1781,7 @@ body {
           width: 16px;
           height: 3px;
           border-radius: 1.5px;
-          background-color: #5604c8; }
+          background-color: #111; }
         .Modal .ModalContent .ModalContentBlock .CloseModalButton .CloseCrossLine.Left {
           transform: rotate(-45deg); }
         .Modal .ModalContent .ModalContentBlock .CloseModalButton .CloseCrossLine.Right {
@@ -1780,7 +1789,7 @@ body {
       .Modal .ModalContent .ModalContentBlock .ModalHeader {
         display: block;
         position: relative;
-        color: #5604c8;
+        color: #111;
         font-size: 24px;
         font-weight: 800;
         font-family: 'Gilroy', sans-serif;
@@ -1791,7 +1800,7 @@ body {
       .Modal .ModalContent .ModalContentBlock .ModalContentText {
         display: block;
         position: relative;
-        color: #5604c8;
+        color: #111;
         text-align: center;
         font-size: 16px;
         font-weight: 600;
@@ -1824,7 +1833,7 @@ body {
             height: 40px;
             text-align: center;
             line-height: 40px;
-            color: #5604c8;
+            color: #111;
             font-size: 16px;
             font-weight: 600;
             letter-spacing: normal;
@@ -1856,7 +1865,7 @@ body {
           height: 40px;
           line-height: 40px;
           padding-left: 10px;
-          color: #5604c8;
+          color: #111;
           font-size: 16px;
           font-weight: 600;
           font-family: 'Roboto', sans-serif; }
@@ -1877,19 +1886,19 @@ body {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          border: 3px solid #5604c8; }
+          border: 3px solid #111; }
         .Modal .ModalContent .ModalContentBlock .LanguageSelector .LanguageSelectorText {
           display: block;
           position: relative;
           height: 40px;
           line-height: 40px;
           padding-left: 10px;
-          color: #5604c8;
+          color: #111;
           font-size: 16px;
           font-weight: 600;
           font-family: 'Roboto', sans-serif; }
       .Modal .ModalContent .ModalContentBlock .LanguageSelector.Selected .LanguageSelectorIcon {
-        background-color: #5604c8; }
+        background-color: #111; }
       .Modal .ModalContent .ModalContentBlock .WalletButtonSpacer {
         display: block;
         position: relative;
@@ -2211,16 +2220,13 @@ body {
       align-items: center;
       flex-direction: row;
       padding-right: 20px;
-      padding-bottom: 4px;
       height: 90px; }
       @media screen and (max-width: 1070px) {
         .Navigation .Content .ButtonLogo {
-          height: 90px;
-          padding-bottom: 4px; } }
+          height: 90px; } }
       @media screen and (max-width: 986px) {
         .Navigation .Content .ButtonLogo {
-          height: 70px;
-          padding-bottom: 4px; } }
+          height: 70px; } }
       .Navigation .Content .ButtonLogo .ButtonLogoImage {
         display: block;
         width: 36px;
@@ -4331,7 +4337,7 @@ body {
         #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
           display: block;
           position: relative;
-          color: #5604c8;
+          color: #111;
           font-weight: 800;
           font-size: calc(42px + 4vw);
           line-height: calc(42px + 4vw);
@@ -4351,7 +4357,7 @@ body {
         display: block;
         position: relative;
         z-index: 2;
-        color: #5604c8;
+        color: #111;
         line-height: 24px;
         font-size: 18px;
         font-weight: 400;
@@ -4410,18 +4416,37 @@ body {
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Spacer {
           height: 70px; } }
     #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
-      display: block;
+      display: flex;
       position: relative;
+      flex-direction: row;
       padding-left: 48px;
-      padding-right: 48px; }
+      padding-right: 48px;
+      padding-bottom: 48px; }
       @media screen and (max-width: 1070px) {
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
           padding-left: 40px;
-          padding-right: 40px; } }
+          padding-right: 40px;
+          padding-bottom: 40px; } }
       @media screen and (max-width: 986px) {
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
           padding-left: 30px;
           padding-right: 30px; } }
+      #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer {
+        display: flex;
+        position: relative;
+        flex-grow: 1;
+        flex-basis: 0; }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .SearchControl {
+          display: flex;
+          flex-grow: 2;
+          flex-basis: 20px; }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
+          display: flex;
+          width: 20px; }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
+          display: flex;
+          flex-grow: 1;
+          flex-basis: 0; }
     #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
       display: flex;
       position: relative;
@@ -4451,13 +4476,15 @@ body {
           display: flex;
           position: relative;
           flex-grow: 1;
-          margin-bottom: 10px;
+          flex-basis: 0;
+          margin-bottom: 20px;
           border-radius: 13.5px;
           background-color: #f2f2f2; }
           #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent {
             display: flex;
             position: relative;
             flex-grow: 1;
+            flex-basis: 0;
             flex-direction: row;
             padding-left: 20px;
             padding-right: 20px;
@@ -4495,6 +4522,7 @@ body {
               padding-top: 3px;
               padding-left: 10px;
               flex-grow: 1;
+              flex-basis: 0;
               flex-direction: column; }
               #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemTop {
                 display: flex;
@@ -4505,13 +4533,14 @@ body {
                 position: relative;
                 flex-grow: 1;
                 flex-shrink: 1;
+                flex-basis: 0;
                 flex-basis: auto;
                 flex-direction: column;
                 align-items: flex-start;
                 padding-bottom: 5px;
                 font-family: 'Gilroy', sans-serif;
                 font-size: 14px;
-                font-weight: 700; }
+                font-weight: 600; }
                 #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextTitle {
                   display: block;
                   position: relative;
@@ -4524,7 +4553,9 @@ body {
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis; }
-                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContentOverFlow {
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent.Bold {
+                  font-weight: 900; }
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent.OverFlow {
                   display: block;
                   position: absolute;
                   top: 11px;
@@ -4538,12 +4569,12 @@ body {
                 align-items: flex-end; }
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
           display: block;
-          width: 10px;
+          width: 20px;
           height: 140px; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
               display: block;
-              width: 10px;
+              width: 20px;
               height: 140px; } }
           @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {

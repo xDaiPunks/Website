@@ -3,26 +3,19 @@
 import React, { PureComponent } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { punks } from 'src/app/data/punks';
-
 import Input from 'src/app/com/input/Input';
-import Header from 'src/app/com/header/Header';
-import Footer from 'src/app/com/footer/Footer';
 
 import ViewService from 'src/app/services/ViewService';
+import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
-import ScrollService from 'src/app/services/ScrollService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const viewService = new ViewService();
+const punkService = new PunkService();
 const eventService = new EventService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
-const translationService = new TranslationService();
-
-const originalData = require('src/app/data/punks');
 
 class MarketPlace extends PureComponent {
 	constructor(props) {
@@ -31,10 +24,11 @@ class MarketPlace extends PureComponent {
 		this.raf = null;
 		this.searchTimeout = null;
 
-		this.data = punks;
-		this.searchData = punks;
+		this.data = punkService.punkData;
+		this.searchData = this.sortArray('status', 'idx', punkService.punkData);
 
 		this.state = {
+			sort: ['status', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
 
@@ -78,6 +72,44 @@ class MarketPlace extends PureComponent {
 		});
 	}
 
+	sortArray(prop1, prop2, array) {
+		let sortOrder1;
+		let sortOrder2;
+
+		sortOrder1 = 1;
+		sortOrder2 = 1;
+
+		if (prop1.substr(0, 1) === '-') {
+			sortOrder1 = -1;
+			prop1 = prop1.substr(1);
+		}
+
+		return array.sort((a, b) => {
+			if (a[prop1] < b[prop1]) {
+				return -1 * sortOrder1;
+			} else {
+				if (a[prop1] > b[prop1]) {
+					return 1 * sortOrder1;
+				} else {
+					if (prop2.substr(0, 1) === '-') {
+						sortOrder2 = -1;
+						prop2 = prop2.substr(1);
+					}
+
+					if (a[prop2] < b[prop2]) {
+						return -1 * sortOrder2;
+					} else {
+						if (a[prop2] > b[prop2]) {
+							return 1 * sortOrder2;
+						} else {
+							return 0;
+						}
+					}
+				}
+			}
+		});
+	}
+
 	getData() {
 		const vm = this;
 
@@ -96,21 +128,14 @@ class MarketPlace extends PureComponent {
 	}
 
 	searchChange(event) {
-		let i;
-		let iCount;
-
-		let b;
-		let batchSize;
-
 		let value;
-		let dataCount;
+
 		let searchData;
 
 		const vm = this;
 
 		console.log(vm.searchInput.current.state);
 
-		const data = vm.data;
 		const state = utilityService.cloneObject(vm.state);
 
 		if (
@@ -237,7 +262,7 @@ class MarketPlace extends PureComponent {
 								items[item].idx +
 								'.png';
 
-							status = 'To be minted';
+							status = 'Mint';
 							if (items[item].status) {
 							}
 
@@ -276,7 +301,7 @@ class MarketPlace extends PureComponent {
 														<span className="DetailsTextTitle">
 															Number
 														</span>
-														<span className="DetailsTextContent">
+														<span className="DetailsTextContent Bold">
 															{number}
 														</span>
 													</div>
@@ -284,7 +309,7 @@ class MarketPlace extends PureComponent {
 														<span className="DetailsTextTitle">
 															Status
 														</span>
-														<span className="DetailsTextContent">
+														<span className="DetailsTextContent Bold">
 															{status}
 														</span>
 													</div>
@@ -304,7 +329,7 @@ class MarketPlace extends PureComponent {
 													<span className="DetailsTextContent">
 														&nbsp;
 													</span>
-													<span className="DetailsTextContentOverFlow">
+													<span className="DetailsTextContent OverFlow">
 														{attributes}
 													</span>
 												</div>
@@ -352,14 +377,20 @@ class MarketPlace extends PureComponent {
 				<div className="ViewBox">
 					<div className="Spacer"></div>
 					<div className="Controls">
-						<Input
-							ref={vm.searchInput}
-							id={'inputSearch'}
-							type={'text'}
-							inputType={'inputSearch'}
-							placeholder={'Search by number'}
-							onChange={vm.searchChange}
-						/>
+						<div className="ControlsContainer">
+							<div className="SearchControl">
+								<Input
+									ref={vm.searchInput}
+									id={'inputSearch'}
+									type={'text'}
+									inputType={'inputSearch'}
+									placeholder={'Search by number'}
+									onChange={vm.searchChange}
+								/>
+							</div>
+							<div className="ControlSpacer" />
+							<div className="FilterControl"></div>
+						</div>
 					</div>
 					<ListComponent />
 				</div>

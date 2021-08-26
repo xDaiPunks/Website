@@ -199,6 +199,13 @@ class Input extends PureComponent {
 
 		return (
 			<div className={className}>
+				<div className="SearchIcon">
+					<img
+						alt={''}
+						className="SearchIconImage"
+						src="/static/media/images/icon-search.svg"
+					/>
+				</div>
 				<input
 					ref={this.searchInput}
 					id={id}

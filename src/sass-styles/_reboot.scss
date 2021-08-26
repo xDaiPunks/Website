@@ -517,8 +517,8 @@ select:autofill:hover,
 select:autofill:focus,
 select:autofill:active {
 	background: transparent !important;
-	color: #5604c8 !important;
-	text-fill-color: #5604c8 !important;
+	color: #111 !important;
+	text-fill-color: #111 !important;
 
 	animation-name: autofill !important;
 	animation-fill-mode: both !important;
@@ -545,8 +545,8 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
 	background: transparent !important;
-	color: #5604c8 !important;
-	-webkit-text-fill-color: #5604c8 !important;
+	color: #111 !important;
+	-webkit-text-fill-color: #111 !important;
 
 	-webkit-animation-name: autofill !important;
 	-webkit-animation-fill-mode: both !important;

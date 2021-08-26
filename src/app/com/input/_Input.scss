@@ -6,7 +6,7 @@
 
 	margin-bottom: 28px;
 
-	border: 2px solid #5604c8;
+	border: 2px solid #111;
 	border-radius: 23px;
 
 	@include responsiveMax($responsiveMed) {
@@ -79,8 +79,28 @@
 
 	height: 36px;
 
+	flex-grow: 1;
+
 	border: 2px solid #111;
 	border-radius: 18px;
+
+	.SearchIcon {
+		display: flex;
+		position: absolute;
+
+		width: 32px;
+		height: 32px;
+
+		align-items: center;
+		justify-content: center;
+
+		.SearchIconImage {
+			display: block;
+
+			width: 19px;
+			height: 19px;
+		}
+	}
 
 	input {
 		display: block;
@@ -115,7 +135,7 @@
 
 		background-color: transparent;
 
-		padding-left: 26px;
+		padding-left: 36px;
 		padding-right: 36px;
 
 		color: #111;
@@ -123,18 +143,18 @@
 	}
 
 	input::placeholder {
-		color: #111;
-		opacity: 0.7;
+		color: #b4b4b4;
+		
 	}
 
 	input:-ms-input-placeholder {
-		color: #111;
-		opacity: 0.7;
+		color: #b4b4b4;
+		
 	}
 
 	input::-ms-input-placeholder {
-		color: #111;
-		opacity: 0.7;
+		color: #b4b4b4;
+		
 	}
 }
 
@@ -146,7 +166,7 @@
 
 	margin-bottom: 28px;
 
-	border: 2px solid #5604c8;
+	border: 2px solid #111;
 	border-radius: 23px;
 
 	@include responsiveMax($responsiveMed) {
@@ -249,7 +269,7 @@
 			padding-left: 20px;
 			padding-right: 20px;
 
-			color: #5604c8;
+			color: #111;
 			font-family: 'Roboto', sans-serif;
 		}
 	}
@@ -305,7 +325,7 @@
 		transform-origin: top center;
 		transition: all 0.4s $easeOutQuart;
 
-		color: #5604c8;
+		color: #111;
 		font-family: 'Roboto', sans-serif;
 
 		@include responsiveMax($responsiveMed) {
@@ -352,7 +372,7 @@
 
 		appearance: none;
 
-		color: #5604c8;
+		color: #111;
 		font-family: 'Roboto', sans-serif;
 
 		@include responsiveMax($responsiveMed) {
@@ -395,7 +415,7 @@
 			width: 0px;
 			opacity: 0;
 
-			background-color: #5604c8;
+			background-color: #111;
 
 			perspective: 0;
 
@@ -472,7 +492,7 @@
 		transform-origin: top center;
 		transition: all 0.4s $easeOutQuart;
 
-		color: #5604c8;
+		color: #111;
 		font-family: 'Roboto', sans-serif;
 
 		@include responsiveMax($responsiveMed) {
@@ -520,7 +540,7 @@
 
 		margin-top: 6px;
 
-		color: #5604c8;
+		color: #111;
 		font-family: 'Roboto', sans-serif;
 
 		@include responsiveMax($responsiveMed) {
@@ -563,7 +583,7 @@
 			width: 0px;
 			opacity: 0;
 
-			background-color: #5604c8;
+			background-color: #111;
 
 			perspective: 0;
 

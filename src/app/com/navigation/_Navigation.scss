@@ -57,18 +57,15 @@
 			flex-direction: row;
 
 			padding-right: 20px;
-			padding-bottom: 4px;
 
 			height: $heightHeader;
 
 			@include responsiveMax($responsiveMed) {
 				height: $heightHeaderMed;
-				padding-bottom: 4px;
 			}
 
 			@include responsiveMax($responsiveSmall) {
 				height: $heightHeaderSmall;
-				padding-bottom: 4px;
 			}
 
 			.ButtonLogoImage {
