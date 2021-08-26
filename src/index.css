@@ -1523,6 +1523,7 @@ body {
     position: relative;
     user-select: none;
     height: 46px;
+    line-height: 46px;
     text-align: left;
     color: #111;
     font-size: 14px;
@@ -1579,7 +1580,7 @@ body {
     @media screen and (max-width: 986px) {
       .NavigationButton .Icon::after {
         left: 4px;
-        top: 32px; } }
+        top: 28px; } }
 
 .NavigationButton:hover .Icon::after {
   width: 16px; }
