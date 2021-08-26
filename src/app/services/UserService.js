@@ -14,10 +14,20 @@ class UserService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
-			Instance.address = null;
+			Instance.addressStore = null;
 			
 		}
 		return Instance;
+	}
+
+	get address() {
+		const vm = this;
+		return vm.addressStore;
+	}
+
+	set address(val) {
+		const vm = this;
+		vm.addressStore = val;
 	}
 }
 

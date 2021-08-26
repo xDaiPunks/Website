@@ -2965,7 +2965,7 @@ body {
                   max-width: 350px; } }
               @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroFooterContainer .FooterContainerSizer {
-                  max-width: auto; } }
+                  max-width: 100%; } }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView {
         display: flex;
         position: relative;
