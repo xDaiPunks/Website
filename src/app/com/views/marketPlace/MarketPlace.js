@@ -8,12 +8,14 @@ import Input from 'src/app/com/input/Input';
 import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
+import RouteService from 'src/app/services/RouteService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 
 const viewService = new ViewService();
 const punkService = new PunkService();
 const eventService = new EventService();
+const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
@@ -282,7 +284,16 @@ class MarketPlace extends PureComponent {
 							return (
 								<React.Fragment key={'item' + item}>
 									<div className={spacerClassL}></div>
-									<div className="PunkItem">
+									<div
+										className="PunkItem"
+										onClick={(event) => {
+											event.preventDefault();
+											console.log(item);
+
+											routeService.navigateRoute(
+												'/punk/' + number
+											);
+										}}>
 										<div className="PunkItemContent">
 											<div className="PunkImageContainer">
 												<div className="PunkImageContainerBG">

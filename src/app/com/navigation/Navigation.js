@@ -39,7 +39,6 @@ class Navigation extends PureComponent {
 
 		this.guid = utilityService.guid();
 
-		this.navigate = this.navigate.bind(this);
 		this.xDaiOnRamp = this.xDaiOnRamp.bind(this);
 		this.connectWallet = this.connectWallet.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
@@ -84,43 +83,7 @@ class Navigation extends PureComponent {
 		});
 	}
 
-	navigate(event) {
-		let domElement;
-		let targetData;
-
-		const vm = this;
-
-		event.preventDefault();
-
-		if (!event || !event.currentTarget) {
-			return;
-		}
-
-		if (!event.currentTarget.getAttribute('data')) {
-			return;
-		}
-
-		targetData = event.currentTarget.getAttribute('data');
-
-		this.hideMobileMenu();
-
-		eventService.on('hide:nav', vm.guid, () => {
-			eventService.off('hide:nav', vm.guid);
-
-			if (targetData.substr(0, 1) === '/') {
-				routeService.navigateRoute(targetData);
-			}
-
-			if (targetData.substr(0, 6) === 'scroll') {
-				domElement = $('.' + targetData.split(':')[1]);
-				routeService.navigateScrollPosition(domElement);
-			}
-		});
-	}
-
-	xDaiOnRamp(event) {
-		event.preventDefault();
-
+	xDaiOnRamp() {
 		const vm = this;
 		const address = userService.address;
 
@@ -135,9 +98,7 @@ class Navigation extends PureComponent {
 		}
 	}
 
-	connectWallet(event) {
-		event.preventDefault();
-
+	connectWallet() {
 		const vm = this;
 
 		vm.hideMobileMenu();
@@ -230,6 +191,8 @@ class Navigation extends PureComponent {
 						label={'Connect wallet'}
 						title={'Connect wallet'}
 						onClick={(event) => {
+							event.preventDefault();
+							vm.hideMobileMenu();
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButton MobileMenu'}
@@ -241,6 +204,8 @@ class Navigation extends PureComponent {
 						label={'Connect wallet'}
 						title={'Connect wallet'}
 						onClick={(event) => {
+							event.preventDefault();
+							vm.hideMobileMenu();
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
@@ -257,6 +222,7 @@ class Navigation extends PureComponent {
 						title={'My account'}
 						onClick={(event) => {
 							event.preventDefault();
+							vm.hideMobileMenu();
 						}}
 						cssClass={'NavigationButton MobileMenu'}
 						iconImage="/static/media/images/icon-wallet.svg"
@@ -268,6 +234,7 @@ class Navigation extends PureComponent {
 						title={'My account'}
 						onClick={(event) => {
 							event.preventDefault();
+							vm.hideMobileMenu();
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
 						iconImage="/static/media/images/icon-wallet-white.svg"
@@ -299,8 +266,11 @@ class Navigation extends PureComponent {
 				<div className="Content">
 					<button
 						className="ButtonLogo"
-						data="/"
-						onClick={this.navigate}>
+						onClick={(event) => {
+							event.preventDefault();
+							vm.hideMobileMenu();
+							routeService.navigateRoute('/');
+						}}>
 						<img
 							alt={'Home'}
 							title={'Home'}
@@ -325,8 +295,11 @@ class Navigation extends PureComponent {
 								<div className="LogoNavigation">
 									<button
 										className="ButtonLogoNavigation"
-										data="/"
-										onClick={this.navigate}>
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute('/');
+										}}>
 										<img
 											alt={'Home'}
 											className={'LogoNavigationImage'}
@@ -343,8 +316,11 @@ class Navigation extends PureComponent {
 										type={'navigationButton'}
 										label={'Home'}
 										title={'Home'}
-										data="/"
-										onClick={this.navigate}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute('/');
+										}}
 										cssClass={
 											currentView === 'home'
 												? 'NavigationButton Active'
@@ -359,8 +335,13 @@ class Navigation extends PureComponent {
 										type={'navigationButton'}
 										label={'Market place'}
 										title={'Market place'}
-										data="/market-place"
-										onClick={this.navigate}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute(
+												'/market-place'
+											);
+										}}
 										cssClass={
 											currentView === 'marketPlace'
 												? 'NavigationButton Active'
@@ -375,8 +356,11 @@ class Navigation extends PureComponent {
 										type={'navigationButton'}
 										label={'Buy xDai'}
 										title={'Market place'}
-										data="/remittances"
-										onClick={this.xDaiOnRamp}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											vm.xDaiOnRamp();
+										}}
 										cssClass={'NavigationButton'}
 										iconImage="/static/media/images/icon-card.svg"
 									/>

@@ -6,6 +6,7 @@
 		"animationType": "underlay",
 		"component": "app/com/views/home/Home"
 	},
+
 	"about": {
 		"path": "/about",
 		"type": "public",
@@ -13,12 +14,21 @@
 		"animationType": "overlay",
 		"component": "app/com/views/about/About"
 	},
+
 	"marketPlace": {
 		"path": "/market-place",
 		"type": "public",
 		"redirect": "none",
 		"animationType": "overlay",
 		"component": "app/com/views/marketPlace/MarketPlace"
+	},
+
+	"punkDetails": {
+		"path": "/punk/:id",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/about/About"
 	},
 
 	"notfound": {

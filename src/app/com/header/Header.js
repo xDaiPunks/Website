@@ -38,55 +38,29 @@ class Header extends PureComponent {
 	}
 
 	render() {
-		const vm = this;
-
-		if (vm.pageId !== 'request') {
-			return (
-				<header className="Header">
-					<div className="HeaderContent">
-						<div className="BackButton">
-							<Button
-								type={'headerButton'}
-								title={'Go back'}
-								onClick={this.navigate}
-								iconImage="/static/media/images/arrow-back-purple.svg"
-								cssClass={'HeaderButton'}
-							/>
-						</div>
+		return (
+			<header className="Header">
+				<div className="HeaderContent">
+					<div className="BackButton">
+						<Button
+							type={'headerButton'}
+							title={'Open website'}
+							onClick={() => {
+								routeService.navigateRoute('/');
+							}}
+							iconImage="/static/media/images/icon-globe.svg"
+							cssClass={'HeaderButton'}
+						/>
 					</div>
-					<div
-						className="HeaderBackground"
-						style={{
-							opacity: 0,
-						}}
-					/>
-				</header>
-			);
-		} else {
-			return (
-				<header className="Header">
-					<div className="HeaderContent">
-						<div className="BackButton">
-							<Button
-								type={'headerButton'}
-								title={'Open website'}
-								onClick={() => {
-									routeService.navigateRoute('/');
-								}}
-								iconImage="/static/media/images/icon-globe.svg"
-								cssClass={'HeaderButton'}
-							/>
-						</div>
-					</div>
-					<div
-						className="HeaderBackgroundRequest"
-						style={{
-							opacity: 0,
-						}}
-					/>
-				</header>
-			);
-		}
+				</div>
+				<div
+					className="HeaderBackgroundRequest"
+					style={{
+						opacity: 0,
+					}}
+				/>
+			</header>
+		);
 	}
 }
 
