@@ -15,15 +15,21 @@ class Input extends PureComponent {
 		this.refElement = null;
 
 		this.regularInput = React.createRef();
+		this.searchInput = React.createRef();
 		this.regularSelect = React.createRef();
 		this.underlineInput = React.createRef();
 		this.underlineSelect = React.createRef();
 		this.underlineTextarea = React.createRef();
 
-		this.inputRegular = this.inputRegular.bind(this);
-		this.inputRegularBlur = this.inputRegularBlur.bind(this);
-		this.inputRegularFocus = this.inputRegularFocus.bind(this);
-		this.inputRegularChange = this.inputRegularChange.bind(this);
+		this.input = this.input.bind(this);
+		this.inputBlur = this.inputBlur.bind(this);
+		this.inputFocus = this.inputFocus.bind(this);
+		this.inputChange = this.inputChange.bind(this);
+
+		this.inputSearch = this.inputSearch.bind(this);
+		this.inputSearchBlur = this.inputSearchBlur.bind(this);
+		this.inputSearchFocus = this.inputSearchFocus.bind(this);
+		this.inputSearchChange = this.inputSearchChange.bind(this);
 
 		this.selectRegular = this.selectRegular.bind(this);
 		this.selectRegularBlur = this.selectRegularBlur.bind(this);
@@ -47,7 +53,7 @@ class Input extends PureComponent {
 		}
 	}
 
-	inputRegular(props) {
+	input(props) {
 		let value;
 
 		let id = this.props.id;
@@ -57,9 +63,9 @@ class Input extends PureComponent {
 		let className = this.props.className;
 		let placeholder = this.props.placeholder;
 
-		const onBlur = this.inputRegularBlur;
-		const onFocus = this.inputRegularFocus;
-		const onChange = this.inputRegularChange;
+		const onBlur = this.inputBlur;
+		const onFocus = this.inputFocus;
+		const onChange = this.inputChange;
 
 		this.refElement = this.regularInput;
 
@@ -97,7 +103,7 @@ class Input extends PureComponent {
 		);
 	}
 
-	inputRegularBlur(event) {
+	inputBlur(event) {
 		event.preventDefault();
 
 		const vm = this;
@@ -106,7 +112,7 @@ class Input extends PureComponent {
 		}
 	}
 
-	inputRegularFocus(event) {
+	inputFocus(event) {
 		event.preventDefault();
 
 		const vm = this;
@@ -115,7 +121,7 @@ class Input extends PureComponent {
 		}
 	}
 
-	inputRegularChange(event) {
+	inputChange(event) {
 		event.preventDefault();
 
 		let valid;
@@ -123,16 +129,19 @@ class Input extends PureComponent {
 		const vm = this;
 		const type = vm.props.type;
 
-		if (vm.props.onChange) {
-			vm.props.onChange(event);
-		}
-
 		switch (type) {
 			default:
-				vm.setState({
-					valid: vm.state.valid,
-					value: vm.regularInput.current.value,
-				});
+				vm.setState(
+					{
+						valid: vm.state.valid,
+						value: vm.regularInput.current.value,
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
 				break;
 
 			case 'email':
@@ -140,10 +149,261 @@ class Input extends PureComponent {
 					vm.regularInput.current.value
 				);
 
-				vm.setState({
-					valid: valid,
-					value: vm.regularInput.current.value.trim().toLowerCase(),
-				});
+				vm.setState(
+					{
+						valid: valid,
+						value: vm.regularInput.current.value
+							.trim()
+							.toLowerCase(),
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
+				break;
+		}
+	}
+
+	inputSearch(props) {
+		let value;
+
+		let id = this.props.id;
+		let type = this.props.type;
+		let onClick = this.props.onClick;
+		let readOnly = this.props.readOnly;
+		let className = this.props.className;
+		let placeholder = this.props.placeholder;
+
+		const onBlur = this.inputSearchBlur;
+		const onFocus = this.inputSearchFocus;
+		const onChange = this.inputSearchChange;
+
+		this.refElement = this.searchInput;
+
+		if (readOnly !== true) {
+			readOnly = null;
+		} else {
+			readOnly = 'read-only';
+		}
+
+		if (!className) {
+			className = 'InputSearch';
+		}
+
+		value = this.props.value || '';
+		if (this.state.value) {
+			value = this.state.value;
+		}
+
+		return (
+			<div className={className}>
+				<input
+					ref={this.searchInput}
+					id={id}
+					name={id}
+					type={type}
+					value={value}
+					readOnly={readOnly}
+					placeholder={placeholder}
+					onClick={onClick}
+					onBlur={onBlur}
+					onFocus={onFocus}
+					onChange={onChange}
+				/>
+			</div>
+		);
+	}
+
+	inputSearchBlur(event) {
+		event.preventDefault();
+
+		const vm = this;
+		if (vm.props.onBlur) {
+			vm.props.onBlur(event);
+		}
+	}
+
+	inputSearchFocus(event) {
+		event.preventDefault();
+
+		const vm = this;
+		if (vm.props.onFocus) {
+			vm.props.onFocus(event);
+		}
+	}
+
+	inputSearchChange(event) {
+		event.preventDefault();
+
+		let valid;
+
+		const vm = this;
+		const type = vm.props.type;
+
+		switch (type) {
+			default:
+				vm.setState(
+					{
+						valid: vm.state.valid,
+						value: vm.searchInput.current.value,
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
+				break;
+
+			case 'email':
+				valid = utilityService.validateEmail(
+					vm.searchInput.current.value
+				);
+
+				vm.setState(
+					{
+						valid: valid,
+						value: vm.searchInput.current.value
+							.trim()
+							.toLowerCase(),
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
+				break;
+		}
+	}
+
+	inputUnderline(props) {
+		let id = this.props.id;
+		let type = this.props.type;
+		let label = this.props.label;
+		let onClick = this.props.onClick;
+
+		let className = this.props.className;
+
+		let value = this.props.value;
+		let readOnly = this.props.readOnly;
+		let hideInput = this.props.hideInput;
+		let alwaysActive = this.props.alwaysActive;
+		let defaultValue = this.props.defaultValue;
+
+		const onBlur = this.inputUnderlineBlur;
+		const onFocus = this.inputUnderlineFocus;
+		const onChange = this.inputUnderlineChange;
+
+		if (readOnly !== true) {
+			readOnly = null;
+		} else {
+			readOnly = 'read-only';
+		}
+
+		if (!className) {
+			className = 'InputUnderline';
+		}
+
+		if (
+			alwaysActive === true ||
+			(value !== '' && value !== null && value !== undefined) ||
+			(defaultValue !== '' &&
+				defaultValue !== null &&
+				defaultValue !== undefined)
+		) {
+			className = className + ' Active';
+		}
+
+		if (hideInput === true) {
+			className = className + ' HideDisplay';
+		}
+
+		return (
+			<div className={className}>
+				<label htmlFor={id}>{label}</label>
+				<input
+					ref={this.underlineInput}
+					id={id}
+					name={id}
+					type={type}
+					value={value}
+					readOnly={readOnly}
+					defaultValue={defaultValue}
+					onBlur={onBlur}
+					onFocus={onFocus}
+					onClick={onClick}
+					onChange={onChange}
+				/>
+				<div className="Underlines">
+					<div className="Underline"></div>
+					<div className="UnderlineAnimate"></div>
+				</div>
+			</div>
+		);
+	}
+
+	inputUnderlineBlur(event) {
+		event.preventDefault();
+
+		const vm = this;
+		if (vm.props.onBlur) {
+			vm.props.onBlur(event);
+		}
+	}
+
+	inputUnderlineFocus(event) {
+		event.preventDefault();
+
+		const vm = this;
+		if (vm.props.onFocus) {
+			vm.props.onFocus(event);
+		}
+	}
+
+	inputUnderlineChange(event) {
+		event.preventDefault();
+
+		let valid;
+
+		const vm = this;
+		const type = vm.props.type;
+
+		switch (type) {
+			default:
+				vm.setState(
+					{
+						valid: vm.state.valid,
+						value: vm.underlineInput.current.value,
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
+				break;
+
+			case 'email':
+				valid = utilityService.validateEmail(
+					vm.underlineInput.current.value
+				);
+
+				vm.setState(
+					{
+						valid: valid,
+						value: vm.underlineInput.current.value
+							.trim()
+							.toLowerCase(),
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
 				break;
 		}
 	}
@@ -262,133 +522,19 @@ class Input extends PureComponent {
 		const vm = this;
 		const type = vm.props.type;
 
-		if (vm.props.onChange) {
-			vm.props.onChange(event);
-		}
-
 		switch (type) {
 			default:
-				vm.setState({
-					valid: vm.state.valid,
-					value: vm.regularSelect.current.value.trim(),
-				});
-				break;
-		}
-	}
-
-	inputUnderline(props) {
-		let id = this.props.id;
-		let type = this.props.type;
-		let label = this.props.label;
-		let onClick = this.props.onClick;
-
-		let className = this.props.className;
-
-		let value = this.props.value;
-		let readOnly = this.props.readOnly;
-		let hideInput = this.props.hideInput;
-		let alwaysActive = this.props.alwaysActive;
-		let defaultValue = this.props.defaultValue;
-
-		const onBlur = this.inputUnderlineBlur;
-		const onFocus = this.inputUnderlineFocus;
-		const onChange = this.inputUnderlineChange;
-
-		if (readOnly !== true) {
-			readOnly = null;
-		} else {
-			readOnly = 'read-only';
-		}
-
-		if (!className) {
-			className = 'InputUnderline';
-		}
-
-		if (
-			alwaysActive === true ||
-			(value !== '' && value !== null && value !== undefined) ||
-			(defaultValue !== '' &&
-				defaultValue !== null &&
-				defaultValue !== undefined)
-		) {
-			className = className + ' Active';
-		}
-
-		if (hideInput === true) {
-			className = className + ' HideDisplay';
-		}
-
-		return (
-			<div className={className}>
-				<label htmlFor={id}>{label}</label>
-				<input
-					ref={this.underlineInput}
-					id={id}
-					name={id}
-					type={type}
-					value={value}
-					readOnly={readOnly}
-					defaultValue={defaultValue}
-					onBlur={onBlur}
-					onFocus={onFocus}
-					onClick={onClick}
-					onChange={onChange}
-				/>
-				<div className="Underlines">
-					<div className="Underline"></div>
-					<div className="UnderlineAnimate"></div>
-				</div>
-			</div>
-		);
-	}
-
-	inputUnderlineBlur(event) {
-		event.preventDefault();
-
-		const vm = this;
-		if (vm.props.onBlur) {
-			vm.props.onBlur(event);
-		}
-	}
-
-	inputUnderlineFocus(event) {
-		event.preventDefault();
-
-		const vm = this;
-		if (vm.props.onFocus) {
-			vm.props.onFocus(event);
-		}
-	}
-
-	inputUnderlineChange(event) {
-		event.preventDefault();
-
-		let valid;
-
-		const vm = this;
-		const type = vm.props.type;
-
-		if (vm.props.onChange) {
-			vm.props.onChange(event);
-		}
-
-		switch (type) {
-			default:
-				vm.setState({
-					valid: vm.state.valid,
-					value: vm.underlineInput.current.value,
-				});
-				break;
-
-			case 'email':
-				valid = utilityService.validateEmail(
-					vm.underlineInput.current.value
+				vm.setState(
+					{
+						valid: vm.state.valid,
+						value: vm.regularSelect.current.value.trim(),
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
 				);
-
-				vm.setState({
-					valid: valid,
-					value: vm.underlineInput.current.value.trim().toLowerCase(),
-				});
 				break;
 		}
 	}
@@ -487,20 +633,22 @@ class Input extends PureComponent {
 
 		const inputTextarea = $(event.currentTarget);
 
-
-		if (vm.props.onChange) {
-			vm.props.onChange(event);
-		}
-
 		inputTextarea.css('height', '30px');
 		inputTextarea.css('height', inputTextarea[0].scrollHeight + 'px');
 
 		switch (type) {
 			default:
-				vm.setState({
-					valid: vm.state.valid,
-					value: vm.underlineTextarea.current.value,
-				});
+				vm.setState(
+					{
+						valid: vm.state.valid,
+						value: vm.underlineTextarea.current.value,
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
 				break;
 
 			case 'email':
@@ -508,12 +656,19 @@ class Input extends PureComponent {
 					vm.underlineTextarea.current.value
 				);
 
-				vm.setState({
-					valid: valid,
-					value: vm.underlineTextarea.current.value
-						.trim()
-						.toLowerCase(),
-				});
+				vm.setState(
+					{
+						valid: valid,
+						value: vm.underlineTextarea.current.value
+							.trim()
+							.toLowerCase(),
+					},
+					() => {
+						if (vm.props.onChange) {
+							vm.props.onChange(event);
+						}
+					}
+				);
 				break;
 		}
 	}
@@ -522,9 +677,11 @@ class Input extends PureComponent {
 		let props = this.props;
 		let inputType = this.props.inputType;
 
-		const InputRegular = this.inputRegular;
-		const SelectRegular = this.selectRegular;
+		const Input = this.input;
+		const InputSearch = this.inputSearch;
 		const InputUnderline = this.inputUnderline;
+
+		const SelectRegular = this.selectRegular;
 		const TextareaUnderline = this.textareaUnderline;
 
 		switch (inputType) {
@@ -532,13 +689,16 @@ class Input extends PureComponent {
 				return null;
 
 			case 'input':
-				return <InputRegular {...props} />;
+				return <Input {...props} />;
 
-			case 'select':
-				return <SelectRegular {...props} />;
+			case 'inputSearch':
+				return <InputSearch {...props} />;
 
 			case 'inputUnderline':
 				return <InputUnderline {...props} />;
+
+			case 'select':
+				return <SelectRegular {...props} />;
 
 			case 'textareaUnderline':
 				return <TextareaUnderline {...props} />;

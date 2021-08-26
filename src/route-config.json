@@ -13,6 +13,14 @@
 		"animationType": "overlay",
 		"component": "app/com/views/about/About"
 	},
+	"marketPlace": {
+		"path": "/market-place",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/marketPlace/MarketPlace"
+	},
+
 	"notfound": {
 		"type": "notfound",
 		"useRedirect": true,

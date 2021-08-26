@@ -724,7 +724,7 @@ body {
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .View .ViewBox .ViewContent .Spacer {
                   height: 90px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .View .ViewBox .ViewContent .Spacer {
                   height: 70px; } }
             #AppRoot .App .ViewContainer .View .ViewBox .ViewContent .Content {
@@ -919,7 +919,7 @@ body {
     width: 100vw;
     height: 120%;
     max-width: 100%;
-    background-color: #fff; }
+    background-color: #111; }
 
 #Preloader.Hide {
   opacity: 0; }
@@ -937,7 +937,7 @@ body {
   @media screen and (max-width: 1070px) {
     .Input {
       margin-bottom: 28px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .Input {
       margin-bottom: 18px; } }
   .Input input {
@@ -975,6 +975,47 @@ body {
     color: #5605c7;
     opacity: 0.7; }
 
+.InputSearch {
+  display: block;
+  position: relative;
+  height: 36px;
+  border: 2px solid #111;
+  border-radius: 18px; }
+  .InputSearch input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: normal;
+    text-overflow: ellipsis;
+    text-align: left;
+    border: 0;
+    background: 0 0;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    outline: none;
+    appearance: none;
+    background-color: transparent;
+    padding-left: 26px;
+    padding-right: 36px;
+    color: #111;
+    font-family: 'Gilroy', sans-serif; }
+  .InputSearch input::placeholder {
+    color: #111;
+    opacity: 0.7; }
+  .InputSearch input:-ms-input-placeholder {
+    color: #111;
+    opacity: 0.7; }
+  .InputSearch input::-ms-input-placeholder {
+    color: #111;
+    opacity: 0.7; }
+
 .Select {
   display: block;
   position: relative;
@@ -985,7 +1026,7 @@ body {
   @media screen and (max-width: 1070px) {
     .Select {
       margin-bottom: 28px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .Select {
       margin-bottom: 18px; } }
   .Select select {
@@ -1086,7 +1127,7 @@ body {
     @media screen and (max-width: 1070px) {
       .InputUnderline label {
         font-size: 18px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .InputUnderline label {
         font-size: 16px; } }
   .InputUnderline input {
@@ -1116,7 +1157,7 @@ body {
     @media screen and (max-width: 1070px) {
       .InputUnderline input {
         font-size: 18px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .InputUnderline input {
         font-size: 16px; } }
   .InputUnderline .Underlines {
@@ -1193,7 +1234,7 @@ body {
     @media screen and (max-width: 1070px) {
       .TextareaUnderline label {
         font-size: 18px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .TextareaUnderline label {
         font-size: 16px; } }
   .TextareaUnderline textarea {
@@ -1223,7 +1264,7 @@ body {
     @media screen and (max-width: 1070px) {
       .TextareaUnderline textarea {
         font-size: 18px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .TextareaUnderline textarea {
         font-size: 16px; } }
   .TextareaUnderline .Underlines {
@@ -1339,7 +1380,7 @@ body {
     .FormButton {
       padding-left: 20px;
       padding-right: 15px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .FormButton {
       padding-left: 20px;
       padding-right: 15px; } }
@@ -1381,7 +1422,7 @@ body {
       height: 90px;
       padding-left: 40px;
       padding-right: 40px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .HeaderButton {
       height: 70px;
       padding-left: 30px;
@@ -1442,7 +1483,7 @@ body {
     @media screen and (max-width: 1070px) {
       .FormPageButton .Txt {
         font-size: 18px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .FormPageButton .Txt {
         font-size: 16px; } }
 
@@ -1462,7 +1503,7 @@ body {
       width: auto;
       padding-left: 0;
       padding-right: 0; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .NavigationButton {
       height: 32px;
       width: 100%;
@@ -1487,7 +1528,7 @@ body {
       .NavigationButton .Txt {
         padding-left: 5px;
         padding-right: 20px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .NavigationButton .Txt {
         padding-left: 5px;
         padding-right: 20px; } }
@@ -1502,7 +1543,7 @@ body {
     @media screen and (max-width: 1070px) {
       .NavigationButton .Icon {
         padding-left: 0px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .NavigationButton .Icon {
         padding-left: 3px; } }
     .NavigationButton .Icon .IconImage {
@@ -1521,7 +1562,7 @@ body {
       .NavigationButton .Icon::after {
         left: 1px;
         top: 32px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .NavigationButton .Icon::after {
         left: 4px;
         top: 32px; } }
@@ -1531,7 +1572,7 @@ body {
   @media screen and (max-width: 1070px) {
     .NavigationButton:hover .Icon::after {
       width: 16px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .NavigationButton:hover .Icon::after {
       width: 16px; } }
 
@@ -1540,7 +1581,7 @@ body {
   @media screen and (max-width: 1070px) {
     .NavigationButton.Active .Icon::after {
       width: 16px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .NavigationButton.Active .Icon::after {
       width: 16px; } }
 
@@ -1573,7 +1614,7 @@ body {
     @media screen and (max-width: 1070px) {
       .NavigationButtonAction .Txt {
         padding-left: 5px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .NavigationButtonAction .Txt {
         padding-left: 5px; } }
   .NavigationButtonAction .Icon {
@@ -1603,7 +1644,7 @@ body {
     .IntroStartButtonAction {
       padding-left: 20px;
       padding-right: 15px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .IntroStartButtonAction {
       padding-left: 20px;
       padding-right: 15px; } }
@@ -1647,7 +1688,7 @@ body {
     .FooterItemButtonAction {
       padding-left: 20px;
       padding-right: 15px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .FooterItemButtonAction {
       padding-left: 20px;
       padding-right: 15px; } }
@@ -1702,7 +1743,7 @@ body {
       .Modal .ModalContent {
         padding-left: 0;
         padding-right: 0; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Modal .ModalContent {
         padding-left: 30px;
         padding-right: 30px; } }
@@ -1896,7 +1937,7 @@ body {
   @media screen and (max-width: 1070px) {
     .Header {
       height: 90px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .Header {
       height: 70px; } }
   .Header .HeaderContent {
@@ -1908,7 +1949,7 @@ body {
     @media screen and (max-width: 1070px) {
       .Header .HeaderContent {
         height: 90px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Header .HeaderContent {
         height: 70px; } }
   .Header .HeaderBackground {
@@ -1923,7 +1964,7 @@ body {
     @media screen and (max-width: 1070px) {
       .Header .HeaderBackground {
         height: 90px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Header .HeaderBackground {
         height: 70px; } }
   .Header .HeaderBackground.Request {
@@ -1946,7 +1987,7 @@ body {
       padding-left: 40px;
       padding-right: 40px;
       padding-bottom: 80px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .Footer {
       padding-top: 30px;
       padding-left: 30px;
@@ -1959,19 +2000,13 @@ body {
     @media screen and (max-width: 1070px) {
       .Footer .LogoFooter {
         padding-bottom: 40px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Footer .LogoFooter {
         padding-bottom: 30px; } }
     .Footer .LogoFooter .LogoFooterImage {
       display: block;
-      height: 32px; }
-      @media screen and (max-width: 1070px) {
-        .Footer .LogoFooter .LogoFooterImage {
-          height: 32px; } }
-      @media screen and (max-width: 780px) {
-        .Footer .LogoFooter .LogoFooterImage {
-          width: 27px;
-          height: 27px; } }
+      width: 36px;
+      height: 36px; }
   .Footer .FooterMenu {
     display: flex;
     position: relative;
@@ -1986,7 +2021,7 @@ body {
         .Footer .FooterMenu .FooterMenuRow {
           width: 50%;
           flex-direction: row; } }
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 986px) {
         .Footer .FooterMenu .FooterMenuRow {
           width: 100%;
           flex-direction: column; } }
@@ -2002,7 +2037,7 @@ body {
             width: 50%;
             padding-bottom: 30px;
             padding-right: 40px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock {
             width: 100%;
             padding-right: 30px; } }
@@ -2043,7 +2078,7 @@ body {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterInsta {
                 width: 22px;
                 height: 22px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterInsta {
                 width: 18px;
                 height: 18px; } }
@@ -2056,7 +2091,7 @@ body {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
                 width: 25px;
                 height: 20px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
                 width: 20px;
                 height: 16px; } }
@@ -2069,7 +2104,7 @@ body {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
                 height: 5px;
                 width: 16px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
                 height: 5px;
                 width: 16px; } }
@@ -2082,7 +2117,7 @@ body {
       .Footer .FooterCopyright {
         padding-top: 80px;
         flex-direction: column; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Footer .FooterCopyright {
         padding-top: 80px;
         flex-direction: column; } }
@@ -2103,7 +2138,7 @@ body {
       @media screen and (max-width: 1070px) {
         .Footer .FooterCopyright .RegistrationText {
           flex-direction: row; } }
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 986px) {
         .Footer .FooterCopyright .RegistrationText {
           flex-direction: column; } }
       .Footer .FooterCopyright .RegistrationText .RegistrationTextLeft {
@@ -2117,7 +2152,7 @@ body {
         @media screen and (max-width: 1070px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextLeft {
             font-size: 12px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextLeft {
             font-size: 10px; } }
       .Footer .FooterCopyright .RegistrationText .RegistrationTextRight {
@@ -2131,7 +2166,7 @@ body {
         @media screen and (max-width: 1070px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextRight {
             font-size: 12px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextRight {
             font-size: 10px; } }
 
@@ -2145,7 +2180,7 @@ body {
   @media screen and (max-width: 1070px) {
     .Navigation {
       height: 90px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 986px) {
     .Navigation {
       height: 70px;
       background: rgba(0, 0, 0, 0);
@@ -2165,7 +2200,7 @@ body {
         height: 90px;
         padding-left: 40px;
         padding-right: 40px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Navigation .Content {
         height: 70px;
         padding-left: 30px;
@@ -2182,29 +2217,23 @@ body {
         .Navigation .Content .ButtonLogo {
           height: 90px;
           padding-bottom: 4px; } }
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 986px) {
         .Navigation .Content .ButtonLogo {
           height: 70px;
           padding-bottom: 4px; } }
       .Navigation .Content .ButtonLogo .ButtonLogoImage {
         display: block;
-        height: 31px;
+        width: 36px;
+        height: 36px;
         -ms-interpolation-mode: nearest-neighbor;
         image-rendering: pixelated;
         image-rendering: -moz-crisp-edges; }
-        @media screen and (max-width: 1070px) {
-          .Navigation .Content .ButtonLogo .ButtonLogoImage {
-            height: 31px; } }
-        @media screen and (max-width: 780px) {
-          .Navigation .Content .ButtonLogo .ButtonLogoImage {
-            width: 27px;
-            height: 27px; } }
     .Navigation .Content .NavigationMain .HamburgerButton {
       display: none; }
       @media screen and (max-width: 1070px) {
         .Navigation .Content .NavigationMain .HamburgerButton {
           display: none; } }
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 986px) {
         .Navigation .Content .NavigationMain .HamburgerButton {
           display: flex;
           position: relative;
@@ -2279,7 +2308,7 @@ body {
         .Navigation .Content .NavigationMain .NavigationContent {
           display: block;
           position: relative; } }
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 986px) {
         .Navigation .Content .NavigationMain .NavigationContent {
           display: block;
           position: fixed;
@@ -2297,7 +2326,7 @@ body {
         @media screen and (max-width: 1070px) {
           .Navigation .Content .NavigationMain .NavigationContent .MobileHeader {
             display: none; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Navigation .Content .NavigationMain .NavigationContent .MobileHeader {
             display: block;
             position: fixed;
@@ -2323,11 +2352,11 @@ body {
               .Navigation .Content .NavigationMain .NavigationContent .MobileHeader .LogoNavigation .ButtonLogoNavigation {
                 display: block;
                 position: relative;
-                height: 26px; }
+                height: 36px; }
                 .Navigation .Content .NavigationMain .NavigationContent .MobileHeader .LogoNavigation .ButtonLogoNavigation .LogoNavigationImage {
                   display: block;
-                  height: 26px;
-                  width: 26px;
+                  width: 36px;
+                  height: 36px;
                   -ms-interpolation-mode: nearest-neighbor;
                   image-rendering: pixelated;
                   image-rendering: -moz-crisp-edges; } }
@@ -2347,7 +2376,7 @@ body {
             margin: 0;
             padding: 0;
             height: 90px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Navigation .Content .NavigationMain .NavigationContent ul {
             flex-direction: column;
             height: 100%;
@@ -2364,7 +2393,7 @@ body {
           @media screen and (max-width: 1070px) {
             .Navigation .Content .NavigationMain .NavigationContent ul li {
               height: 90px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             .Navigation .Content .NavigationMain .NavigationContent ul li {
               height: auto;
               opacity: 0;
@@ -2375,7 +2404,7 @@ body {
           @media screen and (max-width: 1070px) {
             .Navigation .Content .NavigationMain .NavigationContent ul li.Action {
               display: flex; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             .Navigation .Content .NavigationMain .NavigationContent ul li.Action {
               display: block;
               position: absolute;
@@ -2385,7 +2414,7 @@ body {
             @media screen and (max-width: 1070px) {
               .Navigation .Content .NavigationMain .NavigationContent ul li.Action .NavigationButton.MobileMenu {
                 display: none; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               .Navigation .Content .NavigationMain .NavigationContent ul li.Action .NavigationButton.MobileMenu {
                 display: flex; } }
           .Navigation .Content .NavigationMain .NavigationContent ul li.Action .NavigationButtonAction.MobileMenu {
@@ -2393,7 +2422,7 @@ body {
             @media screen and (max-width: 1070px) {
               .Navigation .Content .NavigationMain .NavigationContent ul li.Action .NavigationButtonAction.MobileMenu {
                 display: flex; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               .Navigation .Content .NavigationMain .NavigationContent ul li.Action .NavigationButtonAction.MobileMenu {
                 display: none; } }
       .Navigation .Content .NavigationMain .NavigationContent .NavigationContentBackground {
@@ -2401,7 +2430,7 @@ body {
         @media screen and (max-width: 1070px) {
           .Navigation .Content .NavigationMain .NavigationContent .NavigationContentBackground {
             display: none; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           .Navigation .Content .NavigationMain .NavigationContent .NavigationContentBackground {
             display: block;
             position: absolute;
@@ -2424,46 +2453,46 @@ body {
     @media screen and (max-width: 1070px) {
       .Navigation .NavigationBackground {
         height: 90px; } }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 986px) {
       .Navigation .NavigationBackground {
         height: 70px; } }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 986px) {
   .Navigation.Active {
     background: rgba(1, 1, 1, 0);
     transition: background 0.4s; } }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 986px) {
   .Navigation.Active .Content .NavigationMain .NavigationContent {
     visibility: visible;
     transition: visibility 0s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent .MobileHeader .LogoNavigation {
       opacity: 1;
       transform: translate3d(0, 0, 0);
       transition: opacity 0.4s linear, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); } }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li {
       opacity: 1;
       transform: translate3d(0, 0, 0);
       transition: opacity 0.6s linear, transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1); } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li:nth-of-type(1) {
       transition-delay: 0.3s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li:nth-of-type(2) {
       transition-delay: 0.35s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li:nth-of-type(3) {
       transition-delay: 0.4s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li:nth-of-type(4) {
       transition-delay: 0.45s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent ul li:nth-of-type(5) {
       transition-delay: 0.5s; } }
-  @media screen and (max-width: 780px) and (max-width: 780px) {
+  @media screen and (max-width: 986px) and (max-width: 986px) {
     .Navigation.Active .Content .NavigationMain .NavigationContent .NavigationContentBackground {
       transform: translate3d(0, 0, 0);
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); } }
@@ -2491,7 +2520,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
             min-height: 640px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
             min-height: 520px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .ScrollDownIcon {
@@ -2507,7 +2536,7 @@ body {
               display: block;
               left: 37px;
               bottom: 47px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .ScrollDownIcon {
               display: none;
               left: 27px;
@@ -2736,11 +2765,11 @@ body {
           width: 100%;
           align-items: flex-start;
           justify-content: center;
-          padding-top: 120px; }
+          padding-top: 90px; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem {
-              padding-top: 120px; } }
-          @media screen and (max-width: 780px) {
+              padding-top: 90px; } }
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem {
               padding-top: 70px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem {
@@ -2779,23 +2808,50 @@ body {
                   image-rendering: -moz-crisp-edges; }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText {
               display: block;
-              font-family: 'Gilroy';
+              font-size: 80px;
+              font-family: 'Gilroy', sans-serif;
               font-weight: 900;
-              font-size: 40px;
               padding-top: 10px;
-              text-align: center; }
+              text-align: center;
+              padding-left: 48px;
+              padding-right: 48px; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextDark {
                 color: #111; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextLight {
                 color: #00ffff; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText {
+                  font-size: 80px;
+                  padding-left: 40px;
+                  padding-right: 40px; } }
+              @media screen and (max-width: 986px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText {
+                  font-size: 40px;
+                  padding-left: 30px;
+                  padding-right: 30px; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkSubText {
               display: block;
-              font-family: 'Gilroy';
+              font-family: 'Gilroy', sans-serif;
               font-weight: 700;
-              font-size: 14px;
+              font-size: 22px;
               padding-top: 0px;
+              margin-top: -10px;
+              padding-left: 48px;
+              padding-right: 48px;
               text-align: center;
               color: #111; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkSubText {
+                  font-size: 22px;
+                  margin-top: -10px;
+                  padding-left: 40px;
+                  padding-right: 40px; } }
+              @media screen and (max-width: 986px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkSubText {
+                  font-size: 14px;
+                  margin-top: 0px;
+                  padding-left: 30px;
+                  padding-right: 30px; } }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView {
         display: flex;
         position: relative;
@@ -2808,7 +2864,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView {
             min-height: 640px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView {
             min-height: 520px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerTop {
@@ -2819,7 +2875,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerTop {
               height: 90px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerTop {
               height: 70px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewTitle {
@@ -2842,7 +2898,7 @@ body {
               padding-top: 20px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewTitle {
               text-align: center;
               font-size: 30px;
@@ -2870,7 +2926,7 @@ body {
               padding-left: 40px;
               padding-right: 40px;
               padding-bottom: 20px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSubTitle {
               text-align: center;
               font-size: 16px;
@@ -2892,7 +2948,7 @@ body {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView {
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView {
               padding-left: 30px;
               padding-right: 30px; } }
@@ -2926,7 +2982,7 @@ body {
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentLondon {
                   height: 30%; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentLondon {
                   height: 30%; } }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentLondon .MapContentImageOverlay {
@@ -2953,7 +3009,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentMoscow {
                   right: 10%;
                   height: 40%; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentMoscow {
                   right: 20%;
                   height: 40%; } }
@@ -2980,7 +3036,7 @@ body {
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentCaracas {
                   height: 30%; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentCaracas {
                   height: 30%; } }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentCaracas .MapContentImageOverlay {
@@ -3007,7 +3063,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentSanFrancisco {
                   left: 10%;
                   height: 40%; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapView .MapViewImageContainer .MapContentSanFrancisco {
                   left: 20%;
                   height: 40%; } }
@@ -3033,7 +3089,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerBottom {
               height: 90px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerBottom {
               height: 140px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerBottom .MapViewActionButton {
@@ -3044,7 +3100,7 @@ body {
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerBottom .MapViewActionButton {
                 bottom: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroMapView .MapViewSpacerBottom .MapViewActionButton {
                 bottom: 30px; } }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective {
@@ -3057,7 +3113,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective {
             min-height: 640px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective {
             min-height: 520px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader {
@@ -3071,7 +3127,7 @@ body {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader {
               top: 34%;
               bottom: auto; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader {
               top: 26%;
               bottom: auto; } }
@@ -3089,7 +3145,7 @@ body {
                 font-size: calc(42px + 3vw);
                 line-height: calc(42px + 3vw);
                 letter-spacing: 2px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader .EffectiveHeaderText {
                 font-size: calc(30px + 2vw);
                 line-height: calc(30px + 2vw);
@@ -3111,7 +3167,7 @@ body {
                 font-size: 20px;
                 letter-spacing: normal;
                 color: rgba(255, 255, 255, 0.8); } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader .EffectiveHeaderSubText {
                 max-width: 100vw;
                 padding-top: 5px;
@@ -3129,7 +3185,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader .IntroEffectiveHeaderHolder {
                 padding-left: 40px;
                 padding-right: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .IntroEffectiveHeader .IntroEffectiveHeaderHolder {
                 padding-left: 30px;
                 padding-right: 30px; } }
@@ -3148,7 +3204,7 @@ body {
               bottom: 40px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroEffective .EffectiveActionButton {
               justify-content: flex-start;
               bottom: 30px;
@@ -3163,7 +3219,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView {
             min-height: 1280px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView {
             min-height: 1040px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainViewSpacerTop {
@@ -3174,7 +3230,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainViewSpacerTop {
               height: 90px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainViewSpacerTop {
               height: 70px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainViewTitle {
@@ -3197,7 +3253,7 @@ body {
               padding-top: 20px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainViewTitle {
               text-align: center;
               font-size: 30px;
@@ -3217,7 +3273,7 @@ body {
               flex-direction: row;
               padding-top: 40px;
               padding-bottom: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem {
               flex-direction: column;
               padding-top: 30px;
@@ -3233,7 +3289,7 @@ body {
                 width: 50%;
                 max-width: 50%;
                 min-height: 320px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainText {
                 width: 100%;
                 max-width: 100%;
@@ -3254,7 +3310,7 @@ body {
                   line-height: calc(42px + 3vw);
                   letter-spacing: 2px;
                   max-width: calc(50vw - 48px - 24px); } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainText .ExplainTextTitle {
                   max-width: 100%;
                   font-size: 30px;
@@ -3273,7 +3329,7 @@ body {
                   font-size: 20px;
                   letter-spacing: normal;
                   max-width: calc(50vw - 48px - 24px); } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainText .ExplainTextSubText {
                   font-size: 16px;
                   letter-spacing: normal;
@@ -3290,7 +3346,7 @@ body {
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainText .ExplainDivider {
                   display: block; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainText .ExplainDivider {
                   display: none; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage {
@@ -3303,7 +3359,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage {
                 width: 50%;
                 max-width: 50%; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage {
                 width: 100%;
                 max-width: 100%;
@@ -3317,7 +3373,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent {
                   width: 320px;
                   height: 320px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent {
                   width: 220px;
                   height: 220px; } }
@@ -3328,7 +3384,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.JoyStick {
                   margin-left: 0;
                   margin-right: 0px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.JoyStick {
                   margin-left: 0;
                   margin-right: 0; } }
@@ -3339,7 +3395,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.DeLorean {
                   margin-left: 38px;
                   margin-right: 0; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.DeLorean {
                   margin-left: 0;
                   margin-right: 0; } }
@@ -3350,7 +3406,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.Cerdito {
                   margin-left: 0;
                   margin-right: 0px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.Cerdito {
                   margin-left: 0;
                   margin-right: 0; } }
@@ -3361,7 +3417,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.Binocular {
                   margin-left: -10px;
                   margin-right: 0; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem .ExplainImage .ExplainImageContent.Binocular {
                   margin-left: 0;
                   margin-right: 0; } }
@@ -3370,7 +3426,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left {
               flex-direction: row; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left {
               flex-direction: column; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left .ExplainText {
@@ -3380,7 +3436,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left .ExplainText {
                 padding-left: 40px;
                 padding-right: 20px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left .ExplainText {
                 padding-left: 30px;
                 padding-right: 30px; } }
@@ -3395,7 +3451,7 @@ body {
                 text-align: right;
                 padding-left: 20px;
                 padding-right: 0px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Left .ExplainImage {
                 text-align: center;
                 padding-left: 30px;
@@ -3405,7 +3461,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right {
               flex-direction: row; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right {
               flex-direction: column-reverse; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right .ExplainText {
@@ -3415,7 +3471,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right .ExplainText {
                 padding-left: 20px;
                 padding-right: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right .ExplainText {
                 padding-left: 30px;
                 padding-right: 30px; } }
@@ -3430,7 +3486,7 @@ body {
                 text-align: left;
                 padding-left: 0;
                 padding-right: 20px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroExplainView .ExplainItem.Right .ExplainImage {
                 text-align: center;
                 padding-left: 30px;
@@ -3445,7 +3501,7 @@ body {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona {
             min-height: 320px;
             background: linear-gradient(125deg, #400495 0%, #5904ae 45%, #e600e5 100%); } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona {
             min-height: 260px;
             background: linear-gradient(125deg, #400495 0%, #5904ae 45%, #e600e5 100%); } }
@@ -3457,7 +3513,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaSpacerTop {
               height: 90px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaSpacerTop {
               height: 70px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaTitle {
@@ -3480,7 +3536,7 @@ body {
               padding-top: 20px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaTitle {
               text-align: center;
               font-size: 30px;
@@ -3501,7 +3557,7 @@ body {
               padding-top: 40px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent {
               flex-direction: column;
               padding-top: 30px;
@@ -3515,7 +3571,7 @@ body {
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder {
                 flex-direction: column; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder {
                 flex-direction: column; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem {
@@ -3528,7 +3584,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem {
                   flex-direction: column;
                   padding-bottom: 48px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem {
                   flex-direction: column;
                   padding-bottom: 48px; } }
@@ -3541,7 +3597,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaImage {
                     height: 48px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaImage {
                     height: 32px; } }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaImage .ComoFuncionaImageContent {
@@ -3557,7 +3613,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText {
                     padding-top: 20px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText {
                     padding-top: 15px; } }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText .ComoFuncionaTextTitle {
@@ -3571,7 +3627,7 @@ body {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText .ComoFuncionaTextTitle {
                       font-size: 42px;
                       letter-spacing: 1px; } }
-                  @media screen and (max-width: 780px) {
+                  @media screen and (max-width: 986px) {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText .ComoFuncionaTextTitle {
                       font-size: 24px;
                       letter-spacing: normal; } }
@@ -3587,7 +3643,7 @@ body {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText .ComoFuncionaTextContent {
                       font-size: 16px;
                       letter-spacing: normal; } }
-                  @media screen and (max-width: 780px) {
+                  @media screen and (max-width: 986px) {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem .ComoFuncionaText .ComoFuncionaTextContent {
                       font-size: 16px;
                       letter-spacing: normal; } }
@@ -3598,7 +3654,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem:nth-of-type(1) {
                   padding-left: 0px;
                   padding-right: 0px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem:nth-of-type(1) {
                   padding-left: 0px;
                   padding-right: 0px; } }
@@ -3609,7 +3665,7 @@ body {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem:nth-of-type(2) {
                   padding-left: 0px;
                   padding-right: 0px; } }
-              @media screen and (max-width: 780px) {
+              @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder .ComoFuncionaItem:nth-of-type(2) {
                   padding-left: 0px;
                   padding-right: 0px; } }
@@ -3620,7 +3676,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder:nth-of-type(1) {
                 padding-left: 15px;
                 padding-right: 0px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder:nth-of-type(1) {
                 padding-left: 0px;
                 padding-right: 0px; } }
@@ -3631,7 +3687,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder:nth-of-type(2) {
                 padding-left: 15px;
                 padding-right: 0px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaContent .ComoFuncionaHolder:nth-of-type(2) {
                 padding-left: 0px;
                 padding-right: 0px; } }
@@ -3656,7 +3712,7 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaSpacerBottom {
               height: 120px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroComoFunciona .ComoFuncionaSpacerBottom {
               height: 100px; } }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios {
@@ -3669,7 +3725,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios {
             min-height: 640px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios {
             min-height: 520px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader {
@@ -3683,7 +3739,7 @@ body {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader {
               top: 34%;
               bottom: auto; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader {
               top: 36%;
               bottom: auto; } }
@@ -3701,7 +3757,7 @@ body {
                 font-size: calc(42px + 3vw);
                 line-height: calc(42px + 3vw);
                 letter-spacing: 2px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader .ParaNegociosHeaderText {
                 font-size: calc(30px + 2vw);
                 line-height: calc(30px + 2vw);
@@ -3723,7 +3779,7 @@ body {
                 font-size: 20px;
                 letter-spacing: normal;
                 color: rgba(255, 255, 255, 0.8); } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader .ParaNegociosHeaderSubText {
                 max-width: 100vw;
                 padding-top: 5px;
@@ -3741,7 +3797,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader .ParaNegociosHeaderHolder {
                 padding-left: 40px;
                 padding-right: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .IntroParaNegociosHeader .ParaNegociosHeaderHolder {
                 padding-left: 30px;
                 padding-right: 30px; } }
@@ -3760,7 +3816,7 @@ body {
               bottom: 40px;
               padding-left: 40px;
               padding-right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroParaNegocios .ParaNegociosActionButton {
               justify-content: flex-start;
               bottom: 30px;
@@ -3774,7 +3830,7 @@ body {
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo {
             min-height: 640px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo {
             min-height: 520px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer {
@@ -3789,7 +3845,7 @@ body {
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoSpacerTop {
                 height: 90px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoSpacerTop {
                 height: 70px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoTitle {
@@ -3812,7 +3868,7 @@ body {
                 padding-top: 20px;
                 padding-left: 40px;
                 padding-right: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoTitle {
                 text-align: center;
                 font-size: 30px;
@@ -3831,7 +3887,7 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo {
                 padding-left: 40px;
                 padding-right: 40px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo {
                 padding-left: 30px;
                 padding-right: 30px; } }
@@ -4016,7 +4072,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .FormErrorTitle {
                     padding-top: 40px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .FormErrorTitle {
                     padding-top: 30px; } }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .FormErrorSubTitle {
@@ -4031,7 +4087,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .FormErrorSubTitle {
                     padding-bottom: 20px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .FormErrorSubTitle {
                     padding-bottom: 15px; } }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError .ErrorButton {
@@ -4075,7 +4131,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormResult .FormResultTitle {
                     padding-top: 40px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormResult .FormResultTitle {
                     padding-top: 30px; } }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormResult .FormResultSubTitle {
@@ -4090,7 +4146,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormResult .FormResultSubTitle {
                     padding-bottom: 20px; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormResult .FormResultSubTitle {
                     padding-bottom: 15px; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormError.Hidden {
@@ -4141,7 +4197,7 @@ body {
                 @media screen and (max-width: 1070px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm .InputRowPositioner {
                     flex-direction: row; } }
-                @media screen and (max-width: 780px) {
+                @media screen and (max-width: 986px) {
                   #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm .InputRowPositioner {
                     flex-direction: column; } }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm .InputRowPositioner .InputRowSpacer {
@@ -4151,7 +4207,7 @@ body {
                   @media screen and (max-width: 1070px) {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm .InputRowPositioner .InputRowSpacer {
                       display: block; } }
-                  @media screen and (max-width: 780px) {
+                  @media screen and (max-width: 986px) {
                     #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm .InputRowPositioner .InputRowSpacer {
                       display: none; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevo .FormGetMuevoForm.Hidden {
@@ -4163,7 +4219,7 @@ body {
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoSpacerBottom {
                 height: 80px; } }
-            @media screen and (max-width: 780px) {
+            @media screen and (max-width: 986px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroFormGetMuevo .IntroFormGetMuevoSizer .FormGetMuevoSpacerBottom {
                 height: 60px; } }
 
@@ -4222,7 +4278,7 @@ body {
             padding-top: 40px;
             padding-left: 40px;
             padding-right: 40px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage {
             height: calc(33vw + 30px);
             max-height: 230px;
@@ -4247,7 +4303,7 @@ body {
               max-height: 350px;
               top: 40px;
               right: 40px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
               width: 33vw;
               height: 33vw;
@@ -4267,7 +4323,7 @@ body {
             padding-left: 40px;
             padding-right: 40px;
             margin-top: calc(-16px - 2vw); } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader {
             padding-left: 30px;
             padding-right: 30px;
@@ -4286,7 +4342,7 @@ body {
               font-size: calc(42px + 2vw);
               line-height: calc(42px + 2vw);
               letter-spacing: 2px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
               font-size: calc(30px + 3vw);
               line-height: calc(30px + 3vw);
@@ -4313,7 +4369,7 @@ body {
             padding-left: 40px;
             padding-right: 40px;
             padding-bottom: 40px; } }
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent {
             width: 100%;
             font-size: 16px;
@@ -4329,6 +4385,172 @@ body {
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent ul {
               padding-left: 18px; } }
-          @media screen and (max-width: 780px) {
+          @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent ul {
               padding-left: 16px; } }
+
+#AppRoot .App .ViewContainer .MarketPlace.View {
+  background: #fff;
+  background-color: #fff; }
+  #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox {
+    display: block;
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: #fff; }
+    #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Spacer {
+      display: block;
+      position: relative;
+      height: 90px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Spacer {
+          height: 90px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Spacer {
+          height: 70px; } }
+    #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
+      display: block;
+      position: relative;
+      padding-left: 48px;
+      padding-right: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
+          padding-left: 40px;
+          padding-right: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls {
+          padding-left: 30px;
+          padding-right: 30px; } }
+    #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      padding-left: 48px;
+      padding-right: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
+          padding-left: 40px;
+          padding-right: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
+          padding-left: 30px;
+          padding-right: 30px; } }
+      #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow {
+        display: flex;
+        position: relative;
+        width: 100%;
+        flex-direction: row; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow {
+            flex-direction: row; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow {
+            flex-direction: column; } }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem {
+          display: flex;
+          position: relative;
+          flex-grow: 1;
+          margin-bottom: 10px;
+          border-radius: 13.5px;
+          background-color: #f2f2f2; }
+          #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent {
+            display: flex;
+            position: relative;
+            flex-grow: 1;
+            flex-direction: row;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 30px; }
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer {
+              display: flex;
+              position: relative;
+              width: 100px;
+              height: 100px;
+              border-radius: 50px;
+              overflow: hidden;
+              align-items: center;
+              justify-content: center;
+              background-color: #0fffff; }
+              #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer .PunkImageContainerBG {
+                display: flex;
+                position: relative;
+                width: 92px;
+                height: 92px;
+                border-radius: 46px;
+                overflow: hidden;
+                align-items: flex-end;
+                justify-content: center;
+                background: radial-gradient(92px 92px at 50% 100%, transparent, #8000ff); }
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer .PunkImageContainerBG .PunkImageGrid {
+                  width: 92px;
+                  height: 92px;
+                  -ms-interpolation-mode: nearest-neighbor;
+                  image-rendering: pixelated;
+                  image-rendering: -moz-crisp-edges; }
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer {
+              display: flex;
+              position: relative;
+              padding-top: 3px;
+              padding-left: 10px;
+              flex-grow: 1;
+              flex-direction: column; }
+              #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemTop {
+                display: flex;
+                position: relative;
+                flex-direction: row; }
+              #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails {
+                display: flex;
+                position: relative;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: auto;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 5px;
+                font-family: 'Gilroy', sans-serif;
+                font-size: 14px;
+                font-weight: 700; }
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextTitle {
+                  display: block;
+                  position: relative;
+                  font-size: 10px;
+                  color: #999; }
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent {
+                  display: block;
+                  position: relative;
+                  color: #111;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis; }
+                #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContentOverFlow {
+                  display: block;
+                  position: absolute;
+                  top: 11px;
+                  left: 0px;
+                  width: 100%;
+                  color: #111;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis; }
+              #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails.Right {
+                align-items: flex-end; }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+          display: block;
+          width: 10px;
+          height: 140px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+              display: block;
+              width: 10px;
+              height: 140px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+              display: none;
+              width: 0px;
+              height: 0px; } }
+        #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkSpacer.Hidden {
+          display: none;
+          width: 0px;
+          height: 0px; }

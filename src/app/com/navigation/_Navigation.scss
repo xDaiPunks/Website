@@ -73,20 +73,12 @@
 
 			.ButtonLogoImage {
 				display: block;
-				height: 31px;
+				width: 36px;
+				height: 36px;
 
 				-ms-interpolation-mode: nearest-neighbor;
 				image-rendering: pixelated;
 				image-rendering: -moz-crisp-edges;
-
-				@include responsiveMax($responsiveMed) {
-					height: 31px;
-				}
-
-				@include responsiveMax($responsiveSmall) {
-					width: 27px;
-					height: 27px;
-				}
 			}
 		}
 
@@ -290,12 +282,14 @@
 							.ButtonLogoNavigation {
 								display: block;
 								position: relative;
-								height: 26px;
+
+								height: 36px;
 
 								.LogoNavigationImage {
 									display: block;
-									height: 26px;
-									width: 26px;
+
+									width: 36px;
+									height: 36px;
 
 									-ms-interpolation-mode: nearest-neighbor;
 									image-rendering: pixelated;

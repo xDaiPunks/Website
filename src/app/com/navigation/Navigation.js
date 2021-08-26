@@ -47,6 +47,7 @@ class Navigation extends PureComponent {
 		this.actionButtonComponent = this.actionButtonComponent.bind(this);
 
 		eventService.on('force:state', this.guid, () => {
+			console.log('force state navigation', userService.address);
 			this.setState(this.state);
 			this.forceUpdate();
 		});
@@ -232,7 +233,7 @@ class Navigation extends PureComponent {
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButton MobileMenu'}
-						iconImage="/static/media/images/icon-wallet-white.svg"
+						iconImage="/static/media/images/icon-wallet.svg"
 					/>
 
 					<Button
@@ -356,27 +357,15 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'All punks'}
-										title={'All punks'}
-										data="/about"
+										label={'Market place'}
+										title={'Market place'}
+										data="/market-place"
 										onClick={this.navigate}
 										cssClass={
-											currentView === 'about'
+											currentView === 'marketPlace'
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}
-										iconImage="/static/media/images/icon-overview.svg"
-									/>
-								</li>
-
-								<li>
-									<Button
-										type={'navigationButton'}
-										label={'Market place'}
-										title={'Market place'}
-										data="/remittances"
-										onClick={this.navigate}
-										cssClass={'NavigationButton'}
 										iconImage="/static/media/images/icon-cart.svg"
 									/>
 								</li>

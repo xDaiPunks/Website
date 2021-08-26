@@ -513,7 +513,7 @@ class Home extends PureComponent {
 										<span className="TextDark">xDAI</span>
 										<span className="TextLight">PUNKS</span>
 									</span>
-									<span className="PunkSubText">Here is your chance to own a genuine xDAIPUNK!</span>
+									<span className="PunkSubText">Here is your chance to own a genuine xDaiPunk!</span>
 								</div>
 							</div>
 

@@ -45,16 +45,9 @@
 
 		.LogoFooterImage {
 			display: block;
-			height: 32px;
 
-			@include responsiveMax($responsiveMed) {
-				height: 32px;
-			}
-
-			@include responsiveMax($responsiveSmall) {
-				width: 27px;
-				height: 27px;
-			}
+			width: 36px;
+			height: 36px;
 		}
 	}
 
@@ -70,17 +63,17 @@
 			position: relative;
 
 			width: 50%;
-            flex-direction: row;
-            
-            @include responsiveMax($responsiveMed) {
-                width: 50%;
-                flex-direction: row;
-            }
+			flex-direction: row;
 
-            @include responsiveMax($responsiveSmall) {
-                width: 100%;
-                flex-direction: column;
-            }
+			@include responsiveMax($responsiveMed) {
+				width: 50%;
+				flex-direction: row;
+			}
+
+			@include responsiveMax($responsiveSmall) {
+				width: 100%;
+				flex-direction: column;
+			}
 
 			.FooterMenuBlock {
 				display: flex;
@@ -93,13 +86,13 @@
 				padding-right: $padding;
 
 				@include responsiveMax($responsiveMed) {
-                    width: 50%;
+					width: 50%;
 					padding-bottom: 30px;
 					padding-right: $paddingMed;
 				}
 
 				@include responsiveMax($responsiveSmall) {
-                    width: 100%;
+					width: 100%;
 					padding-right: $paddingSmall;
 				}
 
@@ -133,71 +126,70 @@
 					letter-spacing: normal;
 					white-space: nowrap;
 					font-family: 'VAG Rounded', sans-serif;
-                }
-                
-                .FooterSocial {
-                    display: flex;
-                    position: relative;
+				}
 
-                    height: 32px;
+				.FooterSocial {
+					display: flex;
+					position: relative;
 
-                    flex-direction: row;
-                    align-items: center;
+					height: 32px;
 
-                    .FooterInsta {
-                        display: block;
-                        position: relative;
+					flex-direction: row;
+					align-items: center;
 
-                        width: 22px;
-                        height: 22px;
+					.FooterInsta {
+						display: block;
+						position: relative;
 
-                        @include responsiveMax($responsiveMed) {
-                            width: 22px;
-                            height: 22px;
-                        }
-        
-                        @include responsiveMax($responsiveSmall) {
-                            width: 18px;
-                            height: 18px;
-                        }
-                    }
+						width: 22px;
+						height: 22px;
 
+						@include responsiveMax($responsiveMed) {
+							width: 22px;
+							height: 22px;
+						}
 
-                    .FooterTwitter {
-                        display: block;
-                        position: relative;
+						@include responsiveMax($responsiveSmall) {
+							width: 18px;
+							height: 18px;
+						}
+					}
 
-                        width: 25px;
-                        height: 20px;
+					.FooterTwitter {
+						display: block;
+						position: relative;
 
-                        @include responsiveMax($responsiveMed) {
-                            width: 25px;
-                            height: 20px;
-                        }
-        
-                        @include responsiveMax($responsiveSmall) {
-                            width: 20px;
-                            height: 16px;
-                        }
-                    }
+						width: 25px;
+						height: 20px;
 
-                    .FooterSocialSpacer {
-                        display: block;
-                        position: relative;
-                        height: 5px;
-                        width: 16px;
+						@include responsiveMax($responsiveMed) {
+							width: 25px;
+							height: 20px;
+						}
 
-                        @include responsiveMax($responsiveMed) {
-                            height: 5px;
-                            width: 16px;
-                        }
-        
-                        @include responsiveMax($responsiveSmall) {
-                            height: 5px;
-                            width: 16px;
-                        }
-                    }
-                }
+						@include responsiveMax($responsiveSmall) {
+							width: 20px;
+							height: 16px;
+						}
+					}
+
+					.FooterSocialSpacer {
+						display: block;
+						position: relative;
+						height: 5px;
+						width: 16px;
+
+						@include responsiveMax($responsiveMed) {
+							height: 5px;
+							width: 16px;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							height: 5px;
+							width: 16px;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -207,18 +199,17 @@
 		position: relative;
 
 		padding-top: 80px;
-        flex-direction: column;
-        
-        @include responsiveMax($responsiveMed) {
-            padding-top: 80px;
-            flex-direction: column;
-        }
+		flex-direction: column;
 
-        @include responsiveMax($responsiveSmall) {
-            padding-top: 80px;
-            flex-direction: column;
-        }
+		@include responsiveMax($responsiveMed) {
+			padding-top: 80px;
+			flex-direction: column;
+		}
 
+		@include responsiveMax($responsiveSmall) {
+			padding-top: 80px;
+			flex-direction: column;
+		}
 
 		.CopyrightText {
 			display: block;
@@ -230,24 +221,24 @@
 			font-weight: 600;
 			letter-spacing: normal;
 			white-space: nowrap;
-            font-family: 'VAG Rounded', sans-serif;
+			font-family: 'VAG Rounded', sans-serif;
 
-            padding-bottom: 6px;
+			padding-bottom: 6px;
 		}
 
 		.RegistrationText {
 			display: flex;
 			position: relative;
 
-            flex-direction: row;
-            
-            @include responsiveMax($responsiveMed) {
-                flex-direction: row;
-            }
-    
-            @include responsiveMax($responsiveSmall) {
-                flex-direction: column;
-            }
+			flex-direction: row;
+
+			@include responsiveMax($responsiveMed) {
+				flex-direction: row;
+			}
+
+			@include responsiveMax($responsiveSmall) {
+				flex-direction: column;
+			}
 
 			.RegistrationTextLeft {
 				display: block;
@@ -258,15 +249,15 @@
 				font-size: 12px;
 				font-weight: 600;
 				letter-spacing: normal;
-                font-family: 'Roboto', sans-serif;
-                
-                @include responsiveMax($responsiveMed) {
-                    font-size: 12px;
-                }
-        
-                @include responsiveMax($responsiveSmall) {
-                    font-size: 10px;
-                }
+				font-family: 'Roboto', sans-serif;
+
+				@include responsiveMax($responsiveMed) {
+					font-size: 12px;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					font-size: 10px;
+				}
 			}
 
 			.RegistrationTextRight {
@@ -278,15 +269,15 @@
 				font-size: 12px;
 				font-weight: 600;
 				letter-spacing: normal;
-                font-family: 'Roboto', sans-serif;
-                
-                @include responsiveMax($responsiveMed) {
-                    font-size: 12px;
-                }
-        
-                @include responsiveMax($responsiveSmall) {
-                    font-size: 10px;
-                }
+				font-family: 'Roboto', sans-serif;
+
+				@include responsiveMax($responsiveMed) {
+					font-size: 12px;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					font-size: 10px;
+				}
 			}
 		}
 	}

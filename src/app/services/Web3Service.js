@@ -258,6 +258,8 @@ class Web3Service {
 					.then((signerResponse) => {
 						console.log(signerResponse);
 						const signerAddress = signerResponse;
+
+						userService.address = signerResponse;
 						checkCurrentNetwork(signer, provider, signerAddress);
 					})
 					.catch((signerResponseError) => {

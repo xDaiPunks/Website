@@ -431,10 +431,10 @@
 								align-items: flex-start;
 								justify-content: center;
 
-								padding-top: $heightHeader + 30px;
+								padding-top: $heightHeader;
 
 								@include responsiveMax($responsiveMed) {
-									padding-top: $heightHeaderMed + 30px;
+									padding-top: $heightHeaderMed;
 								}
 
 								@include responsiveMax($responsiveSmall) {
@@ -498,12 +498,17 @@
 
 									.PunkText {
 										display: block;
-										font-family: 'Gilroy';
+
+										font-size: 80px;
+
+										font-family: 'Gilroy', sans-serif;
 										font-weight: 900;
-										font-size: 40px;
 
 										padding-top: 10px;
 										text-align: center;
+
+										padding-left: $padding;
+										padding-right: $padding;
 
 										.TextDark {
 											color: #111;
@@ -512,18 +517,57 @@
 										.TextLight {
 											color: #00ffff;
 										}
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 80px;
+
+											padding-left: $paddingMed;
+											padding-right: $paddingMed;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 40px;
+
+											padding-left: $paddingSmall;
+											padding-right: $paddingSmall;
+										}
 									}
 
 									.PunkSubText {
 										display: block;
-										font-family: 'Gilroy';
+										font-family: 'Gilroy', sans-serif;
 										font-weight: 700;
-										font-size: 14px;
+										font-size: 22px;
 
 										padding-top: 0px;
+										margin-top: -10px;
+
+										padding-left: $padding;
+										padding-right: $padding;
+
 										text-align: center;
 
 										color: #111;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 22px;
+											margin-top: -10px;
+
+											padding-left: $paddingMed;
+											padding-right: $paddingMed;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 14px;
+											margin-top: 0px;
+
+											padding-left: $paddingSmall;
+											padding-right: $paddingSmall;
+										}
 									}
 								}
 							}
