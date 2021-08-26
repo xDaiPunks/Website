@@ -99,7 +99,6 @@ class AppService {
 			web3Service
 				.mintsRemaining()
 				.then((response) => {
-					console.log('Mints remaining', response.toString());
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {

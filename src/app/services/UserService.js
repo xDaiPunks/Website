@@ -15,8 +15,9 @@ class UserService {
 		if (!Instance) {
 			Instance = this;
 			Instance.addressStore = null;
-			
+			Instance.userSignedInStore = null;
 		}
+
 		return Instance;
 	}
 
@@ -28,6 +29,16 @@ class UserService {
 	set address(val) {
 		const vm = this;
 		vm.addressStore = val;
+	}
+
+	get userSignedIn() {
+		const vm = this;
+		return vm.userSignedInStore;
+	}
+
+	set userSignedIn(val) {
+		const vm = this;
+		vm.userSignedInStore = val;
 	}
 }
 

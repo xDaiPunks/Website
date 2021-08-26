@@ -7,6 +7,7 @@ import WalletConnect from '@walletconnect/client';
 import QRCodeModal from '@walletconnect/qrcode-modal';
 
 import AbiService from 'src/app/services/AbiService';
+import PunkService from 'src/app/services/PunkService';
 import UserService from 'src/app/services/UserService';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
@@ -21,6 +22,7 @@ const hdkey = require('ethereumjs-wallet').hdkey;
 const xDaiPunksAbi = require('src/app//abi/xDaiPunks.json');
 
 const abiService = new AbiService();
+const punkService = new PunkService();
 const userService = new UserService();
 const eventService = new EventService();
 const configService = new ConfigService();
@@ -135,8 +137,10 @@ class Web3Service {
 					eventService.off('preloader:show', vm.guid);
 					if (accountArray.length === 0) {
 						userService.address = null;
+						userService.signedIn = null;
 					} else {
 						userService.address = accountArray[0];
+						userService.signedIn = true;
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -162,8 +166,10 @@ class Web3Service {
 					eventService.off('preloader:show', vm.guid);
 					if (accountArray.length === 0) {
 						userService.address = null;
+						userService.signedIn = null;
 					} else {
 						userService.address = accountArray[0];
+						userService.signedIn = true;
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -207,6 +213,8 @@ class Web3Service {
 					.getAddress()
 					.then((signerResponse) => {
 						userService.address = signerResponse;
+						userService.signedIn = true;
+
 						resolve({ result: 'success' });
 					})
 					.catch((signerResponseError) => {
@@ -260,6 +268,7 @@ class Web3Service {
 						const signerAddress = signerResponse;
 
 						userService.address = signerResponse;
+						userService.signedIn = true;
 						checkCurrentNetwork(signer, provider, signerAddress);
 					})
 					.catch((signerResponseError) => {
@@ -675,9 +684,13 @@ class Web3Service {
 					vm.addWeb3Events();
 
 					if (!ethereum.selectedAddress) {
+						userService.address = null;
+						userService.signedIn = null;
+
 						resolve({ result: 'success' });
 					} else {
 						userService.address = ethereum.selectedAddress;
+						userService.signedIn = true;
 						resolve({ result: 'success' });
 					}
 				}
@@ -765,6 +778,15 @@ class Web3Service {
 				.mintsRemaining()
 
 				.then((mintsRemaining) => {
+					let mintsCount;
+
+					mintsCount = BigNumber(10000)
+						.minus(BigNumber(mintsRemaining.toString()))
+						.toString();
+
+					console.log('MintsCount', mintsCount);
+
+					punkService.mintsCount = mintsCount;
 					resolve(mintsRemaining);
 				})
 				.catch((mintsRemainingError) => {

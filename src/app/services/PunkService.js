@@ -15,7 +15,7 @@ class PunkService {
 		if (!Instance) {
 			Instance = this;
 			Instance.publicSale = null;
-			Instance.mintsRemaining = null;
+			Instance.mintsCount = null;
 
 			Instance.punkArrayData = null;
 			Instance.punkObjectData = null;

@@ -8,6 +8,7 @@ import SlideShow from 'src/app/com/slideShow/SlideShow';
 
 import Animate from 'src/app/services/Animate';
 import ViewService from 'src/app/services/ViewService';
+import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
 import ScrollService from 'src/app/services/ScrollService';
@@ -20,6 +21,7 @@ const slideShow = new SlideShow();
 
 const animate = new Animate();
 const viewService = new ViewService();
+const punkService = new PunkService();
 const eventService = new EventService();
 const routeService = new RouteService();
 const scrollService = new ScrollService();
@@ -463,11 +465,15 @@ class Home extends PureComponent {
 	subContentItem() {
 		const vm = this;
 
+		const mintsCount = punkService.mintsCount;
+
+		console.log('Home mintscount', mintsCount);
+
 		return (
 			<div className="MintAmountContainer">
 				<span className="MintText">NUMBER OF MINTED PUNKS</span>
 				<div className="MintedItems">
-					<span className="MintedItemsText">0 / 1000</span>
+					<span className="MintedItemsText">{mintsCount} / 1000</span>
 				</div>
 			</div>
 		);
@@ -538,17 +544,17 @@ class Home extends PureComponent {
 								</div>
 								<div className="IntroFooterContainer">
 									<div className="FooterContainerSizer">
-									<Button
-										type={'actionButton'}
-										label={'Get a punk for 12 xDai!'}
-										title={'Get a punk for 12 xDai!'}
-										onClick={(event) => {
-											console.log('Hey');
-											event.preventDefault();
-										}}
-										cssClass={'ActionButton'}
-										iconImage="/static/media/images/icon-mint-white.svg"
-									/>
+										<Button
+											type={'actionButton'}
+											label={'Get a punk for 12 xDai!'}
+											title={'Get a punk for 12 xDai!'}
+											onClick={(event) => {
+												console.log('Hey');
+												event.preventDefault();
+											}}
+											cssClass={'ActionButton'}
+											iconImage="/static/media/images/icon-mint-white.svg"
+										/>
 									</div>
 								</div>
 							</div>
