@@ -39,106 +39,6 @@
 								min-height: $minHeightScreenSmall;
 							}
 
-							.ScrollDownIcon {
-								display: block;
-								position: absolute;
-
-								z-index: 10;
-
-								width: 16px;
-								height: 6px;
-
-								left: $padding - 3px;
-								bottom: $padding + 7px;
-
-								@include responsiveMax($responsiveMed) {
-									display: block;
-									left: $paddingMed - 3px;
-									bottom: $paddingMed + 7px;
-								}
-
-								@include responsiveMax($responsiveSmall) {
-									display: none;
-									left: $paddingSmall - 3px;
-									bottom: $paddingMed + 7px;
-								}
-
-								.ChevronDown {
-									display: block;
-									position: absolute;
-
-									top: 0px;
-
-									width: 100%;
-
-									transform: translate(25%, 25%);
-
-									.ChevronLeft {
-										display: block;
-										position: absolute;
-										height: 2px;
-										width: 50%;
-
-										border-radius: 1px;
-										transform: translateX(-25%)
-											rotate(45deg);
-
-										background-color: #0fffff;
-									}
-
-									.ChevronRight {
-										display: block;
-										position: absolute;
-										height: 2px;
-										width: 50%;
-
-										border-radius: 1px;
-										transform: translateX(25%)
-											rotate(-45deg);
-
-										background-color: #0fffff;
-									}
-								}
-
-								.ChevronDown.Top {
-									top: 0px;
-									bottom: auto;
-
-									animation-name: scrollDown;
-									animation-delay: 0s;
-									animation-duration: 2s;
-
-									animation-iteration-count: infinite;
-									animation-timing-function: ease-out;
-								}
-
-								.ChevronDown.Bottom {
-									top: auto;
-									bottom: 0px;
-
-									animation-name: scrollDown;
-									animation-delay: 0.2s;
-									animation-duration: 2s;
-
-									animation-iteration-count: infinite;
-									animation-timing-function: ease-out;
-								}
-
-								@keyframes scrollDown {
-									0% {
-										opacity: 0.2;
-									}
-
-									50% {
-										opacity: 1;
-									}
-
-									100% {
-										opacity: 0.2;
-									}
-								}
-							}
-
 							.Confetti {
 								display: block;
 								position: absolute;
@@ -428,8 +328,10 @@
 								flex-grow: 1;
 								width: 100%;
 
-								align-items: flex-start;
-								justify-content: center;
+								flex-direction: column;
+
+								align-items: center;
+								justify-content: flex-start;
 
 								padding-top: $heightHeader;
 
@@ -438,7 +340,7 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									padding-top: $heightHeaderSmall;
+									padding-top: 40px;
 								}
 
 								.PunkItem {
@@ -447,6 +349,9 @@
 									flex-direction: column;
 									align-items: center;
 									justify-content: center;
+
+									align-items: center;
+									justify-content: flex-start;
 
 									.PunkImage {
 										display: flex;
@@ -539,7 +444,7 @@
 										display: block;
 										font-family: 'Gilroy', sans-serif;
 										font-weight: 700;
-										font-size: 22px;
+										font-size: 14px;
 
 										padding-top: 0px;
 										margin-top: -10px;
@@ -552,7 +457,7 @@
 										color: #111;
 
 										@include responsiveMax($responsiveMed) {
-											font-size: 22px;
+											font-size: 14px;
 											margin-top: -10px;
 
 											padding-left: $paddingMed;
@@ -567,6 +472,151 @@
 
 											padding-left: $paddingSmall;
 											padding-right: $paddingSmall;
+										}
+									}
+								}
+
+								.IntroSubContent {
+									display: flex;
+									position: relative;
+
+									flex-grow: 0;
+									flex-direction: column;
+
+									align-items: center;
+									justify-content: center;
+
+									@include responsiveMax($responsiveMed) {
+										flex-grow: 0;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										flex-grow: 1;
+									}
+
+									.MintAmountContainer {
+										display: flex;
+										position: relative;
+
+										flex-direction: column;
+
+										padding-top: 50px;
+										padding-bottom: 50px;
+
+										@include responsiveMax($responsiveMed) {
+											padding-top: 50px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											padding-top: 20px;
+										}
+
+										.MintText {
+											display: block;
+											position: relative;
+
+											font-family: 'Gilroy', sans-serif;
+											font-weight: 800;
+
+											font-size: 8px;
+
+											color: #111;
+
+											text-align: center;
+											padding-bottom: 5px;
+										}
+
+										.MintedItems {
+											display: flex;
+											position: relative;
+
+											overflow: hidden;
+
+											flex-direction: row-reverse;
+
+											align-items: center;
+											justify-content: center;
+
+											width: 120px;
+											height: 36px;
+											border-radius: 18px;
+
+											padding-left: 16px;
+											padding-right: 16px;
+
+											font-family: 'Gilroy', sans-serif;
+
+											border: 2px solid #0fffff;
+											background-color: #fff;
+
+											.MintedItemsText {
+												display: block;
+												position: static;
+
+												text-align: center;
+
+												user-select: none;
+
+												color: #111;
+
+												font-size: 14px;
+												font-weight: 600;
+												letter-spacing: normal;
+
+												white-space: nowrap;
+
+												font-family: 'Gilroy',
+													sans-serif;
+											}
+										}
+									}
+								}
+
+								.IntroFooterContainer {
+									display: flex;
+									position: relative;
+
+									width: 100%;
+
+									align-items: center;
+									justify-content: center;
+
+									padding-left: $padding;
+									padding-right: $padding;
+									padding-bottom: $padding;
+
+									@include responsiveMax($responsiveMed) {
+										padding-left: $paddingMed;
+										padding-right: $paddingMed;
+										padding-bottom: $paddingMed;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										padding-left: $paddingSmall;
+										padding-right: $paddingSmall;
+										padding-bottom: $paddingSmall;
+									}
+
+									.FooterContainerSizer {
+										display: flex;
+										position: relative;
+
+										width: 100%;
+										max-width: 350px;
+
+										align-items: center;
+										justify-content: center;
+
+										@include responsiveMax($responsiveMed) {
+											max-width: 350px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											max-width: auto;
 										}
 									}
 								}

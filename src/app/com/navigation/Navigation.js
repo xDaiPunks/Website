@@ -354,7 +354,7 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'Buy xDai'}
+										label={'Get xDai'}
 										title={'Market place'}
 										onClick={(event) => {
 											event.preventDefault();

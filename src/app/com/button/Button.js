@@ -231,6 +231,56 @@ class Button extends Component {
 		}
 	}
 
+	actionButton(props) {
+		let ripple = props.ripple;
+		let onClick = props.onClick;
+
+		let iconImage = props.iconImage;
+
+		let generateClick = (event) => {
+			event.preventDefault();
+			if (ripple !== true) {
+				if (onClick) {
+					onClick(event);
+				}
+			} else {
+				if (onClick) {
+					onClick(event);
+				}
+				this.generateButtonRipple(event);
+			}
+		};
+
+		if (!ripple) {
+			return (
+				<button
+					className={props.cssClass}
+					data={props.data}
+					title={props.label}
+					onClick={generateClick}>
+					<span className="Txt">{props.label}</span>
+					<span className="Icon">
+						<img className="IconImage" alt={''} src={iconImage} />
+					</span>
+				</button>
+			);
+		} else {
+			return (
+				<button
+					className={props.cssClass}
+					data={props.data}
+					title={props.label}
+					onClick={generateClick}>
+					<span className="Ink" />
+					<span className="Txt">{props.label}</span>
+					<span className="Icon">
+						<img className="IconImage" alt={''} src={iconImage} />
+					</span>
+				</button>
+			);
+		}
+	}
+
 	navigationButton(props) {
 		let ripple = props.ripple;
 		let onClick = props.onClick;
@@ -339,6 +389,8 @@ class Button extends Component {
 		const HeaderButton = this.headerButton;
 		const FooterButton = this.footerButton;
 		const FormPageButton = this.formPageButton;
+
+		const ActionButton = this.actionButton;
 		const NavigationButton = this.navigationButton;
 		const NavigationButtonIcon = this.navigationButtonIcon;
 
@@ -360,6 +412,9 @@ class Button extends Component {
 
 			case 'formPageButton':
 				return <FormPageButton {...props} />;
+
+			case 'actionButton':
+				return <ActionButton {...props} />;
 
 			case 'navigationButton':
 				return <NavigationButton {...props} />;

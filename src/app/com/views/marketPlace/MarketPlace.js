@@ -1,6 +1,7 @@
 /* eslint-disable no-new-func */
 /* eslint-disable array-callback-return */
 import React, { PureComponent } from 'react';
+import { BigNumber } from 'bignumber.js';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Input from 'src/app/com/input/Input';
@@ -131,22 +132,19 @@ class MarketPlace extends PureComponent {
 
 	searchChange(event) {
 		let value;
-
 		let searchData;
 
 		const vm = this;
-
-		console.log(vm.searchInput.current.state);
-
 		const state = utilityService.cloneObject(vm.state);
 
-		if (
-			vm.searchInput.current &&
-			vm.searchInput.current.state &&
-			vm.searchInput.current.state.value &&
-			vm.searchInput.current.state.value !== ''
-		) {
-			value = vm.searchInput.current.state.value.toString().toLowerCase();
+		if (validateInput() !== true) {
+			vm.searchData = vm.sortArray('status', 'idx', punkService.punkData);
+			state.items = vm.searchData.slice(0, 60);
+			vm.setState(state);
+		} else {
+			value = parseInt(vm.searchInput.current.state.value.trim())
+				.toString()
+				.toLowerCase();
 
 			clearTimeout(vm.searchTimeout);
 			vm.searchTimeout = setTimeout(() => {
@@ -174,7 +172,26 @@ class MarketPlace extends PureComponent {
 
 					vm.setState(state);
 				});
-			}, 5);
+			}, 100);
+		}
+
+		function validateInput() {
+			let value;
+
+			if (
+				vm.searchInput.current &&
+				vm.searchInput.current.state &&
+				vm.searchInput.current.state.value &&
+				vm.searchInput.current.state.value.trim() !== ''
+			) {
+				value = parseInt(vm.searchInput.current.state.value.trim());
+
+				if (isNaN(value) !== true) {
+					if (value <= 10000) {
+						return true;
+					}
+				}
+			}
 		}
 	}
 
@@ -223,7 +240,8 @@ class MarketPlace extends PureComponent {
 
 			let number;
 			let status;
-			let gender;
+
+			let punkValue;
 
 			let imageUrl;
 
@@ -249,15 +267,16 @@ class MarketPlace extends PureComponent {
 
 			rowCount = rowArray.length;
 
-			console.log(rowCount);
-
 			return (
 				<>
 					{rowArray.map((item, index) => {
 						if (items[item]) {
 							number = items[item].idx;
-							gender = items[item].type;
+
 							attributes = items[item].attributes.join(' - ');
+							punkValue = BigNumber(items[item].value)
+								.div(1e18)
+								.toFormat(2);
 
 							imageUrl =
 								'/static/media/punks/' +
@@ -288,7 +307,6 @@ class MarketPlace extends PureComponent {
 										className="PunkItem"
 										onClick={(event) => {
 											event.preventDefault();
-											console.log(item);
 
 											routeService.navigateRoute(
 												'/punk/' + number
@@ -327,10 +345,10 @@ class MarketPlace extends PureComponent {
 												</div>
 												<div className="PunkItemDetails">
 													<span className="DetailsTextTitle">
-														Gender
+														Value
 													</span>
 													<span className="DetailsTextContent">
-														{gender}
+														{punkValue + ' xDai'}
 													</span>
 												</div>
 												<div className="PunkItemDetails">

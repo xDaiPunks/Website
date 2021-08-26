@@ -50,6 +50,7 @@ class Home extends PureComponent {
 		this.formSubmit = this.formSubmit.bind(this);
 
 		this.confettiItem = this.confettiItem.bind(this);
+		this.subContentItem = this.subContentItem.bind(this);
 	}
 
 	updateView() {
@@ -459,6 +460,19 @@ class Home extends PureComponent {
 		);
 	}
 
+	subContentItem() {
+		const vm = this;
+
+		return (
+			<div className="MintAmountContainer">
+				<span className="MintText">NUMBER OF MINTED PUNKS</span>
+				<div className="MintedItems">
+					<span className="MintedItemsText">0 / 1000</span>
+				</div>
+			</div>
+		);
+	}
+
 	componentWillUnmount() {
 		const vm = this;
 
@@ -477,6 +491,7 @@ class Home extends PureComponent {
 
 		const vm = this;
 		const ConfettiItem = vm.confettiItem;
+		const SubContentItem = vm.subContentItem;
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -513,38 +528,30 @@ class Home extends PureComponent {
 										<span className="TextDark">xDAI</span>
 										<span className="TextLight">PUNKS</span>
 									</span>
-									<span className="PunkSubText">Here is your chance to own a genuine xDaiPunk!</span>
+									<span className="PunkSubText">
+										Here is your chance to own a genuine
+										xDaiPunk!
+									</span>
+								</div>
+								<div className="IntroSubContent">
+									<SubContentItem />
+								</div>
+								<div className="IntroFooterContainer">
+									<div className="FooterContainerSizer">
+									<Button
+										type={'actionButton'}
+										label={'Get a punk for 12 xDai!'}
+										title={'Get a punk for 12 xDai!'}
+										onClick={(event) => {
+											console.log('Hey');
+											event.preventDefault();
+										}}
+										cssClass={'ActionButton'}
+										iconImage="/static/media/images/icon-mint-white.svg"
+									/>
+									</div>
 								</div>
 							</div>
-
-							{/*
-							<div className="IntroActionButton">
-								<Button
-									type={'navigationButtonIcon'}
-									label={translationService.translate(
-										'menu.action.label'
-									)}
-									title={translationService.translate(
-										'menu.action.label'
-									)}
-									data="scroll:IntroFormGetMuevo"
-									iconImage="/static/media/images/arrow-next-white.svg"
-									onClick={this.navigate}
-									cssClass={'IntroStartButtonAction'}
-								/>
-							</div>
-
-							<div className="ScrollDownIcon">
-								<div className="ChevronDown Top">
-									<div className="ChevronLeft"></div>
-									<div className="ChevronRight"></div>
-								</div>
-								<div className="ChevronDown Bottom">
-									<div className="ChevronLeft"></div>
-									<div className="ChevronRight"></div>
-								</div>
-							</div>
-							*/}
 						</div>
 
 						<div className="IntroMapView">

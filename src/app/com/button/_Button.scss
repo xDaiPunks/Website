@@ -279,6 +279,88 @@
 	}
 }
 
+.ActionButton {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	flex-direction: row-reverse;
+
+	align-items: center;
+	justify-content: center;
+
+	flex-grow: 1;
+
+	height: 44px;
+	border-radius: 22px;
+
+	padding-left: 16px;
+	padding-right: 18px;
+
+	font-family: 'Gilroy', sans-serif;
+
+	border: 2px solid #0fffff;
+	background-color: #111;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		text-align: center;
+
+		user-select: none;
+
+		color: #fff;
+
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Gilroy', sans-serif;
+
+		padding-left: 5px;
+
+		@include responsiveMax($responsiveMed) {
+			padding-left: 5px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			padding-left: 5px;
+		}
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 36px;
+		padding-bottom: 3px;
+
+		align-items: center;
+		justify-content: center;
+
+		padding-left: 0px;
+
+		@include responsiveMax($responsiveMed) {
+			height: 36px;
+			padding-left: 0px;
+		}
+
+		@include responsiveMax($responsiveSmall) {
+			height: 36px;
+			padding-left: 3px;
+		}
+
+		.IconImage {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+
 .NavigationButton {
 	display: flex;
 	position: relative;
@@ -375,6 +457,7 @@
 
 		.IconImage {
 			width: 18px;
+			height: 18px;
 		}
 	}
 
@@ -443,8 +526,8 @@
 	align-items: center;
 	justify-content: center;
 
-	height: 36px;
-	border-radius: 20px;
+	height: 44px;
+	border-radius: 22px;
 
 	padding-left: 16px;
 	padding-right: 18px;
@@ -465,7 +548,7 @@
 		color: #fff;
 
 		font-size: 14px;
-		font-weight: 600;
+		font-weight: 700;
 		letter-spacing: normal;
 
 		white-space: nowrap;
@@ -495,6 +578,7 @@
 
 		.IconImage {
 			width: 18px;
+			height: 18px;
 		}
 	}
 }
