@@ -1514,7 +1514,7 @@ body {
       padding-right: 0; } }
   @media screen and (max-width: 986px) {
     .NavigationButton {
-      height: 32px;
+      height: 36px;
       width: 100%;
       padding-left: 30px;
       padding-right: 30px; } }
@@ -1524,7 +1524,6 @@ body {
     user-select: none;
     height: 46px;
     text-align: left;
-    line-height: 46px;
     color: #111;
     font-size: 14px;
     font-weight: 600;
@@ -1535,10 +1534,14 @@ body {
     padding-right: 20px; }
     @media screen and (max-width: 1070px) {
       .NavigationButton .Txt {
+        height: 46px;
+        line-height: 46px;
         padding-left: 5px;
         padding-right: 20px; } }
     @media screen and (max-width: 986px) {
       .NavigationButton .Txt {
+        height: 36px;
+        line-height: 36px;
         padding-left: 5px;
         padding-right: 20px; } }
   .NavigationButton .Icon {
@@ -1551,9 +1554,11 @@ body {
     padding-left: 0px; }
     @media screen and (max-width: 1070px) {
       .NavigationButton .Icon {
+        height: 46px;
         padding-left: 0px; } }
     @media screen and (max-width: 986px) {
       .NavigationButton .Icon {
+        height: 36px;
         padding-left: 3px; } }
     .NavigationButton .Icon .IconImage {
       width: 18px; }
