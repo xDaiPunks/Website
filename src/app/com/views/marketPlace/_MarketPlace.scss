@@ -118,7 +118,6 @@
 								position: relative;
 
 								flex-grow: 1;
-								flex-basis: 0;
 
 								margin-bottom: 20px;
 
@@ -131,7 +130,7 @@
 									position: relative;
 
 									flex-grow: 1;
-									flex-basis: 0;
+
 									flex-direction: row;
 
 									padding-left: 20px;
@@ -195,7 +194,7 @@
 										padding-left: 10px;
 
 										flex-grow: 1;
-										flex-basis: 0;
+
 										flex-direction: column;
 
 										.PunkItemTop {
@@ -211,10 +210,6 @@
 
 											flex-grow: 1;
 											flex-shrink: 1;
-
-											flex-basis: 0;
-
-											flex-basis: auto;
 
 											flex-direction: column;
 											align-items: flex-start;

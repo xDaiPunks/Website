@@ -4476,7 +4476,6 @@ body {
           display: flex;
           position: relative;
           flex-grow: 1;
-          flex-basis: 0;
           margin-bottom: 20px;
           border-radius: 13.5px;
           background-color: #f2f2f2; }
@@ -4484,7 +4483,6 @@ body {
             display: flex;
             position: relative;
             flex-grow: 1;
-            flex-basis: 0;
             flex-direction: row;
             padding-left: 20px;
             padding-right: 20px;
@@ -4522,7 +4520,6 @@ body {
               padding-top: 3px;
               padding-left: 10px;
               flex-grow: 1;
-              flex-basis: 0;
               flex-direction: column; }
               #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemTop {
                 display: flex;
@@ -4533,8 +4530,6 @@ body {
                 position: relative;
                 flex-grow: 1;
                 flex-shrink: 1;
-                flex-basis: 0;
-                flex-basis: auto;
                 flex-direction: column;
                 align-items: flex-start;
                 padding-bottom: 5px;
