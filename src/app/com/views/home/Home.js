@@ -464,9 +464,10 @@ class Home extends PureComponent {
 
 	subContentItem() {
 		const vm = this;
-
+		const publicSale = punkService.publicSale;
 		const mintsCount = punkService.mintsCount;
 
+		console.log('Home publicSale', publicSale);
 		console.log('Home mintscount', mintsCount);
 
 		return (

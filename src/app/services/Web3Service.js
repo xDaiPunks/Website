@@ -33,6 +33,8 @@ class Web3Service {
 		if (!Instance) {
 			Instance = this;
 
+			Instance.contract = null;
+
 			Instance.walletSigner = null;
 			Instance.walletChainId = null;
 			Instance.walletProvider = null;
@@ -59,6 +61,8 @@ class Web3Service {
 		vm.addABI();
 		vm.addAddress();
 		vm.addProvider();
+		vm.addContract();
+		vm.addContractEvents();
 	}
 
 	addABI() {
@@ -75,6 +79,113 @@ class Web3Service {
 		vm.provider = new ethers.providers.JsonRpcProvider({
 			url: configService.web3.httpProvider,
 		});
+	}
+
+	addContract() {
+		const vm = this;
+		vm.contract = new ethers.Contract(
+			xDaiPunksAddress,
+			xDaiPunksAbi,
+			vm.provider
+		);
+	}
+
+	addContractEvents() {
+		const vm = this;
+		/*
+		event Transfer(
+			address indexed from,
+			address indexed to,
+			uint256 indexed tokenId
+		  );
+		  event Approval(
+			address indexed owner,
+			address indexed approved,
+			uint256 indexed tokenId
+		  );
+		  event ApprovalForAll(
+			address indexed owner,
+			address indexed operator,
+			bool approved
+		  );
+
+		event Mint(uint256 indexed index, address indexed minter);
+		event PunkOffered(
+		  uint256 indexed punkIndex,
+		  uint256 minValue,
+		  address indexed toAddress
+		);
+		event PunkBidEntered(
+		  uint256 indexed punkIndex,
+		  uint256 value,
+		  address indexed fromAddress
+		);
+		event PunkBidWithdrawn(
+		  uint256 indexed punkIndex,
+		  uint256 value,
+		  address indexed fromAddress
+		);
+		event PunkBought(
+		  uint256 indexed punkIndex,
+		  uint256 value,
+		  address indexed fromAddress,
+		  address indexed toAddress
+		);
+		event PunkNoLongerForSale(uint256 indexed punkIndex);
+		*/
+
+		vm.contract.on('Transfer', transferListener);
+		vm.contract.on('Approval', approvalListener);
+		vm.contract.on('ApprovalForAll', approvalForAllListener);
+
+		vm.contract.on('SaleBegins', saleBeginsListener);
+
+		vm.contract.on('Mint', mintListener);
+		vm.contract.on('PunkBought', punkBoughtListener);
+		vm.contract.on('PunkOffered', punkOfferedListener);
+		vm.contract.on('PunkBidEntered', punkBidEnteredListener);
+		vm.contract.on('PunkBidWithdrawn', punkBidWithdrawnListener);
+		vm.contract.on('PunkNoLongerForSale', punkNoLongerForSaleListener);
+
+		function transferListener(from, to, idx) {
+			console.log(from, to, idx.toString());
+		}
+
+		function approvalListener(owner, approved, idx) {
+			console.log(owner, approved, idx.toString());
+		}
+
+		function approvalForAllListener(owner, operator, approved) {
+			console.log(owner, operator, approved);
+		}
+
+		function saleBeginsListener() {
+			console.log('sale started');
+		}
+
+		function mintListener(idx, address) {
+			console.log(idx.toString(), address);
+		}
+
+		function punkBoughtListener(idx, value, from, to) {
+			console.log(idx.toString(), value.toString(), from, to);
+		}
+
+		function punkOfferedListener(idx, value, address) {
+			console.log(idx.toString(), value.toString(), address);
+		}
+
+		function punkBidEnteredListener(idx, value, address) {
+			console.log(idx.toString(), value.toString(), address);
+		}
+
+		function punkBidWithdrawnListener(idx, value, address) {
+			console.log(idx.toString(), value.toString(), address);
+		}
+
+		function punkNoLongerForSaleListener(idx) {
+			console.log(idx.toString());
+		}
 	}
 
 	isAddress(address) {
@@ -746,16 +857,11 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			const contract = new ethers.Contract(
-				xDaiPunksAddress,
-				xDaiPunksAbi,
-				vm.provider
-			);
-
-			contract
+			vm.contract
 				.publicSale()
 
 				.then((publicSale) => {
+					punkService.publicSale = publicSale;
 					resolve(publicSale);
 				})
 				.catch((publicSaleError) => {
@@ -768,13 +874,7 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			const contract = new ethers.Contract(
-				xDaiPunksAddress,
-				xDaiPunksAbi,
-				vm.provider
-			);
-
-			contract
+			vm.contract
 				.mintsRemaining()
 
 				.then((mintsRemaining) => {
@@ -783,8 +883,6 @@ class Web3Service {
 					mintsCount = BigNumber(10000)
 						.minus(BigNumber(mintsRemaining.toString()))
 						.toString();
-
-					console.log('MintsCount', mintsCount);
 
 					punkService.mintsCount = mintsCount;
 					resolve(mintsRemaining);
