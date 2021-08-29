@@ -100,6 +100,9 @@ class Route extends Component {
 		let redirect;
 		let animationType;
 
+		let authPath;
+		let authBasePath;
+
 		let Component;
 
 		const { match } = this.state;
@@ -114,6 +117,9 @@ class Route extends Component {
 		animationType = this.props.animationType;
 
 		location = this.props.location || route.location;
+
+		authPath = this.props.routeConfig.home.path;
+		authBasePath = this.props.routeConfig.home.path;
 
 		props = { match, location, history, animationType, staticContext };
 
@@ -130,7 +136,7 @@ class Route extends Component {
 						state: {
 							from: props.location,
 						},
-						// pathname: authBasePath,
+						pathname: authBasePath,
 					};
 					return <Redirect to={to} />;
 				}
@@ -145,7 +151,7 @@ class Route extends Component {
 					state: {
 						from: props.location,
 					},
-					// pathname: authPath,
+					pathname: authPath,
 				};
 
 				// routeService.setStorageSignInRedirect(location);

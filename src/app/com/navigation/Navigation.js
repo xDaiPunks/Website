@@ -182,8 +182,9 @@ class Navigation extends PureComponent {
 	actionButtonComponent() {
 		const vm = this;
 		const address = userService.address;
+		const userSignedIn = userService.userSignedIn;
 
-		if (!address || web3Service.isAddress(address) !== true) {
+		if ((userSignedIn !== web3Service.isAddress(address)) !== true) {
 			return (
 				<>
 					<Button
@@ -223,6 +224,7 @@ class Navigation extends PureComponent {
 						onClick={(event) => {
 							event.preventDefault();
 							vm.hideMobileMenu();
+							routeService.navigateRoute('/my-account');
 						}}
 						cssClass={'NavigationButton MobileMenu'}
 						iconImage="/static/media/images/icon-wallet.svg"
@@ -235,6 +237,7 @@ class Navigation extends PureComponent {
 						onClick={(event) => {
 							event.preventDefault();
 							vm.hideMobileMenu();
+							routeService.navigateRoute('/my-account');
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
 						iconImage="/static/media/images/icon-wallet-white.svg"

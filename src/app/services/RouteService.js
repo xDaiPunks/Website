@@ -157,11 +157,7 @@ class RouteService {
 					},
 				});
 
-				this.setStorageSignInRedirect({
-					pathname: locationString,
-				});
-
-				locationString = navigationConfig['/sign-in'].path;
+				locationString = navigationConfig['/'].path;
 			}
 		}
 
@@ -229,9 +225,7 @@ class RouteService {
 		});
 	}
 
-	getParams() {
-		
-	}
+	getParams() {}
 
 	userSignOut() {
 		this.clearStorageSignInRedirect();

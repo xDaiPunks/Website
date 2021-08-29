@@ -90,23 +90,8 @@ class Web3Service {
 	}
 
 	isAddress(address) {
-		//return ethers.utils.isAddress(address);
-	}
-
-	parseNumber(value, unit) {
-		if (!unit) {
-			unit = 'ether';
-		}
-
-		//return ethers.utils.parseUnits(value, unit);
-	}
-
-	formatNumber(value, unit) {
-		if (!unit) {
-			unit = 'ether';
-		}
-
-		//return ethers.utils.formatUnits(value, unit);
+		const vm = this;
+		return vm.web3.utils.isAddress(address);
 	}
 
 	// general web3 functions
