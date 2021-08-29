@@ -36,9 +36,11 @@ class Punk extends PureComponent {
 
 		this.guid = utilityService.guid();
 
+		this.buy = this.buy.bind(this);
 		this.enterBid = this.enterBid.bind(this);
 		this.offerForSale = this.offerForSale.bind(this);
 
+		this.buyPunk = this.buyPunk.bind(this);
 		this.acceptBid = this.acceptBid.bind(this);
 		this.withdrawBid = this.withdrawBid.bind(this);
 		this.removeOffer = this.removeOffer.bind(this);
@@ -105,14 +107,25 @@ class Punk extends PureComponent {
 	}
 
 	buy() {
+		let minAmount;
+
 		const vm = this;
 		const idx = vm.punkDetails.idx;
 
-		eventService.dispatchObjectEvent('show:modal', {
-			type: 'buyModal',
-			idx: idx,
-			buyPunk: vm.buyPunk,
-		});
+		if (vm.punkDetails.sale === true) {
+			if (vm.punkDetails.saleData && vm.punkDetails.saleData.minValue) {
+				minAmount = BigNumber(vm.punkDetails.saleData.minValue)
+					.div(1e18)
+					.toFixed(2);
+
+				eventService.dispatchObjectEvent('show:modal', {
+					type: 'buyModal',
+					idx: idx,
+					minAmount: minAmount,
+					buyPunk: vm.buyPunk,
+				});
+			}
+		}
 	}
 
 	enterBid() {

@@ -54,6 +54,10 @@ class AppService {
 
 			Promise.all(promiseArray)
 				.then((responses) => {
+					if (userService.signedIn) {
+						punkService.setPunkDetails();
+					}
+
 					resolve({ result: 'success' });
 				})
 				.catch((responsesError) => {
@@ -96,31 +100,11 @@ class AppService {
 			web3Service
 				.checkWallet()
 				.then((response) => {
-					checkTokens();
+					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
 					resolve({ result: 'success' });
 				});
-
-			function checkTokens() {
-				if (userService.userSignedIn !== true) {
-					resolve({ result: 'success' });
-				} else {
-					if (web3Service.isAddress(userService.address) !== true) {
-						resolve({ result: 'success' });
-					} else {
-						web3Service
-							.tokensOfAddress(userService.address)
-							.then((response) => {
-								resolve({ result: 'success' });
-							})
-							.catch((responseError) => {
-								console.log('Tokens error', responseError);
-								resolve({ result: 'success' });
-							});
-					}
-				}
-			}
 		});
 	}
 
@@ -171,6 +155,19 @@ class AppService {
 					});
 			});
 		}
+	}
+
+	buyPunk(idx, amount) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.buyPunk(idx, amount)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
 	}
 
 	mintPunks(number) {

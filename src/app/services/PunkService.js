@@ -18,6 +18,10 @@ class PunkService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
+
+			Instance.bidStore = null;
+			Instance.ownedStore = null;
+
 			Instance.publicSaleStore = null;
 			Instance.mintsCountStore = null;
 
@@ -27,6 +31,26 @@ class PunkService {
 			Instance.generateInitialPunkData();
 		}
 		return Instance;
+	}
+
+	get bids() {
+		const vm = this;
+		return vm.bidStore;
+	}
+
+	set bids(object) {
+		const vm = this;
+		vm.bidStore = object;
+	}
+
+	get owned() {
+		const vm = this;
+		return vm.ownedStore;
+	}
+
+	set owned(object) {
+		const vm = this;
+		vm.ownedStore = object;
 	}
 
 	get punkData() {
@@ -81,37 +105,49 @@ class PunkService {
 		}
 	}
 
-	getPunkBids(address) {
+	setPunkDetails() {
 		let i;
 		let iCount;
 
+		let address;
+
 		const vm = this;
 
-		const bidArray = [];
+		const bidObject = {};
+		const ownedObject = {};
+
 		const punkData = vm.punkData;
 
 		if (userService.userSignedIn === true) {
+			address = userService.address.toLowerCase();
 			for (i = 0, iCount = punkData.length; i < iCount; i++) {
+				if ((address = punkData[i].owner.toLowerCase())) {
+					ownedObject[punkData[i].idx] = {
+						idx: punkData[i].idx,
+					};
+				}
+
 				if (punkData[i].bid === true) {
 					if (
 						punkData[i].bidData &&
 						punkData[i].bidData.fromAddress
 					) {
 						if (
-							userService.address.toLowerCase() ===
+							address ===
 							punkData[i].bidData.fromAddress.toLowerCase()
 						) {
-							bidArray.push({
+							bidObject[punkData[i].idx] = {
 								idx: punkData[i].idx,
 								bidData: punkData[i].bidData,
-							});
+							};
 						}
 					}
 				}
 			}
 		}
 
-		return bidArray;
+		vm.bidStore = bidObject;
+		vm.ownedStore = ownedObject;
 	}
 
 	generatePunkData(remotePunkObject) {

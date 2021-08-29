@@ -38,6 +38,7 @@ class Modal extends PureComponent {
 
 		this.guid = utilityService.guid();
 
+		this.buyInput = React.createRef();
 		this.bidInput = React.createRef();
 		this.mintInput = React.createRef();
 		this.offerInput = React.createRef();
@@ -53,6 +54,7 @@ class Modal extends PureComponent {
 
 		this.emptyModal = this.emptyModal.bind(this);
 
+		this.buyModal = this.buyModal.bind(this);
 		this.bidModal = this.bidModal.bind(this);
 		this.mintModal = this.mintModal.bind(this);
 		this.offerModal = this.offerModal.bind(this);
@@ -425,6 +427,85 @@ class Modal extends PureComponent {
 		);
 	}
 
+	buyModal(props) {
+		let value;
+		let minAmount;
+
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.buyPunk) {
+				if (
+					vm.buyInput &&
+					vm.buyInput.current &&
+					vm.buyInput.current.state &&
+					vm.buyInput.current.state.value
+				) {
+					value = vm.buyInput.current.state.value.replace(',', '.');
+					value = parseFloat(value.trim());
+					minAmount = parseFloat(props.minAmount);
+
+					if (value > 0 && value >= minAmount) {
+						props.buyPunk(value);
+					}
+				}
+			}
+		};
+
+		if (props.minAmount) {
+			value = props.minAmount;
+		}
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">{'Buy punk'}</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.buyInput}
+								id={'inputNumber'}
+								type={'text'}
+								inputType={'input'}
+								defaultValue={value}
+								placeholder={'Enter an amount'}
+							/>
+						</div>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Buy punk'}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
 	bidModal(props) {
 		let value;
 		let modalClass;
@@ -764,6 +845,7 @@ class Modal extends PureComponent {
 
 		const EmptyModal = this.emptyModal;
 
+		const BuyModal = this.buyModal;
 		const BidModal = this.bidModal;
 		const MintModal = this.mintModal;
 		const OfferModal = this.offerModal;
@@ -776,6 +858,9 @@ class Modal extends PureComponent {
 		switch (type) {
 			default:
 				return <EmptyModal {...props} />;
+
+			case 'buyModal':
+				return <BuyModal {...props} />;
 
 			case 'bidModal':
 				return <BidModal {...props} />;

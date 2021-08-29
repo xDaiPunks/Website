@@ -120,6 +120,8 @@ class Web3Service {
 					} else {
 						userService.address = accountArray[0];
 						userService.userSignedIn = true;
+
+						punkService.setPunkDetails();
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -149,6 +151,8 @@ class Web3Service {
 					} else {
 						userService.address = accountArray[0];
 						userService.userSignedIn = true;
+
+						punkService.setPunkDetails();
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -473,6 +477,36 @@ class Web3Service {
 				})
 				.catch((tokensOfAddressError) => {
 					reject(tokensOfAddressError);
+				});
+		});
+	}
+
+	buyPunk(idx, amount) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+			const value = BigNumber(amount).times(1e18).toString();
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.buyPunk(idx)
+				.send({
+					value: value,
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
 				});
 		});
 	}
