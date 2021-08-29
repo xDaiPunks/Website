@@ -7,6 +7,9 @@ import Button from 'src/app/com/button/Button';
 import SlideShow from 'src/app/com/slideShow/SlideShow';
 
 import Animate from 'src/app/services/Animate';
+
+import AppService from 'src/app/services/AppService';
+import UserService from 'src/app/services/UserService';
 import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
@@ -16,10 +19,14 @@ import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 import TranslationService from 'src/app/services/TranslationService';
+import Web3Service from 'src/app/services/Web3Service';
 
 const slideShow = new SlideShow();
 
 const animate = new Animate();
+
+const appService = new AppService();
+const userService = new UserService();
 const viewService = new ViewService();
 const punkService = new PunkService();
 const eventService = new EventService();
@@ -40,16 +47,7 @@ class Home extends PureComponent {
 
 		this.guid = utilityService.guid();
 
-		this.calculateTimeout = null;
-
-		this.nameInput = React.createRef();
-		this.emailInput = React.createRef();
-		this.operatingSystem = React.createRef();
-		this.countryDestination = React.createRef();
-
-		this.formBlur = this.formBlur.bind(this);
-		this.formFocus = this.formFocus.bind(this);
-		this.formSubmit = this.formSubmit.bind(this);
+		this.getPunkAction = this.getPunkAction.bind(this);
 
 		this.confettiItem = this.confettiItem.bind(this);
 		this.subContentItem = this.subContentItem.bind(this);
@@ -91,197 +89,50 @@ class Home extends PureComponent {
 			this.setState(this.state);
 			this.forceUpdate();
 		});
+
+		eventService.on('change:punkData', vm.guid, (eventData) => {
+			if (eventData.type === 'mint' || eventData.type === 'publicSale') {
+				this.setState(this.state);
+				this.forceUpdate();
+			}
+		});
 	}
 
 	componentDidUpdate() {
 		viewService.resetScroll();
 	}
 
-	navigate(event) {
-		let domElement;
-		let targetData;
-
-		event.preventDefault();
-
-		if (!event || !event.currentTarget) {
-			return;
-		}
-
-		if (!event.currentTarget.getAttribute('data')) {
-			return;
-		}
-
-		targetData = event.currentTarget.getAttribute('data');
-
-		if (targetData.substr(0, 1) === '/') {
-			routeService.navigateRoute(targetData);
-		}
-
-		if (targetData.substr(0, 6) === 'scroll') {
-			domElement = $('.' + targetData.split(':')[1]);
-			routeService.navigateScrollPosition(domElement);
-		}
-
-		routeService.navigateRoute(event.currentTarget.getAttribute('data'));
-	}
-
-	formBlur(event) {
-		/*
-		console.log('enableCalculate');
-		const vm = this;
-		clearTimeout(vm.calculateTimeout);
-		vm.calculateTimeout = setTimeout(() => {
-			scrollService.disableCalculate = false;
-		}, 600);
-		*/
-	}
-
-	formFocus(event) {
-		/*
-		console.log('disableCalculate');
-		const vm = this;
-		clearTimeout(vm.calculateTimeout);
-		scrollService.disableCalculate = true;
-		*/
-	}
-
-	formChange(event) {
-		/*
-		if (utilityService.browserSupport.mobileDevice === true) {
-			const domElement = $('.IntroFormGetMuevo');
-			setTimeout(() => {
-				routeService.navigateScrollPosition(domElement, 'auto');
-			}, 10);
-		}
-		*/
-	}
-
-	formSubmit() {
+	getPunkAction() {
 		const vm = this;
 
-		if (vm.nameInput.current.state.value.trim() === '') {
-			vm.nameInput.current.focus();
+		console.log(punkService.publicSale);
+		console.log(userService);
+
+		if (punkService.publicSale !== true) {
+			console.log('show modal not started');
 
 			eventService.dispatchObjectEvent('show:modal', {
 				type: 'alertModal',
-				header: translationService.translate('modal.error.title'),
-				content: translationService.translate('modal.error.fullname'),
+				header: 'Minting not started',
+				content:
+					'The minting of xDaiPunks has not started yet. It will start soon',
 				buttonText: translationService.translate(
 					'modal.error.okbutton'
 				),
 			});
-			return;
 		}
 
-		if (
-			vm.emailInput.current.state.valid === false ||
-			vm.emailInput.current.state.value.trim() === ''
-		) {
-			vm.emailInput.current.focus();
-			eventService.dispatchObjectEvent('show:modal', {
-				type: 'alertModal',
-				header: translationService.translate('modal.error.title'),
-				content: translationService.translate('modal.error.email'),
-				buttonText: translationService.translate(
-					'modal.error.okbutton'
-				),
-			});
-			return;
-		}
+		if (punkService.publicSale === true) {
+			if (userService.userSignedIn === true) {
+				console.log('show modal select quantity');
 
-		vm.showFormSubmit();
-
-		eventService.off('formloader:show', vm.guid);
-		eventService.on('formloader:show', vm.guid, () => {
-			eventService.off('formloader:show', vm.guid);
-
-			let data;
-
-			let email = vm.emailInput.current.state.value;
-			let fullName = vm.nameInput.current.state.value;
-
-			let language = configService.selectedLanguage;
-
-			let deviceOperatingSystem = vm.operatingSystem.current.state.value;
-
-			axios
-				.post(configService.apiUrl + '/getBeta', {
-					email: email,
-					fullName: fullName,
-					language: language,
-					deviceOperatingSystem: deviceOperatingSystem,
+				appService.mintPunks(2).then(response=>{
+					 console.log(response);
+				}).catch(responseError=>{
+					console.log(responseError);
 				})
-				.then((response) => {
-					data = response.data;
-					if (data.result !== 'success') {
-						vm.showFormError();
-					} else {
-						vm.showFormResult();
-					}
-				})
-				.catch((interestError) => {
-					vm.showFormError();
-				});
-		});
-	}
-
-	showFormError() {
-		let animationPromise;
-
-		$('.FormError').removeClass('Hidden');
-
-		animationPromise = animate.transitionAddClass(
-			$('.FormLoader'),
-			'Hidden'
-		);
-
-		animationPromise.fail((error) => {});
-
-		animationPromise.then((response) => {
-			$('.FormLoader .Spinner').removeClass('Active');
-		});
-	}
-
-	hideFormError() {
-		$('.FormError').addClass('Hidden');
-		$('.FormGetMuevoForm').removeClass('Hidden');
-	}
-
-	showFormResult() {
-		let animationPromise;
-
-		$('.FormResult').removeClass('Hidden');
-
-		animationPromise = animate.transitionAddClass(
-			$('.FormLoader'),
-			'Hidden'
-		);
-
-		animationPromise.fail((error) => {});
-
-		animationPromise.then((response) => {
-			$('.FormLoader .Spinner').removeClass('Active');
-		});
-	}
-
-	showFormSubmit() {
-		let animationPromise;
-
-		$('.FormGetMuevoForm').addClass('Hidden');
-		$('.FormLoader .Spinner').addClass('Active');
-
-		animationPromise = animate.transitionRemoveClass(
-			$('.FormLoader'),
-			'Hidden'
-		);
-
-		animationPromise.fail((error) => {});
-
-		animationPromise.then((response) => {
-			if (response.result === 'success') {
-				eventService.dispatchObjectEvent('formloader:show');
 			}
-		});
+		}
 	}
 
 	confettiItem() {
@@ -464,8 +315,11 @@ class Home extends PureComponent {
 
 	subContentItem() {
 		const vm = this;
+
 		const publicSale = punkService.publicSale;
 		const mintsCount = punkService.mintsCount;
+
+		console.log('minstCount');
 
 		console.log('Home publicSale', publicSale);
 		console.log('Home mintscount', mintsCount);
@@ -488,6 +342,7 @@ class Home extends PureComponent {
 		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 		eventService.off('change:language', vm.guid);
+		eventService.off('change:punkData', vm.guid);
 	}
 
 	render() {
@@ -550,8 +405,8 @@ class Home extends PureComponent {
 											label={'Get a punk for 12 xDai!'}
 											title={'Get a punk for 12 xDai!'}
 											onClick={(event) => {
-												console.log('Hey');
 												event.preventDefault();
+												vm.getPunkAction();
 											}}
 											cssClass={'ActionButton'}
 											iconImage="/static/media/images/icon-mint-white.svg"
@@ -1167,182 +1022,6 @@ class Home extends PureComponent {
 									onClick={this.navigate}
 									cssClass={'FooterItemButtonAction Azure'}
 								/>
-							</div>
-						</div>
-
-						<div className="IntroFormGetMuevo">
-							<div className="IntroFormGetMuevoSizer">
-								<div className="FormGetMuevoSpacerTop"></div>
-								<span
-									className="FormGetMuevoTitle"
-									style={{
-										opacity: 0,
-										transform: 'translate3d(0, 60px, 0)',
-									}}>
-									{translationService.translate(
-										'home.getmuevo.title'
-									)}
-								</span>
-								<div className="FormGetMuevo">
-									<div className="FormLoader Hidden">
-										<div className="SpinnerContent">
-											<div className="Spinner Active">
-												<div className="SpinnerWrapper">
-													<div className="SpinnerContainer">
-														<div className="CircleClipper Left">
-															<div className="Circle"></div>
-														</div>
-														<div className="GapPatch">
-															<div className="Circle"></div>
-														</div>
-														<div className="CircleClipper Right">
-															<div className="Circle"></div>
-														</div>
-													</div>
-													<div className="SpinnerBackground"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div className="FormError Hidden">
-										<div className="CircleDone">
-											<img
-												alt={''}
-												src={
-													'/static/media/images/error-icon-azure.svg'
-												}
-												className={'CircleDoneImage'}
-											/>
-										</div>
-										<span className="FormErrorTitle">
-											{translationService.translate(
-												'form.subscribe.error.header'
-											)}
-										</span>
-										<span className="FormErrorSubTitle">
-											{translationService.translate(
-												'form.subscribe.error.headerText'
-											)}
-										</span>
-										<div className="ErrorButton">
-											<Button
-												type={'formButton'}
-												label={translationService.translate(
-													'form.subscribe.error.buttonText'
-												)}
-												title={translationService.translate(
-													'form.subscribe.error.buttonText'
-												)}
-												iconImage="/static/media/images/arrow-next-white.svg"
-												onClick={this.hideFormError}
-												cssClass={'FormButton'}
-											/>
-										</div>
-									</div>
-
-									<div className="FormResult Hidden">
-										<div className="CircleDone">
-											<img
-												alt={''}
-												src={
-													'/static/media/images/approve-azure.svg'
-												}
-												className={'CircleDoneImage'}
-											/>
-										</div>
-										<span className="FormResultTitle">
-											{translationService.translate(
-												'form.subscribe.result.header'
-											)}
-										</span>
-										<span className="FormResultSubTitle">
-											{translationService.translate(
-												'form.subscribe.result.headerText'
-											)}
-										</span>
-									</div>
-									<form className="FormGetMuevoForm">
-										<div
-											className="FormAnimationOne"
-											style={{
-												opacity: 0,
-												transform:
-													'translate3d(0, 60px, 0)',
-											}}>
-											<span className="FormSubTitle">
-												{translationService.translate(
-													'home.getmuevo.subtitle'
-												)}
-											</span>
-
-											<Input
-												ref={vm.nameInput}
-												id={'fullNameInput'}
-												type={'text'}
-												inputType={'input'}
-												placeholder={translationService.translate(
-													'home.getmuevo.input.fullname'
-												)}
-												onBlur={vm.formBlur}
-												onFocus={vm.formFocus}
-												onChange={vm.formChange}
-											/>
-
-											<Input
-												ref={vm.emailInput}
-												id={'emailAddressInput'}
-												type={'email'}
-												inputType={'input'}
-												placeholder={translationService.translate(
-													'home.getmuevo.input.email'
-												)}
-												onBlur={vm.formBlur}
-												onFocus={vm.formFocus}
-												onChange={vm.formChange}
-											/>
-
-											<Input
-												ref={vm.operatingSystem}
-												id={'operatingSystemSelect'}
-												type={'text'}
-												inputType={'select'}
-												placeholder={translationService.translate(
-													'home.getmuevo.input.os'
-												)}
-												options={[
-													{
-														value: 'ios',
-														label: 'IOS',
-													},
-													{
-														value: 'android',
-														label: 'Android',
-													},
-												]}
-												onBlur={vm.formBlur}
-												onFocus={vm.formFocus}
-												onChange={vm.formChange}
-											/>
-
-											<div>
-												<Button
-													type={'formButton'}
-													label={translationService.translate(
-														'home.getmuevo.button.submit'
-													)}
-													title={translationService.translate(
-														'home.getmuevo.button.submit'
-													)}
-													iconImage="/static/media/images/arrow-next-white.svg"
-													onClick={this.formSubmit}
-													cssClass={'FormButton'}
-												/>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div className="FormGetMuevoSpacerBottom"></div>
 							</div>
 						</div>
 

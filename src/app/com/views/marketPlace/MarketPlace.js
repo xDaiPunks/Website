@@ -28,10 +28,10 @@ class MarketPlace extends PureComponent {
 		this.searchTimeout = null;
 
 		this.data = punkService.punkData;
-		this.searchData = this.sortArray('status', 'idx', punkService.punkData);
+		this.searchData = this.sortArray('-mint', 'idx', punkService.punkData);
 
 		this.state = {
-			sort: ['status', 'idx'],
+			sort: ['-mint', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
 
@@ -52,6 +52,8 @@ class MarketPlace extends PureComponent {
 	}
 
 	componentDidMount() {
+		let state;
+
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
 
@@ -73,11 +75,34 @@ class MarketPlace extends PureComponent {
 			this.setState(this.state);
 			this.forceUpdate();
 		});
+
+		eventService.on('change:punkData', vm.guid, (eventData) => {
+			if (eventData.type !== 'publicSale') {
+				state = utilityService.cloneObject(vm.state);
+
+				vm.data = punkService.punkData;
+
+				vm.searchData = vm.sortArray(
+					state.sort[0],
+					state.sort[1],
+					punkService.punkData
+				);
+
+				state.items = vm.searchData.slice(0, 60);
+
+				this.setState(state);
+				this.forceUpdate();
+			}
+		});
 	}
 
 	sortArray(prop1, prop2, array) {
 		let sortOrder1;
 		let sortOrder2;
+
+		const getIdx = (value) => {
+			return parseInt(value, 10);
+		};
 
 		sortOrder1 = 1;
 		sortOrder2 = 1;
@@ -88,6 +113,14 @@ class MarketPlace extends PureComponent {
 		}
 
 		return array.sort((a, b) => {
+			if (prop1 === 'idx') {
+				a[prop1] = getIdx(a[prop1]);
+			}
+
+			if (prop2 === 'idx') {
+				a[prop2] = getIdx(a[prop2]);
+			}
+
 			if (a[prop1] < b[prop1]) {
 				return -1 * sortOrder1;
 			} else {
@@ -97,6 +130,14 @@ class MarketPlace extends PureComponent {
 					if (prop2.substr(0, 1) === '-') {
 						sortOrder2 = -1;
 						prop2 = prop2.substr(1);
+					}
+
+					if (prop1 === 'idx') {
+						a[prop1] = getIdx(a[prop1]);
+					}
+
+					if (prop2 === 'idx') {
+						a[prop2] = getIdx(a[prop2]);
 					}
 
 					if (a[prop2] < b[prop2]) {
@@ -283,8 +324,9 @@ class MarketPlace extends PureComponent {
 								items[item].idx +
 								'.png';
 
-							status = 'Mint';
-							if (items[item].status) {
+							status = 'Not Minted';
+							if (items[item].mint === true) {
+								status = 'Minted';
 							}
 
 							if (index === 1) {

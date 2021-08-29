@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ethers } from 'ethers';
+import Web3 from 'web3';
 import { BigNumber } from 'bignumber.js';
 
 import WalletConnect from '@walletconnect/client';
@@ -34,6 +34,7 @@ class Web3Service {
 			Instance = this;
 
 			Instance.contract = null;
+			Instance.gasPrice = null;
 
 			Instance.walletSigner = null;
 			Instance.walletChainId = null;
@@ -41,12 +42,12 @@ class Web3Service {
 			Instance.walletConnector = null;
 			Instance.walletConnectorType = null; // mm or wc
 
-			Instance.gasStatusTimeout = null;
-
 			Instance.guid = utilityService.guid();
 
 			Instance.httpProvider = configService.web3.httpProvider;
 			Instance.socketProvider = configService.web3.socketProvider;
+
+			Instance.xDaiPunksAddress = configService.web3.xDaiPunksAddress;
 
 			Instance.initialize();
 			Instance.checkGasStatus();
@@ -58,12 +59,776 @@ class Web3Service {
 	initialize() {
 		const vm = this;
 
-		vm.addABI();
-		vm.addAddress();
-		vm.addProvider();
-		vm.addContract();
-		vm.addContractEvents();
+		vm.setAbi();
+		vm.setContract();
+		vm.setContractEvents();
 	}
+
+	setAbi() {
+		const vm = this;
+
+		vm.xdaiPunksAbi = xDaiPunksAbi;
+		vm.xDaiPunkAddress = vm.xDaiPunksAddress;
+	}
+
+	setContract() {
+		const vm = this;
+		const web3 = new Web3(vm.httpProvider);
+
+		vm.web3 = web3;
+
+		web3.eth.Contract.setProvider(vm.socketProvider);
+		vm.contract = new web3.eth.Contract(
+			vm.xdaiPunksAbi,
+			vm.xDaiPunkAddress
+		);
+	}
+
+	setContractEvents() {
+		const vm = this;
+		vm.initializeContractEvents();
+	}
+
+	isAddress(address) {
+		//return ethers.utils.isAddress(address);
+	}
+
+	parseNumber(value, unit) {
+		if (!unit) {
+			unit = 'ether';
+		}
+
+		//return ethers.utils.parseUnits(value, unit);
+	}
+
+	formatNumber(value, unit) {
+		if (!unit) {
+			unit = 'ether';
+		}
+
+		//return ethers.utils.formatUnits(value, unit);
+	}
+
+	// general web3 functions
+	getCode(accountAddress) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.getCode(accountAddress)
+				.then((code) => {
+					resolve(code);
+				})
+				.catch((codeError) => {
+					reject(codeError);
+				});
+		});
+	}
+
+	getPastEvents(fromBlock, toBlock) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.contract
+				.getPastEvents('allEvents', {
+					fromBlock: fromBlock,
+					toBlock: toBlock,
+				})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	getBlock(blockNumber, includeTransactions) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			if (includeTransactions === false) {
+				vm.web3.eth
+					.getBlock(blockNumber)
+					.then((block) => {
+						resolve(block);
+					})
+					.catch((blockError) => {
+						reject(blockError);
+					});
+			} else {
+				vm.web3.eth
+					.getBlock(blockNumber, true)
+					.then((block) => {
+						resolve(block);
+					})
+					.catch((blockError) => {
+						reject(blockError);
+					});
+			}
+		});
+	}
+
+	getBlockNumber() {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.getBlockNumber()
+				.then((blockNumber) => {
+					resolve(blockNumber);
+				})
+				.catch((blockNumberError) => {
+					reject(blockNumberError);
+				});
+		});
+	}
+
+	getBalance(accountAddress) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.getBalance(accountAddress)
+
+				.then((balance) => {
+					resolve(balance.toString());
+				})
+				.catch((balanceError) => {
+					reject(balanceError);
+				});
+		});
+	}
+
+	getTransaction(transactionHash) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.getTransaction(transactionHash)
+				.then((transaction) => {
+					resolve(transaction);
+				})
+				.catch((transactionError) => {
+					reject(transactionError);
+				});
+		});
+	}
+
+	getTransactionCount(address, blockTag) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			if (!blockTag) {
+				blockTag = 'latest';
+			}
+
+			vm.web3.eth
+				.getTransactionCount(address, blockTag)
+				.then((transactionCount) => {
+					resolve(transactionCount);
+				})
+				.catch((transactionCountError) => {
+					reject(transactionCountError);
+				});
+		});
+	}
+
+	getTransactionReceipt(transactionHash) {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.getTransactionReceipt(transactionHash)
+				.then((transactionReceipt) => {
+					resolve(transactionReceipt);
+				})
+				.catch((transactionReceiptError) => {
+					reject(transactionReceiptError);
+				});
+		});
+	}
+
+	sendTransaction(signedTransaction) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.web3.eth
+				.sendTransaction(signedTransaction)
+				.then((signedTransactionResponse) => {
+					resolve(signedTransactionResponse);
+				})
+				.catch((signedTransactionResponseError) => {
+					reject(signedTransactionResponseError);
+				});
+		});
+	}
+
+	sendSignedTransaction(rawTransaction) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let signedTransactionHash;
+
+			vm.web3.eth
+				.sendSignedTransaction(rawTransaction)
+				.on('error', (sendSignedTransactionError) => {
+					reject({
+						error: 'sendSignedTransactionError',
+						message: sendSignedTransactionError,
+						signedTransactionHash: signedTransactionHash,
+					});
+				})
+				.on('receipt', (transactionReceipt) => {
+					resolve({
+						result: 'success',
+						transactionReceipt,
+					});
+				})
+				.on('transactionHash', (transactionHash) => {
+					signedTransactionHash = transactionHash;
+				});
+		});
+	}
+
+	generateAccount(privateKey) {
+		let wallet;
+
+		let accountAddress;
+		let accountPrivateKey;
+
+		/*
+		if (!privateKey) {
+			wallet = ethers.Wallet.createRandom();
+		} else {
+			wallet = new ethers.Wallet(privateKey);
+		}
+		*/
+
+		accountAddress = wallet.address;
+		accountPrivateKey = wallet.privateKey;
+
+		return {
+			accountAddress,
+			accountPrivateKey,
+		};
+	}
+
+	generateAccountMnemonic(mnemonic) {
+		const seed = bip39.mnemonicToSeedSync(mnemonic);
+		const hdWallet = hdkey.fromMasterSeed(seed);
+
+		// eslint-disable-next-line quotes
+		const hdPathWallet = "m/44'/60'/0'/0/";
+
+		const wallet = hdWallet.derivePath(hdPathWallet + 0).getWallet();
+		const accountAddress = '0x' + wallet.getAddress().toString('hex');
+		const accountPrivateKey = wallet.getPrivateKey().toString('hex');
+
+		return {
+			accountAddress,
+			accountPrivateKey,
+		};
+	}
+
+	generateAccountsMnemonic(mnemonic, count) {
+		let i;
+
+		const accounts = [];
+
+		const seed = bip39.mnemonicToSeedSync(mnemonic);
+		const hdWallet = hdkey.fromMasterSeed(seed);
+
+		// eslint-disable-next-line quotes
+		const hdPathWallet = "m/44'/60'/0'/0/";
+
+		// eslint-disable-next-line no-restricted-globals
+		if (isNaN(parseInt(count, 10))) {
+			count = 1;
+		} else {
+			count = parseInt(count, 10);
+		}
+
+		for (i = 0; i < count; i++) {
+			const wallet = hdWallet.derivePath(hdPathWallet + i).getWallet();
+			const accountAddress = '0x' + wallet.getAddress().toString('hex');
+			const accountPrivateKey = wallet.getPrivateKey().toString('hex');
+
+			accounts.push({
+				accountAddress,
+				accountPrivateKey,
+			});
+		}
+
+		return accounts;
+	}
+
+	mintPunks(number) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let value;
+			let contract;
+
+			value = BigNumber(number).times(12).times(1e18).toString();
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.mint(number)
+				.send({
+					value: value,
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	publicSale() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.contract.methods
+				.publicSale()
+				.call()
+				.then((publicSale) => {
+					punkService.publicSale = publicSale;
+					resolve(publicSale);
+				})
+				.catch((publicSaleError) => {
+					reject(publicSaleError);
+				});
+		});
+	}
+
+	mintsRemaining() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.contract.methods
+				.mintsRemaining()
+				.call()
+
+				.then((mintsRemaining) => {
+					let mintsCount;
+
+					mintsCount = BigNumber(10000)
+						.minus(BigNumber(mintsRemaining.toString()))
+						.toNumber();
+
+					punkService.mintsCount = mintsCount;
+					resolve(mintsRemaining);
+				})
+				.catch((mintsRemainingError) => {
+					reject(mintsRemainingError);
+				});
+		});
+	}
+
+	connectMetaMask() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let signer;
+			let provider;
+
+			let ethereum;
+
+			if (!window.ethereum) {
+				reject({ result: 'error', errorType: 'noMetaMask' });
+			} else {
+				ethereum = window.ethereum;
+
+				window.web3 = new Web3(ethereum);
+
+				window.ethereum
+					.send('eth_requestAccounts')
+					.then((response) => {
+						console.log(response);
+						userService.address = window.ethereum.selectedAddress;
+						userService.userSignedIn = true;
+
+						checkCurrentNetwork(signer, userService.address);
+						//signer = provider.getSigner();
+						//getSignerAddress(signer, provider);
+					})
+					.catch((responseError) => {
+						console.log(responseError);
+						reject({
+							result: 'error',
+							errorType: 'requestAccountsError',
+						});
+					});
+			}
+
+			function checkCurrentNetwork(signer, signerAddress) {
+				const xdaiConfig = configService.web3.xdaiConfig;
+				ethereum
+					.request({
+						method: 'wallet_switchEthereumChain',
+						params: [{ chainId: xdaiConfig.chainId }],
+					})
+					.then((response) => {
+						resolve({ result: 'success' });
+					})
+					.catch((responseError) => {
+						if (responseError.code === 4902) {
+							metaMaskaddNewNetwork(
+								signer,
+								provider,
+								signerAddress
+							);
+						} else {
+							reject({
+								result: 'error',
+								errorType: 'swicthEthereumChainError',
+							});
+						}
+					});
+			}
+
+			function metaMaskaddNewNetwork(signer, provider, signerAddress) {
+				const xdaiConfig = configService.web3.xdaiConfig;
+				ethereum
+					.request({
+						method: 'wallet_addEthereumChain',
+						params: [xdaiConfig],
+					})
+					.then((response) => {
+						resolve({ result: 'success' });
+					})
+					.catch((responseError) => {
+						reject({
+							result: 'error',
+							errorType: 'metaMaskAddError',
+						});
+					});
+			}
+		});
+	}
+
+	checkGasStatus() {
+		const vm = this;
+
+		clearTimeout(vm.gasStatusTimeout);
+
+		axios
+			.get(configService.web3.gasOracleUrl)
+			.then((response) => {
+				if (!response || !response.data || !response.data.fast) {
+					vm.gasPrice = configService.web3.gasPrice;
+				} else {
+					vm.gasPrice = BigNumber(10e9)
+						.times(BigNumber(response.data.fast))
+						.toString();
+				}
+
+				vm.gasStatusTimeout = setTimeout(() => {
+					vm.checkGasStatus();
+				}, 150000);
+			})
+			.catch((responseError) => {
+				vm.gasPrice = configService.web3.gasPrice;
+
+				vm.gasStatusTimeout = setTimeout(() => {
+					vm.checkGasStatus();
+				}, 150000);
+			});
+	}
+
+	eventUpdatePunkData(eventData) {
+		/*
+		event Transfer(
+			address indexed from,
+			address indexed to,
+			uint256 indexed tokenId
+		);
+		event Approval(
+			address indexed owner,
+			address indexed approved,
+			uint256 indexed tokenId
+		);
+		event ApprovalForAll(
+			address indexed owner,
+			address indexed operator,
+			bool approved
+		);
+
+		event Mint(uint256 indexed index, address indexed minter);
+		event PunkOffered(
+			uint256 indexed punkIndex,
+			uint256 minValue,
+			address indexed toAddress
+		);
+		event PunkBidEntered(
+			uint256 indexed punkIndex,
+			uint256 value,
+			address indexed fromAddress
+		);
+		event PunkBidWithdrawn(
+			uint256 indexed punkIndex,
+			uint256 value,
+			address indexed fromAddress
+		);
+		event PunkBought(
+			uint256 indexed punkIndex,
+			uint256 value,
+			address indexed fromAddress,
+			address indexed toAddress
+		);
+		event PunkNoLongerForSale(
+			uint256 indexed punkIndex
+		);
+		*/
+
+		let idx;
+		let data;
+
+		let to;
+		let from;
+		let owner;
+
+		let toAddress;
+		let fromAddress;
+
+		let value;
+		let minValue;
+
+		let mintsCount;
+
+		const event = eventData.event;
+		const blockNumber = eventData.blockNumber;
+		const returnValues = eventData.returnValues;
+
+		const punkData = punkService.punkData;
+
+		if (event === 'SaleBegins') {
+			punkService.publicSale = true;
+
+			eventService.dispatchObjectEvent('change:punkData', {
+				type: 'publicSale',
+				publicSale: true,
+			});
+		}
+
+		if (event === 'Mint') {
+			console.log(eventData);
+			if (returnValues && returnValues.index) {
+				idx = returnValues.index.toString();
+
+				owner = returnValues.minter;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					punkService.updateItem(idx, 'owner', owner);
+					punkService.updateItem(idx, 'mint', true);
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+
+					mintsCount = punkService.mintsCount;
+					punkService.mintsCount = mintsCount + 1;
+
+					console.log('Service mints count', punkService.mintsCount);
+
+					eventService.dispatchObjectEvent('change:punkData', {
+						type: 'mint',
+						mint: idx,
+					});
+				}
+			}
+		}
+
+		if (event === 'PunkOffered') {
+			if (returnValues && returnValues.punkIndex) {
+				idx = returnValues.punkIndex.toString();
+
+				minValue = returnValues.minValue;
+				toAddress = returnValues.toAddress;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					punkService.updateItem(idx, 'sale', true);
+					punkService.updateItem(idx, 'saleData', {
+						minValue: minValue,
+						toAddress: toAddress,
+					});
+
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+
+					eventService.dispatchObjectEvent('change:punkData', {
+						type: 'punkOffered',
+						punkOffered: idx,
+					});
+				}
+			}
+		}
+
+		if (event === 'PunkBought') {
+			console.log(eventData);
+
+			if (returnValues && returnValues.punkIndex) {
+				idx = returnValues.punkIndex.toString();
+
+				value = returnValues.value;
+				toAddress = returnValues.toAddress;
+				fromAddress = returnValues.fromAddress;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					punkService.updateItem(idx, 'owner', toAddress);
+					punkService.updateItem(idx, 'value', value);
+					punkService.updateItem(idx, 'sale', false);
+					punkService.updateItem(idx, 'saleData', {});
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+
+					if (punkData[idx].bid === true) {
+						if (
+							punkData[idx].bidData &&
+							punkData[idx].bidData.fromAddress === toAddress
+						) {
+							punkService.updateItem(idx, 'bid', false);
+							punkService.updateItem(idx, 'bidData', {});
+						}
+					}
+
+					eventService.dispatchObjectEvent('change:punkData', {
+						type: 'PunkBought',
+						punkBought: idx,
+					});
+				}
+			}
+		}
+
+		if (event === 'PunkBidEntered') {
+			console.log(eventData);
+
+			if (returnValues && returnValues.punkIndex) {
+				idx = returnValues.punkIndex.toString();
+
+				value = returnValues.value;
+				fromAddress = returnValues.fromAddress;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					punkService.updateItem(idx, 'bid', true);
+					punkService.updateItem(idx, 'bidData', {
+						value: value,
+						fromAddress: fromAddress,
+					});
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+
+					eventService.dispatchObjectEvent('change:punkData', {
+						type: 'punkBidEntered',
+						punkBidEntered: idx,
+					});
+				}
+			}
+		}
+
+		if (event === 'PunkBidWithdrawn') {
+			console.log(eventData);
+
+			if (returnValues && returnValues.punkIndex) {
+				idx = returnValues.punkIndex.toString();
+
+				value = returnValues.value;
+				fromAddress = returnValues.fromAddress;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					if (punkData[idx].bid === true) {
+						if (
+							punkData[idx].bidData &&
+							punkData[idx].bidData.fromAddress === fromAddress
+						) {
+							punkService.updateItem(idx, 'bid', false);
+							punkService.updateItem(idx, 'bidData', {});
+							punkService.updateItem(
+								idx,
+								'blockLatestEvent',
+								blockNumber
+							);
+
+							eventService.dispatchObjectEvent(
+								'change:punkData',
+								{
+									type: 'punkBidWithdrawn',
+									punkBidWithdrawn: idx,
+								}
+							);
+						}
+					}
+				}
+			}
+		}
+
+		if (event === 'PunkNoLongerForSale') {
+			console.log(eventData);
+			if (returnValues && returnValues.punkIndex) {
+				idx = returnValues.punkIndex.toString();
+
+				minValue = returnValues.minValue;
+				toAddress = returnValues.toAddress;
+
+				if (blockNumber >= punkData[idx].blockLatestEvent) {
+					punkService.updateItem(idx, 'sale', false);
+					punkService.updateItem(idx, 'saleData', {});
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+
+					eventService.dispatchObjectEvent('change:punkData', {
+						type: 'punkNoLongerForSale',
+						punkNoLongerForSale: idx,
+					});
+				}
+			}
+		}
+	}
+
+	initializeContractEvents() {
+		const vm = this;
+
+		vm.contract.events
+			.allEvents()
+			.on('connected', (subscriptionId) => {
+				console.log(subscriptionId);
+			})
+			.on('data', (event) => {
+				vm.eventUpdatePunkData(event);
+			})
+			.on('changed', (event) => {
+				console.log(event);
+			})
+			.on('error', (error, receipt) => {
+				// Check the error event to restart the socket
+				console.log(error, receipt);
+
+				setTimeout(() => {
+					vm.setContract();
+					vm.initializeContractEvents();
+				}, 5000);
+			});
+	}
+
+	/*
 
 	addABI() {
 		abiService.addABI(xDaiPunksAbi);
@@ -76,38 +841,42 @@ class Web3Service {
 	addProvider() {
 		const vm = this;
 
+	
 		vm.provider = new ethers.providers.JsonRpcProvider({
 			url: configService.web3.httpProvider,
 		});
+	
 	}
 
 	addContract() {
 		const vm = this;
+	
 		vm.contract = new ethers.Contract(
 			xDaiPunksAddress,
 			xDaiPunksAbi,
 			vm.provider
 		);
+	
 	}
 
 	addContractEvents() {
 		const vm = this;
-		/*
+	
 		event Transfer(
-			address indexed from,
-			address indexed to,
-			uint256 indexed tokenId
-		  );
-		  event Approval(
-			address indexed owner,
-			address indexed approved,
-			uint256 indexed tokenId
-		  );
-		  event ApprovalForAll(
-			address indexed owner,
-			address indexed operator,
-			bool approved
-		  );
+		  address indexed from,
+		  address indexed to,
+		  uint256 indexed tokenId
+		);
+		event Approval(
+		  address indexed owner,
+		  address indexed approved,
+		  uint256 indexed tokenId
+		);
+		event ApprovalForAll(
+		  address indexed owner,
+		  address indexed operator,
+		  bool approved
+		);
 
 		event Mint(uint256 indexed index, address indexed minter);
 		event PunkOffered(
@@ -131,8 +900,9 @@ class Web3Service {
 		  address indexed fromAddress,
 		  address indexed toAddress
 		);
-		event PunkNoLongerForSale(uint256 indexed punkIndex);
-		*/
+		event PunkNoLongerForSale(
+			uint256 indexed punkIndex
+		);
 
 		vm.contract.on('Transfer', transferListener);
 		vm.contract.on('Approval', approvalListener);
@@ -186,10 +956,11 @@ class Web3Service {
 		function punkNoLongerForSaleListener(idx) {
 			console.log(idx.toString());
 		}
+	
 	}
 
 	isAddress(address) {
-		return ethers.utils.isAddress(address);
+		//return ethers.utils.isAddress(address);
 	}
 
 	addWeb3Events() {
@@ -197,7 +968,7 @@ class Web3Service {
 
 		const vm = this;
 
-		/*
+	
 		if (vm.walletConnector) {
 			vm.walletConnector.off('connect');
 			vm.walletConnector.off('disconnect');
@@ -235,7 +1006,7 @@ class Web3Service {
 				vm.walletConnector = null;
 			});
 		}
-		*/
+	
 
 		if (window.ethereum) {
 			ethereum = window.ethereum;
@@ -248,10 +1019,10 @@ class Web3Service {
 					eventService.off('preloader:show', vm.guid);
 					if (accountArray.length === 0) {
 						userService.address = null;
-						userService.signedIn = null;
+						userService.userSignedIn = null;
 					} else {
 						userService.address = accountArray[0];
-						userService.signedIn = true;
+						userService.userSignedIn = true;
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -277,10 +1048,10 @@ class Web3Service {
 					eventService.off('preloader:show', vm.guid);
 					if (accountArray.length === 0) {
 						userService.address = null;
-						userService.signedIn = null;
+						userService.userSignedIn = null;
 					} else {
 						userService.address = accountArray[0];
-						userService.signedIn = true;
+						userService.userSignedIn = true;
 					}
 
 					eventService.dispatchObjectEvent('force:state');
@@ -296,6 +1067,7 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
+			
 			vm.walletProvider = new ethers.providers.Web3Provider(
 				window.ethereum,
 				'any'
@@ -310,6 +1082,7 @@ class Web3Service {
 				.catch((responseError) => {
 					reject({ result: 'error', errorType: 'getAccountsError' });
 				});
+			
 		});
 	}
 
@@ -324,7 +1097,7 @@ class Web3Service {
 					.getAddress()
 					.then((signerResponse) => {
 						userService.address = signerResponse;
-						userService.signedIn = true;
+						userService.userSignedIn = true;
 
 						resolve({ result: 'success' });
 					})
@@ -351,10 +1124,12 @@ class Web3Service {
 				reject({ result: 'error', errorType: 'noMetaMask' });
 			} else {
 				ethereum = window.ethereum;
+			
 				provider = new ethers.providers.Web3Provider(
 					window.ethereum,
 					'any'
 				);
+			
 
 				provider
 					.send('eth_requestAccounts', [])
@@ -379,7 +1154,7 @@ class Web3Service {
 						const signerAddress = signerResponse;
 
 						userService.address = signerResponse;
-						userService.signedIn = true;
+						userService.userSignedIn = true;
 						checkCurrentNetwork(signer, provider, signerAddress);
 					})
 					.catch((signerResponseError) => {
@@ -499,7 +1274,7 @@ class Web3Service {
 			unit = 'ether';
 		}
 
-		return ethers.utils.parseUnits(value, unit);
+		//return ethers.utils.parseUnits(value, unit);
 	}
 
 	formatNumber(value, unit) {
@@ -507,11 +1282,11 @@ class Web3Service {
 			unit = 'ether';
 		}
 
-		return ethers.utils.formatUnits(value, unit);
+		//return ethers.utils.formatUnits(value, unit);
 	}
 
 	convertKeccak256(string) {
-		return ethers.utils.keccak256(ethers.utils.toUtf8Bytes(string));
+		//return ethers.utils.keccak256(ethers.utils.toUtf8Bytes(string));
 	}
 
 	calculateGasCost(gasUsed, gasPrice, formatCount) {
@@ -524,6 +1299,7 @@ class Web3Service {
 	}
 
 	calculateGas(turbo, gasPrice, estimateGas, transaction) {
+	
 		let mul;
 
 		let gasLimit;
@@ -551,6 +1327,7 @@ class Web3Service {
 			gasLimit: gasLimit,
 			gasPrice: gasPriceTurbo,
 		};
+	
 	}
 
 	checkGasStatus() {
@@ -700,6 +1477,7 @@ class Web3Service {
 	}
 
 	generateAccount(privateKey) {
+		
 		let wallet;
 
 		let accountAddress;
@@ -718,6 +1496,7 @@ class Web3Service {
 			accountAddress,
 			accountPrivateKey,
 		};
+
 	}
 
 	generateAccountMnemonic(mnemonic) {
@@ -769,9 +1548,6 @@ class Web3Service {
 		return accounts;
 	}
 
-	/* xDaiPunks specific contract calls
-	 *
-	 */
 
 	checkWeb3() {
 		const vm = this;
@@ -796,18 +1572,18 @@ class Web3Service {
 
 					if (!ethereum.selectedAddress) {
 						userService.address = null;
-						userService.signedIn = null;
+						userService.userSignedIn = null;
 
 						resolve({ result: 'success' });
 					} else {
 						userService.address = ethereum.selectedAddress;
-						userService.signedIn = true;
+						userService.userSignedIn = true;
 						resolve({ result: 'success' });
 					}
 				}
 			}
 
-			/*
+			
 
 			if (vm.walletConnector) {
 				connector = vm.walletConnector;
@@ -849,7 +1625,7 @@ class Web3Service {
 					}
 				}
 			}
-			*/
+		
 		});
 	}
 
@@ -892,6 +1668,7 @@ class Web3Service {
 				});
 		});
 	}
+	*/
 }
 
 export default Web3Service;

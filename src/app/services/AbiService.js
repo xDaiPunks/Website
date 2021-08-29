@@ -4,19 +4,22 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable array-callback-return */
 
-import { sha3, BN } from 'web3-utils';
-import abiCoder from 'web3-eth-abi';
+import Web3 from 'web3';
 
 let Instance;
+
+const web3 = new Web3();
 
 class AbiService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
 
-			Instance.BN = BN;
-			Instance.sha3 = sha3;
-			Instance.abiCoder = abiCoder;
+			Instance.web3 = web3;
+
+			Instance.BN = web3.utils.BN;
+			Instance.sha3 = web3.utils.sha3;
+			Instance.abiCoder = web3.eth.abi;
 
 			Instance.state = {
 				savedABIs: [],

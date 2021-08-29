@@ -47,6 +47,12 @@ class UtilityService {
 		return JSON.parse(JSON.stringify(sourceObject));
 	}
 
+	/*
+	extendObject(sourceObject, overrideObject) {
+		return { ...sourceObject, ...overrideObject };
+	}
+	*/
+
 	extendObject(sourceObject, dataObject) {
 		if (typeof dataObject !== 'object') {
 			return sourceObject;
@@ -93,6 +99,30 @@ class UtilityService {
 		mergedArray = Object.values(mergedObject);
 		mergedArray.sort((a, b) => (a[prop] < b[prop] ? 1 : -1));
 		return mergedArray;
+	}
+
+	punkArrayFromObject(object) {
+		let key;
+		const array = [];
+
+		for (key in object) {
+			array.push(object[key]);
+		}
+
+		return array;
+	}
+
+	punkObjectFromArray(array) {
+		let i;
+		let iCount;
+
+		const object = {};
+
+		for (i = 0, iCount = array.length; i < iCount; i++) {
+			object[array[i].idx] = array[i];
+		}
+
+		return object;
 	}
 
 	flattenObject(data) {

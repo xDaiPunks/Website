@@ -16,12 +16,12 @@ const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 const translationService = new TranslationService();
 
-class About extends PureComponent {
+class PunkAccount extends PureComponent {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
-		this.componentName = 'About';
+		this.componentName = 'PunkAccount';
 
 		this.guid = utilityService.guid();
 	}
@@ -109,4 +109,4 @@ class About extends PureComponent {
 	}
 }
 
-export default About;
+export default PunkAccount;

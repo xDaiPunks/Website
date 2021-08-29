@@ -240,6 +240,8 @@ class Modal extends PureComponent {
 						});
 
 						console.log(responseError);
+
+						console.log(responseError);
 						eventService.dispatchObjectEvent('hide:preloader');
 					});
 			});
@@ -471,7 +473,7 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">
+						<span className="ModalHeader AlignLeft">
 							{'Connect to a wallet'}
 						</span>
 						<WalletButtons />

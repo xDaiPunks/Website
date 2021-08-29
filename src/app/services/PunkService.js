@@ -1,11 +1,13 @@
 import { punks } from 'src/app/data/punks';
 
+import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
 import ServerService from 'src/app/services/ServerService';
 import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
+const eventService = new EventService();
 const configService = new ConfigService();
 const serverService = new ServerService();
 const utilityService = new UtilityService();
@@ -14,8 +16,8 @@ class PunkService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
-			Instance.publicSale = null;
-			Instance.mintsCount = null;
+			Instance.publicSaleStore = null;
+			Instance.mintsCountStore = null;
 
 			Instance.punkArrayData = null;
 			Instance.punkObjectData = null;
@@ -30,14 +32,14 @@ class PunkService {
 		return vm.punkArrayData;
 	}
 
-	get punkObject() {
-		const vm = this;
-		return vm.punkObjectData;
-	}
-
 	set punkData(array) {
 		const vm = this;
 		vm.punkArrayData = array;
+	}
+
+	get punkObject() {
+		const vm = this;
+		return vm.punkObjectData;
 	}
 
 	set punkObject(object) {
@@ -45,42 +47,77 @@ class PunkService {
 		vm.punkObjectData = object;
 	}
 
-	generateArray(object) {
-		let key;
-		const array = [];
-
-		for (key in object) {
-			array.push(object[key]);
-		}
-
-		return array;
+	get mintsCount() {
+		const vm = this;
+		return vm.mintsCountStore;
 	}
 
-	generateObject(array) {
-		let i;
-		let iCount;
+	set mintsCount(number) {
+		const vm = this;
+		vm.mintsCountStore = number;
+	}
 
-		const object = {};
+	get publicSale() {
+		const vm = this;
+		return vm.publicSaleStore;
+	}
 
-		for (i = 0, iCount = array.length; i < iCount; i++) {
-			object['#' + array[i].idx] = punks[i];
+	set publicSale(bool) {
+		const vm = this;
+		vm.publicSaleStore = bool;
+	}
+
+	getItem(idx) {
+		const vm = this;
+		return vm.punkObjectData[idx];
+	}
+
+	updateItem(idx, key, data) {
+		const vm = this;
+		if (vm.punkObjectData) {
+			vm.punkObjectData[idx][key] = data;
+		}
+	}
+
+	generatePunkData(remotePunkObject) {
+		let punk;
+		let keyProp;
+
+		const vm = this;
+		const punkObject = vm.punkObject;
+
+		for (punk in remotePunkObject) {
+			for (keyProp in remotePunkObject[punk]) {
+				punkObject[punk][keyProp] = remotePunkObject[punk][keyProp];
+			}
 		}
 
-		return object;
+		vm.punkObject = punkObject;
+		vm.punkData = utilityService.punkArrayFromObject(vm.punkObject);
+
+		console.log(vm.punkObject['0']);
+		window.localStorage.setItem(
+			'punks',
+			utilityService.generateString(vm.punkObjectData)
+		);
 	}
 
 	generateInitialPunkData() {
 		let i;
 		let iCount;
 
+		let punkData = [];
+		let punkObject = {};
+
 		const vm = this;
 
-		vm.punkArrayData = punks;
-
-		vm.punkObjectData = {};
 		for (i = 0, iCount = punks.length; i < iCount; i++) {
-			vm.punkObjectData['#' + punks[i].idx] = punks[i];
+			punkData[i] = punks[i];
+			punkObject[punkData[i].idx] = punks[i];
 		}
+
+		vm.punkData = punkData;
+		vm.punkObject = punkObject;
 	}
 }
 

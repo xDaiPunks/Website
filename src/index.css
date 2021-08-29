@@ -1851,7 +1851,20 @@ body {
         display: block;
         position: relative;
         color: #111;
-        font-size: 24px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 800;
+        font-family: 'Gilroy', sans-serif;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px; }
+      .Modal .ModalContent .ModalContentBlock .ModalHeader.AlignLeft {
+        display: block;
+        position: relative;
+        color: #111;
+        text-align: left;
+        font-size: 22px;
         font-weight: 800;
         font-family: 'Gilroy', sans-serif;
         padding-top: 20px;
@@ -1863,8 +1876,8 @@ body {
         position: relative;
         color: #111;
         text-align: center;
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 400;
         font-family: 'Roboto', sans-serif;
         padding-left: 20px;
         padding-right: 20px; }
@@ -1873,7 +1886,7 @@ body {
         position: relative;
         flex-direction: row;
         justify-content: center;
-        padding-top: 40px;
+        padding-top: 36px;
         padding-left: 20px;
         padding-right: 20px;
         padding-bottom: 20px; }
@@ -1882,7 +1895,7 @@ body {
           position: relative;
           overflow: hidden;
           width: 100%;
-          height: 40px;
+          height: 36px;
           border-radius: 20px;
           flex-direction: row;
           justify-content: center;
@@ -1891,15 +1904,15 @@ body {
             display: block;
             position: static;
             user-select: none;
-            height: 40px;
+            height: 36px;
             text-align: center;
-            line-height: 40px;
+            line-height: 36px;
             color: #111;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             letter-spacing: normal;
             white-space: nowrap;
-            font-family: 'Roboto', sans-serif; }
+            font-family: 'Gilroy', sans-serif; }
       .Modal .ModalContent .ModalContentBlock .WalletConnector {
         display: flex;
         position: relative;
@@ -1927,9 +1940,9 @@ body {
           line-height: 40px;
           padding-left: 10px;
           color: #111;
-          font-size: 16px;
-          font-weight: 600;
-          font-family: 'Roboto', sans-serif; }
+          font-size: 14px;
+          font-weight: 700;
+          font-family: 'Gilroy', sans-serif; }
       .Modal .ModalContent .ModalContentBlock .LanguageSelector {
         display: flex;
         position: relative;
@@ -4362,20 +4375,20 @@ body {
   transform: translate3d(0px, 60px, 0px);
   transition: opacity 0.4s linear, transform 0.4s ease-out; }
 
-#AppRoot .App .ViewContainer .About.View {
+#AppRoot .App .ViewContainer .Punk.View {
   background: #fff;
   background-color: #fff; }
-  #AppRoot .App .ViewContainer .About.View .ViewBox {
+  #AppRoot .App .ViewContainer .Punk.View .ViewBox {
     display: block;
     position: relative;
     width: 100vw;
     max-width: 100%;
     min-height: 100vh;
     background-color: #fff; }
-    #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent {
+    #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent {
       display: block;
       position: relative; }
-      #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage {
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage {
         display: flex;
         position: relative;
         flex-direction: column;
@@ -4386,20 +4399,20 @@ body {
         padding-left: 48px;
         padding-right: 48px; }
         @media screen and (max-width: 1070px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage {
             height: calc(16.5vw + 5px + 40px);
             max-height: 220px;
             padding-top: 40px;
             padding-left: 40px;
             padding-right: 40px; } }
         @media screen and (max-width: 986px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage {
             height: calc(33vw + 30px);
             max-height: 230px;
             padding-top: 30px;
             padding-left: 30px;
             padding-right: 30px; } }
-        #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
           display: block;
           position: absolute;
           width: 33vw;
@@ -4410,7 +4423,7 @@ body {
           top: 48px;
           right: 48px; }
           @media screen and (max-width: 1070px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
               width: 33vw;
               height: 33vw;
               max-width: 350px;
@@ -4418,14 +4431,14 @@ body {
               top: 40px;
               right: 40px; } }
           @media screen and (max-width: 986px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
               width: 33vw;
               height: 33vw;
               max-width: 200px;
               max-height: 200px;
               top: 30px;
               right: 30px; } }
-      #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader {
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader {
         display: block;
         position: relative;
         z-index: 2;
@@ -4433,16 +4446,16 @@ body {
         padding-right: 48px;
         margin-top: calc(-16px - 4vw); }
         @media screen and (max-width: 1070px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader {
             padding-left: 40px;
             padding-right: 40px;
             margin-top: calc(-16px - 2vw); } }
         @media screen and (max-width: 986px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader {
             padding-left: 30px;
             padding-right: 30px;
             margin-top: calc(-20px - 3vw); } }
-        #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
           display: block;
           position: relative;
           color: #111;
@@ -4452,16 +4465,16 @@ body {
           letter-spacing: 2px;
           font-family: 'Roboto', sans-serif; }
           @media screen and (max-width: 1070px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
               font-size: calc(42px + 2vw);
               line-height: calc(42px + 2vw);
               letter-spacing: 2px; } }
           @media screen and (max-width: 986px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
               font-size: calc(30px + 3vw);
               line-height: calc(30px + 3vw);
               letter-spacing: 1px; } }
-      #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent {
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent {
         display: block;
         position: relative;
         z-index: 2;
@@ -4476,7 +4489,7 @@ body {
         padding-right: 48px;
         padding-bottom: 48px; }
         @media screen and (max-width: 1070px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent {
             width: 66%;
             font-size: 18px;
             padding-top: 10px;
@@ -4484,23 +4497,23 @@ body {
             padding-right: 40px;
             padding-bottom: 40px; } }
         @media screen and (max-width: 986px) {
-          #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent {
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent {
             width: 100%;
             font-size: 16px;
             padding-top: 10px;
             padding-left: 30px;
             padding-right: 30px;
             padding-bottom: 30px; } }
-        #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent ul {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent ul {
           padding: 0;
           padding-left: 18px;
           margin-bottom: 0px;
           padding-bottom: 0px; }
           @media screen and (max-width: 1070px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent ul {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent ul {
               padding-left: 18px; } }
           @media screen and (max-width: 986px) {
-            #AppRoot .App .ViewContainer .About.View .ViewBox .ViewContent .PageContent ul {
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .ViewContent .PageContent ul {
               padding-left: 16px; } }
 
 #AppRoot .App .ViewContainer .MarketPlace.View {
@@ -4688,3 +4701,144 @@ body {
           display: none;
           width: 0px;
           height: 0px; }
+
+#AppRoot .App .ViewContainer .Account.View {
+  background: #fff;
+  background-color: #fff; }
+  #AppRoot .App .ViewContainer .Account.View .ViewBox {
+    display: block;
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: #fff; }
+    #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent {
+      display: block;
+      position: relative; }
+      #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: flex-end;
+        height: calc(16.5vw + 5px + 40px);
+        max-height: 245px;
+        padding-top: 48px;
+        padding-left: 48px;
+        padding-right: 48px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage {
+            height: calc(16.5vw + 5px + 40px);
+            max-height: 220px;
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-right: 40px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage {
+            height: calc(33vw + 30px);
+            max-height: 230px;
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+          display: block;
+          position: absolute;
+          width: 33vw;
+          height: 33vw;
+          max-width: 350px;
+          max-height: 350px;
+          border-radius: 50%;
+          top: 48px;
+          right: 48px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+              width: 33vw;
+              height: 33vw;
+              max-width: 350px;
+              max-height: 350px;
+              top: 40px;
+              right: 40px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeaderImage .PageHeaderImageContent {
+              width: 33vw;
+              height: 33vw;
+              max-width: 200px;
+              max-height: 200px;
+              top: 30px;
+              right: 30px; } }
+      #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader {
+        display: block;
+        position: relative;
+        z-index: 2;
+        padding-left: 48px;
+        padding-right: 48px;
+        margin-top: calc(-16px - 4vw); }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader {
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: calc(-16px - 2vw); } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-top: calc(-20px - 3vw); } }
+        #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+          display: block;
+          position: relative;
+          color: #111;
+          font-weight: 800;
+          font-size: calc(42px + 4vw);
+          line-height: calc(42px + 4vw);
+          letter-spacing: 2px;
+          font-family: 'Roboto', sans-serif; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+              font-size: calc(42px + 2vw);
+              line-height: calc(42px + 2vw);
+              letter-spacing: 2px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageHeader .PageHeaderText {
+              font-size: calc(30px + 3vw);
+              line-height: calc(30px + 3vw);
+              letter-spacing: 1px; } }
+      #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent {
+        display: block;
+        position: relative;
+        z-index: 2;
+        color: #111;
+        line-height: 24px;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+        width: 66%;
+        padding-top: 10px;
+        padding-left: 48px;
+        padding-right: 48px;
+        padding-bottom: 48px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent {
+            width: 66%;
+            font-size: 18px;
+            padding-top: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 40px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent {
+            width: 100%;
+            font-size: 16px;
+            padding-top: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 30px; } }
+        #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent ul {
+          padding: 0;
+          padding-left: 18px;
+          margin-bottom: 0px;
+          padding-bottom: 0px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent ul {
+              padding-left: 18px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .Account.View .ViewBox .ViewContent .PageContent ul {
+              padding-left: 16px; } }

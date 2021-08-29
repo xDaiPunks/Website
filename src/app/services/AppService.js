@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 
+import PunkService from 'src/app/services/PunkService';
 import UserService from 'src/app/services/UserService';
 import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
@@ -13,6 +14,7 @@ import TranslationService from 'src/app/services/TranslationService';
 
 let Instance;
 
+const punkService = new PunkService();
 const userService = new UserService();
 const web3Service = new Web3Service();
 const eventService = new EventService();
@@ -26,8 +28,15 @@ class AppService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
+			Instance.guid = utilityService.guid();
 
 			Instance.setupLanguageConfig();
+
+			eventService.on(
+				'change:punkData',
+				Instance.guid,
+				(eventData) => {}
+			);
 		}
 
 		return Instance;
@@ -42,9 +51,8 @@ class AppService {
 				window.location.href
 			);
 
-			promiseArray.push(vm.checkWeb3());
-			promiseArray.push(vm.publicSale());
-			promiseArray.push(vm.mintsRemaining());
+			promiseArray.push(vm.punkData());
+			promiseArray.push(vm.blockchainData());
 
 			/*
 			promiseArray.push(vm.getRates());
@@ -66,6 +74,106 @@ class AppService {
 		});
 	}
 
+	punkData() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(configService.apiUrl + '/punkData')
+				.then((response) => {
+					const data = response.data;
+
+					if (
+						data &&
+						data.responseData &&
+						data.responseData.punkData
+					) {
+						punkService.generatePunkData(
+							data.responseData.punkData
+						);
+					}
+
+					resolve({ result: 'success' });
+				})
+				.catch((responseError) => {
+					resolve({ result: 'success' });
+				});
+		});
+	}
+
+	walletData() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+
+	blockchainData() {
+		const vm = this;
+		const promiseArray = [];
+
+		// public sale
+		// mints remaining
+		// punks owned by wallet
+
+		promiseArray.push(publicSale());
+		promiseArray.push(mintsRemaining());
+
+		Promise.all(promiseArray)
+			.then((responses) => {
+				console.log(responses);
+			})
+			.catch((responsesError) => {
+				console.log(responsesError);
+			});
+
+		function publicSale() {
+			return new Promise((resolve, reject) => {
+				web3Service
+					.publicSale()
+					.then((response) => {
+						console.log('Public sale', response);
+						resolve(response);
+					})
+					.catch((responseError) => {
+						console.log('Public sale', responseError);
+						reject(responseError);
+					});
+			});
+		}
+
+		function mintsRemaining() {
+			return new Promise((resolve, reject) => {
+				web3Service
+					.mintsRemaining()
+					.then((response) => {
+						resolve(response);
+					})
+					.catch((responseError) => {
+						console.log('Mints remaining', responseError);
+						resolve(responseError);
+					});
+			});
+		}
+	}
+
+	mintPunks(number) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.mintPunks(number)
+				.then((response) => {
+					resolve(response);
+					if(response.status !== true) {
+						//show alert
+					} else {
+						routeService.navigateRoute()
+					}
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
 	checkWeb3() {
 		return new Promise((resolve, reject) => {
 			web3Service
@@ -74,35 +182,6 @@ class AppService {
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
-					resolve({ result: 'success' });
-				});
-		});
-	}
-
-	publicSale() {
-		return new Promise((resolve, reject) => {
-			web3Service
-				.publicSale()
-				.then((response) => {
-					console.log('Public sale', response);
-					resolve({ result: 'success' });
-				})
-				.catch((responseError) => {
-					console.log('Public sale', responseError);
-					resolve({ result: 'success' });
-				});
-		});
-	}
-
-	mintsRemaining() {
-		return new Promise((resolve, reject) => {
-			web3Service
-				.mintsRemaining()
-				.then((response) => {
-					resolve({ result: 'success' });
-				})
-				.catch((responseError) => {
-					console.log('Mints remaining', responseError);
 					resolve({ result: 'success' });
 				});
 		});

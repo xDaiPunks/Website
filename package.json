@@ -27,7 +27,6 @@
 		"bip39": "^3.0.4",
 		"copy-webpack-plugin": "^5.1.1",
 		"ethereumjs-wallet": "^1.0.1",
-		"ethers": "^5.4.5",
 		"history": "^4.10.1",
 		"install": "^0.13.0",
 		"invariant": "^2.2.4",
@@ -41,6 +40,7 @@
 		"react-qr-code": "^1.1.1",
 		"scroll-polyfill": "^0.1.1",
 		"warning": "^4.0.3",
+		"web3": "^1.5.2",
 		"web3-eth-abi": "^1.5.2",
 		"web3-utils": "^1.5.2",
 		"webrtc-adapter": "^7.7.0"
