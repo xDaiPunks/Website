@@ -47,20 +47,10 @@ class AppService {
 
 		return new Promise((resolve, reject) => {
 			const promiseArray = [];
-			const location = utilityService.generateLocation(
-				window.location.href
-			);
 
 			promiseArray.push(vm.punkData());
 			promiseArray.push(vm.blockchainData());
 
-			/*
-			promiseArray.push(vm.getRates());
-
-			if (location.pathname.indexOf('/app/request/') !== -1) {
-				promiseArray.push(vm.getUserData());
-			}
-			*/
 
 			Promise.all(promiseArray)
 				.then((responses) => {

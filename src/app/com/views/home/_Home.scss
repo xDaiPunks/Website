@@ -499,6 +499,7 @@
 										position: relative;
 
 										flex-direction: column;
+										align-items: center;
 
 										padding-top: 50px;
 										padding-bottom: 50px;
@@ -518,9 +519,9 @@
 											position: relative;
 
 											font-family: 'Gilroy', sans-serif;
-											font-weight: 800;
+											font-weight: 700;
 
-											font-size: 8px;
+											font-size: 10px;
 
 											color: #111;
 
@@ -562,7 +563,7 @@
 												color: #111;
 
 												font-size: 14px;
-												font-weight: 600;
+												font-weight: 700;
 												letter-spacing: normal;
 
 												white-space: nowrap;
@@ -604,7 +605,7 @@
 										position: relative;
 
 										width: 100%;
-										max-width: 350px;
+										max-width: 300px;
 
 										align-items: center;
 										justify-content: center;

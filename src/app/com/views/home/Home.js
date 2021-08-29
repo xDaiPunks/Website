@@ -104,7 +104,7 @@ class Home extends PureComponent {
 
 	mintPunks(amount) {
 		appService
-			.mintPunks(2)
+			.mintPunks(amount)
 			.then((response) => {
 				console.log(response);
 				if (response.status !== true) {
@@ -146,10 +146,6 @@ class Home extends PureComponent {
 					type: 'mintModal',
 					mintPunks: vm.mintPunks,
 				});
-
-				/*
-
-				*/
 			}
 		}
 	}
@@ -345,7 +341,7 @@ class Home extends PureComponent {
 
 		return (
 			<div className="MintAmountContainer">
-				<span className="MintText">NUMBER OF MINTED PUNKS</span>
+				<span className="MintText">Number of minted punks</span>
 				<div className="MintedItems">
 					<span className="MintedItemsText">{mintsCount} / 1000</span>
 				</div>

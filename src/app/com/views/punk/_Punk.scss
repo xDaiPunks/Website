@@ -16,194 +16,66 @@
 
 					background-color: #fff;
 
-					.ViewContent {
+					.Spacer {
 						display: block;
 						position: relative;
 
-						.PageHeaderImage {
-							display: flex;
-							position: relative;
+						height: $heightHeader;
 
-							flex-direction: column;
-							align-items: flex-end;
-
-							height: calc(16.5vw + 5px + 40px);
-							max-height: 175px + 30px + 40px;
-
-							padding-top: $padding;
-							padding-left: $padding;
-							padding-right: $padding;
-
-							@include responsiveMax($responsiveMed) {
-								height: calc(16.5vw + 5px + 40px);
-								max-height: 175px + 5px + 40px;
-
-								padding-top: $paddingMed;
-								padding-left: $paddingMed;
-								padding-right: $paddingMed;
-							}
-
-							@include responsiveMax($responsiveSmall) {
-								height: calc(33vw + 30px);
-								max-height: 200px + 30px;
-
-								padding-top: $paddingSmall;
-								padding-left: $paddingSmall;
-								padding-right: $paddingSmall;
-							}
-
-							.PageHeaderImageContent {
-								display: block;
-								position: absolute;
-
-								width: 33vw;
-								height: 33vw;
-
-								max-width: 350px;
-								max-height: 350px;
-
-								border-radius: 50%;
-
-								top: $padding;
-								right: $padding;
-
-								@include responsiveMax($responsiveMed) {
-									width: 33vw;
-									height: 33vw;
-
-									max-width: 350px;
-									max-height: 350px;
-
-									top: $paddingMed;
-									right: $paddingMed;
-								}
-
-								@include responsiveMax($responsiveSmall) {
-									width: 33vw;
-									height: 33vw;
-
-									max-width: 200px;
-									max-height: 200px;
-
-									top: $paddingSmall;
-									right: $paddingSmall;
-								}
-							}
+						@include responsiveMax($responsiveMed) {
+							height: $heightHeaderMed;
 						}
 
-						.PageHeader {
+						@include responsiveMax($responsiveSmall) {
+							height: $heightHeaderSmall;
+						}
+					}
+
+					.PunkContainer {
+						display: flex;
+						position: relative;
+
+						padding-left: $padding;
+						padding-right: $padding;
+
+						@include responsiveMax($responsiveMed) {
+							padding-left: $paddingMed;
+							padding-right: $paddingMed;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							padding-left: $paddingSmall;
+							padding-right: $paddingSmall;
+						}
+
+						.PunkItem {
 							display: block;
 							position: relative;
 
-							z-index: 2;
+							width: 100%;
 
-							padding-left: $padding;
-							padding-right: $padding;
+							border-radius: 18px;
 
-							margin-top: calc(-16px - 4vw);
+							background: radial-gradient(
+								100% 100% at 50% 100%,
+								#0fffff,
+								#8000ff
+							);
 
-							@include responsiveMax($responsiveMed) {
-								padding-left: $paddingMed;
-								padding-right: $paddingMed;
-
-								margin-top: calc(-16px - 2vw);
-							}
-
-							@include responsiveMax($responsiveSmall) {
-								padding-left: $paddingSmall;
-								padding-right: $paddingSmall;
-
-								margin-top: calc(-20px - 3vw);
-							}
-
-							.PageHeaderText {
+							.PunkImageDetail {
 								display: block;
 								position: relative;
+								width: 100%;
 
-								color: #111;
-								font-weight: 800;
-
-								font-size: calc(42px + 4vw);
-								line-height: calc(42px + 4vw);
-
-								letter-spacing: 2px;
-
-								font-family: 'Roboto', sans-serif;
-
-								@include responsiveMax($responsiveMed) {
-									font-size: calc(42px + 2vw);
-									line-height: calc(42px + 2vw);
-
-									letter-spacing: 2px;
-								}
-
-								@include responsiveMax($responsiveSmall) {
-									font-size: calc(30px + 3vw);
-									line-height: calc(30px + 3vw);
-
-									letter-spacing: 1px;
-								}
+								-ms-interpolation-mode: nearest-neighbor;
+								image-rendering: pixelated;
+								image-rendering: -moz-crisp-edges;
 							}
 						}
 
-						.PageContent {
+						.PunkItem:after {
+							content: '';
 							display: block;
-							position: relative;
-
-							z-index: 2;
-
-							color: #111;
-							line-height: 24px;
-
-							font-size: 18px;
-							font-weight: 400;
-
-							font-family: 'Roboto', sans-serif;
-
-							width: 66%;
-
-							padding-top: 10px;
-							padding-left: $padding;
-							padding-right: $padding;
-							padding-bottom: $padding;
-
-							@include responsiveMax($responsiveMed) {
-								width: 66%;
-
-								font-size: 18px;
-
-								padding-top: 10px;
-								padding-left: $paddingMed;
-								padding-right: $paddingMed;
-								padding-bottom: $paddingMed;
-							}
-
-							@include responsiveMax($responsiveSmall) {
-								width: 100%;
-
-								font-size: 16px;
-
-								padding-top: 10px;
-								padding-left: $paddingSmall;
-								padding-right: $paddingSmall;
-								padding-bottom: $paddingSmall;
-							}
-
-							ul {
-								padding: 0;
-								padding-left: 18px;
-
-								margin-bottom: 0px;
-								padding-bottom: 0px;
-
-								@include responsiveMax($responsiveMed) {
-									padding-left: 18px;
-								}
-
-								@include responsiveMax($responsiveSmall) {
-									padding-left: 16px;
-								}
-							}
 						}
 					}
 				}

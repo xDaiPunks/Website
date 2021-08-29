@@ -38,6 +38,8 @@ class Modal extends PureComponent {
 
 		this.guid = utilityService.guid();
 
+		this.mintInput = React.createRef();
+
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
@@ -420,6 +422,7 @@ class Modal extends PureComponent {
 	}
 
 	mintModal(props) {
+		let value;
 		let modalClass;
 
 		const vm = this;
@@ -432,7 +435,22 @@ class Modal extends PureComponent {
 			vm.closeModal(event);
 
 			if (props.mintPunks) {
-				props.mintPunks(2);
+				if (
+					vm.mintInput &&
+					vm.mintInput.current &&
+					vm.mintInput.current.state &&
+					vm.mintInput.current.state.value
+				) {
+					value = parseInt(
+						vm.mintInput.current.state.value.trim(),
+						10
+					);
+
+					if (value > 0 && value <= 20) {
+						console.log(value);
+						props.mintPunks(value);
+					}
+				}
 			}
 		};
 
@@ -453,13 +471,23 @@ class Modal extends PureComponent {
 						<span className="ModalHeader">
 							{'Number of xDaiPunks'}
 						</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.mintInput}
+								id={'inputNumber'}
+								type={'text'}
+								inputType={'input'}
+								defaultValue={'1'}
+								placeholder={'Enter number of punks'}
+							/>
+						</div>
 
 						<div className="ModalButton">
 							<button
 								className="ModalContentButton"
 								onClick={onClickButton}>
 								<span className="ModalContentButtonText">
-									{'Get punks'}
+									{'Mint'}
 								</span>
 							</button>
 						</div>

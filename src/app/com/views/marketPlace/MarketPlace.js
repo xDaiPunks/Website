@@ -314,7 +314,7 @@ class MarketPlace extends PureComponent {
 						if (items[item]) {
 							number = items[item].idx;
 
-							attributes = items[item].attributes.join(' - ');
+							attributes = items[item].attributes.join(' · ');
 							punkValue = BigNumber(items[item].value)
 								.div(1e18)
 								.toFormat(2);
@@ -324,9 +324,9 @@ class MarketPlace extends PureComponent {
 								items[item].idx +
 								'.png';
 
-							status = 'Not Minted';
+							status = 'Mint';
 							if (items[item].mint === true) {
-								status = 'Minted';
+								status = 'Owned';
 							}
 
 							if (index === 1) {
@@ -351,7 +351,7 @@ class MarketPlace extends PureComponent {
 											event.preventDefault();
 
 											routeService.navigateRoute(
-												'/punk/' + number
+												'/punk/' + items[item].idx
 											);
 										}}>
 										<div className="PunkItemContent">
@@ -389,21 +389,23 @@ class MarketPlace extends PureComponent {
 													<span className="DetailsTextTitle">
 														Value
 													</span>
-													<span className="DetailsTextContent">
+													<span className="DetailsTextContent Bold">
 														{punkValue + ' xDai'}
 													</span>
 												</div>
+												{/*
 												<div className="PunkItemDetails">
 													<span className="DetailsTextTitle">
 														Attributes
 													</span>
-													<span className="DetailsTextContent">
+													<span className="DetailsTextContent Bold">
 														&nbsp;
 													</span>
-													<span className="DetailsTextContent OverFlow">
+													<span className="DetailsTextContent Bold OverFlow">
 														{attributes}
 													</span>
 												</div>
+												*/}
 											</div>
 										</div>
 									</div>

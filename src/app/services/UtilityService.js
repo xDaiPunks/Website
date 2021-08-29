@@ -469,6 +469,16 @@ class UtilityService {
 		return '/' + pathArray[1];
 	}
 
+	generatePunkIdFromPath(path) {
+		let newPath;
+		let pathArray;
+
+		newPath = this.formatRoutePath(path);
+		pathArray = newPath.split('/');
+
+		return pathArray[2];
+	}
+
 	getTransformValues3D(value) {
 		let i;
 		let arrayCount;

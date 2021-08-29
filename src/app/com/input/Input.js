@@ -79,7 +79,8 @@ class Input extends PureComponent {
 			className = 'Input';
 		}
 
-		value = this.props.value || '';
+		value = this.props.value;
+
 		if (this.state.value) {
 			value = this.state.value;
 		}

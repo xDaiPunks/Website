@@ -121,7 +121,7 @@
 
 								margin-bottom: 20px;
 
-								border-radius: 13.5px;
+								border-radius: 18px;
 
 								background-color: #f2f2f2;
 
@@ -224,9 +224,9 @@
 												display: block;
 												position: relative;
 
-												font-size: 10px;
+												font-size: 8px;
 
-												color: #999;
+												color: #111;
 											}
 
 											.DetailsTextContent {
@@ -241,14 +241,14 @@
 											}
 
 											.DetailsTextContent.Bold {
-												font-weight: 900;
+												font-weight: 800;
 											}
 
 											.DetailsTextContent.OverFlow {
 												display: block;
 												position: absolute;
 
-												top: 11px;
+												top: 9px;
 												left: 0px;
 
 												width: 100%;
