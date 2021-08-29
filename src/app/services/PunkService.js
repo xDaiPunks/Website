@@ -1,5 +1,6 @@
 import { punks } from 'src/app/data/punks';
 
+import UserService from 'src/app/services/UserService';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
 import ServerService from 'src/app/services/ServerService';
@@ -7,6 +8,7 @@ import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
+const userService = new UserService();
 const eventService = new EventService();
 const configService = new ConfigService();
 const serverService = new ServerService();
@@ -77,6 +79,39 @@ class PunkService {
 		if (vm.punkObjectData) {
 			vm.punkObjectData[idx][key] = data;
 		}
+	}
+
+	getPunkBids(address) {
+		let i;
+		let iCount;
+
+		const vm = this;
+
+		const bidArray = [];
+		const punkData = vm.punkData;
+
+		if (userService.userSignedIn === true) {
+			for (i = 0, iCount = punkData.length; i < iCount; i++) {
+				if (punkData[i].bid === true) {
+					if (
+						punkData[i].bidData &&
+						punkData[i].bidData.fromAddress
+					) {
+						if (
+							userService.address.toLowerCase() ===
+							punkData[i].bidData.fromAddress.toLowerCase()
+						) {
+							bidArray.push({
+								idx: punkData[i].idx,
+								bidData: punkData[i].bidData,
+							});
+						}
+					}
+				}
+			}
+		}
+
+		return bidArray;
 	}
 
 	generatePunkData(remotePunkObject) {

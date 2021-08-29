@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { PureComponent } from 'react';
 
-import Input from 'src/app/com/input/Input';
 import Footer from 'src/app/com/footer/Footer';
 import Button from 'src/app/com/button/Button';
 import SlideShow from 'src/app/com/slideShow/SlideShow';
@@ -19,7 +18,6 @@ import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 import TranslationService from 'src/app/services/TranslationService';
-import Web3Service from 'src/app/services/Web3Service';
 
 const slideShow = new SlideShow();
 
@@ -140,8 +138,6 @@ class Home extends PureComponent {
 
 		if (punkService.publicSale === true) {
 			if (userService.userSignedIn === true) {
-				console.log('show modal select quantity');
-
 				eventService.dispatchObjectEvent('show:modal', {
 					type: 'mintModal',
 					mintPunks: vm.mintPunks,

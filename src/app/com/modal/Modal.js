@@ -38,7 +38,9 @@ class Modal extends PureComponent {
 
 		this.guid = utilityService.guid();
 
+		this.bidInput = React.createRef();
 		this.mintInput = React.createRef();
+		this.offerInput = React.createRef();
 
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -51,7 +53,9 @@ class Modal extends PureComponent {
 
 		this.emptyModal = this.emptyModal.bind(this);
 
+		this.bidModal = this.bidModal.bind(this);
 		this.mintModal = this.mintModal.bind(this);
+		this.offerModal = this.offerModal.bind(this);
 		this.alertModal = this.alertModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
 		this.languageSwitchModal = this.languageSwitchModal.bind(this);
@@ -421,6 +425,77 @@ class Modal extends PureComponent {
 		);
 	}
 
+	bidModal(props) {
+		let value;
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.enterBidForPunk) {
+				if (
+					vm.bidInput &&
+					vm.bidInput.current &&
+					vm.bidInput.current.state &&
+					vm.bidInput.current.state.value
+				) {
+					value = vm.bidInput.current.state.value.replace(',', '.');
+					value = parseFloat(value.trim());
+
+					if (value > 0) {
+						props.enterBidForPunk(value);
+					}
+				}
+			}
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">{'Enter a bid'}</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.bidInput}
+								id={'inputNumber'}
+								type={'text'}
+								inputType={'input'}
+								placeholder={'Enter an amount'}
+							/>
+						</div>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Enter bid'}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
 	mintModal(props) {
 		let value;
 		let modalClass;
@@ -488,6 +563,77 @@ class Modal extends PureComponent {
 								onClick={onClickButton}>
 								<span className="ModalContentButtonText">
 									{'Mint'}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
+	offerModal(props) {
+		let value;
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.offerPunkForSale) {
+				if (
+					vm.offerInput &&
+					vm.offerInput.current &&
+					vm.offerInput.current.state &&
+					vm.offerInput.current.state.value
+				) {
+					value = vm.offerInput.current.state.value.replace(',', '.');
+					value = parseFloat(value.trim());
+
+					if (value > 0) {
+						props.offerPunkForSale(value);
+					}
+				}
+			}
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">{'Offer for sale'}</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.offerInput}
+								id={'inputNumber'}
+								type={'text'}
+								inputType={'input'}
+								placeholder={'Enter a price'}
+							/>
+						</div>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Offer for sale'}
 								</span>
 							</button>
 						</div>
@@ -618,7 +764,9 @@ class Modal extends PureComponent {
 
 		const EmptyModal = this.emptyModal;
 
+		const BidModal = this.bidModal;
 		const MintModal = this.mintModal;
+		const OfferModal = this.offerModal;
 		const AlertModal = this.alertModal;
 		const WalletModal = this.walletModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
@@ -629,8 +777,14 @@ class Modal extends PureComponent {
 			default:
 				return <EmptyModal {...props} />;
 
+			case 'bidModal':
+				return <BidModal {...props} />;
+
 			case 'mintModal':
 				return <MintModal {...props} />;
+
+			case 'offerModal':
+				return <OfferModal {...props} />;
 
 			case 'alertModal':
 				return <AlertModal {...props} />;

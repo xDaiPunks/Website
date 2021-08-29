@@ -49,8 +49,8 @@ class AppService {
 			const promiseArray = [];
 
 			promiseArray.push(vm.punkData());
+			promiseArray.push(vm.walletData());
 			promiseArray.push(vm.blockchainData());
-
 
 			Promise.all(promiseArray)
 				.then((responses) => {
@@ -93,7 +93,34 @@ class AppService {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
+			web3Service
+				.checkWallet()
+				.then((response) => {
+					checkTokens();
+				})
+				.catch((responseError) => {
+					resolve({ result: 'success' });
+				});
 
+			function checkTokens() {
+				if (userService.userSignedIn !== true) {
+					resolve({ result: 'success' });
+				} else {
+					if (web3Service.isAddress(userService.address) !== true) {
+						resolve({ result: 'success' });
+					} else {
+						web3Service
+							.tokensOfAddress(userService.address)
+							.then((response) => {
+								resolve({ result: 'success' });
+							})
+							.catch((responseError) => {
+								console.log('Tokens error', responseError);
+								resolve({ result: 'success' });
+							});
+					}
+				}
+			}
 		});
 	}
 
@@ -150,6 +177,71 @@ class AppService {
 		return new Promise((resolve, reject) => {
 			web3Service
 				.mintPunks(number)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	acceptBidForPunk(idx) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.acceptBidForPunk(idx)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	enterBidForPunk(idx, amount) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.enterBidForPunk(idx, amount)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	offerPunkForSale(idx, amount) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.offerPunkForSale(idx, amount)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	withdrawBidForPunk(idx) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.withdrawBidForPunk(idx)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	punkNoLongerForSale(idx) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.punkNoLongerForSale(idx)
 				.then((response) => {
 					resolve(response);
 				})

@@ -14,7 +14,9 @@ class UserService {
 	constructor() {
 		if (!Instance) {
 			Instance = this;
+
 			Instance.addressStore = null;
+			Instance.ownedPunkStore = null;
 			Instance.userSignedInStore = null;
 		}
 
@@ -29,6 +31,26 @@ class UserService {
 	set address(val) {
 		const vm = this;
 		vm.addressStore = val;
+	}
+
+	get ownedPunks() {
+		const vm = this;
+		return vm.ownedPunkStore || {};
+	}
+
+	set ownedPunks(ownedArray) {
+		let i;
+		let iCount;
+
+		const vm = this;
+		vm.ownedPunkStore = {};
+
+		for (i = 0, iCount < ownedArray; i < iCount; i++) {
+			vm.ownedPunkStore['' + ownedArray[i]] = {
+				owned: true,
+				idx: '' + ownedArray[i],
+			};
+		}
 	}
 
 	get userSignedIn() {

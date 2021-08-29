@@ -418,38 +418,6 @@ class Web3Service {
 		return accounts;
 	}
 
-	mintPunks(number) {
-		const vm = this;
-
-		return new Promise((resolve, reject) => {
-			let value;
-			let contract;
-
-			value = BigNumber(number).times(12).times(1e18).toString();
-
-			contract = new window.web3.eth.Contract(
-				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
-			);
-
-			contract.methods
-				.mint(number)
-				.send({
-					value: value,
-					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
-				})
-				.then((response) => {
-					resolve(response);
-					console.log(response);
-				})
-				.catch((responseError) => {
-					reject(responseError);
-					console.log(responseError);
-				});
-		});
-	}
-
 	publicSale() {
 		const vm = this;
 
@@ -488,6 +456,224 @@ class Web3Service {
 				.catch((mintsRemainingError) => {
 					reject(mintsRemainingError);
 				});
+		});
+	}
+
+	tokensOfAddress(address) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.contract.methods
+				.tokensOfAddress(address)
+				.call()
+
+				.then((tokensOfAddress) => {
+					userService.ownedPunks = tokensOfAddress;
+					resolve(tokensOfAddress);
+				})
+				.catch((tokensOfAddressError) => {
+					reject(tokensOfAddressError);
+				});
+		});
+	}
+
+	mintPunks(number) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let value;
+			let contract;
+
+			value = BigNumber(number).times(12).times(1e18).toString();
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.mint(number)
+				.send({
+					value: value,
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	acceptBidForPunk(idx) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.acceptBidForPunk(idx, 0)
+				.send({
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	enterBidForPunk(idx, amount) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+			const value = BigNumber(amount).times(1e18).toString();
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.enterBidForPunk(idx)
+				.send({
+					value: value,
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	offerPunkForSale(idx, amount) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+			const value = BigNumber(amount).times(1e18).toString();
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.offerPunkForSale(idx, value)
+				.send({
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	withdrawBidForPunk(idx) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.withdrawBidForPunk(idx)
+				.send({
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	punkNoLongerForSale(idx) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.punkNoLongerForSale(idx)
+				.send({
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
+	checkWallet() {
+		return new Promise((resolve, reject) => {
+			if (!window.ethereum) {
+				resolve({ result: 'success' });
+			} else {
+				window.ethereum
+					.send('eth_requestAccounts')
+					.then((response) => {
+						console.log(response);
+						userService.address = window.ethereum.selectedAddress;
+						userService.userSignedIn = true;
+
+						resolve({ result: 'success' });
+					})
+					.catch((responseError) => {
+						console.log(responseError);
+						reject({
+							result: 'error',
+							errorType: 'requestAccountsError',
+						});
+					});
+			}
 		});
 	}
 
