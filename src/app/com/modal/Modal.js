@@ -2,6 +2,8 @@
 
 import React, { PureComponent } from 'react';
 
+import Input from 'src/app/com/input/Input';
+
 import Animate from 'src/app/services/Animate';
 
 import AppService from 'src/app/services/AppService';
@@ -46,6 +48,8 @@ class Modal extends PureComponent {
 		this.languageButtons = this.languageButtons.bind(this);
 
 		this.emptyModal = this.emptyModal.bind(this);
+
+		this.mintModal = this.mintModal.bind(this);
 		this.alertModal = this.alertModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
 		this.languageSwitchModal = this.languageSwitchModal.bind(this);
@@ -415,6 +419,57 @@ class Modal extends PureComponent {
 		);
 	}
 
+	mintModal(props) {
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.mintPunks) {
+				props.mintPunks(2);
+			}
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">
+							{'Number of xDaiPunks'}
+						</span>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Get punks'}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
 	alertModal(props) {
 		let modalClass;
 		let onClick = this.closeModal;
@@ -534,6 +589,8 @@ class Modal extends PureComponent {
 		const type = this.state.type;
 
 		const EmptyModal = this.emptyModal;
+
+		const MintModal = this.mintModal;
 		const AlertModal = this.alertModal;
 		const WalletModal = this.walletModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
@@ -543,6 +600,9 @@ class Modal extends PureComponent {
 		switch (type) {
 			default:
 				return <EmptyModal {...props} />;
+
+			case 'mintModal':
+				return <MintModal {...props} />;
 
 			case 'alertModal':
 				return <AlertModal {...props} />;

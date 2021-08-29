@@ -102,6 +102,22 @@ class Home extends PureComponent {
 		viewService.resetScroll();
 	}
 
+	mintPunks(amount) {
+		appService
+			.mintPunks(2)
+			.then((response) => {
+				console.log(response);
+				if (response.status !== true) {
+					// show alert
+				} else {
+					routeService.navigateRoute('my-account');
+				}
+			})
+			.catch((responseError) => {
+				console.log(responseError);
+			});
+	}
+
 	getPunkAction() {
 		const vm = this;
 
@@ -126,11 +142,14 @@ class Home extends PureComponent {
 			if (userService.userSignedIn === true) {
 				console.log('show modal select quantity');
 
-				appService.mintPunks(2).then(response=>{
-					 console.log(response);
-				}).catch(responseError=>{
-					console.log(responseError);
-				})
+				eventService.dispatchObjectEvent('show:modal', {
+					type: 'mintModal',
+					mintPunks: vm.mintPunks,
+				});
+
+				/*
+
+				*/
 			}
 		}
 	}
@@ -402,8 +421,8 @@ class Home extends PureComponent {
 									<div className="FooterContainerSizer">
 										<Button
 											type={'actionButton'}
-											label={'Get a punk for 12 xDai!'}
-											title={'Get a punk for 12 xDai!'}
+											label={'Get a punk for 12 xDai'}
+											title={'Get a punk for 12 xDai'}
 											onClick={(event) => {
 												event.preventDefault();
 												vm.getPunkAction();

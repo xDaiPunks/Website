@@ -184,7 +184,7 @@ class Navigation extends PureComponent {
 		const address = userService.address;
 		const userSignedIn = userService.userSignedIn;
 
-		if ((userSignedIn !== web3Service.isAddress(address)) !== true) {
+		if (userSignedIn !== true || web3Service.isAddress(address) !== true) {
 			return (
 				<>
 					<Button

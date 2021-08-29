@@ -162,11 +162,6 @@ class AppService {
 				.mintPunks(number)
 				.then((response) => {
 					resolve(response);
-					if(response.status !== true) {
-						//show alert
-					} else {
-						routeService.navigateRoute()
-					}
 				})
 				.catch((responseError) => {
 					reject(responseError);
