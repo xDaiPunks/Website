@@ -38,7 +38,7 @@
 
 						flex-direction: column;
 
-						padding-bottom: 45px;
+						padding-bottom: 40px;
 
 						padding-left: $padding;
 						padding-right: $padding;
@@ -147,7 +147,7 @@
 						padding-left: 0px;
 						padding-right: 0px;
 
-						padding-bottom: 25px;
+						padding-bottom: 20px;
 
 						.BlockTitle {
 							display: block;
@@ -165,18 +165,6 @@
 								padding-left: $paddingSmall;
 								padding-right: $paddingSmall;
 							}
-						}
-					}
-
-					.ContentBlock.Items.Last {
-						padding-bottom: $padding;
-
-						@include responsiveMax($responsiveMed) {
-							padding-bottom: $paddingMed;
-						}
-
-						@include responsiveMax($responsiveSmall) {
-							padding-bottom: $paddingSmall;
 						}
 					}
 
@@ -396,6 +384,14 @@
 								height: 0px;
 							}
 						}
+					}
+
+					.SpacerBottom {
+						display: block;
+						position: relative;
+
+						width: 100%;
+						height: 20px;
 					}
 				}
 			}

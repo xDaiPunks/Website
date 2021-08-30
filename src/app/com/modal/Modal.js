@@ -225,7 +225,36 @@ class Modal extends PureComponent {
 		const vm = this;
 
 		if (type === 'walletConnect') {
-			web3Service.connectWalletConnect();
+			eventService.off('preloader:show', vm.guid);
+			eventService.on('preloader:show', vm.guid, () => {
+				eventService.off('preloader:show', vm.guid);
+				web3Service
+					.connectWalletConnect()
+					.then((response) => {
+						console.log(response);
+						vm.hideModal({
+							type: this.state.type,
+							animate: false,
+						});
+
+						eventService.dispatchObjectEvent('force:state');
+
+						eventService.dispatchObjectEvent('hide:preloader');
+					})
+					.catch((responseError) => {
+						vm.hideModal({
+							type: this.state.type,
+							animate: false,
+						});
+
+						console.log(responseError);
+
+						console.log(responseError);
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+			});
+
+			eventService.dispatchObjectEvent('show:preloader');
 		}
 
 		if (type === 'metaMask') {

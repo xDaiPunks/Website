@@ -183,12 +183,6 @@ class PunkService {
 
 		vm.punkObject = punkObject;
 		vm.punkData = utilityService.punkArrayFromObject(vm.punkObject);
-
-		console.log(vm.punkObject['0']);
-		window.localStorage.setItem(
-			'punks',
-			utilityService.generateString(vm.punkObjectData)
-		);
 	}
 
 	generateInitialPunkData() {

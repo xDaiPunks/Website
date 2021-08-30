@@ -430,6 +430,7 @@ class PunkAccount extends PureComponent {
 							</div>
 							<BidComponent />
 							<PunkComponent />
+							<div className="SpacerBottom" />
 						</div>
 						<Footer />
 					</div>

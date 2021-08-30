@@ -4925,7 +4925,7 @@ body {
       display: flex;
       position: relative;
       flex-direction: column;
-      padding-bottom: 45px;
+      padding-bottom: 40px;
       padding-left: 48px;
       padding-right: 48px; }
       @media screen and (max-width: 1070px) {
@@ -4993,7 +4993,7 @@ body {
     #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items {
       padding-left: 0px;
       padding-right: 0px;
-      padding-bottom: 25px; }
+      padding-bottom: 20px; }
       #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items .BlockTitle {
         display: block;
         position: relative;
@@ -5007,14 +5007,6 @@ body {
           #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items .BlockTitle {
             padding-left: 30px;
             padding-right: 30px; } }
-    #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
-      padding-bottom: 48px; }
-      @media screen and (max-width: 1070px) {
-        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
-          padding-bottom: 40px; } }
-      @media screen and (max-width: 986px) {
-        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
-          padding-bottom: 30px; } }
     #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid {
       display: flex;
       position: relative;
@@ -5148,3 +5140,8 @@ body {
           display: none;
           width: 0px;
           height: 0px; }
+    #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .SpacerBottom {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 20px; }
