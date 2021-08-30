@@ -123,7 +123,7 @@ class PunkService {
 		if (userService.userSignedIn === true) {
 			address = userService.address.toLowerCase();
 			for (i = 0, iCount = punkData.length; i < iCount; i++) {
-				if ((address = punkData[i].owner.toLowerCase())) {
+				if (address === punkData[i].owner.toLowerCase()) {
 					ownedObject[punkData[i].idx] = {
 						idx: punkData[i].idx,
 					};
@@ -159,9 +159,13 @@ class PunkService {
 			}
 		}
 
-		vm.bidStore = bidObject;
-		vm.saleStore = saleObject;
-		vm.ownedStore = ownedObject;
+		console.log('BIDS', bidObject);
+		console.log('SALE', saleObject);
+		console.log('OWNED', ownedObject);
+
+		vm.bids = bidObject;
+		vm.sale = saleObject;
+		vm.owned = ownedObject;
 	}
 
 	generatePunkData(remotePunkObject) {

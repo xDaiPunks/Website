@@ -33,6 +33,9 @@ class PunkAccount extends PureComponent {
 			loading: true,
 		};
 
+		this.punks = null;
+		this.punkBids = null;
+
 		this.loader = React.createRef();
 
 		this.state = {};
@@ -125,13 +128,16 @@ class PunkAccount extends PureComponent {
 							transitionClass +
 							' Load'
 						}>
-						<div className="ViewBox">Loading</div>
+						<div className="ViewBox" />
 						<Footer />
 					</div>
 					<Loader ref={vm.loader} />
 				</>
 			);
 		} else {
+			console.log(punkService.bids);
+			console.log(punkService.owned);
+
 			return (
 				<>
 					<div
@@ -141,7 +147,23 @@ class PunkAccount extends PureComponent {
 							transitionClass +
 							' Load'
 						}>
-						<div className="ViewBox">Done</div>
+						<div className="ViewBox">
+							<div className="Spacer" />
+							<div className="ContentBlock">
+								<div className="BlockTitle">My account</div>
+								<div className="BlockContent"></div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">My Punks</div>
+								<div className="BlockContent"></div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">
+									Made a bid
+								</div>
+								<div className="BlockContent"></div>
+							</div>
+						</div>
 						<Footer />
 					</div>
 					<Loader ref={vm.loader} />

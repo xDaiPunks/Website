@@ -155,7 +155,6 @@ class Punk extends PureComponent {
 		const vm = this;
 		const idx = vm.punkDetails.idx;
 
-		console.log(idx, amount);
 		appService
 			.buyPunk(idx, amount)
 			.then((response) => {
@@ -212,7 +211,6 @@ class Punk extends PureComponent {
 		const vm = this;
 		const idx = vm.punkDetails.idx;
 
-		console.log(idx, amount);
 		appService
 			.enterBidForPunk(idx, amount)
 			.then((response) => {
@@ -227,7 +225,6 @@ class Punk extends PureComponent {
 		const vm = this;
 		const idx = vm.punkDetails.idx;
 
-		console.log(idx, amount);
 		appService
 			.offerPunkForSale(idx, amount)
 			.then((response) => {
@@ -276,20 +273,18 @@ class Punk extends PureComponent {
 			}
 		}
 
-		console.log(punkSaleValue);
-
 		if (bid !== true && sale !== true) {
 			return (
 				<div className="PunkDetails">
 					<div className="PunkDetailItem">
 						<span className="PunkDetailItemTitle Big">Number</span>
-						<span className="PunkDetailItemContent">
+						<span className="PunkDetailItemContent Big">
 							{'#' + idx}
 						</span>
 					</div>
 					<div className="PunkDetailItem">
 						<span className="PunkDetailItemTitle Big">Value</span>
-						<span className="PunkDetailItemContent">
+						<span className="PunkDetailItemContent Big">
 							{punkValue + ' xDai'}
 						</span>
 					</div>
@@ -414,8 +409,6 @@ class Punk extends PureComponent {
 				owned = true;
 			}
 		}
-
-		console.log('Owned', owned);
 
 		if (bid === true) {
 			if (bidData && bidData.value) {
