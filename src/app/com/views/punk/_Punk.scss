@@ -123,6 +123,10 @@
 								font-family: 'Gilroy', sans-serif;
 							}
 
+							.PunkDetailItemTitle.Big {
+								display: block;
+							}
+
 							.PunkDetailItemContent {
 								display: block;
 								position: relative;
@@ -136,11 +140,8 @@
 
 							.PunkDetailItemContent.Big {
 								display: block;
-								position: relative;
-
-								color: #111;
-
 								font-size: 22px;
+								margin-top: -2px;
 							}
 
 							.PunkDetailItemAttributes {

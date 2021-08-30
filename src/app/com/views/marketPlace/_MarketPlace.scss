@@ -50,6 +50,7 @@
 						@include responsiveMax($responsiveSmall) {
 							padding-left: $paddingSmall;
 							padding-right: $paddingSmall;
+							padding-bottom: 20px;
 						}
 
 						.ControlsContainer {
@@ -241,7 +242,7 @@
 											}
 
 											.DetailsTextContent.Bold {
-												font-weight: 800;
+												font-weight: 900;
 											}
 
 											.DetailsTextContent.OverFlow {

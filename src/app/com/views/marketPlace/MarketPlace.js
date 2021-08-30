@@ -373,7 +373,7 @@ class MarketPlace extends PureComponent {
 															Number
 														</span>
 														<span className="DetailsTextContent Bold">
-															{number}
+															{'#' + number}
 														</span>
 													</div>
 													<div className="PunkItemDetails Right">
@@ -393,19 +393,6 @@ class MarketPlace extends PureComponent {
 														{punkValue + ' xDai'}
 													</span>
 												</div>
-												{/*
-												<div className="PunkItemDetails">
-													<span className="DetailsTextTitle">
-														Attributes
-													</span>
-													<span className="DetailsTextContent Bold">
-														&nbsp;
-													</span>
-													<span className="DetailsTextContent Bold OverFlow">
-														{attributes}
-													</span>
-												</div>
-												*/}
 											</div>
 										</div>
 									</div>

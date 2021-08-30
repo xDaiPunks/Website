@@ -463,6 +463,23 @@ class Web3Service {
 		});
 	}
 
+	pendingWithdrawals(address) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			vm.contract.methods
+				.pendingWithdrawals(address)
+				.call()
+
+				.then((amount) => {
+					resolve(amount);
+				})
+				.catch((amountError) => {
+					reject(amountError);
+				});
+		});
+	}
+
 	tokensOfAddress(address) {
 		const vm = this;
 

@@ -282,11 +282,13 @@ class Punk extends PureComponent {
 			return (
 				<div className="PunkDetails">
 					<div className="PunkDetailItem">
-						<span className="PunkDetailItemTitle">Number</span>
-						<span className="PunkDetailItemContent">{idx}</span>
+						<span className="PunkDetailItemTitle Big">Number</span>
+						<span className="PunkDetailItemContent">
+							{'#' + idx}
+						</span>
 					</div>
 					<div className="PunkDetailItem">
-						<span className="PunkDetailItemTitle">Value</span>
+						<span className="PunkDetailItemTitle Big">Value</span>
 						<span className="PunkDetailItemContent">
 							{punkValue + ' xDai'}
 						</span>
@@ -298,8 +300,12 @@ class Punk extends PureComponent {
 				return (
 					<div className="PunkDetails">
 						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Number</span>
-							<span className="PunkDetailItemContent">{idx}</span>
+							<span className="PunkDetailItemTitle Big">
+								Number
+							</span>
+							<span className="PunkDetailItemContent Big">
+								{'#' + idx}
+							</span>
 						</div>
 						<div className="PunkDetailItem">
 							<span className="PunkDetailItemTitle">Value</span>
@@ -323,8 +329,12 @@ class Punk extends PureComponent {
 				return (
 					<div className="PunkDetails">
 						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Number</span>
-							<span className="PunkDetailItemContent">{idx}</span>
+							<span className="PunkDetailItemTitle Big">
+								Number
+							</span>
+							<span className="PunkDetailItemContent Big">
+								{'#' + idx}
+							</span>
 						</div>
 						<div className="PunkDetailItem">
 							<span className="PunkDetailItemTitle">Value</span>
@@ -348,8 +358,12 @@ class Punk extends PureComponent {
 				return (
 					<div className="PunkDetails">
 						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Number</span>
-							<span className="PunkDetailItemContent">{idx}</span>
+							<span className="PunkDetailItemTitle Big">
+								Number
+							</span>
+							<span className="PunkDetailItemContent Big">
+								{'#' + idx}
+							</span>
 						</div>
 						<div className="PunkDetailItem">
 							<span className="PunkDetailItemTitle">Value</span>

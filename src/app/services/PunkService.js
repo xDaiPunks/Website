@@ -20,6 +20,7 @@ class PunkService {
 			Instance = this;
 
 			Instance.bidStore = null;
+			Instance.saleStore = null;
 			Instance.ownedStore = null;
 
 			Instance.publicSaleStore = null;
@@ -114,6 +115,7 @@ class PunkService {
 		const vm = this;
 
 		const bidObject = {};
+		const saleObject = {};
 		const ownedObject = {};
 
 		const punkData = vm.punkData;
@@ -143,10 +145,22 @@ class PunkService {
 						}
 					}
 				}
+
+				if (punkData[i].sale === true) {
+					if (punkData[i].saleData) {
+						if (address === punkData[i].owner.toLowerCase()) {
+							saleObject[punkData[i].idx] = {
+								idx: punkData[i].idx,
+								saleData: punkData[i].saleObject,
+							};
+						}
+					}
+				}
 			}
 		}
 
 		vm.bidStore = bidObject;
+		vm.saleStore = saleObject;
 		vm.ownedStore = ownedObject;
 	}
 

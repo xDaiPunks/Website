@@ -63,9 +63,6 @@ class Home extends PureComponent {
 
 		vm.updateView();
 
-		eventService.dispatchObjectEvent('set:view', this.componentName);
-		transitionService.updateTransition(this.props, this.componentName);
-
 		eventService.on('resize', vm.guid, () => {
 			setTimeout(() => {}, 10);
 		});
@@ -94,6 +91,9 @@ class Home extends PureComponent {
 				this.forceUpdate();
 			}
 		});
+
+		eventService.dispatchObjectEvent('set:view', this.componentName);
+		transitionService.updateTransition(this.props, this.componentName);
 	}
 
 	componentDidUpdate() {
