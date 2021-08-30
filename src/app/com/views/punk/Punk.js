@@ -49,6 +49,7 @@ class Punk extends PureComponent {
 
 		this.punkDataComponent = this.punkDataComponent.bind(this);
 		this.punkButtonComponent = this.punkButtonComponent.bind(this);
+		this.attributesComponent = this.attributesComponent.bind(this);
 
 		this.initialize();
 	}
@@ -253,6 +254,10 @@ class Punk extends PureComponent {
 		const bidData = vm.punkDetails.bidData;
 		const saleData = vm.punkDetails.saleData;
 
+		const attributes = vm.punkDetails.attributes;
+
+		const AttributesComponent = this.attributesComponent;
+
 		if (value) {
 			punkValue = BigNumber(value).div(1e18).toFixed(2);
 		}
@@ -443,7 +448,7 @@ class Punk extends PureComponent {
 				} else {
 					return (
 						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
+							<div className="PunkDetailButtonContainer Padding">
 								<Button
 									type={'actionButton'}
 									label={'Buy punk'}
@@ -491,7 +496,7 @@ class Punk extends PureComponent {
 				} else {
 					return (
 						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
+							<div className="PunkDetailButtonContainer Padding">
 								<Button
 									type={'actionButton'}
 									label={'Buy punk'}
@@ -544,8 +549,8 @@ class Punk extends PureComponent {
 							<div className="PunkDetailButtonContainer">
 								<Button
 									type={'actionButton'}
-									label={'No longer for sale'}
-									title={'No longer for sale'}
+									label={'Remove offer'}
+									title={'Remove offer'}
 									onClick={(event) => {
 										event.preventDefault();
 										vm.removeOffer();
@@ -560,7 +565,7 @@ class Punk extends PureComponent {
 				if (bid === true && sale !== true) {
 					return (
 						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
+							<div className="PunkDetailButtonContainer Padding">
 								<Button
 									type={'actionButton'}
 									label={'Accept bid'}
@@ -614,8 +619,8 @@ class Punk extends PureComponent {
 							<div className="PunkDetailButtonContainer">
 								<Button
 									type={'actionButton'}
-									label={'No longer for sale'}
-									title={'No longer for sale'}
+									label={'Remove offer'}
+									title={'Remove offer'}
 									onClick={(event) => {
 										event.preventDefault();
 										vm.removeOffer();
@@ -628,6 +633,26 @@ class Punk extends PureComponent {
 				}
 			}
 		}
+	}
+
+	attributesComponent(props) {
+		const vm = this;
+		const attributes = props.attributes;
+
+		console.log(attributes);
+		return (
+			<div className="PunkDetailItemAttributes">
+				{attributes.map((item, index) => {
+					return (
+						<div
+							className="PunkDetailItemAttribute"
+							key={'row' + index}>
+							{item}
+						</div>
+					);
+				})}
+			</div>
+		);
 	}
 
 	componentWillUnmount() {

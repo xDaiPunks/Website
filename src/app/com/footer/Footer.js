@@ -24,7 +24,7 @@ class Footer extends PureComponent {
 
 	componentDidMount() {
 		const vm = this;
-		
+
 		eventService.on('change:language', vm.guid, () => {
 			this.setState(this.state);
 			this.forceUpdate();
@@ -72,7 +72,6 @@ class Footer extends PureComponent {
 	}
 
 	render() {
-		const currentYear = new Date().getFullYear();
 		return (
 			<div className="Footer">
 				<div className="LogoFooter">
@@ -85,16 +84,14 @@ class Footer extends PureComponent {
 				<div className="FooterMenu">
 					<div className="FooterMenuRow">
 						<div className="FooterMenuBlock">
-							<span className="FooterMenuBlockHeader">Muevo</span>
+							<span className="FooterMenuBlockHeader">
+								xDaiPunks
+							</span>
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.language.label'
-									)}
-									title={translationService.translate(
-										'footer.language.title'
-									)}
+									label={'Disclaimer'}
+									title={'Disclaimer'}
 									onClick={this.showLanguageModal}
 									cssClass={'FooterButton'}
 								/>
@@ -108,7 +105,7 @@ class Footer extends PureComponent {
 									title={translationService.translate(
 										'footer.terms.label'
 									)}
-									data="/terms"
+									
 									onClick={this.navigate}
 									cssClass={'FooterButton'}
 								/>
@@ -129,13 +126,8 @@ class Footer extends PureComponent {
 							</span>
 						</div>
 						<div className="FooterMenuBlock">
-							<span className="FooterMenuBlockHeader">
-								{translationService.translate(
-									'footer.help.label'
-								)}
-							</span>
+							<span className="FooterMenuBlockHeader">Help</span>
 							<span className="FooterMenuItem">
-								{' '}
 								<Button
 									type={'footerButton'}
 									label={translationService.translate(

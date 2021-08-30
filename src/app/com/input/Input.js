@@ -81,9 +81,14 @@ class Input extends PureComponent {
 
 		value = this.props.value;
 
-		if (this.state.value) {
+		console.log('State', this.state.value);
+
+		if (this.state.value !== undefined) {
 			value = this.state.value;
 		}
+
+		console.log('State', this.state.value);
+		console.log('Input value', value, this.state.value);
 
 		return (
 			<div className={className}>
@@ -194,7 +199,7 @@ class Input extends PureComponent {
 		}
 
 		value = this.props.value || '';
-		if (this.state.value) {
+		if (this.state.value !== undefined) {
 			value = this.state.value;
 		}
 
@@ -477,7 +482,7 @@ class Input extends PureComponent {
 				);
 			}
 
-			if (this.state.value) {
+			if (this.state.value !== undefined) {
 				if (this.state.value === options[i].value) {
 					labelValue = options[i].label;
 				}

@@ -919,7 +919,7 @@ body {
     width: 100vw;
     height: 120%;
     max-width: 100%;
-    background-color: #111; }
+    background-color: #fff; }
 
 #Preloader.Hide {
   opacity: 0; }
@@ -932,7 +932,7 @@ body {
   position: relative;
   height: 36px;
   flex-grow: 1;
-  border: 2px solid #0fffff;
+  border: 2px solid #111;
   border-radius: 23px; }
   .Input input {
     display: block;
@@ -1451,10 +1451,10 @@ body {
     line-height: 32px;
     color: rgba(17, 17, 17, 0.7);
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding-left: 0px;
     padding-right: 0px; }
 
@@ -1511,15 +1511,41 @@ body {
     font-weight: 700;
     letter-spacing: normal;
     white-space: nowrap;
+    font-family: 'Gilroy', sans-serif; }
+
+.ActionButtonIcon {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 36px;
+  border-radius: 18px;
+  padding-left: 16px;
+  padding-right: 18px;
+  font-family: 'Gilroy', sans-serif;
+  background-color: #111; }
+  .ActionButtonIcon .Txt {
+    display: block;
+    position: static;
+    text-align: center;
+    user-select: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    white-space: nowrap;
     font-family: 'Gilroy', sans-serif;
     padding-left: 5px; }
     @media screen and (max-width: 1070px) {
-      .ActionButton .Txt {
+      .ActionButtonIcon .Txt {
         padding-left: 5px; } }
     @media screen and (max-width: 986px) {
-      .ActionButton .Txt {
+      .ActionButtonIcon .Txt {
         padding-left: 5px; } }
-  .ActionButton .Icon {
+  .ActionButtonIcon .Icon {
     display: flex;
     position: relative;
     height: 36px;
@@ -1528,14 +1554,14 @@ body {
     justify-content: center;
     padding-left: 0px; }
     @media screen and (max-width: 1070px) {
-      .ActionButton .Icon {
+      .ActionButtonIcon .Icon {
         height: 36px;
         padding-left: 0px; } }
     @media screen and (max-width: 986px) {
-      .ActionButton .Icon {
+      .ActionButtonIcon .Icon {
         height: 36px;
         padding-left: 3px; } }
-    .ActionButton .Icon .IconImage {
+    .ActionButtonIcon .Icon .IconImage {
       width: 18px;
       height: 18px; }
 
@@ -2135,10 +2161,10 @@ body {
           height: 32px;
           line-height: 32px;
           font-size: 14px;
-          font-weight: 600;
+          font-weight: 700;
           letter-spacing: normal;
           white-space: nowrap;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
         .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterMenuItem {
           display: block;
           position: relative;
@@ -2146,10 +2172,10 @@ body {
           line-height: 32px;
           color: rgba(17, 17, 17, 0.7);
           font-size: 14px;
-          font-weight: 600;
+          font-weight: 700;
           letter-spacing: normal;
           white-space: nowrap;
-          font-family: 'VAG Rounded', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
         .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial {
           display: flex;
           position: relative;
@@ -2931,7 +2957,7 @@ body {
                 padding-left: 16px;
                 padding-right: 16px;
                 font-family: 'Gilroy', sans-serif;
-                border: 2px solid #0fffff;
+                border: 2px solid #111;
                 background-color: #fff; }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroSubContent .MintAmountContainer .MintedItems .MintedItemsText {
                   display: block;
@@ -4376,7 +4402,7 @@ body {
   background: #fff;
   background-color: #fff; }
   #AppRoot .App .ViewContainer .Punk.View .ViewBox {
-    display: block;
+    display: flex;
     position: relative;
     width: 100vw;
     max-width: 100%;
@@ -4385,6 +4411,7 @@ body {
     #AppRoot .App .ViewContainer .Punk.View .ViewBox .Spacer {
       display: block;
       position: relative;
+      width: 100%;
       height: 90px; }
       @media screen and (max-width: 1070px) {
         #AppRoot .App .ViewContainer .Punk.View .ViewBox .Spacer {
@@ -4395,6 +4422,7 @@ body {
     #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkContainer {
       display: flex;
       position: relative;
+      width: 100%;
       padding-left: 48px;
       padding-right: 48px; }
       @media screen and (max-width: 1070px) {
@@ -4421,6 +4449,89 @@ body {
       #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkContainer .PunkItem:after {
         content: '';
         display: block; }
+    #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails {
+      display: flex;
+      position: relative;
+      width: 100%;
+      flex-grow: 1;
+      flex-direction: column;
+      padding-left: 48px;
+      padding-right: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails {
+          padding-left: 40px;
+          padding-right: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails {
+          padding-left: 30px;
+          padding-right: 30px; } }
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        padding-bottom: 10px; }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem .PunkDetailItemTitle {
+          display: block;
+          position: relative;
+          color: #111;
+          font-size: 10px;
+          font-weight: 500;
+          font-family: 'Gilroy', sans-serif; }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem .PunkDetailItemContent {
+          display: block;
+          position: relative;
+          color: #111;
+          font-size: 14px;
+          font-weight: 900;
+          font-family: 'Gilroy', sans-serif; }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem .PunkDetailItemContent.Big {
+          display: block;
+          position: relative;
+          color: #111;
+          font-size: 22px; }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem .PunkDetailItemAttributes {
+          display: block;
+          position: relative;
+          text-align: left; }
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem .PunkDetailItemAttributes .PunkDetailItemAttribute {
+            display: inline-block;
+            padding-left: 0px;
+            padding-right: 5px;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Gilroy', sans-serif; }
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem.AlignCenter {
+        align-items: center; }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem.AlignCenter .PunkDetailItemAttributes {
+          text-align: center; }
+          #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetails .PunkDetailItem.AlignCenter .PunkDetailItemAttributes .PunkDetailItemAttribute {
+            padding-left: 5px;
+            padding-right: 5px; }
+    #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons {
+      display: flex;
+      position: relative;
+      width: 100%;
+      flex-direction: column;
+      padding-left: 48px;
+      padding-right: 48px;
+      padding-bottom: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons {
+          padding-left: 40px;
+          padding-right: 40px;
+          padding-bottom: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons {
+          padding-left: 30px;
+          padding-right: 30px;
+          padding-bottom: 30px; } }
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons .PunkDetailButtonContainer {
+        display: flex;
+        position: relative;
+        flex-direction: column; }
+      #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons .PunkDetailButtonContainer.Padding {
+        padding-bottom: 15px; }
 
 #AppRoot .App .ViewContainer .MarketPlace.View {
   background: #fff;

@@ -550,13 +550,14 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">{'Enter a bid'}</span>
+						<span className="ModalHeader">{'What amount?'}</span>
 						<div className="MintInput">
 							<Input
 								ref={vm.bidInput}
 								id={'inputNumber'}
 								type={'text'}
 								inputType={'input'}
+								defaultValue={''}
 								placeholder={'Enter an amount'}
 							/>
 						</div>
@@ -634,7 +635,7 @@ class Modal extends PureComponent {
 								type={'text'}
 								inputType={'input'}
 								defaultValue={'1'}
-								placeholder={'Enter number of punks'}
+								placeholder={'How many'}
 							/>
 						</div>
 
@@ -643,7 +644,7 @@ class Modal extends PureComponent {
 								className="ModalContentButton"
 								onClick={onClickButton}>
 								<span className="ModalContentButtonText">
-									{'Mint'}
+									{'Get punks'}
 								</span>
 							</button>
 						</div>
@@ -698,13 +699,14 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">{'Offer for sale'}</span>
+						<span className="ModalHeader">{'Minimum price'}</span>
 						<div className="MintInput">
 							<Input
 								ref={vm.offerInput}
 								id={'inputNumber'}
 								type={'text'}
 								inputType={'input'}
+								defaultValue={''}
 								placeholder={'Enter a price'}
 							/>
 						</div>

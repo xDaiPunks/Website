@@ -222,12 +222,12 @@
 		color: rgba(17, 17, 17, 0.7);
 
 		font-size: 14px;
-		font-weight: 800;
+		font-weight: 700;
 		letter-spacing: normal;
 
 		white-space: nowrap;
 
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Gilroy', sans-serif;
 
 		padding-left: 0px;
 		padding-right: 0px;
@@ -280,6 +280,49 @@
 }
 
 .ActionButton {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+
+	flex-direction: row-reverse;
+
+	align-items: center;
+	justify-content: center;
+
+	flex-grow: 1;
+
+	height: 36px;
+	border-radius: 18px;
+
+	padding-left: 16px;
+	padding-right: 18px;
+
+	font-family: 'Gilroy', sans-serif;
+
+	background-color: #111;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		text-align: center;
+
+		user-select: none;
+
+		color: #fff;
+
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Gilroy', sans-serif;
+	}
+}
+
+.ActionButtonIcon {
 	display: flex;
 	position: relative;
 
