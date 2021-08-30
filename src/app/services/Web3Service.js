@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 import Web3 from 'web3';
-import { BigNumber } from 'bignumber.js';
+import WalletConnectProvider from '@walletconnect/web3-provider';
 
-import WalletConnect from '@walletconnect/client';
-import QRCodeModal from '@walletconnect/qrcode-modal';
+import { BigNumber } from 'bignumber.js';
 
 import AbiService from 'src/app/services/AbiService';
 import PunkService from 'src/app/services/PunkService';
@@ -157,43 +156,6 @@ class Web3Service {
 				});
 
 				return true;
-			} else {
-				return false;
-			}
-		}
-
-		function walletConnectEvents() {
-			let chainId;
-			let accounts;
-
-			const connector = new WalletConnect({
-				bridge: 'https://bridge.walletconnect.org', // Required
-				qrcodeModal: QRCodeModal,
-			});
-
-			if (connector.connected) {
-				connector.on('connect', (error, payload) => {
-					if (error) {
-						console.log(error);
-					} else {
-						const { accounts, chainId } = payload.params[0];
-					}
-				});
-
-				connector.on('session_update', (error, payload) => {
-					if (error) {
-					} else {
-						const { accounts, chainId } = payload.params[0];
-					}
-
-					// Get updated accounts and chainId
-				});
-
-				connector.on('disconnect', (error, payload) => {
-					if (error) {
-					} else {
-					}
-				});
 			} else {
 				return false;
 			}
@@ -869,14 +831,41 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			const connector = new WalletConnect({
-				bridge: 'https://bridge.walletconnect.org',
-				qrcodeModal: QRCodeModal,
-			});
+			let rpc;
+			let xdai;
+			let chainId;
+			let httpProvider;
 
-			if (!connector.connected) {
-				connector.createSession();
-			}
+			const web3Config = configService.web3;
+
+			rpc = {};
+
+			xdai = web3Config.xdaiConfig;
+			chainId = xdai.chainId;
+			httpProvider = web3Config.httpProvider;
+
+			rpc[chainId] = httpProvider;
+
+			const provider = new WalletConnectProvider({
+				rpc: rpc,
+				chainId: chainId,
+				network: 'xdai',
+				qrcode: true,
+				qrcodeModalOptions: {
+					mobileLinks: ['metamask', 'pillar'],
+				},
+			});
+			provider.networkId = chainId;
+
+			provider
+				.enable()
+				.then((response) => {
+					console.log(response);
+					console.log(provider);
+				})
+				.catch((responseError) => {
+					console.log(responseError);
+				});
 		});
 	}
 
