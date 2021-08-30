@@ -17,6 +17,7 @@ class UserService {
 
 			Instance.addressStore = null;
 			Instance.userSignedInStore = null;
+			Instance.withdrawAmountStore = null;
 		}
 
 		return Instance;
@@ -40,6 +41,16 @@ class UserService {
 	set userSignedIn(val) {
 		const vm = this;
 		vm.userSignedInStore = val;
+	}
+
+	get withdrawAmount() {
+		const vm = this;
+		return vm.withdrawAmountStore;
+	}
+
+	set withdrawAmount(value) {
+		const vm = this;
+		vm.withdrawAmountStore = value;
 	}
 }
 

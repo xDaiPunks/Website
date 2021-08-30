@@ -463,6 +463,34 @@ class Web3Service {
 		});
 	}
 
+	withdraw(address) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			contract = new window.web3.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunkAddress
+			);
+
+			contract.methods
+				.withdraw()
+				.send({
+					gasPrice: vm.gasPrice,
+					from: window.ethereum.selectedAddress,
+				})
+				.then((response) => {
+					resolve(response);
+					console.log(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+					console.log(responseError);
+				});
+		});
+	}
+
 	pendingWithdrawals(address) {
 		const vm = this;
 

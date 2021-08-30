@@ -2,6 +2,7 @@
 /* eslint-disable array-callback-return */
 import React, { PureComponent } from 'react';
 import { BigNumber } from 'bignumber.js';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Input from 'src/app/com/input/Input';

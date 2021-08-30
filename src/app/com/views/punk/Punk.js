@@ -283,8 +283,8 @@ class Punk extends PureComponent {
 						</span>
 					</div>
 					<div className="PunkDetailItem">
-						<span className="PunkDetailItemTitle Big">Value</span>
-						<span className="PunkDetailItemContent Big">
+						<span className="PunkDetailItemTitle">Value</span>
+						<span className="PunkDetailItemContent">
 							{punkValue + ' xDai'}
 						</span>
 					</div>

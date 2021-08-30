@@ -403,6 +403,48 @@
 	}
 }
 
+.ActionButtonAccount {
+	display: block;
+	position: relative;
+
+	float: right;
+
+	overflow: hidden;
+
+	align-items: center;
+	justify-content: center;
+
+	width: 112px;
+	height: 30px;
+	border-radius: 15px;
+
+	padding-left: 16px;
+	padding-right: 18px;
+
+	font-family: 'Gilroy', sans-serif;
+
+	background-color: #fff;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		text-align: left;
+
+		user-select: none;
+
+		color: #111;
+
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Gilroy', sans-serif;
+	}
+}
+
 .NavigationButton {
 	display: flex;
 	position: relative;

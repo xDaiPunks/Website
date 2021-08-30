@@ -3,9 +3,6 @@ import React, { PureComponent } from 'react';
 
 import Footer from 'src/app/com/footer/Footer';
 import Button from 'src/app/com/button/Button';
-import SlideShow from 'src/app/com/slideShow/SlideShow';
-
-import Animate from 'src/app/services/Animate';
 
 import AppService from 'src/app/services/AppService';
 import UserService from 'src/app/services/UserService';
@@ -18,10 +15,6 @@ import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 import TranslationService from 'src/app/services/TranslationService';
-
-const slideShow = new SlideShow();
-
-const animate = new Animate();
 
 const appService = new AppService();
 const userService = new UserService();

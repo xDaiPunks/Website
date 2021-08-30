@@ -248,6 +248,19 @@ class AppService {
 		});
 	}
 
+	withdraw() {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.withdraw()
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
 	pendingWithdrawals(address) {
 		return new Promise((resolve, reject) => {
 			web3Service

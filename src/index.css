@@ -1565,6 +1565,32 @@ body {
       width: 18px;
       height: 18px; }
 
+.ActionButtonAccount {
+  display: block;
+  position: relative;
+  float: right;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 30px;
+  border-radius: 15px;
+  padding-left: 16px;
+  padding-right: 18px;
+  font-family: 'Gilroy', sans-serif;
+  background-color: #fff; }
+  .ActionButtonAccount .Txt {
+    display: block;
+    position: static;
+    text-align: left;
+    user-select: none;
+    color: #111;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    white-space: nowrap;
+    font-family: 'Gilroy', sans-serif; }
+
 .NavigationButton {
   display: flex;
   position: relative;
@@ -4899,7 +4925,7 @@ body {
       display: flex;
       position: relative;
       flex-direction: column;
-      padding-bottom: 25px;
+      padding-bottom: 45px;
       padding-left: 48px;
       padding-right: 48px; }
       @media screen and (max-width: 1070px) {
@@ -4913,6 +4939,7 @@ body {
       #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockTitle {
         display: block;
         position: relative;
+        padding-bottom: 5px;
         color: #111;
         font-size: 18px;
         font-weight: 800;
@@ -4920,6 +4947,204 @@ body {
       #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent {
         display: flex;
         position: relative;
+        flex-direction: column;
         min-height: 150px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 30px;
         border-radius: 18px;
         background-color: #f2f2f2; }
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem {
+          display: block;
+          position: relative; }
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 15px;
+            margin-right: 200px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+                margin-right: 200px; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+                margin-right: 115px; } }
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem .AccountItemContent .AccountItemTitleText {
+              display: block;
+              position: relative;
+              overflow: hidden;
+              color: #111;
+              font-size: 10px;
+              font-weight: 700;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-family: 'Gilroy', sans-serif; }
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem .AccountItemContent .AccountItemContentText {
+              display: block;
+              position: relative;
+              overflow: hidden;
+              color: #111;
+              font-size: 14px;
+              font-weight: 900;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-family: 'Gilroy', sans-serif; }
+    #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 25px; }
+      #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items .BlockTitle {
+        display: block;
+        position: relative;
+        padding-left: 48px;
+        padding-right: 48px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items .BlockTitle {
+            padding-left: 40px;
+            padding-right: 40px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items .BlockTitle {
+            padding-left: 30px;
+            padding-right: 30px; } }
+    #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
+      padding-bottom: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
+          padding-bottom: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock.Items.Last {
+          padding-bottom: 30px; } }
+    #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      padding-left: 48px;
+      padding-right: 48px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid {
+          padding-left: 40px;
+          padding-right: 40px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid {
+          padding-left: 30px;
+          padding-right: 30px; } }
+      #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow {
+        display: flex;
+        position: relative;
+        width: 100%;
+        flex-direction: row; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow {
+            flex-direction: row; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow {
+            flex-direction: column; } }
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem {
+          display: flex;
+          position: relative;
+          flex-grow: 1;
+          margin-bottom: 20px;
+          border-radius: 18px;
+          background-color: #f2f2f2; }
+          #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent {
+            display: flex;
+            position: relative;
+            flex-grow: 1;
+            flex-direction: row;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 30px; }
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer {
+              display: flex;
+              position: relative;
+              width: 100px;
+              height: 100px;
+              border-radius: 50px;
+              overflow: hidden;
+              align-items: center;
+              justify-content: center;
+              background-color: #0fffff; }
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer .PunkImageContainerBG {
+                display: flex;
+                position: relative;
+                width: 92px;
+                height: 92px;
+                border-radius: 46px;
+                overflow: hidden;
+                align-items: flex-end;
+                justify-content: center;
+                background: radial-gradient(92px 92px at 50% 100%, transparent, #8000ff); }
+                #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkImageContainer .PunkImageContainerBG .PunkImageGrid {
+                  width: 92px;
+                  height: 92px;
+                  -ms-interpolation-mode: nearest-neighbor;
+                  image-rendering: pixelated;
+                  image-rendering: -moz-crisp-edges; }
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer {
+              display: flex;
+              position: relative;
+              padding-top: 3px;
+              padding-left: 10px;
+              flex-grow: 1;
+              flex-direction: column; }
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemTop {
+                display: flex;
+                position: relative;
+                flex-direction: row; }
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails {
+                display: flex;
+                position: relative;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 5px;
+                font-family: 'Gilroy', sans-serif;
+                font-size: 14px;
+                font-weight: 600; }
+                #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextTitle {
+                  display: block;
+                  position: relative;
+                  font-size: 8px;
+                  color: #111; }
+                #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent {
+                  display: block;
+                  position: relative;
+                  color: #111;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis; }
+                #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent.Bold {
+                  font-weight: 900; }
+                #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent.OverFlow {
+                  display: block;
+                  position: absolute;
+                  top: 9px;
+                  left: 0px;
+                  width: 100%;
+                  color: #111;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis; }
+              #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails.Right {
+                align-items: flex-end; }
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+          display: block;
+          width: 20px;
+          height: 140px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+              display: block;
+              width: 20px;
+              height: 140px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkSpacer {
+              display: none;
+              width: 0px;
+              height: 0px; } }
+        #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkSpacer.Hidden {
+          display: none;
+          width: 0px;
+          height: 0px; }
