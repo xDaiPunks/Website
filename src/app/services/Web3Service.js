@@ -3,7 +3,8 @@ import axios from 'axios';
 import Web3 from 'web3';
 import { BigNumber } from 'bignumber.js';
 
-import WalletConnectProvider from '@walletconnect/web3-provider';
+import WalletConnect from '@walletconnect/client';
+import QRCodeModal from '@walletconnect/qrcode-modal';
 
 import AbiService from 'src/app/services/AbiService';
 import PunkService from 'src/app/services/PunkService';
@@ -82,84 +83,14 @@ class Web3Service {
 	}
 
 	setWeb3Events() {
-		let ethereum;
-		let connector;
-
-		let walletConnect;
-
 		const vm = this;
-		const rpcProvider = {};
 
-		rpcProvider[1337] = configService.web3.httpProvider;
-
-		connector = new WalletConnectProvider({
-			rpc: rpcProvider,
-		});
-
-		if (connector.connected === true) {
-			walletConnect = true;
-
-			connector.on('accountsChanged', (accounts) => {
-				console.log(accounts);
-			});
-
-			// Subscribe to chainId change
-			connector.on('chainChanged', (chainId) => {
-				console.log(chainId);
-			});
-
-			// Subscribe to session disconnection
-			connector.on('disconnect', (code, reason) => {
-				console.log(code, reason);
-			});
-
-			/*
-			connector.on('session_update', (error, payload) => {
-				if (error) {
-				} else {
-					const { accounts, chainId } = payload.params[0];
-
-					console.log(accounts, chainId);
-
-					console.log('accountChange event', accounts);
-
-					eventService.off('preloader:show', vm.guid);
-					eventService.on('preloader:show', vm.guid, () => {
-						eventService.off('preloader:show', vm.guid);
-						if (accounts.length === 0) {
-							vm.walletType = 'wc';
-							vm.walletChainId = chainId;
-
-							userService.address = null;
-							userService.userSignedIn = null;
-						} else {
-							vm.walletType = 'wc';
-							vm.walletChainId = chainId;
-
-							userService.userSignedIn = true;
-							userService.address = accounts[0];
-
-							punkService.setPunkDetails();
-						}
-
-						eventService.dispatchObjectEvent('force:state');
-						eventService.dispatchObjectEvent('hide:preloader');
-					});
-
-					eventService.dispatchObjectEvent('show:preloader');
-				}
-			});
-			*/
-		}
-
-		if (walletConnect !== true) {
+		metaMaskEvents();
+		function metaMaskEvents() {
 			if (window.ethereum) {
-				ethereum = window.ethereum;
+				vm.walletProvider = new Web3(window.ethereum);
 
-				window.web3 = new Web3(ethereum);
-				vm.walletProvider = window.web3;
-
-				ethereum.on('disconnect', (accountArray) => {
+				window.ethereum.on('disconnect', (accountArray) => {
 					console.log('disconnect event', accountArray);
 
 					eventService.off('preloader:show', vm.guid);
@@ -167,13 +98,13 @@ class Web3Service {
 						eventService.off('preloader:show', vm.guid);
 						if (accountArray.length === 0) {
 							vm.walletType = 'mm';
-							vm.walletChainId = ethereum.chainId;
+							vm.walletChainId = window.ethereum.chainId;
 
 							userService.address = null;
 							userService.userSignedIn = null;
 						} else {
 							vm.walletType = 'mm';
-							vm.walletChainId = ethereum.chainId;
+							vm.walletChainId = window.ethereum.chainId;
 
 							userService.userSignedIn = true;
 							userService.address = accountArray[0];
@@ -188,15 +119,15 @@ class Web3Service {
 					eventService.dispatchObjectEvent('show:preloader');
 				});
 
-				ethereum.on('connect', (event) => {
+				window.ethereum.on('connect', (event) => {
 					console.log('connect event', event);
 				});
 
-				ethereum.on('chainChanged', (event) => {
+				window.ethereum.on('chainChanged', (event) => {
 					console.log('chainChange event', event);
 				});
 
-				ethereum.on('accountsChanged', (accountArray) => {
+				window.ethereum.on('accountsChanged', (accountArray) => {
 					console.log('accountChange event', accountArray);
 
 					eventService.off('preloader:show', vm.guid);
@@ -204,13 +135,13 @@ class Web3Service {
 						eventService.off('preloader:show', vm.guid);
 						if (accountArray.length === 0) {
 							vm.walletType = 'mm';
-							vm.walletChainId = ethereum.chainId;
+							vm.walletChainId = window.ethereum.chainId;
 
 							userService.address = null;
 							userService.userSignedIn = null;
 						} else {
 							vm.walletType = 'mm';
-							vm.walletChainId = ethereum.chainId;
+							vm.walletChainId = window.ethereum.chainId;
 
 							userService.address = accountArray[0];
 							userService.userSignedIn = true;
@@ -224,6 +155,47 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('show:preloader');
 				});
+
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		function walletConnectEvents() {
+			let chainId;
+			let accounts;
+
+			const connector = new WalletConnect({
+				bridge: 'https://bridge.walletconnect.org', // Required
+				qrcodeModal: QRCodeModal,
+			});
+
+			if (connector.connected) {
+				connector.on('connect', (error, payload) => {
+					if (error) {
+						console.log(error);
+					} else {
+						const { accounts, chainId } = payload.params[0];
+					}
+				});
+
+				connector.on('session_update', (error, payload) => {
+					if (error) {
+					} else {
+						const { accounts, chainId } = payload.params[0];
+					}
+
+					// Get updated accounts and chainId
+				});
+
+				connector.on('disconnect', (error, payload) => {
+					if (error) {
+					} else {
+					}
+				});
+			} else {
+				return false;
 			}
 		}
 	}
@@ -498,6 +470,7 @@ class Web3Service {
 					resolve(publicSale);
 				})
 				.catch((publicSaleError) => {
+					punkService.publicSale = false;
 					reject(publicSaleError);
 				});
 		});
@@ -522,6 +495,7 @@ class Web3Service {
 					resolve(mintsRemaining);
 				})
 				.catch((mintsRemainingError) => {
+					punkService.mintsCount = 0;
 					reject(mintsRemainingError);
 				});
 		});
@@ -799,45 +773,19 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			let connector;
-			let rpcProvider;
-			let walletConnect;
-
-			rpcProvider[1337] = configService.web3.httpProvider;
-
-			connector = new WalletConnectProvider({
-				rpc: rpcProvider,
-			});
-
-			if (connector.connected === true) {
-				if (connector.accounts && connector.accounts.length > 0) {
-					walletConnect = true;
-
-					vm.walletType = 'wc';
-					vm.walletChainId = connector.chainId;
-
-					userService.userSignedIn = true;
-					userService.address = connector.accounts[0];
-
-					resolve({ result: 'success' });
-				}
-			}
-
-			if (walletConnect !== true) {
-				if (!window.ethereum) {
+			if (!window.ethereum) {
+				resolve({ result: 'success' });
+			} else {
+				if (!window.ethereum.selectedAddress) {
 					resolve({ result: 'success' });
 				} else {
-					if (!window.ethereum.selectedAddress) {
-						resolve({ result: 'success' });
-					} else {
-						vm.walletType = 'mm';
-						vm.walletChainId = window.ethereum.chainId;
+					vm.walletType = 'mm';
+					vm.walletChainId = window.ethereum.chainId;
 
-						userService.userSignedIn = true;
-						userService.address = window.ethereum.selectedAddress;
+					userService.userSignedIn = true;
+					userService.address = window.ethereum.selectedAddress;
 
-						resolve({ result: 'success' });
-					}
+					resolve({ result: 'success' });
 				}
 			}
 		});
@@ -854,8 +802,7 @@ class Web3Service {
 			} else {
 				ethereum = window.ethereum;
 
-				window.web3 = new Web3(ethereum);
-				vm.walletProvider = window.web3;
+				vm.walletProvider = new Web3(ethereum);
 
 				window.ethereum
 					.send('eth_requestAccounts')
@@ -918,47 +865,18 @@ class Web3Service {
 		});
 	}
 
-	walletConnectProvider(newId) {
-		const rpc = {};
-		const url = configService.web3.httpProvider;
-		const chainId = configService.web3.xdaiConfig.chainId;
-
-		rpc[chainId] = url;
-		if (newId && newId !== chainId) {
-			rpc[newId] = url; 
-		}
-		return new WalletConnectProvider({
-			rpc: {
-				1337: configService.web3.httpProvider,
-			},
-		});
-	}
-
 	connectWalletConnect() {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			let provider;
+			const connector = new WalletConnect({
+				bridge: 'https://bridge.walletconnect.org',
+				qrcodeModal: QRCodeModal,
+			});
 
-			provider = vm.walletConnectProvider();
-
-			provider
-				.enable()
-				.then((response) => {
-					console.log(response);
-					console.log(provider);
-					console.log('done');
-
-					vm.walletProvider = new Web3(
-						vm.walletConnectProvider(provider.chainId)
-					);
-				})
-				.catch((responseError) => {
-					reject({
-						result: 'error',
-						errorType: 'requestAccountsError',
-					});
-				});
+			if (!connector.connected) {
+				connector.createSession();
+			}
 		});
 	}
 
@@ -1262,6 +1180,7 @@ class Web3Service {
 				console.log(subscriptionId);
 			})
 			.on('data', (event) => {
+				console.log(event);
 				vm.eventUpdatePunkData(event);
 			})
 			.on('changed', (event) => {

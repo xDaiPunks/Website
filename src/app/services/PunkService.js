@@ -168,12 +168,29 @@ class PunkService {
 		vm.owned = ownedObject;
 	}
 
+	generateObject(punkArray) {
+		let i;
+		let iCount;
+
+		const punkObject = {};
+
+		for (i = 0, iCount = punkArray.length; i < iCount; i++) {
+			punkObject[punkArray[i].idx] = punkArray[i];
+		}
+
+		return punkObject;
+	}
+
 	generatePunkData(remotePunkObject) {
 		let punk;
 		let keyProp;
 
 		const vm = this;
 		const punkObject = vm.punkObject;
+
+		if (!remotePunkObject) {
+			remotePunkObject = vm.generateObject(punks);
+		}
 
 		for (punk in remotePunkObject) {
 			for (keyProp in remotePunkObject[punk]) {

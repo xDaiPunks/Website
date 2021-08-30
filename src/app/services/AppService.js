@@ -88,6 +88,7 @@ class AppService {
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
+					punkService.generatePunkData();
 					resolve({ result: 'success' });
 				});
 		});
@@ -110,51 +111,53 @@ class AppService {
 
 	blockchainData() {
 		const vm = this;
-		const promiseArray = [];
+		return new Promise((resolve, reject) => {
+			const promiseArray = [];
 
-		// public sale
-		// mints remaining
-		// punks owned by wallet
+			// public sale
+			// mints remaining
+			// punks owned by wallet
 
-		promiseArray.push(publicSale());
-		promiseArray.push(mintsRemaining());
+			promiseArray.push(publicSale());
+			promiseArray.push(mintsRemaining());
 
-		Promise.all(promiseArray)
-			.then((responses) => {
-				console.log(responses);
-			})
-			.catch((responsesError) => {
-				console.log(responsesError);
-			});
+			Promise.all(promiseArray)
+				.then((responses) => {
+					resolve({ result: 'success' });
+				})
+				.catch((responsesError) => {
+					resolve({ result: 'success' });
+				});
 
-		function publicSale() {
-			return new Promise((resolve, reject) => {
-				web3Service
-					.publicSale()
-					.then((response) => {
-						console.log('Public sale', response);
-						resolve(response);
-					})
-					.catch((responseError) => {
-						console.log('Public sale', responseError);
-						reject(responseError);
-					});
-			});
-		}
+			function publicSale() {
+				return new Promise((resolve, reject) => {
+					web3Service
+						.publicSale()
+						.then((response) => {
+							console.log('Public sale', response);
+							resolve(response);
+						})
+						.catch((responseError) => {
+							console.log('Public sale', responseError);
+							reject(responseError);
+						});
+				});
+			}
 
-		function mintsRemaining() {
-			return new Promise((resolve, reject) => {
-				web3Service
-					.mintsRemaining()
-					.then((response) => {
-						resolve(response);
-					})
-					.catch((responseError) => {
-						console.log('Mints remaining', responseError);
-						resolve(responseError);
-					});
-			});
-		}
+			function mintsRemaining() {
+				return new Promise((resolve, reject) => {
+					web3Service
+						.mintsRemaining()
+						.then((response) => {
+							resolve(response);
+						})
+						.catch((responseError) => {
+							console.log('Mints remaining', responseError);
+							resolve(responseError);
+						});
+				});
+			}
+		});
 	}
 
 	buyPunk(idx, amount) {

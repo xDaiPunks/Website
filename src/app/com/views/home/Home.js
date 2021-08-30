@@ -323,7 +323,7 @@ class Home extends PureComponent {
 		const publicSale = punkService.publicSale;
 		const mintsCount = punkService.mintsCount;
 
-		console.log('minstCount');
+		console.log('minstCount', mintsCount);
 
 		console.log('Home publicSale', publicSale);
 		console.log('Home mintscount', mintsCount);
