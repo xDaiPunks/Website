@@ -81,6 +81,16 @@ class Punk extends PureComponent {
 			this.setState(this.state);
 			this.forceUpdate();
 		});
+
+		eventService.on('change:punkData', vm.guid, (eventData) => {
+			console.log(eventData);
+			console.log(punkService);
+
+			if (eventData.idx && eventData.idx === vm.punkId) {
+				this.setState(this.state);
+				this.forceUpdate();
+			}
+		});
 	}
 
 	initialize() {
@@ -607,7 +617,7 @@ class Punk extends PureComponent {
 				if (bid === true && sale === true) {
 					return (
 						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
+							<div className="PunkDetailButtonContainer Padding">
 								<Button
 									type={'actionButton'}
 									label={'Accept bid'}
@@ -668,6 +678,7 @@ class Punk extends PureComponent {
 		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 		eventService.off('change:language', vm.guid);
+		eventService.off('change:punkData', vm.guid);
 	}
 
 	render() {

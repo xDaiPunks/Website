@@ -404,15 +404,16 @@
 }
 
 .ActionButtonAccount {
-	display: block;
+	display: flex;
 	position: relative;
 
 	float: right;
 
 	overflow: hidden;
-
+	
+	flex-direction: row-reverse;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 
 	width: 112px;
 	height: 30px;
@@ -442,6 +443,22 @@
 		white-space: nowrap;
 
 		font-family: 'Gilroy', sans-serif;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 33px;
+		padding-bottom: 3px;
+
+		align-items: center;
+		justify-content: center;
+
+		.IconImage {
+			width: 18px;
+			height: 18px;
+		}
 	}
 }
 

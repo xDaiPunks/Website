@@ -42,6 +42,7 @@ class PunkAccount extends PureComponent {
 
 		this.getData = this.getData.bind(this);
 		this.withdraw = this.withdraw.bind(this);
+		this.updateState = this.updateState.bind(this);
 
 		this.punks = this.punks.bind(this);
 		this.punkItems = this.punkItems.bind(this);
@@ -57,7 +58,10 @@ class PunkAccount extends PureComponent {
 
 	componentDidMount() {
 		const vm = this;
+
 		const pageElement = $('.' + vm.componentName + '.View');
+
+		vm.getData();
 
 		eventService.on('preloader:hide', vm.guid, () => {
 			pageElement.removeClass('Load');
@@ -78,7 +82,56 @@ class PunkAccount extends PureComponent {
 		eventService.dispatchObjectEvent('set:view', this.componentName);
 		transitionService.updateTransition(this.props, this.componentName);
 
-		vm.getData();
+		eventService.on('change:punkData', vm.guid, (eventData) => {
+			console.log(eventData);
+			punkService.setPunkDetails();
+
+			const bids = punkService.bids;
+			const owned = punkService.owned;
+
+			const address = userService.address.toLowerCase();
+
+			if (
+				bids.hasOwnProperty(eventData.idx) ||
+				owned.hasOwnProperty(eventData.idx)
+			) {
+				vm.updateState();
+			} else {
+				if (
+					eventData.hasOwnProperty('toAddress') &&
+					address === eventData.toAddress.toLowerCase()
+				) {
+					vm.updateState();
+				}
+
+				if (
+					eventData.hasOwnProperty('fromAddress') &&
+					address === eventData.fromAddress.toLowerCase()
+				) {
+					vm.updateState();
+				}
+			}
+		});
+	}
+
+	updateState() {
+		const vm = this;
+
+		punkService.setPunkDetails();
+
+		appService
+			.pendingWithdrawals(userService.address)
+			.then((response) => {
+				console.log(response);
+				userService.withdrawAmount = response;
+
+				vm.setState(vm.state);
+				vm.forceUpdate();
+			})
+			.catch((responseError) => {
+				vm.setState(vm.state);
+				vm.forceUpdate();
+			});
 	}
 
 	getData() {
@@ -105,13 +158,14 @@ class PunkAccount extends PureComponent {
 	}
 
 	withdraw() {
+		const vm = this;
 		appService
 			.withdraw()
 			.then((response) => {
-				console.log(response);
+				vm.updateState();
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				vm.updateState();
 			});
 	}
 
@@ -185,9 +239,9 @@ class PunkAccount extends PureComponent {
 						imageUrl =
 							'/static/media/punks/' + items[item].idx + '.png';
 
-						status = 'Mint';
+						status = 'Not Minted';
 						if (items[item].mint === true) {
-							status = 'Owned';
+							status = 'Market';
 						}
 
 						if (index === 1) {
@@ -327,6 +381,7 @@ class PunkAccount extends PureComponent {
 		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 		eventService.off('change:language', vm.guid);
+		eventService.off('change:punkData', vm.guid);
 	}
 
 	render() {
@@ -389,13 +444,15 @@ class PunkAccount extends PureComponent {
 								<div className="BlockContent">
 									<div className="AccountItem">
 										<Button
-											type={'actionButton'}
+											type={'actionButtonIcon'}
 											label={'Disconnect'}
 											title={'Disconnect'}
 											onClick={(event) => {
 												event.preventDefault();
 											}}
+											iconImage="/static/media/images/icon-disconnect-white.svg"
 											cssClass={'ActionButtonAccount'}
+
 										/>
 										<div className="AccountItemContent">
 											<span className="AccountItemTitleText">
@@ -408,13 +465,14 @@ class PunkAccount extends PureComponent {
 									</div>
 									<div className="AccountItem">
 										<Button
-											type={'actionButton'}
+											type={'actionButtonIcon'}
 											label={'Widthdraw'}
 											title={'Widthdraw'}
 											onClick={(event) => {
 												event.preventDefault();
 												vm.withdraw();
 											}}
+											iconImage="/static/media/images/icon-money-white.svg"
 											cssClass={'ActionButtonAccount'}
 										/>
 										<div className="AccountItemContent">

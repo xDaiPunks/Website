@@ -735,19 +735,75 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			if (!window.ethereum) {
-				resolve({ result: 'success' });
-			} else {
-				if (!window.ethereum.selectedAddress) {
+			const wc = checkWalletConnect();
+
+			if (wc !== true) {
+				checkMetaMask();
+			}
+
+			function checkMetaMask() {
+				if (!window.ethereum) {
 					resolve({ result: 'success' });
 				} else {
-					vm.walletType = 'mm';
-					vm.walletChainId = window.ethereum.chainId;
+					if (!window.ethereum.selectedAddress) {
+						resolve({ result: 'success' });
+					} else {
+						vm.walletType = 'mm';
+						vm.walletChainId = window.ethereum.chainId;
+
+						userService.userSignedIn = true;
+						userService.address = window.ethereum.selectedAddress;
+
+						resolve({ result: 'success' });
+					}
+				}
+			}
+
+			function checkWalletConnect() {
+				let rpc;
+				let xdai;
+				let chainId;
+				let httpProvider;
+
+				const web3Config = configService.web3;
+
+				rpc = {};
+
+				xdai = web3Config.xdaiConfig;
+				chainId = xdai.chainId;
+				httpProvider = web3Config.httpProvider;
+
+				rpc[chainId] = httpProvider;
+
+				rpc[1] = 'https://cloudflare-eth.com';
+				rpc[100] = 'https://rpc.xdaichain.com/';
+
+				const provider = new WalletConnectProvider({
+					rpc: rpc,
+					infuraId: '93a1c93e80c44e55838a599056b3a9ec',
+					chainId: chainId,
+					network: 'xDai',
+					qrcode: true,
+					qrcodeModalOptions: {
+						mobileLinks: ['metamask', 'pillar'],
+					},
+				});
+
+				provider.networkId = chainId;
+
+				if (provider.connected === true) {
+					console.log(provider);
+
+					vm.walletType = 'wc';
+					vm.walletChainId = provider.chainId;
 
 					userService.userSignedIn = true;
-					userService.address = window.ethereum.selectedAddress;
+					userService.address = provider.accounts[0];
 
-					resolve({ result: 'success' });
+					vm.walletProvider = new Web3(provider);
+					return true;
+				} else {
+					return false;
 				}
 			}
 		});
@@ -846,15 +902,20 @@ class Web3Service {
 
 			rpc[chainId] = httpProvider;
 
+			rpc[1] = 'https://cloudflare-eth.com';
+			rpc[100] = 'https://rpc.xdaichain.com/';
+
 			const provider = new WalletConnectProvider({
 				rpc: rpc,
+				infuraId: '93a1c93e80c44e55838a599056b3a9ec',
 				chainId: chainId,
-				network: 'xdai',
+				network: 'xDai',
 				qrcode: true,
 				qrcodeModalOptions: {
 					mobileLinks: ['metamask', 'pillar'],
 				},
 			});
+
 			provider.networkId = chainId;
 
 			provider
@@ -862,9 +923,22 @@ class Web3Service {
 				.then((response) => {
 					console.log(response);
 					console.log(provider);
+
+					vm.walletType = 'wc';
+					vm.walletChainId = provider.chainId;
+
+					userService.userSignedIn = true;
+					userService.address = provider.accounts[0];
+
+					vm.walletProvider = new Web3(provider);
+					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
 					console.log(responseError);
+					reject({
+						result: 'error',
+						errorType: 'walletConnectProviderError',
+					});
 				});
 		});
 	}
@@ -996,7 +1070,7 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'mint',
-						mint: idx,
+						idx: idx,
 					});
 				}
 			}
@@ -1024,7 +1098,7 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'punkOffered',
-						punkOffered: idx,
+						idx: idx,
 					});
 				}
 			}
@@ -1063,7 +1137,9 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'PunkBought',
-						punkBought: idx,
+						idx: idx,
+						toAddress: toAddress,
+						fromAddress: fromAddress,
 					});
 				}
 			}
@@ -1092,7 +1168,8 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'punkBidEntered',
-						punkBidEntered: idx,
+						idx: idx,
+						fromAddress: fromAddress,
 					});
 				}
 			}
@@ -1125,7 +1202,8 @@ class Web3Service {
 								'change:punkData',
 								{
 									type: 'punkBidWithdrawn',
-									punkBidWithdrawn: idx,
+									idx: idx,
+									fromAddress: fromAddress,
 								}
 							);
 						}
@@ -1153,7 +1231,7 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'punkNoLongerForSale',
-						punkNoLongerForSale: idx,
+						idx: idx,
 					});
 				}
 			}

@@ -9,6 +9,8 @@ class ConfigService {
 			Instance.selectedLanguage = '';
 			Instance.availableLanguages = ['en', 'es'];
 
+			Instance.countDown = new Date(process.env.REACT_APP_WEB3_COUNTDOWN).getTime();
+
 			Instance.userImageUrl = process.env.REACT_APP_USER_IMAGE_URL;
 
 			Instance.apiUrl =

@@ -53,8 +53,6 @@ class MarketPlace extends PureComponent {
 	}
 
 	componentDidMount() {
-		let state;
-
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
 
@@ -79,7 +77,7 @@ class MarketPlace extends PureComponent {
 
 		eventService.on('change:punkData', vm.guid, (eventData) => {
 			if (eventData.type !== 'publicSale') {
-				state = utilityService.cloneObject(vm.state);
+				const state = utilityService.cloneObject(vm.state);
 
 				vm.data = punkService.punkData;
 
@@ -325,9 +323,9 @@ class MarketPlace extends PureComponent {
 								items[item].idx +
 								'.png';
 
-							status = 'Mint';
+							status = 'Not Minted';
 							if (items[item].mint === true) {
-								status = 'Owned';
+								status = 'Market';
 							}
 
 							if (index === 1) {
@@ -413,6 +411,7 @@ class MarketPlace extends PureComponent {
 		eventService.off('force:state', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 		eventService.off('change:language', vm.guid);
+		eventService.off('change:punkData', vm.guid);
 	}
 
 	render() {

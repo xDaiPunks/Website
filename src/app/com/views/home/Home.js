@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 
 import Footer from 'src/app/com/footer/Footer';
 import Button from 'src/app/com/button/Button';
+import CountDown from 'src/app/com/countDown/CountDown';
 
 import AppService from 'src/app/services/AppService';
 import UserService from 'src/app/services/UserService';
@@ -328,14 +329,25 @@ class Home extends PureComponent {
 		console.log('Home publicSale', publicSale);
 		console.log('Home mintscount', mintsCount);
 
-		return (
-			<div className="MintAmountContainer">
-				<span className="MintText">Number of minted punks</span>
-				<div className="MintedItems">
-					<span className="MintedItemsText">{mintsCount} / 1000</span>
+		if (publicSale !== true) {
+			return (
+				<div className="CountDownContainer">
+					<span className="MintText">Minting starts in</span>
+					<CountDown />
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div className="MintAmountContainer">
+					<span className="MintText">Number of minted punks</span>
+					<div className="MintedItems">
+						<span className="MintedItemsText">
+							{mintsCount} / 1000
+						</span>
+					</div>
+				</div>
+			);
+		}
 	}
 
 	componentWillUnmount() {
