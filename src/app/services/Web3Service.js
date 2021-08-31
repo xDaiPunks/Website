@@ -14,9 +14,6 @@ import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
-const bip39 = require('bip39');
-const hdkey = require('ethereumjs-wallet').hdkey;
-
 const xDaiPunksAbi = require('src/app//abi/xDaiPunks.json');
 
 const abiService = new AbiService();
@@ -369,55 +366,6 @@ class Web3Service {
 			accountAddress,
 			accountPrivateKey,
 		};
-	}
-
-	generateAccountMnemonic(mnemonic) {
-		const seed = bip39.mnemonicToSeedSync(mnemonic);
-		const hdWallet = hdkey.fromMasterSeed(seed);
-
-		// eslint-disable-next-line quotes
-		const hdPathWallet = "m/44'/60'/0'/0/";
-
-		const wallet = hdWallet.derivePath(hdPathWallet + 0).getWallet();
-		const accountAddress = '0x' + wallet.getAddress().toString('hex');
-		const accountPrivateKey = wallet.getPrivateKey().toString('hex');
-
-		return {
-			accountAddress,
-			accountPrivateKey,
-		};
-	}
-
-	generateAccountsMnemonic(mnemonic, count) {
-		let i;
-
-		const accounts = [];
-
-		const seed = bip39.mnemonicToSeedSync(mnemonic);
-		const hdWallet = hdkey.fromMasterSeed(seed);
-
-		// eslint-disable-next-line quotes
-		const hdPathWallet = "m/44'/60'/0'/0/";
-
-		// eslint-disable-next-line no-restricted-globals
-		if (isNaN(parseInt(count, 10))) {
-			count = 1;
-		} else {
-			count = parseInt(count, 10);
-		}
-
-		for (i = 0; i < count; i++) {
-			const wallet = hdWallet.derivePath(hdPathWallet + i).getWallet();
-			const accountAddress = '0x' + wallet.getAddress().toString('hex');
-			const accountPrivateKey = wallet.getPrivateKey().toString('hex');
-
-			accounts.push({
-				accountAddress,
-				accountPrivateKey,
-			});
-		}
-
-		return accounts;
 	}
 
 	publicSale() {

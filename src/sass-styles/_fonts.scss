@@ -20,44 +20,10 @@
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('./assets/fonts/Roboto-Medium.woff') format('woff'),
-	  url('./assets/fonts/Roboto-Medium.woff2') format('woff2'),
-	  url('./assets/fonts/Roboto-Medium.ttf') format('truetype');
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-  }
-
-@font-face {
-	font-family: 'Roboto';
 	src: url('./assets/fonts/Roboto-Bold.woff') format('woff'),
 		url('./assets/fonts/Roboto-Bold.woff2') format('woff2'),
 		url('./assets/fonts/Roboto-Bold.ttf') format('truetype');
 	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Gilroy';
-	src: url('./assets/fonts/Gilroy-Light.woff') format('woff'),
-		url('./assets/fonts/Gilroy-Light.eot?#iefix')
-			format('embedded-opentype'),
-		url('./assets/fonts/Gilroy-Light.woff2') format('woff2'),
-		url('./assets/fonts/Gilroy-Light.ttf') format('truetype');
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Gilroy';
-	src: url('./assets/fonts/Gilroy-Regular.woff') format('woff'),
-		url('./assets/fonts/Gilroy-Regular.eot?#iefix')
-			format('embedded-opentype'),
-		url('./assets/fonts/Gilroy-Regular.woff2') format('woff2'),
-		url('./assets/fonts/Gilroy-Regular.ttf') format('truetype');
-	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
@@ -117,18 +83,6 @@
 		url('./assets/fonts/Gilroy-Black.woff2') format('woff2'),
 		url('./assets/fonts/Gilroy-Black.ttf') format('truetype');
 	font-weight: 900;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Gilroy';
-	src: url('./assets/fonts/Gilroy-Heavy.woff') format('woff'),
-		url('./assets/fonts/Gilroy-Heavy.eot?#iefix')
-			format('embedded-opentype'),
-		url('./assets/fonts/Gilroy-Heavy.woff2') format('woff2'),
-		url('./assets/fonts/Gilroy-Heavy.ttf') format('truetype');
-	font-weight: 1000;
 	font-style: normal;
 	font-display: swap;
 }

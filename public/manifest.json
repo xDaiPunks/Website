@@ -1,6 +1,6 @@
 {
-  "name": "Muevo",
-  "short_name": "Muevo",
+  "name": "xDaiPunks",
+  "short_name": "xDaiPunks",
 	"icons": [
 		{
 			"src": "favicon.ico",
@@ -24,5 +24,5 @@
   "display": "standalone",
   "theme_color": "#FFFFFF",
   "background_color": "#5605c7",
-  "description": "The power of having dollar account without intermediaries and much more"
+  "description": "Mint & trade Punks on the xDai network"
 }
