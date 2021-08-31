@@ -19,13 +19,15 @@ const preloadService = new PreloadService();
 const webfontPreloadService = new WebfontPreloadService();
 
 const initialize = () => {
-	preloadService.preload('/static/media/images/phone-hand.png');
+	preloadService.preload('/static/media/images/logo.svg');
 
 	preloadService.on('preloadReady', this, (e) => {
 		preloadService.off('preloadReady', this);
 
-		webfontPreloadService.preload('Gilroy', '1000');
+		webfontPreloadService.preload('Gilroy', '900');
 		webfontPreloadService.preload('Gilroy', '800');
+		webfontPreloadService.preload('Gilroy', '700');
+		webfontPreloadService.preload('Gilroy', '600');
 
 		webfontPreloadService.on('preloadReady', this, (e) => {
 			webfontPreloadService.off('preloadReady', this);
@@ -40,4 +42,4 @@ const initialize = () => {
 };
 
 initialize();
-//serviceWorkerRegister();
+serviceWorkerRegister();
