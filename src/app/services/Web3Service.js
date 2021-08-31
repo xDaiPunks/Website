@@ -1195,18 +1195,18 @@ class Web3Service {
 		vm.contract.events
 			.allEvents()
 			.on('connected', (subscriptionId) => {
-				console.log(subscriptionId);
+				console.log('Contract websocket id', subscriptionId);
 			})
 			.on('data', (event) => {
-				console.log(event);
+				console.log('Contract websocket data event', event);
 				vm.eventUpdatePunkData(event);
 			})
 			.on('changed', (event) => {
-				console.log(event);
+				console.log('Contract websocket changed event', event);
 			})
 			.on('error', (error, receipt) => {
 				// Check the error event to restart the socket
-				console.log(error, receipt);
+				console.log('Contract websocket error', error, receipt);
 
 				setTimeout(() => {
 					vm.setContract();

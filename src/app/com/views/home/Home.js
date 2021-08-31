@@ -115,8 +115,6 @@ class Home extends PureComponent {
 
 		console.log(punkService.publicSale);
 		console.log(userService);
-		//FOR TESTING!!!!
-		punkService.publicSale = true;
 
 		if (punkService.publicSale !== true) {
 			console.log('show modal not started');
