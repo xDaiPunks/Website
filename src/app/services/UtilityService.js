@@ -101,28 +101,28 @@ class UtilityService {
 		return mergedArray;
 	}
 
-	punkArrayFromObject(object) {
+	punkArrayFromObject(internalObject) {
 		let key;
-		const array = [];
+		const internalArray = [];
 
-		for (key in object) {
-			array.push(object[key]);
+		for (key in internalObject) {
+			internalArray.push(internalObject[key]);
 		}
 
-		return array;
+		return internalArray;
 	}
 
-	punkObjectFromArray(array) {
+	punkObjectFromArray(internalArray) {
 		let i;
 		let iCount;
 
-		const object = {};
+		const internalObject = {};
 
-		for (i = 0, iCount = array.length; i < iCount; i++) {
-			object[array[i].idx] = array[i];
+		for (i = 0, iCount = internalArray.length; i < iCount; i++) {
+			internalObject[internalArray[i].idx] = internalArray[i];
 		}
 
-		return object;
+		return internalObject;
 	}
 
 	flattenObject(data) {

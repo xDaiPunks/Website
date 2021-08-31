@@ -237,7 +237,7 @@ class PunkAccount extends PureComponent {
 							.toFormat(2);
 
 						imageUrl =
-							'/static/media/punks/' + items[item].idx + '.png';
+							'/punks/' + items[item].idx + '.png';
 
 						status = 'Not Minted';
 						if (items[item].mint === true) {

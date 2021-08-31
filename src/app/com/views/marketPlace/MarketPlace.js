@@ -319,7 +319,7 @@ class MarketPlace extends PureComponent {
 								.toFormat(2);
 
 							imageUrl =
-								'/static/media/punks/' +
+								'/punks/' +
 								items[item].idx +
 								'.png';
 

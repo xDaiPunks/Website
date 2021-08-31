@@ -693,7 +693,7 @@ class Punk extends PureComponent {
 		console.log(vm.punkId);
 		console.log(vm.punkDetails);
 
-		punkImageUrl = '/static/media/punks/' + vm.punkId + '.png';
+		punkImageUrl = '/punks/' + vm.punkId + '.png';
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';

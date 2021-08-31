@@ -155,19 +155,19 @@ class Home extends PureComponent {
 		let number11 = Math.floor(Math.random() * 9999);
 		let number12 = Math.floor(Math.random() * 9999);
 
-		let randomImage00 = '/static/media/punks/' + number00 + '.png';
-		let randomImage01 = '/static/media/punks/' + number01 + '.png';
-		let randomImage02 = '/static/media/punks/' + number02 + '.png';
-		let randomImage03 = '/static/media/punks/' + number03 + '.png';
-		let randomImage04 = '/static/media/punks/' + number04 + '.png';
-		let randomImage05 = '/static/media/punks/' + number05 + '.png';
-		let randomImage06 = '/static/media/punks/' + number06 + '.png';
-		let randomImage07 = '/static/media/punks/' + number07 + '.png';
-		let randomImage08 = '/static/media/punks/' + number08 + '.png';
-		let randomImage09 = '/static/media/punks/' + number09 + '.png';
-		let randomImage10 = '/static/media/punks/' + number10 + '.png';
-		let randomImage11 = '/static/media/punks/' + number11 + '.png';
-		let randomImage12 = '/static/media/punks/' + number12 + '.png';
+		let randomImage00 = '/punks/' + number00 + '.png';
+		let randomImage01 = '/punks/' + number01 + '.png';
+		let randomImage02 = '/punks/' + number02 + '.png';
+		let randomImage03 = '/punks/' + number03 + '.png';
+		let randomImage04 = '/punks/' + number04 + '.png';
+		let randomImage05 = '/punks/' + number05 + '.png';
+		let randomImage06 = '/punks/' + number06 + '.png';
+		let randomImage07 = '/punks/' + number07 + '.png';
+		let randomImage08 = '/punks/' + number08 + '.png';
+		let randomImage09 = '/punks/' + number09 + '.png';
+		let randomImage10 = '/punks/' + number10 + '.png';
+		let randomImage11 = '/punks/' + number11 + '.png';
+		let randomImage12 = '/punks/' + number12 + '.png';
 
 		return (
 			<div className="Confetti">
@@ -380,7 +380,7 @@ class Home extends PureComponent {
 		}
 
 		number = Math.floor(Math.random() * 9999);
-		randomImage = '/static/media/punks/' + number + '.png';
+		randomImage = '/punks/' + number + '.png';
 
 		return (
 			<div

@@ -423,9 +423,6 @@ module.exports = function (webpackEnv) {
 							include: [
 								path.resolve(__dirname, '../src/assets/images'),
 							],
-							exclude: [
-								path.resolve(__dirname, '../src/assets/punks'),
-							],
 							options: {
 								limit: 0,
 								name: 'static/media/images/[name].[ext]',

@@ -39,9 +39,9 @@ class PunkService {
 		return vm.bidStore;
 	}
 
-	set bids(object) {
+	set bids(internalObject) {
 		const vm = this;
-		vm.bidStore = object;
+		vm.bidStore = internalObject;
 	}
 
 	get owned() {
@@ -49,9 +49,9 @@ class PunkService {
 		return vm.ownedStore;
 	}
 
-	set owned(object) {
+	set owned(internalObject) {
 		const vm = this;
-		vm.ownedStore = object;
+		vm.ownedStore = internalObject;
 	}
 
 	get punkData() {
@@ -59,9 +59,9 @@ class PunkService {
 		return vm.punkArrayData;
 	}
 
-	set punkData(array) {
+	set punkData(internalArray) {
 		const vm = this;
-		vm.punkArrayData = array;
+		vm.punkArrayData = internalArray;
 	}
 
 	get punkObject() {
@@ -69,9 +69,9 @@ class PunkService {
 		return vm.punkObjectData;
 	}
 
-	set punkObject(object) {
+	set punkObject(internalObject) {
 		const vm = this;
-		vm.punkObjectData = object;
+		vm.punkObjectData = internalObject;
 	}
 
 	get mintsCount() {
@@ -79,9 +79,9 @@ class PunkService {
 		return vm.mintsCountStore;
 	}
 
-	set mintsCount(number) {
+	set mintsCount(internalNumber) {
 		const vm = this;
-		vm.mintsCountStore = number;
+		vm.mintsCountStore = internalNumber;
 	}
 
 	get publicSale() {
