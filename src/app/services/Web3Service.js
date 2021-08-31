@@ -508,12 +508,9 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			
-
 			let value;
 			let contract;
 
-	
 			value = BigNumber(number).times(12).times(1e18).toString();
 
 			contract = new vm.walletProvider.eth.Contract(
