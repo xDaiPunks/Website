@@ -478,7 +478,7 @@ class Web3Service {
 				.withdraw()
 				.send({
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -543,7 +543,7 @@ class Web3Service {
 				.send({
 					value: value,
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -560,9 +560,12 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
+			
+
 			let value;
 			let contract;
 
+	
 			value = BigNumber(number).times(12).times(1e18).toString();
 
 			contract = new vm.walletProvider.eth.Contract(
@@ -575,7 +578,7 @@ class Web3Service {
 				.send({
 					value: value,
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -603,7 +606,7 @@ class Web3Service {
 				.acceptBidForPunk(idx, 0)
 				.send({
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -633,7 +636,7 @@ class Web3Service {
 				.send({
 					value: value,
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -662,7 +665,7 @@ class Web3Service {
 				.offerPunkForSale(idx, value)
 				.send({
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -690,7 +693,7 @@ class Web3Service {
 				.withdrawBidForPunk(idx)
 				.send({
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);
@@ -718,7 +721,7 @@ class Web3Service {
 				.punkNoLongerForSale(idx)
 				.send({
 					gasPrice: vm.gasPrice,
-					from: window.ethereum.selectedAddress,
+					from: userService.address,
 				})
 				.then((response) => {
 					resolve(response);

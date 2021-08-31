@@ -8,7 +8,7 @@
 		"start": "npm run scss && npm run translations && cross-env NODE_ENV=development node ./scripts/start.js",
 		"build": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js",
 		"build-production": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false node ./scripts/build.js && npm run sw-production && npm run copy",
-		"build-development": "npm run scss && npm run translations && cross-env NODE_ENV=development GENERATE_SOURCEMAP=true node ./scripts/build.js && npm run sw-development",
+		"build-development": "npm run scss && npm run translations && cross-env NODE_ENV=development GENERATE_SOURCEMAP=true node ./scripts/build.js && npm run sw-development && npm run copy",
 		"build-production-map": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js && npm run sw-production && npm run copy",
 		"test": "node scripts/test.js",
 		"scss": "node ./scripts/scss.js",
@@ -20,6 +20,7 @@
 	},
 	"dependencies": {
 		"@react-native-community/art": "^1.2.0",
+		"@walletconnect/client": "^1.6.5",
 		"@walletconnect/web3-provider": "^1.6.5",
 		"axios": "^0.21.1",
 		"bignumber.js": "^9.0.1",

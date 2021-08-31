@@ -1566,17 +1566,18 @@ body {
       height: 18px; }
 
 .ActionButtonAccount {
-  display: block;
+  display: flex;
   position: relative;
   float: right;
   overflow: hidden;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 112px;
   height: 30px;
   border-radius: 15px;
-  padding-left: 16px;
-  padding-right: 18px;
+  padding-left: 17px;
+  padding-right: 8px;
   font-family: 'Gilroy', sans-serif;
   background-color: #111; }
   .ActionButtonAccount .Txt {
@@ -1590,6 +1591,16 @@ body {
     letter-spacing: normal;
     white-space: nowrap;
     font-family: 'Gilroy', sans-serif; }
+  .ActionButtonAccount .Icon {
+    display: flex;
+    position: relative;
+    height: 14px;
+    padding-bottom: 1px;
+    align-items: center;
+    justify-content: center; }
+    .ActionButtonAccount .Icon .IconImage {
+      width: 14px;
+      height: 14px; }
 
 .NavigationButton {
   display: flex;
