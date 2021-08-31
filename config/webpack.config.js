@@ -431,20 +431,6 @@ module.exports = function (webpackEnv) {
 								name: 'static/media/images/[name].[ext]',
 							},
 						},
-						{
-							test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-							loader: require.resolve('url-loader'),
-							include: [
-								path.resolve(__dirname, '../src/assets/punks'),
-							],
-							exclude: [
-								path.resolve(__dirname, '../src/assets/images'),
-							],
-							options: {
-								limit: 0,
-								name: 'static/media/punks/[name].[ext]',
-							},
-						},
 						// Process font assets
 						{
 							test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,

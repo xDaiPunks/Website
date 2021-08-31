@@ -14,8 +14,8 @@
 		"scss": "node ./scripts/scss.js",
 		"watch-scss": "npm run scss && node-sass-chokidar src/ -o src/ --watch --recursive",
 		"translations": "node ./scripts/translations.js",
-		"sw-production": "cross-env SW_BASE=https://muevo.co node ./scripts/updateServiceWorker.js",
-		"sw-development": "cross-env SW_BASE=http://localhost:5555 node ./scripts/updateServiceWorker.js",
+		"sw-production": "cross-env SW_BASE=https://xdaipunks.com node ./scripts/updateServiceWorker.js",
+		"sw-development": "cross-env SW_BASE=http://localhost:9999 node ./scripts/updateServiceWorker.js",
 		"test-coverage": "node ./scripts/test.js --env=jsdom --coverage && http-server ./coverage/lcov-report -o"
 	},
 	"dependencies": {
