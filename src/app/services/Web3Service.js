@@ -851,7 +851,7 @@ class Web3Service {
 
 			provider = new WalletConnectProvider({
 				rpc: rpc,
-				infuraId: '93a1c93e80c44e55838a599056b3a9ec',
+				// infuraId: '93a1c93e80c44e55838a599056b3a9ec',
 				chainId: chainId,
 				network: 'xDai',
 				qrcode: true,
