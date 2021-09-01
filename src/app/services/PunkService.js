@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { punks } from 'src/app/data/punks';
 
 import UserService from 'src/app/services/UserService';

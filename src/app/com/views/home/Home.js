@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { PureComponent } from 'react';
 
 import Footer from 'src/app/com/footer/Footer';
@@ -6,23 +5,18 @@ import Button from 'src/app/com/button/Button';
 import CountDown from 'src/app/com/countDown/CountDown';
 
 import AppService from 'src/app/services/AppService';
-import UserService from 'src/app/services/UserService';
 import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
-import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 
 const appService = new AppService();
-const userService = new UserService();
 const viewService = new ViewService();
 const punkService = new PunkService();
 const eventService = new EventService();
 const routeService = new RouteService();
-
-const configService = new ConfigService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
@@ -111,7 +105,7 @@ class Home extends PureComponent {
 		appService
 			.mintPunks(amount)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				if (response.status !== true) {
 					// show alert
 				} else {
@@ -119,7 +113,7 @@ class Home extends PureComponent {
 				}
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -129,8 +123,8 @@ class Home extends PureComponent {
 		const publicSale = punkService.publicSale;
 		const mintsCount = punkService.mintsCount;
 
-		console.log(punkService.publicSale);
-		console.log(userService);
+		// console.log(punkService.publicSale);
+		// console.log(userService);
 
 		if (publicSale !== true) {
 			window.open('https://twitter.com/xDaiPunks');
@@ -325,15 +319,15 @@ class Home extends PureComponent {
 	}
 
 	subContentItem() {
-		const vm = this;
+		// const vm = this;
 
 		const publicSale = punkService.publicSale;
 		const mintsCount = punkService.mintsCount;
 
-		console.log('minstCount', mintsCount);
+		// console.log('minstCount', mintsCount);
 
-		console.log('Home publicSale', publicSale);
-		console.log('Home mintscount', mintsCount);
+		// console.log('Home publicSale', publicSale);
+		// console.log('Home mintscount', mintsCount);
 
 		if (publicSale !== true) {
 			return (

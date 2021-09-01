@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+
 import axios from 'axios';
 
 import Web3 from 'web3';
-import WalletConnectProvider from '@walletconnect/web3-provider';
+import WalletConnectProvider from '@walletconnect/ethereum-provider';
 
 import { BigNumber } from 'bignumber.js';
 
@@ -54,7 +56,6 @@ class Web3Service {
 
 		vm.setAbi();
 		vm.setContract();
-		vm.setWeb3Events();
 		vm.setContractEvents();
 	}
 
@@ -78,87 +79,6 @@ class Web3Service {
 		);
 	}
 
-	setWeb3Events() {
-		const vm = this;
-
-		metaMaskEvents();
-		function metaMaskEvents() {
-			if (window.ethereum) {
-				vm.walletProvider = new Web3(window.ethereum);
-
-				window.ethereum.on('disconnect', (accountArray) => {
-					console.log('disconnect event', accountArray);
-
-					eventService.off('preloader:show', vm.guid);
-					eventService.on('preloader:show', vm.guid, () => {
-						eventService.off('preloader:show', vm.guid);
-						if (accountArray.length === 0) {
-							vm.walletType = 'mm';
-							vm.walletChainId = window.ethereum.chainId;
-
-							userService.address = null;
-							userService.userSignedIn = null;
-						} else {
-							vm.walletType = 'mm';
-							vm.walletChainId = window.ethereum.chainId;
-
-							userService.userSignedIn = true;
-							userService.address = accountArray[0];
-
-							punkService.setPunkDetails();
-						}
-
-						eventService.dispatchObjectEvent('force:state');
-						eventService.dispatchObjectEvent('hide:preloader');
-					});
-
-					eventService.dispatchObjectEvent('show:preloader');
-				});
-
-				window.ethereum.on('connect', (event) => {
-					console.log('connect event', event);
-				});
-
-				window.ethereum.on('chainChanged', (event) => {
-					console.log('chainChange event', event);
-				});
-
-				window.ethereum.on('accountsChanged', (accountArray) => {
-					console.log('accountChange event', accountArray);
-
-					eventService.off('preloader:show', vm.guid);
-					eventService.on('preloader:show', vm.guid, () => {
-						eventService.off('preloader:show', vm.guid);
-						if (accountArray.length === 0) {
-							vm.walletType = 'mm';
-							vm.walletChainId = window.ethereum.chainId;
-
-							userService.address = null;
-							userService.userSignedIn = null;
-						} else {
-							vm.walletType = 'mm';
-							vm.walletChainId = window.ethereum.chainId;
-
-							userService.address = accountArray[0];
-							userService.userSignedIn = true;
-
-							punkService.setPunkDetails();
-						}
-
-						eventService.dispatchObjectEvent('force:state');
-						eventService.dispatchObjectEvent('hide:preloader');
-					});
-
-					eventService.dispatchObjectEvent('show:preloader');
-				});
-
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-
 	setContractEvents() {
 		const vm = this;
 		vm.initializeContractEvents();
@@ -167,6 +87,63 @@ class Web3Service {
 	isAddress(address) {
 		const vm = this;
 		return vm.web3.utils.isAddress(address);
+	}
+
+	checkCall() {
+		const vm = this;
+
+		const userSignedIn = userService.userSignedIn;
+
+		if (userSignedIn !== true) {
+			eventService.dispatchObjectEvent('show:modal', {
+				type: 'walletModal',
+			});
+			return false;
+		} else {
+			if (!vm.walletChainId) {
+				eventService.dispatchObjectEvent('show:modal', {
+					type: 'alertModal',
+					header: 'Wrong chain',
+					content: 'Please switch to the xDai chain in your wallet',
+				});
+				return false;
+			} else {
+				if (
+					vm.walletChainId === configService.web3.xdaiConfig.chainId
+				) {
+					return true;
+				} else {
+					if (
+						parseInt(vm.walletChainId) ===
+						configService.web3.xdaiConfig.chainId
+					) {
+						return true;
+					} else {
+						if (
+							vm.walletChainId ===
+							parseInt(configService.web3.xdaiConfig.chainId)
+						) {
+							return true;
+						} else {
+							if (
+								parseInt(vm.walletChainId) ===
+								parseInt(configService.web3.xdaiConfig.chainId)
+							) {
+								return true;
+							} else {
+								eventService.dispatchObjectEvent('show:modal', {
+									type: 'alertModal',
+									header: 'Wrong chain',
+									content:
+										'Please switch to the xDai chain in your wallet',
+								});
+								return false;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	// general web3 functions
@@ -417,6 +394,10 @@ class Web3Service {
 		return new Promise((resolve, reject) => {
 			let contract;
 
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
 				vm.xDaiPunkAddress
@@ -430,11 +411,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -456,30 +435,16 @@ class Web3Service {
 		});
 	}
 
-	tokensOfAddress(address) {
-		const vm = this;
-
-		return new Promise((resolve, reject) => {
-			vm.contract.methods
-				.tokensOfAddress(address)
-				.call()
-
-				.then((tokensOfAddress) => {
-					userService.ownedPunks = tokensOfAddress;
-					resolve(tokensOfAddress);
-				})
-				.catch((tokensOfAddressError) => {
-					reject(tokensOfAddressError);
-				});
-		});
-	}
-
 	buyPunk(idx, amount) {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
 			let contract;
 			const value = BigNumber(amount).times(1e18).toString();
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -495,11 +460,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -510,6 +473,10 @@ class Web3Service {
 		return new Promise((resolve, reject) => {
 			let value;
 			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			value = BigNumber(number).times(12).times(1e18).toString();
 
@@ -527,11 +494,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -541,6 +506,10 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -555,11 +524,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -570,6 +537,10 @@ class Web3Service {
 		return new Promise((resolve, reject) => {
 			let contract;
 			const value = BigNumber(amount).times(1e18).toString();
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -585,11 +556,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -600,6 +569,10 @@ class Web3Service {
 		return new Promise((resolve, reject) => {
 			let contract;
 			const value = BigNumber(amount).times(1e18).toString();
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -614,11 +587,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -628,6 +599,10 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -642,11 +617,9 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
@@ -656,6 +629,10 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -670,15 +647,12 @@ class Web3Service {
 				})
 				.then((response) => {
 					resolve(response);
-					console.log(response);
 				})
 				.catch((responseError) => {
 					reject(responseError);
-					console.log(responseError);
 				});
 		});
 	}
-
 
 	connectMetaMask() {
 		const vm = this;
@@ -702,6 +676,7 @@ class Web3Service {
 						userService.userSignedIn = true;
 						userService.address = window.ethereum.selectedAddress;
 
+						setEvents();
 						checkCurrentNetwork();
 					})
 					.catch((responseError) => {
@@ -710,6 +685,71 @@ class Web3Service {
 							errorType: 'requestAccountsError',
 						});
 					});
+			}
+
+			function setEvents() {
+				vm.walletProvider = new Web3(window.ethereum);
+
+				window.ethereum.on('disconnect', (accountArray) => {
+					eventService.off('preloader:show', vm.guid);
+					eventService.on('preloader:show', vm.guid, () => {
+						eventService.off('preloader:show', vm.guid);
+						if (accountArray.length === 0) {
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
+
+							userService.address = null;
+							userService.userSignedIn = null;
+						} else {
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
+
+							userService.userSignedIn = true;
+							userService.address = accountArray[0];
+
+							punkService.setPunkDetails();
+						}
+
+						eventService.dispatchObjectEvent('force:state');
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+
+					eventService.dispatchObjectEvent('show:preloader');
+				});
+
+				window.ethereum.on('connect', (event) => {});
+
+				window.ethereum.on('chainChanged', (event) => {
+					vm.walletType = 'mm';
+					vm.walletChainId = window.ethereum.chainId;
+				});
+
+				window.ethereum.on('accountsChanged', (accountArray) => {
+					eventService.off('preloader:show', vm.guid);
+					eventService.on('preloader:show', vm.guid, () => {
+						eventService.off('preloader:show', vm.guid);
+						if (accountArray.length === 0) {
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
+
+							userService.address = null;
+							userService.userSignedIn = null;
+						} else {
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
+
+							userService.address = accountArray[0];
+							userService.userSignedIn = true;
+
+							punkService.setPunkDetails();
+						}
+
+						eventService.dispatchObjectEvent('force:state');
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+
+					eventService.dispatchObjectEvent('show:preloader');
+				});
 			}
 
 			function checkCurrentNetwork() {
@@ -775,10 +815,16 @@ class Web3Service {
 
 			rpc[1] = 'https://cloudflare-eth.com';
 			rpc[100] = 'https://rpc.xdaichain.com/';
+			rpc[56] = 'https://bsc-dataseed.binance.org/';
+			rpc[137] = 'https://rpc-mainnet.maticvigil.com/';
+
+			//test url
+			rpc[3] =
+				'https://ropsten.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
 
 			const provider = new WalletConnectProvider({
 				rpc: rpc,
-				infuraId: '93a1c93e80c44e55838a599056b3a9ec',
+
 				chainId: chainId,
 				network: 'xDai',
 				qrcode: true,
@@ -792,9 +838,6 @@ class Web3Service {
 			provider
 				.enable()
 				.then((response) => {
-					console.log(response);
-					console.log(provider);
-
 					vm.walletType = 'wc';
 					vm.walletChainId = provider.chainId;
 
@@ -802,15 +845,68 @@ class Web3Service {
 					userService.address = provider.accounts[0];
 
 					vm.walletProvider = new Web3(provider);
+
+					setEvents();
 					resolve({ result: 'success' });
 				})
 				.catch((responseError) => {
-					console.log(responseError);
 					reject({
 						result: 'error',
 						errorType: 'walletConnectProviderError',
 					});
 				});
+
+			function setEvents() {
+				provider.on('accountsChanged', (accounts) => {
+					vm.walletType = 'wc';
+					vm.walletChainId = provider.chainId;
+
+					userService.userSignedIn = true;
+					userService.address = provider.accounts[0];
+
+					eventService.off('preloader:show', vm.guid);
+					eventService.on('preloader:show', vm.guid, () => {
+						eventService.off('preloader:show', vm.guid);
+
+						vm.walletType = 'wc';
+						vm.walletChainId = provider.chainId;
+
+						userService.userSignedIn = true;
+						userService.address = provider.accounts[0];
+
+						punkService.setPunkDetails();
+
+						eventService.dispatchObjectEvent('force:state');
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+
+					eventService.dispatchObjectEvent('show:preloader');
+				});
+
+				// Subscribe to chainId change
+				provider.on('chainChanged', (chainId) => {
+					vm.walletType = 'wc';
+					vm.walletChainId = chainId;
+				});
+
+				// Subscribe to session disconnection
+				provider.on('disconnect', (code, reason) => {
+					eventService.off('preloader:show', vm.guid);
+					eventService.on('preloader:show', vm.guid, () => {
+						eventService.off('preloader:show', vm.guid);
+
+						vm.walletType = 'wc';
+						vm.walletChainId = provider.chainId;
+
+						punkService.setPunkDetails();
+
+						eventService.dispatchObjectEvent('force:state');
+						eventService.dispatchObjectEvent('hide:preloader');
+					});
+
+					eventService.dispatchObjectEvent('show:preloader');
+				});
+			}
 		});
 	}
 
@@ -919,7 +1015,6 @@ class Web3Service {
 		}
 
 		if (event === 'Mint') {
-			console.log(eventData);
 			if (returnValues && returnValues.index) {
 				idx = returnValues.index.toString();
 
@@ -936,8 +1031,6 @@ class Web3Service {
 
 					mintsCount = punkService.mintsCount;
 					punkService.mintsCount = mintsCount + 1;
-
-					console.log('Service mints count', punkService.mintsCount);
 
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'mint',
@@ -976,8 +1069,6 @@ class Web3Service {
 		}
 
 		if (event === 'PunkBought') {
-			console.log(eventData);
-
 			if (returnValues && returnValues.punkIndex) {
 				idx = returnValues.punkIndex.toString();
 
@@ -1017,8 +1108,6 @@ class Web3Service {
 		}
 
 		if (event === 'PunkBidEntered') {
-			console.log(eventData);
-
 			if (returnValues && returnValues.punkIndex) {
 				idx = returnValues.punkIndex.toString();
 
@@ -1047,8 +1136,6 @@ class Web3Service {
 		}
 
 		if (event === 'PunkBidWithdrawn') {
-			console.log(eventData);
-
 			if (returnValues && returnValues.punkIndex) {
 				idx = returnValues.punkIndex.toString();
 
@@ -1084,7 +1171,6 @@ class Web3Service {
 		}
 
 		if (event === 'PunkNoLongerForSale') {
-			console.log(eventData);
 			if (returnValues && returnValues.punkIndex) {
 				idx = returnValues.punkIndex.toString();
 
@@ -1115,14 +1201,10 @@ class Web3Service {
 		vm.contract.events
 			.allEvents()
 			.on('connected', (subscriptionId) => {
-				console.log('Contract websocket id', subscriptionId);
+				console.log('Contract connected');
 			})
 			.on('data', (event) => {
-				console.log('Contract websocket data event', event);
 				vm.eventUpdatePunkData(event);
-			})
-			.on('changed', (event) => {
-				console.log('Contract websocket changed event', event);
 			})
 			.on('error', (error, receipt) => {
 				// Check the error event to restart the socket

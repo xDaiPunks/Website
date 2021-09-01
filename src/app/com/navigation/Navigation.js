@@ -43,6 +43,7 @@ class Navigation extends PureComponent {
 		this.connectWallet = this.connectWallet.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
 
+		this.logoComponent = this.logoComponent.bind(this);
 		this.actionButtonComponent = this.actionButtonComponent.bind(this);
 
 		eventService.on('force:state', this.guid, () => {
@@ -177,6 +178,48 @@ class Navigation extends PureComponent {
 		}
 	}
 
+	logoComponent() {
+		const vm = this;
+		const currentView = vm.state.currentView;
+
+		console.log(currentView);
+		if (currentView !== 'punk') {
+			return (
+				<button
+					className="ButtonLogo"
+					onClick={(event) => {
+						event.preventDefault();
+						vm.hideMobileMenu();
+						routeService.navigateRoute('/');
+					}}>
+					<img
+						alt={'Home'}
+						title={'Home'}
+						className={'ButtonLogoImage'}
+						src={'/static/media/images/logo.svg'}
+					/>
+				</button>
+			);
+		} else {
+			return (
+				<button
+					className="ButtonLogo"
+					onClick={(event) => {
+						event.preventDefault();
+						vm.hideMobileMenu();
+						routeService.navigateBack();
+					}}>
+					<img
+						alt={'Back'}
+						title={'Back'}
+						className={'ButtonLogoImage'}
+						src={'/static/media/images/icon-logo-left.svg'}
+					/>
+				</button>
+			);
+		}
+	}
+
 	actionButtonComponent() {
 		const vm = this;
 		const address = userService.address;
@@ -258,6 +301,7 @@ class Navigation extends PureComponent {
 		const vm = this;
 		const currentView = vm.state.currentView;
 
+		const LogoComponent = vm.logoComponent;
 		const ActionButtonComponent = vm.actionButtonComponent;
 
 		console.log('CurrentView Render', currentView);
@@ -265,20 +309,7 @@ class Navigation extends PureComponent {
 		return (
 			<header className="Navigation">
 				<div className="Content">
-					<button
-						className="ButtonLogo"
-						onClick={(event) => {
-							event.preventDefault();
-							vm.hideMobileMenu();
-							routeService.navigateRoute('/');
-						}}>
-						<img
-							alt={'Home'}
-							title={'Home'}
-							className={'ButtonLogoImage'}
-							src={'/static/media/images/logo.svg'}
-						/>
-					</button>
+					<LogoComponent />
 
 					<nav className="NavigationMain">
 						<button

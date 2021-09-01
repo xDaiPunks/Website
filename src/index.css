@@ -3332,29 +3332,35 @@ body {
           padding-left: 30px;
           padding-right: 30px; } }
       #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDot {
-        display: block;
+        display: flex;
         position: absolute;
         top: 0px;
         right: 48px;
-        width: 24px;
-        height: 24px;
-        border-radius: 12px;
+        width: 36px;
+        height: 36px;
+        border-radius: 18px;
+        align-items: center;
+        justify-content: center;
         background-color: #00f5f5; }
-        @media screen and (max-width: 1070px) {
-          #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDot {
-            display: block;
-            position: absolute;
-            top: 0px;
-            right: 40px;
-            width: 24px;
-            height: 24px; } }
+        #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDot .PunkDotImageDetail {
+          width: 100%;
+          border-radius: 18px;
+          overflow: hidden;
+          -ms-interpolation-mode: nearest-neighbor;
+          image-rendering: pixelated;
+          image-rendering: -moz-crisp-edges; }
         @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDot {
             display: none;
             top: 0px;
             right: 30px;
             width: 0px;
-            height: 0px; } }
+            height: 0px; }
+            #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDot .PunkDotImageDetail {
+              display: none;
+              -ms-interpolation-mode: nearest-neighbor;
+              image-rendering: pixelated;
+              image-rendering: -moz-crisp-edges; } }
       #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkContainer {
         display: flex;
         position: relative;
@@ -3553,13 +3559,39 @@ body {
           display: flex;
           flex-grow: 2;
           flex-basis: 20px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .SearchControl {
+              flex-grow: 2;
+              flex-basis: 20px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .SearchControl {
+              flex-grow: 2;
+              flex-basis: auto; } }
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
           display: flex;
           width: 20px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
+              display: flex;
+              width: 20px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
+              display: none;
+              width: 0px; } }
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
           display: flex;
           flex-grow: 1;
           flex-basis: 0; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
+              display: none;
+              flex-grow: 1;
+              flex-basis: 0; } }
     #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
       display: flex;
       position: relative;

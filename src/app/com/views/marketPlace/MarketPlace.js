@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-new-func */
 /* eslint-disable array-callback-return */
 import React, { PureComponent } from 'react';
@@ -29,10 +30,15 @@ class MarketPlace extends PureComponent {
 		this.searchTimeout = null;
 
 		this.data = punkService.punkData;
-		this.searchData = this.sortArray('-mint', 'idx', punkService.punkData);
+		this.searchData = this.sortArray(
+			'status',
+			'-value',
+			'idx',
+			punkService.punkData
+		);
 
 		this.state = {
-			sort: ['-mint', 'idx'],
+			sort: ['status', '-value', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
 
@@ -84,6 +90,7 @@ class MarketPlace extends PureComponent {
 				vm.searchData = vm.sortArray(
 					state.sort[0],
 					state.sort[1],
+					state.sort[2],
 					punkService.punkData
 				);
 
@@ -95,16 +102,14 @@ class MarketPlace extends PureComponent {
 		});
 	}
 
-	sortArray(prop1, prop2, array) {
+	sortArray(prop1, prop2, prop3, array) {
 		let sortOrder1;
 		let sortOrder2;
-
-		const getIdx = (value) => {
-			return parseInt(value, 10);
-		};
+		let sortOrder3;
 
 		sortOrder1 = 1;
 		sortOrder2 = 1;
+		sortOrder3 = 1;
 
 		if (prop1.substr(0, 1) === '-') {
 			sortOrder1 = -1;
@@ -112,12 +117,54 @@ class MarketPlace extends PureComponent {
 		}
 
 		return array.sort((a, b) => {
+			a = utilityService.cloneObject(a);
+			b = utilityService.cloneObject(b);
+
 			if (prop1 === 'idx') {
-				a[prop1] = getIdx(a[prop1]);
+				a[prop1] = parseInt(a.idx, 10);
+				b[prop1] = parseInt(b.idx, 10);
 			}
 
-			if (prop2 === 'idx') {
-				a[prop2] = getIdx(a[prop2]);
+			if (prop1 === 'status') {
+				if (a.mint !== true) {
+					a[prop1] = 4;
+				} else {
+					if (a.bid !== true && a.sale !== true) {
+						a[prop1] = 3;
+					} else {
+						if (a.bid === true && a.sale !== true) {
+							a[prop1] = 2;
+						}
+
+						if (a.bid !== true && a.sale === true) {
+							a[prop1] = 1;
+						}
+
+						if (a.bid === true && a.sale === true) {
+							a[prop1] = 0;
+						}
+					}
+				}
+
+				if (b.mint !== true) {
+					b[prop1] = 4;
+				} else {
+					if (b.bid !== true && b.sale !== true) {
+						b[prop1] = 3;
+					} else {
+						if (b.bid === true && b.sale === false) {
+							b[prop1] = 2;
+						}
+
+						if (b.bid === false && b.sale === true) {
+							b[prop1] = 1;
+						}
+
+						if (b.bid === true && b.sale === true) {
+							b[prop1] = 0;
+						}
+					}
+				}
 			}
 
 			if (a[prop1] < b[prop1]) {
@@ -131,12 +178,51 @@ class MarketPlace extends PureComponent {
 						prop2 = prop2.substr(1);
 					}
 
-					if (prop1 === 'idx') {
-						a[prop1] = getIdx(a[prop1]);
+					if (prop2 === 'idx') {
+						a[prop2] = parseInt(a.idx, 10);
+						b[prop2] = parseInt(b.idx, 10);
 					}
 
-					if (prop2 === 'idx') {
-						a[prop2] = getIdx(a[prop2]);
+					if (prop2 === 'status') {
+						if (a.mint === false) {
+							a[prop2] = 4;
+						} else {
+							if (a.bid === false && a.sale === false) {
+								a[prop2] = 3;
+							} else {
+								if (a.bid === true && a.sale === false) {
+									a[prop2] = 2;
+								}
+
+								if (a.bid === false && a.sale === true) {
+									a[prop2] = 1;
+								}
+
+								if (a.bid === true && a.sale === true) {
+									a[prop2] = 0;
+								}
+							}
+						}
+
+						if (b.mint === false) {
+							b[prop2] = 4;
+						} else {
+							if (b.bid === false && b.sale === false) {
+								b[prop2] = 3;
+							} else {
+								if (b.bid === true && b.sale === false) {
+									b[prop2] = 2;
+								}
+
+								if (b.bid === false && b.sale === true) {
+									b[prop2] = 1;
+								}
+
+								if (b.bid === true && b.sale === true) {
+									b[prop2] = 0;
+								}
+							}
+						}
 					}
 
 					if (a[prop2] < b[prop2]) {
@@ -145,7 +231,79 @@ class MarketPlace extends PureComponent {
 						if (a[prop2] > b[prop2]) {
 							return 1 * sortOrder2;
 						} else {
-							return 0;
+							if (prop3.substr(0, 1) === '-') {
+								sortOrder3 = -1;
+								prop3 = prop3.substr(1);
+							}
+
+							if (prop3 === 'idx') {
+								a[prop3] = parseInt(a.idx, 10);
+								b[prop3] = parseInt(b.idx, 10);
+							}
+
+							if (prop3 === 'status') {
+								if (a.mint === false) {
+									a[prop3] = 4;
+								} else {
+									if (a.bid === false && a.sale === false) {
+										a[prop3] = 3;
+									} else {
+										if (
+											a.bid === true &&
+											a.sale === false
+										) {
+											a[prop3] = 2;
+										}
+
+										if (
+											a.bid === false &&
+											a.sale === true
+										) {
+											a[prop3] = 1;
+										}
+
+										if (a.bid === true && a.sale === true) {
+											a[prop3] = 0;
+										}
+									}
+								}
+
+								if (b.mint === false) {
+									b[prop3] = 4;
+								} else {
+									if (b.bid === false && b.sale === false) {
+										b[prop3] = 3;
+									} else {
+										if (
+											b.bid === true &&
+											b.sale === false
+										) {
+											b[prop3] = 2;
+										}
+
+										if (
+											b.bid === false &&
+											b.sale === true
+										) {
+											b[prop3] = 1;
+										}
+
+										if (b.bid === true && b.sale === true) {
+											b[prop3] = 0;
+										}
+									}
+								}
+							}
+
+							if (a[prop3] < b[prop3]) {
+								return -1 * sortOrder3;
+							} else {
+								if (a[prop3] > b[prop3]) {
+									return 1 * sortOrder3;
+								} else {
+									return 0;
+								}
+							}
 						}
 					}
 				}
@@ -178,7 +336,12 @@ class MarketPlace extends PureComponent {
 		const state = utilityService.cloneObject(vm.state);
 
 		if (validateInput() !== true) {
-			vm.searchData = vm.sortArray('status', 'idx', punkService.punkData);
+			vm.searchData = vm.sortArray(
+				state.sort[0],
+				state.sort[1],
+				state.sort[2],
+				punkService.punkData
+			);
 			state.items = vm.searchData.slice(0, 60);
 			vm.setState(state);
 		} else {
@@ -314,18 +477,43 @@ class MarketPlace extends PureComponent {
 							number = items[item].idx;
 
 							attributes = items[item].attributes.join(' · ');
+
 							punkValue = BigNumber(items[item].value)
 								.div(1e18)
 								.toFormat(2);
 
-							imageUrl =
-								'/punks/' +
-								items[item].idx +
-								'.png';
+							imageUrl = '/punks/' + items[item].idx + '.png';
 
 							status = 'Not Minted';
+
 							if (items[item].mint === true) {
-								status = 'Market';
+								if (
+									items[item].bid !== true &&
+									items[item].sale !== true
+								) {
+									status = 'Market';
+								} else {
+									if (
+										items[item].bid === true &&
+										items[item].sale !== true
+									) {
+										status = 'Bid';
+									}
+
+									if (
+										items[item].bid !== true &&
+										items[item].sale === true
+									) {
+										status = 'Sale';
+									}
+
+									if (
+										items[item].bid === true &&
+										items[item].sale === true
+									) {
+										status = 'Sale & Bid';
+									}
+								}
 							}
 
 							if (index === 1) {

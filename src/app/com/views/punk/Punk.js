@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 
 import { BigNumber } from 'bignumber.js';
@@ -10,10 +11,8 @@ import PunkService from 'src/app/services/PunkService';
 import UserService from 'src/app/services/UserService';
 import ViewService from 'src/app/services/ViewService';
 import EventService from 'src/app/services/EventService';
-import ScrollService from 'src/app/services/ScrollService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const appService = new AppService();
 const punkService = new PunkService();
@@ -22,7 +21,6 @@ const viewService = new ViewService();
 const eventService = new EventService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
-const translationService = new TranslationService();
 
 class Punk extends PureComponent {
 	constructor(props) {
@@ -91,9 +89,6 @@ class Punk extends PureComponent {
 		});
 
 		eventService.on('change:punkData', vm.guid, (eventData) => {
-			console.log(eventData);
-			console.log(punkService);
-
 			if (eventData.idx && eventData.idx === vm.punkId) {
 				this.setState(this.state);
 				this.forceUpdate();
@@ -189,10 +184,10 @@ class Punk extends PureComponent {
 		appService
 			.buyPunk(idx, amount)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -203,10 +198,10 @@ class Punk extends PureComponent {
 		appService
 			.acceptBidForPunk(idx)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -217,10 +212,10 @@ class Punk extends PureComponent {
 		appService
 			.withdrawBidForPunk(idx)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -231,10 +226,10 @@ class Punk extends PureComponent {
 		appService
 			.punkNoLongerForSale(idx)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -245,10 +240,10 @@ class Punk extends PureComponent {
 		appService
 			.enterBidForPunk(idx, amount)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -259,10 +254,10 @@ class Punk extends PureComponent {
 		appService
 			.offerPunkForSale(idx, amount)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 			})
 			.catch((responseError) => {
-				console.log(responseError);
+				// console.log(responseError);
 			});
 	}
 
@@ -272,8 +267,8 @@ class Punk extends PureComponent {
 		let punkSaleValue;
 
 		const vm = this;
-		console.log(vm.punkId);
-		console.log(vm.punkDetails);
+		// console.log(vm.punkId);
+		// console.log(vm.punkDetails);
 
 		const idx = vm.punkDetails.idx;
 		const bid = vm.punkDetails.bid;
@@ -696,7 +691,7 @@ class Punk extends PureComponent {
 		const vm = this;
 		const attributes = props.attributes;
 
-		console.log(attributes);
+		// console.log(attributes);
 		return (
 			<div className="PunkDetailItemAttributes">
 				{attributes.map((item, index) => {
@@ -730,9 +725,6 @@ class Punk extends PureComponent {
 		const PunkDataComponent = vm.punkDataComponent;
 		const PunkButtonComponent = vm.punkButtonComponent;
 
-		console.log(vm.punkId);
-		console.log(vm.punkDetails);
-
 		punkImageUrl = '/punks/' + vm.punkId + '.png';
 
 		if (this.props.animationType === 'overlay') {
@@ -751,7 +743,13 @@ class Punk extends PureComponent {
 				<div className="ViewBox">
 					<div className="Spacer"></div>
 					<div className="PunkPositioner">
-						<div className="PunkDot" />
+						<div className="PunkDot">
+							<img
+								alt={''}
+								className={'PunkDotImageDetail'}
+								src={punkImageUrl}
+							/>
+						</div>
 						<div className="PunkContainer">
 							<div className="PunkItem">
 								<img

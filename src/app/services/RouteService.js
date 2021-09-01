@@ -70,8 +70,6 @@ class RouteService {
 	}
 
 	navigateBack() {
-		this.navigateRoute('/');
-		/*
 		if (
 			!historyService.history.location.state ||
 			!historyService.history.location.state.from
@@ -80,7 +78,8 @@ class RouteService {
 		} else {
 			historyService.history.goBack();
 		}
-		*/
+
+		//historyService.history.goBack();
 	}
 
 	navigateRoute(

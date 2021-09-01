@@ -87,8 +87,6 @@ class AppService {
 		});
 	}
 
-
-
 	blockchainData() {
 		const vm = this;
 		return new Promise((resolve, reject) => {
@@ -114,11 +112,9 @@ class AppService {
 					web3Service
 						.publicSale()
 						.then((response) => {
-							console.log('Public sale', response);
 							resolve(response);
 						})
 						.catch((responseError) => {
-							console.log('Public sale', responseError);
 							reject(responseError);
 						});
 				});
@@ -132,7 +128,6 @@ class AppService {
 							resolve(response);
 						})
 						.catch((responseError) => {
-							console.log('Mints remaining', responseError);
 							resolve(responseError);
 						});
 				});

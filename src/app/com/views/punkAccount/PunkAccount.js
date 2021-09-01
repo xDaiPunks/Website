@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable array-callback-return */
 import React, { PureComponent } from 'react';
 import { BigNumber } from 'bignumber.js';
 
@@ -10,11 +12,9 @@ import ViewService from 'src/app/services/ViewService';
 import UserService from 'src/app/services/UserService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
-import ScrollService from 'src/app/services/ScrollService';
 import RouteService from 'src/app/services/RouteService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const appService = new AppService();
 const viewService = new ViewService();
@@ -24,7 +24,6 @@ const eventService = new EventService();
 const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
-const translationService = new TranslationService();
 
 class PunkAccount extends PureComponent {
 	constructor(props) {
@@ -83,7 +82,6 @@ class PunkAccount extends PureComponent {
 		transitionService.updateTransition(this.props, this.componentName);
 
 		eventService.on('change:punkData', vm.guid, (eventData) => {
-			console.log(eventData);
 			punkService.setPunkDetails();
 
 			const bids = punkService.bids;
@@ -122,7 +120,6 @@ class PunkAccount extends PureComponent {
 		appService
 			.pendingWithdrawals(userService.address)
 			.then((response) => {
-				console.log(response);
 				userService.withdrawAmount = response;
 
 				vm.setState(vm.state);
@@ -132,6 +129,215 @@ class PunkAccount extends PureComponent {
 				vm.setState(vm.state);
 				vm.forceUpdate();
 			});
+	}
+
+	sortArray(prop1, prop2, prop3, array) {
+		let sortOrder1;
+		let sortOrder2;
+		let sortOrder3;
+
+		sortOrder1 = 1;
+		sortOrder2 = 1;
+		sortOrder3 = 1;
+
+		if (prop1.substr(0, 1) === '-') {
+			sortOrder1 = -1;
+			prop1 = prop1.substr(1);
+		}
+
+		return array.sort((a, b) => {
+			a = utilityService.cloneObject(a);
+			b = utilityService.cloneObject(b);
+
+			if (prop1 === 'idx') {
+				a[prop1] = parseInt(a.idx, 10);
+				b[prop1] = parseInt(b.idx, 10);
+			}
+
+			if (prop1 === 'status') {
+				if (a.mint !== true) {
+					a[prop1] = 4;
+				} else {
+					if (a.bid !== true && a.sale !== true) {
+						a[prop1] = 3;
+					} else {
+						if (a.bid === true && a.sale !== true) {
+							a[prop1] = 2;
+						}
+
+						if (a.bid !== true && a.sale === true) {
+							a[prop1] = 1;
+						}
+
+						if (a.bid === true && a.sale === true) {
+							a[prop1] = 0;
+						}
+					}
+				}
+
+				if (b.mint !== true) {
+					b[prop1] = 4;
+				} else {
+					if (b.bid !== true && b.sale !== true) {
+						b[prop1] = 3;
+					} else {
+						if (b.bid === true && b.sale === false) {
+							b[prop1] = 2;
+						}
+
+						if (b.bid === false && b.sale === true) {
+							b[prop1] = 1;
+						}
+
+						if (b.bid === true && b.sale === true) {
+							b[prop1] = 0;
+						}
+					}
+				}
+			}
+
+			if (a[prop1] < b[prop1]) {
+				return -1 * sortOrder1;
+			} else {
+				if (a[prop1] > b[prop1]) {
+					return 1 * sortOrder1;
+				} else {
+					if (prop2.substr(0, 1) === '-') {
+						sortOrder2 = -1;
+						prop2 = prop2.substr(1);
+					}
+
+					if (prop2 === 'idx') {
+						a[prop2] = parseInt(a.idx, 10);
+						b[prop2] = parseInt(b.idx, 10);
+					}
+
+					if (prop2 === 'status') {
+						if (a.mint === false) {
+							a[prop2] = 4;
+						} else {
+							if (a.bid === false && a.sale === false) {
+								a[prop2] = 3;
+							} else {
+								if (a.bid === true && a.sale === false) {
+									a[prop2] = 2;
+								}
+
+								if (a.bid === false && a.sale === true) {
+									a[prop2] = 1;
+								}
+
+								if (a.bid === true && a.sale === true) {
+									a[prop2] = 0;
+								}
+							}
+						}
+
+						if (b.mint === false) {
+							b[prop2] = 4;
+						} else {
+							if (b.bid === false && b.sale === false) {
+								b[prop2] = 3;
+							} else {
+								if (b.bid === true && b.sale === false) {
+									b[prop2] = 2;
+								}
+
+								if (b.bid === false && b.sale === true) {
+									b[prop2] = 1;
+								}
+
+								if (b.bid === true && b.sale === true) {
+									b[prop2] = 0;
+								}
+							}
+						}
+					}
+
+					if (a[prop2] < b[prop2]) {
+						return -1 * sortOrder2;
+					} else {
+						if (a[prop2] > b[prop2]) {
+							return 1 * sortOrder2;
+						} else {
+							if (prop3.substr(0, 1) === '-') {
+								sortOrder3 = -1;
+								prop3 = prop3.substr(1);
+							}
+
+							if (prop3 === 'idx') {
+								a[prop3] = parseInt(a.idx, 10);
+								b[prop3] = parseInt(b.idx, 10);
+							}
+
+							if (prop3 === 'status') {
+								if (a.mint === false) {
+									a[prop3] = 4;
+								} else {
+									if (a.bid === false && a.sale === false) {
+										a[prop3] = 3;
+									} else {
+										if (
+											a.bid === true &&
+											a.sale === false
+										) {
+											a[prop3] = 2;
+										}
+
+										if (
+											a.bid === false &&
+											a.sale === true
+										) {
+											a[prop3] = 1;
+										}
+
+										if (a.bid === true && a.sale === true) {
+											a[prop3] = 0;
+										}
+									}
+								}
+
+								if (b.mint === false) {
+									b[prop3] = 4;
+								} else {
+									if (b.bid === false && b.sale === false) {
+										b[prop3] = 3;
+									} else {
+										if (
+											b.bid === true &&
+											b.sale === false
+										) {
+											b[prop3] = 2;
+										}
+
+										if (
+											b.bid === false &&
+											b.sale === true
+										) {
+											b[prop3] = 1;
+										}
+
+										if (b.bid === true && b.sale === true) {
+											b[prop3] = 0;
+										}
+									}
+								}
+							}
+
+							if (a[prop3] < b[prop3]) {
+								return -1 * sortOrder3;
+							} else {
+								if (a[prop3] > b[prop3]) {
+									return 1 * sortOrder3;
+								} else {
+									return 0;
+								}
+							}
+						}
+					}
+				}
+			}
+		});
 	}
 
 	getData() {
@@ -144,16 +350,13 @@ class PunkAccount extends PureComponent {
 			appService
 				.pendingWithdrawals(userService.address)
 				.then((response) => {
-					console.log(response);
 					userService.withdrawAmount = response;
 
 					vm.setState({ loading: false }, () => {
 						vm.loader.current.hideLoader(true);
 					});
 				})
-				.catch((responseError) => {
-					console.log(responseError);
-				});
+				.catch((responseError) => {});
 		}
 	}
 
@@ -236,12 +439,39 @@ class PunkAccount extends PureComponent {
 							.div(1e18)
 							.toFormat(2);
 
-						imageUrl =
-							'/punks/' + items[item].idx + '.png';
+						imageUrl = '/punks/' + items[item].idx + '.png';
 
 						status = 'Not Minted';
+						status = 'Not Minted';
+
 						if (items[item].mint === true) {
-							status = 'Market';
+							if (
+								items[item].bid !== true &&
+								items[item].sale !== true
+							) {
+								status = 'Market';
+							} else {
+								if (
+									items[item].bid === true &&
+									items[item].sale !== true
+								) {
+									status = 'Bid';
+								}
+
+								if (
+									items[item].bid !== true &&
+									items[item].sale === true
+								) {
+									status = 'Sale';
+								}
+
+								if (
+									items[item].bid === true &&
+									items[item].sale === true
+								) {
+									status = 'Sale & Bid';
+								}
+							}
 						}
 
 						if (index === 1) {
@@ -330,8 +560,6 @@ class PunkAccount extends PureComponent {
 		for (key in bids) {
 			bidArray.push(punkService.punkObject[key]);
 		}
-
-		console.log(bidArray);
 
 		if (bidArray.length === 0) {
 			return null;
@@ -452,7 +680,6 @@ class PunkAccount extends PureComponent {
 											}}
 											iconImage="/static/media/images/icon-disconnect-white.svg"
 											cssClass={'ActionButtonAccount'}
-
 										/>
 										<div className="AccountItemContent">
 											<span className="AccountItemTitleText">

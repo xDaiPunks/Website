@@ -59,28 +59,31 @@
 						}
 
 						.PunkDot {
-							display: block;
+							display: flex;
 							position: absolute;
 
 							top: 0px;
 							right: $padding;
 
-							width: 24px;
-							height: 24px;
+							width: 36px;
+							height: 36px;
 
-							border-radius: 12px;
+							border-radius: 18px;
+
+							align-items: center;
+							justify-content: center;
 
 							background-color: #00f5f5;
 
-							@include responsiveMax($responsiveMed) {
-								display: block;
-								position: absolute;
+							.PunkDotImageDetail {
+								width: 100%;
 
-								top: 0px;
-								right: $paddingMed;
+								border-radius: 18px;
+								overflow: hidden;
 
-								width: 24px;
-								height: 24px;
+								-ms-interpolation-mode: nearest-neighbor;
+								image-rendering: pixelated;
+								image-rendering: -moz-crisp-edges;
 							}
 
 							@include responsiveMax($responsiveSmall) {
@@ -90,6 +93,14 @@
 
 								width: 0px;
 								height: 0px;
+
+								.PunkDotImageDetail {
+									display: none;
+
+									-ms-interpolation-mode: nearest-neighbor;
+									image-rendering: pixelated;
+									image-rendering: -moz-crisp-edges;
+								}
 							}
 						}
 
