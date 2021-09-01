@@ -75,7 +75,7 @@ class Navigation extends PureComponent {
 
 		scrollService.setScrollTriggers('.Navigation .NavigationBackground', {
 			x: 0,
-			y: [100],
+			y: [5],
 			css: {
 				opacity: 1,
 			},
@@ -116,8 +116,6 @@ class Navigation extends PureComponent {
 		} else {
 			vm.hideMobileMenu();
 		}
-
-		//$('.HamburgerButton .Hamburger').addClass('Active');
 	}
 
 	showMobileMenu() {
@@ -336,13 +334,13 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'Market place'}
-										title={'Market place'}
+										label={'Marketplace'}
+										title={'Marketplace'}
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
 											routeService.navigateRoute(
-												'/market-place'
+												'/marketplace'
 											);
 										}}
 										cssClass={
@@ -358,7 +356,7 @@ class Navigation extends PureComponent {
 									<Button
 										type={'navigationButton'}
 										label={'Get xDai'}
-										title={'Market place'}
+										title={'Marketplace'}
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();

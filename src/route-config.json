@@ -16,7 +16,7 @@
 	},
 
 	"marketPlace": {
-		"path": "/market-place",
+		"path": "/marketplace",
 		"type": "public",
 		"redirect": "none",
 		"animationType": "overlay",

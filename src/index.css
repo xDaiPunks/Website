@@ -1691,6 +1691,7 @@ body {
   justify-content: center;
   height: 36px;
   border-radius: 18px;
+  border: 2px solid #00f5f5;
   padding-left: 16px;
   padding-right: 18px;
   font-family: 'Gilroy', sans-serif;
@@ -2345,45 +2346,19 @@ body {
           height: 32px;
           flex-direction: row;
           align-items: center; }
-          .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterInsta {
-            display: block;
-            position: relative;
-            width: 22px;
-            height: 22px; }
-            @media screen and (max-width: 1070px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterInsta {
-                width: 22px;
-                height: 22px; } }
-            @media screen and (max-width: 986px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterInsta {
-                width: 18px;
-                height: 18px; } }
           .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
             display: block;
             position: relative;
             width: 25px;
-            height: 20px; }
+            height: 25px; }
             @media screen and (max-width: 1070px) {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
                 width: 25px;
-                height: 20px; } }
+                height: 25px; } }
             @media screen and (max-width: 986px) {
               .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
-                width: 20px;
-                height: 16px; } }
-          .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
-            display: block;
-            position: relative;
-            height: 5px;
-            width: 16px; }
-            @media screen and (max-width: 1070px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
-                height: 5px;
-                width: 16px; } }
-            @media screen and (max-width: 986px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
-                height: 5px;
-                width: 16px; } }
+                width: 25px;
+                height: 25px; } }
   .Footer .FooterCopyright {
     display: flex;
     position: relative;
@@ -3197,6 +3172,120 @@ body {
               @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroFooterContainer .FooterContainerSizer {
                   max-width: 100%; } }
+      #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
+        display: flex;
+        position: relative;
+        z-index: 2;
+        flex-direction: column;
+        padding-top: 0px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
+            padding-bottom: 0px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
+            padding-bottom: 50px; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem {
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-bottom: 70px;
+          padding-left: 48px;
+          padding-right: 48px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem {
+              padding-bottom: 70px;
+              padding-left: 40px;
+              padding-right: 40px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem {
+              padding-bottom: 50px;
+              padding-left: 30px;
+              padding-right: 30px; } }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .BrightContent {
+            display: block;
+            text-align: center;
+            color: #00f5f5;
+            max-width: 800px;
+            font-size: 60px;
+            font-weight: 900;
+            font-family: 'Gilroy', sans-serif; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .BrightContent {
+                max-width: 800px;
+                font-size: 60px; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .BrightContent {
+                max-width: 600px;
+                font-size: 26px; } }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-left: 2px;
+            color: #111;
+            font-size: 60px;
+            font-weight: 900;
+            font-family: 'Gilroy', sans-serif; }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .Highlight {
+              color: #00f5f5; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle {
+                font-size: 60px; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle {
+                font-size: 26px; } }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .Txt {
+              display: block;
+              position: relative; }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
+              display: flex;
+              position: relative;
+              width: 24px;
+              height: 24px;
+              border-radius: 12px;
+              border: 2px solid #00f5f5;
+              overflow: hidden;
+              margin-top: 4px;
+              background-color: #00f5f5; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 12px;
+                  margin-top: 8px; } }
+              @media screen and (max-width: 986px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
+                  width: 12px;
+                  height: 12px;
+                  border-radius: 9px;
+                  margin-top: 2px; } }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemContent {
+            display: block;
+            position: relative;
+            width: 60%;
+            padding-top: 10px;
+            padding-left: 2px;
+            color: #111;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemContent {
+                font-size: 16px;
+                line-height: 22px;
+                width: 60%; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemContent {
+                font-size: 14px;
+                line-height: 20px;
+                width: auto; } }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemContent a {
+              color: #7e13ff; }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem.AlignCenter {
+          align-items: center;
+          justify-content: center; }
 
 #AppRoot .App .ViewContainer .Punk.View {
   background: #fff;

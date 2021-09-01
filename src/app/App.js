@@ -48,7 +48,6 @@ class App extends Component {
 		viewService.setViewSpacing();
 
 		promiseArray.push(appService.getInitData());
-		promiseArray.push(appService.checkLanguageConfig());
 
 		Promise.all(promiseArray)
 			.then((responses) => {

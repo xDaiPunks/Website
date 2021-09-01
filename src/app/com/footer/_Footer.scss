@@ -147,56 +147,21 @@
 					flex-direction: row;
 					align-items: center;
 
-					.FooterInsta {
-						display: block;
-						position: relative;
-
-						width: 22px;
-						height: 22px;
-
-						@include responsiveMax($responsiveMed) {
-							width: 22px;
-							height: 22px;
-						}
-
-						@include responsiveMax($responsiveSmall) {
-							width: 18px;
-							height: 18px;
-						}
-					}
-
 					.FooterTwitter {
 						display: block;
 						position: relative;
 
-						width: 25px;
-						height: 20px;
+						width: 32px;
+						height: 32px;
 
 						@include responsiveMax($responsiveMed) {
-							width: 25px;
-							height: 20px;
+							width: 32px;
+							height: 32px;
 						}
 
 						@include responsiveMax($responsiveSmall) {
-							width: 20px;
-							height: 16px;
-						}
-					}
-
-					.FooterSocialSpacer {
-						display: block;
-						position: relative;
-						height: 5px;
-						width: 16px;
-
-						@include responsiveMax($responsiveMed) {
-							height: 5px;
-							width: 16px;
-						}
-
-						@include responsiveMax($responsiveSmall) {
-							height: 5px;
-							width: 16px;
+							width: 32px;
+							height: 32px;
 						}
 					}
 				}

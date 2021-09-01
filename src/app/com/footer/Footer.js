@@ -5,12 +5,10 @@ import Button from 'src/app/com/button/Button';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
 import UtilityService from 'src/app/services/UtilityService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const routeService = new RouteService();
 const eventService = new EventService();
 const utilityService = new UtilityService();
-const translationService = new TranslationService();
 
 class Footer extends PureComponent {
 	constructor(props) {
@@ -90,37 +88,52 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'Disclaimer'}
-									title={'Disclaimer'}
-									onClick={this.showLanguageModal}
+									label={'About xDai'}
+									title={'About xDai'}
+									onClick={() => {
+										window.open(
+											'https://www.xdaichain.com/'
+										);
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.terms.label'
-									)}
-									title={translationService.translate(
-										'footer.terms.label'
-									)}
-									
-									onClick={this.navigate}
+									label={'Verify Genuineness'}
+									title={'Verify Genuineness'}
+									onClick={() => {
+										window.open(
+											'https://github.com/xDaiPunks/Genuineness'
+										);
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.privacy.label'
-									)}
-									title={translationService.translate(
-										'footer.privacy.label'
-									)}
-									data="/privacy-cookies"
-									onClick={this.navigate}
+									label={'xDaiPunks Github'}
+									title={'xDaiPunks Github'}
+									onClick={() => {
+										window.open(
+											'https://github.com/xDaiPunks'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'xDaiPunks Smart Contract'}
+									title={'xDaiPunks Smart Contract'}
+									onClick={() => {
+										window.open(
+											'https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/read-contract'
+										);
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
@@ -130,42 +143,45 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.contact.label'
-									)}
-									title={translationService.translate(
-										'footer.contact.label'
-									)}
-									data="/contact"
-									onClick={this.navigate}
+									label={'Get xDai'}
+									title={'Get xDai'}
+									onClick={() => {
+										routeService.navigateRoute('/get-xdai');
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.business.label'
-									)}
-									title={translationService.translate(
-										'footer.business.label'
-									)}
-									data="/business"
-									onClick={this.navigate}
+									label={'Connecting wallets'}
+									title={'Connecting wallets'}
+									onClick={() => {
+										routeService.navigateRoute('/get-xdai');
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={translationService.translate(
-										'footer.frequentasked.label'
-									)}
-									title={translationService.translate(
-										'footer.frequentasked.label'
-									)}
-									data="/frequent-asked-questions"
-									onClick={this.navigate}
+									label={'Using MetaMask'}
+									title={'Using MetaMask'}
+									onClick={() => {
+										window.open('https://metamask.io/faqs');
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'Using the marketplace'}
+									title={'Using the marketplace'}
+									onClick={() => {
+										routeService.navigateRoute('/get-xdai');
+									}}
+									cssCla
 									cssClass={'FooterButton'}
 								/>
 							</span>
@@ -174,35 +190,46 @@ class Footer extends PureComponent {
 					<div className="FooterMenuRow">
 						<div className="FooterMenuBlock">
 							<span className="FooterMenuBlockHeader">
-								{translationService.translate(
-									'footer.followus.label'
-								)}
+								Follow us
 							</span>
 							<div className="FooterSocial">
 								<a
-									title="Instagram"
-									href="https://www.instagram.com/muevo.co/"
+									title="Twitter"
+									href="https://twitter.com/xDaiPunks"
 									target="_blank"
 									rel="noreferrer">
 									<img
-										alt={'Instagram'}
-										className={'FooterInsta'}
+										alt={'Twitter'}
+										className={'FooterSocialIcon'}
 										src={
-											'/static/media/images/footer-insta.svg'
+											'/static/media/images/footer-twitter.svg'
 										}
 									/>
 								</a>
 								<div className="FooterSocialSpacer"></div>
 								<a
-									title="Twitter"
-									href="https://twitter.com/muevoco"
+									title="Telegram"
+									href="https://github.com/xDaiPunks/"
 									target="_blank"
 									rel="noreferrer">
 									<img
-										alt={'Twitter'}
-										className={'FooterTwitter'}
+										alt={'Telegram'}
+										className={'FooterSocialIcon'}
 										src={
-											'/static/media/images/footer-twitter.svg'
+											'/static/media/images/footer-telegram.svg'
+										}
+									/>
+								</a>
+								<a
+									title="Github"
+									href="https://github.com/xDaiPunks/"
+									target="_blank"
+									rel="noreferrer">
+									<img
+										alt={'Github'}
+										className={'FooterSocialIcon'}
+										src={
+											'/static/media/images/footer-github.svg'
 										}
 									/>
 								</a>
