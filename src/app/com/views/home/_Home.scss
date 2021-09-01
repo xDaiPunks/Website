@@ -782,24 +782,22 @@
 										display: flex;
 										position: relative;
 
-										width: 24px;
-										height: 24px;
-										border-radius: 12px;
-
-										border: 2px solid #00f5f5;
-
-										overflow: hidden;
+										width: 16px;
+										height: 16px;
+										border-radius: 8px;
 
 										margin-top: 4px;
+
+										overflow: hidden;
 
 										background-color: #00f5f5;
 
 										@include responsiveMax($responsiveMed) {
-											width: 24px;
-											height: 24px;
-											border-radius: 12px;
+											width: 16px;
+											height: 16px;
+											border-radius: 8px;
 
-											margin-top: 8px;
+											margin-top: 4px;
 										}
 
 										@include responsiveMax(

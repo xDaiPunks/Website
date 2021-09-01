@@ -608,14 +608,15 @@ class Home extends PureComponent {
 									value of a CryptoPunk
 									<br />
 									<br />
-									Furthermore we are not affiliated with the
-									xDai blockchain. The xDaiPunks project
-									originated to show that Non Fungible Tokens
-									can be traded directly on chain without the
-									need for intermediaries. We thank LarvaLabs
-									and their CryptoPunk project for their hard
-									work and for being the Godfathers of the Non
-									Fungible Token.
+									The minting of xDaiPunks is set at 12 xDai.
+									Why 12 xDai? First of all, the system that
+									is built on top of the smart contract will
+									need to be kept running and maintained for
+									years to come. And that will require funds.
+									Second, we would like to further develop the
+									system itself. And third, 12 is seen cool
+									number. A reference to your 12 word seed
+									phrase that you used to create your wallet.
 								</div>
 							</div>
 						</div>

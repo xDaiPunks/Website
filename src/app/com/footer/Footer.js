@@ -154,10 +154,10 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'Connecting wallets'}
-									title={'Connecting wallets'}
+									label={'Using MetaMask'}
+									title={'Using MetaMask'}
 									onClick={() => {
-										routeService.navigateRoute('/get-xdai');
+										window.open('https://metamask.io/faqs');
 									}}
 									cssClass={'FooterButton'}
 								/>
@@ -165,10 +165,12 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'Using MetaMask'}
-									title={'Using MetaMask'}
+									label={'Connecting to xDai'}
+									title={'Connecting to xDai'}
 									onClick={() => {
-										window.open('https://metamask.io/faqs');
+										window.open(
+											'https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup'
+										);
 									}}
 									cssClass={'FooterButton'}
 								/>
@@ -209,7 +211,7 @@ class Footer extends PureComponent {
 								<div className="FooterSocialSpacer"></div>
 								<a
 									title="Telegram"
-									href="https://github.com/xDaiPunks/"
+									href="https://t.me/xDaiPunks"
 									target="_blank"
 									rel="noreferrer">
 									<img

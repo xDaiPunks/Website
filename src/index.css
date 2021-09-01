@@ -3245,19 +3245,18 @@ body {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
               display: flex;
               position: relative;
-              width: 24px;
-              height: 24px;
-              border-radius: 12px;
-              border: 2px solid #00f5f5;
-              overflow: hidden;
+              width: 16px;
+              height: 16px;
+              border-radius: 8px;
               margin-top: 4px;
+              overflow: hidden;
               background-color: #00f5f5; }
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
-                  width: 24px;
-                  height: 24px;
-                  border-radius: 12px;
-                  margin-top: 8px; } }
+                  width: 16px;
+                  height: 16px;
+                  border-radius: 8px;
+                  margin-top: 4px; } }
               @media screen and (max-width: 986px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemTitle .TitleImageContent {
                   width: 12px;
