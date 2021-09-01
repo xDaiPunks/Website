@@ -11,11 +11,9 @@ import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
-import ScrollService from 'src/app/services/ScrollService';
 import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const appService = new AppService();
 const userService = new UserService();
@@ -23,11 +21,10 @@ const viewService = new ViewService();
 const punkService = new PunkService();
 const eventService = new EventService();
 const routeService = new RouteService();
-const scrollService = new ScrollService();
+
 const configService = new ConfigService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
-const translationService = new TranslationService();
 
 class Home extends PureComponent {
 	constructor(props) {

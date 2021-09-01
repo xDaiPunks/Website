@@ -65,6 +65,14 @@ class Punk extends PureComponent {
 
 		vm.updateView();
 
+		vm.setPageSize();
+
+		eventService.on('resize', vm.guid, () => {
+			setTimeout(() => {
+				vm.setPageSize();
+			}, 10);
+		});
+
 		eventService.dispatchObjectEvent('set:view', this.componentName);
 		transitionService.updateTransition(this.props, this.componentName);
 
@@ -91,6 +99,19 @@ class Punk extends PureComponent {
 				this.forceUpdate();
 			}
 		});
+	}
+
+	setPageSize() {
+		let innerHeight;
+		const windowInnerHeight = window.innerHeight;
+
+		const punkElement = $('.ViewBox');
+
+		if (utilityService.browserSupport.mobileDevice === true) {
+			innerHeight = windowInnerHeight;
+
+			punkElement[0].style.minHeight = innerHeight + 'px';
+		}
 	}
 
 	initialize() {
@@ -405,6 +426,7 @@ class Punk extends PureComponent {
 		let punkSaleValue;
 
 		const vm = this;
+		const publicSale = punkService.publicSale;
 
 		const owner = vm.punkDetails.owner;
 
@@ -443,161 +465,125 @@ class Punk extends PureComponent {
 			}
 		}
 
-		if (owned !== true) {
-			if (isBidding !== true) {
-				if (sale === false) {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Enter a bid'}
-									title={'Enter a bid'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.enterBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-						</div>
-					);
-				} else {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer Padding">
-								<Button
-									type={'actionButton'}
-									label={'Buy punk'}
-									title={'Buy punk'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.buy();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Enter a bid'}
-									title={'Enter a bid'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.enterBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-						</div>
-					);
-				}
-			} else {
-				if (sale === false) {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Withdraw bid'}
-									title={'Withdraw bid'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.withdrawBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-						</div>
-					);
-				} else {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer Padding">
-								<Button
-									type={'actionButton'}
-									label={'Buy punk'}
-									title={'Buy punk'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.buy();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Withdraw bid'}
-									title={'Withdraw bid'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.withdrawBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
-						</div>
-					);
-				}
-			}
-		} else {
-			if (bid !== true && sale !== true) {
-				return (
-					<div className="PunkDetailButtons">
-						<div className="PunkDetailButtonContainer">
-							<Button
-								type={'actionButton'}
-								label={'Offer for sale'}
-								title={'Offer for sale'}
-								onClick={(event) => {
-									event.preventDefault();
-									vm.offerForSale();
-								}}
-								cssClass={'ActionButton'}
-							/>
-						</div>
+		if (publicSale !== true) {
+			return (
+				<div className="PunkDetailButtons">
+					<div className="PunkDetailButtonContainer">
+						<Button
+							type={'actionButton'}
+							label={'Follow us on Twitter'}
+							title={'Follow us on Twitter'}
+							onClick={(event) => {
+								window.open('https://twitter.com/xDaiPunks');
+							}}
+							cssClass={'ActionButton'}
+						/>
 					</div>
-				);
-			} else {
-				if (bid !== true && sale === true) {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Remove offer'}
-									title={'Remove offer'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.removeOffer();
-									}}
-									cssClass={'ActionButton'}
-								/>
+				</div>
+			);
+		} else {
+			if (owned !== true) {
+				if (isBidding !== true) {
+					if (sale === false) {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Enter a bid'}
+										title={'Enter a bid'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.enterBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
 							</div>
-						</div>
-					);
+						);
+					} else {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer Padding">
+									<Button
+										type={'actionButton'}
+										label={'Buy punk'}
+										title={'Buy punk'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.buy();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Enter a bid'}
+										title={'Enter a bid'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.enterBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+							</div>
+						);
+					}
+				} else {
+					if (sale === false) {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Withdraw bid'}
+										title={'Withdraw bid'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.withdrawBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+							</div>
+						);
+					} else {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer Padding">
+									<Button
+										type={'actionButton'}
+										label={'Buy punk'}
+										title={'Buy punk'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.buy();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Withdraw bid'}
+										title={'Withdraw bid'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.withdrawBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+							</div>
+						);
+					}
 				}
-
-				if (bid === true && sale !== true) {
+			} else {
+				if (bid !== true && sale !== true) {
 					return (
 						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer Padding">
-								<Button
-									type={'actionButton'}
-									label={'Accept bid'}
-									title={
-										'Accept bid of ' +
-										punkBidValue +
-										' xDai'
-									}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.acceptBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
 							<div className="PunkDetailButtonContainer">
 								<Button
 									type={'actionButton'}
@@ -612,41 +598,95 @@ class Punk extends PureComponent {
 							</div>
 						</div>
 					);
-				}
+				} else {
+					if (bid !== true && sale === true) {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Remove offer'}
+										title={'Remove offer'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.removeOffer();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+							</div>
+						);
+					}
 
-				if (bid === true && sale === true) {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer Padding">
-								<Button
-									type={'actionButton'}
-									label={'Accept bid'}
-									title={
-										'Accept bid of ' +
-										punkBidValue +
-										' xDai'
-									}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.acceptBid();
-									}}
-									cssClass={'ActionButton'}
-								/>
+					if (bid === true && sale !== true) {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer Padding">
+									<Button
+										type={'actionButton'}
+										label={'Accept bid'}
+										title={
+											'Accept bid of ' +
+											punkBidValue +
+											' xDai'
+										}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.acceptBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Offer for sale'}
+										title={'Offer for sale'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.offerForSale();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
 							</div>
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Remove offer'}
-									title={'Remove offer'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.removeOffer();
-									}}
-									cssClass={'ActionButton'}
-								/>
+						);
+					}
+
+					if (bid === true && sale === true) {
+						return (
+							<div className="PunkDetailButtons">
+								<div className="PunkDetailButtonContainer Padding">
+									<Button
+										type={'actionButton'}
+										label={'Accept bid'}
+										title={
+											'Accept bid of ' +
+											punkBidValue +
+											' xDai'
+										}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.acceptBid();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
+								<div className="PunkDetailButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Remove offer'}
+										title={'Remove offer'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.removeOffer();
+										}}
+										cssClass={'ActionButton'}
+									/>
+								</div>
 							</div>
-						</div>
-					);
+						);
+					}
 				}
 			}
 		}
@@ -710,16 +750,19 @@ class Punk extends PureComponent {
 				}>
 				<div className="ViewBox">
 					<div className="Spacer"></div>
-					<div className="PunkContainer">
-						<div className="PunkItem">
-							<img
-								alt={''}
-								className={'PunkImageDetail'}
-								src={punkImageUrl}
-							/>
+					<div className="PunkPositioner">
+						<div className="PunkDot" />
+						<div className="PunkContainer">
+							<div className="PunkItem">
+								<img
+									alt={''}
+									className={'PunkImageDetail'}
+									src={punkImageUrl}
+								/>
+							</div>
 						</div>
+						<PunkDataComponent />
 					</div>
-					<PunkDataComponent />
 					<PunkButtonComponent />
 				</div>
 				<Footer />

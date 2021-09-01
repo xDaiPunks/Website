@@ -32,152 +32,256 @@
 						}
 					}
 
-					.PunkContainer {
-						display: flex;
-						position: relative;
-
-						width: 100%;
-
-						padding-left: $padding;
-						padding-right: $padding;
-
-						@include responsiveMax($responsiveMed) {
-							padding-left: $paddingMed;
-							padding-right: $paddingMed;
-						}
-
-						@include responsiveMax($responsiveSmall) {
-							padding-left: $paddingSmall;
-							padding-right: $paddingSmall;
-						}
-
-						.PunkItem {
-							display: block;
-							position: relative;
-
-							width: 100%;
-
-							border-radius: 18px;
-
-							background: radial-gradient(
-								100% 100% at 50% 100%,
-								#00f5f5,
-								#8000ff
-							);
-
-							.PunkImageDetail {
-								display: block;
-								position: relative;
-								width: 100%;
-
-								-ms-interpolation-mode: nearest-neighbor;
-								image-rendering: pixelated;
-								image-rendering: -moz-crisp-edges;
-							}
-						}
-
-						.PunkItem:after {
-							content: '';
-							display: block;
-						}
-					}
-
-					.PunkDetails {
+					.PunkPositioner {
 						display: flex;
 						position: relative;
 
 						width: 100%;
 
 						flex-grow: 1;
-						flex-direction: column;
-
-						padding-top: 15px;
+						flex-direction: row;
 
 						padding-left: $padding;
 						padding-right: $padding;
 
 						@include responsiveMax($responsiveMed) {
+							flex-direction: row;
+
 							padding-left: $paddingMed;
 							padding-right: $paddingMed;
 						}
 
 						@include responsiveMax($responsiveSmall) {
+							flex-direction: column;
+
 							padding-left: $paddingSmall;
 							padding-right: $paddingSmall;
 						}
 
-						.PunkDetailItem {
+						.PunkDot {
+							display: block;
+							position: absolute;
+
+							top: 0px;
+							right: $padding;
+
+							width: 24px;
+							height: 24px;
+
+							border-radius: 12px;
+
+							background-color: #00f5f5;
+
+							@include responsiveMax($responsiveMed) {
+								display: block;
+								position: absolute;
+
+								top: 0px;
+								right: $paddingMed;
+
+								width: 24px;
+								height: 24px;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								display: none;
+								top: 0px;
+								right: $paddingSmall;
+
+								width: 0px;
+								height: 0px;
+							}
+						}
+
+						.PunkContainer {
 							display: flex;
 							position: relative;
 
-							flex-direction: column;
+							width: auto;
 
-							padding-bottom: 10px;
+							@include responsiveMax($responsiveMed) {
+								width: auto;
+							}
 
-							.PunkDetailItemTitle {
+							@include responsiveMax($responsiveSmall) {
+								width: 100%;
+							}
+
+							.PunkItem {
 								display: block;
 								position: relative;
 
-								color: #111;
+								width: 40vw;
+								height: 40vw;
 
-								font-size: 10px;
-								font-weight: 600;
-								font-family: 'Gilroy', sans-serif;
+								border-radius: 22px;
+
+								background: radial-gradient(
+									40vw 40vw at 50% 100%,
+									#00f5f5,
+									#8000ff
+								);
+
+								@include responsiveMax($responsiveMed) {
+									width: 40vw;
+									height: 40vw;
+
+									background: radial-gradient(
+										40vw 40vw at 50% 100%,
+										#00f5f5,
+										#8000ff
+									);
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									width: 100%;
+									height: auto;
+
+									background: radial-gradient(
+										100% 100% at 50% 100%,
+										#00f5f5,
+										#8000ff
+									);
+								}
+
+								.PunkImageDetail {
+									display: block;
+									position: relative;
+									width: 100%;
+
+									-ms-interpolation-mode: nearest-neighbor;
+									image-rendering: pixelated;
+									image-rendering: -moz-crisp-edges;
+								}
 							}
 
-							.PunkDetailItemTitle.Big {
-								display: block;
-							}
-
-							.PunkDetailItemContent {
-								display: block;
-								position: relative;
-
-								color: #111;
-
-								font-size: 14px;
-								font-weight: 900;
-								font-family: 'Gilroy', sans-serif;
-							}
-
-							.PunkDetailItemContent.Big {
-								display: block;
-								font-size: 22px;
-								margin-top: -2px;
-								margin-bottom: -4px;
-							}
-
-							.PunkDetailItemAttributes {
-								display: block;
-								position: relative;
-
-								text-align: left;
-
-								.PunkDetailItemAttribute {
-									display: inline-block;
-
-									padding-left: 0px;
-									padding-right: 5px;
-
-									white-space: nowrap;
-
-									font-size: 14px;
-									font-weight: 700;
-
-									font-family: 'Gilroy', sans-serif;
+							.PunkItem:after {
+								@include responsiveMax($responsiveSmall) {
+									content: '';
+									display: block;
 								}
 							}
 						}
 
-						.PunkDetailItem.AlignCenter {
-							align-items: center;
+						.PunkDetails {
+							display: flex;
+							position: relative;
 
-							.PunkDetailItemAttributes {
-								text-align: center;
+							width: 100%;
 
-								.PunkDetailItemAttribute {
-									padding-left: 5px;
-									padding-right: 5px;
+							flex-grow: 1;
+							flex-direction: column;
+
+							padding-top: 15px;
+							padding-left: 22px;
+
+							@include responsiveMax($responsiveMed) {
+								padding-top: 15px;
+								padding-left: 22px;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								padding-top: 15px;
+								padding-left: 4px;
+							}
+
+							.PunkDetailItem {
+								display: flex;
+								position: relative;
+
+								flex-direction: column;
+
+								padding-bottom: 10px;
+
+								.PunkDetailItemTitle {
+									display: block;
+									position: relative;
+
+									color: #111;
+
+									font-size: 14px;
+									font-weight: 600;
+									font-family: 'Gilroy', sans-serif;
+
+									@include responsiveMax($responsiveMed) {
+										font-size: 14px;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										font-size: 10px;
+									}
+								}
+
+								.PunkDetailItemTitle.Big {
+									display: block;
+								}
+
+								.PunkDetailItemContent {
+									display: block;
+									position: relative;
+
+									color: #111;
+
+									font-size: 22px;
+									font-weight: 900;
+									font-family: 'Gilroy', sans-serif;
+
+									@include responsiveMax($responsiveMed) {
+										font-size: 22px;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										font-size: 14px;
+									}
+								}
+
+								.PunkDetailItemContent.Big {
+									display: block;
+									font-size: 48px;
+
+									@include responsiveMax($responsiveMed) {
+										font-size: 48px;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										font-size: 26px;
+										margin-top: -2px;
+										margin-bottom: -4px;
+									}
+								}
+
+								.PunkDetailItemAttributes {
+									display: block;
+									position: relative;
+
+									text-align: left;
+
+									.PunkDetailItemAttribute {
+										display: inline-block;
+
+										padding-left: 0px;
+										padding-right: 5px;
+
+										white-space: nowrap;
+
+										font-size: 14px;
+										font-weight: 700;
+
+										font-family: 'Gilroy', sans-serif;
+									}
+								}
+							}
+
+							.PunkDetailItem.AlignCenter {
+								align-items: center;
+
+								.PunkDetailItemAttributes {
+									text-align: center;
+
+									.PunkDetailItemAttribute {
+										padding-left: 5px;
+										padding-right: 5px;
+									}
 								}
 							}
 						}
@@ -212,6 +316,19 @@
 							position: relative;
 
 							flex-direction: column;
+
+							width: 40vw;
+							padding-top: 22px;
+
+							@include responsiveMax($responsiveMed) {
+								width: 40vw;
+								padding-top: 22px;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								width: auto;
+								padding-top: 5px;
+							}
 						}
 
 						.PunkDetailButtonContainer.Padding {
