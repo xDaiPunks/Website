@@ -46,7 +46,6 @@ class Home extends PureComponent {
 	}
 
 	updateView() {
-		viewService.resetScroll();
 		viewService.setViewSpacing();
 		viewService.updateScrollWidth();
 	}
@@ -56,9 +55,12 @@ class Home extends PureComponent {
 		const pageElement = $('.' + vm.componentName + '.View');
 
 		vm.updateView();
+		vm.setPageSize();
 
 		eventService.on('resize', vm.guid, () => {
-			setTimeout(() => {}, 10);
+			setTimeout(() => {
+				vm.setPageSize();
+			}, 10);
 		});
 
 		eventService.on('route:home', vm.guid, () => {
@@ -92,6 +94,19 @@ class Home extends PureComponent {
 
 	componentDidUpdate() {
 		viewService.resetScroll();
+	}
+
+	setPageSize() {
+		let innerHeight;
+		const windowInnerHeight = window.innerHeight;
+
+		const introStartElement = $('.ViewBox .Intro .IntroStart');
+
+		if (utilityService.browserSupport.mobileDevice === true) {
+			innerHeight = windowInnerHeight;
+
+			introStartElement[0].style.minHeight = innerHeight + 'px';
+		}
 	}
 
 	mintPunks(amount) {

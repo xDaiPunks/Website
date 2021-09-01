@@ -19,27 +19,15 @@ const preloadService = new PreloadService();
 const webfontPreloadService = new WebfontPreloadService();
 
 const initialize = () => {
-	preloadService.preload('/static/media/images/logo.svg');
+	webfontPreloadService.preload('Gilroy', '900');
 
-	preloadService.on('preloadReady', this, (e) => {
-		preloadService.off('preloadReady', this);
+	webfontPreloadService.on('preloadReady', this, (e) => {
+		webfontPreloadService.off('preloadReady', this);
 
-		webfontPreloadService.preload('Gilroy', '900');
-		webfontPreloadService.preload('Gilroy', '800');
-		webfontPreloadService.preload('Gilroy', '700');
-		webfontPreloadService.preload('Gilroy', '600');
-
-		webfontPreloadService.on('preloadReady', this, (e) => {
-			webfontPreloadService.off('preloadReady', this);
-
-			ReactDOM.render(<App />, document.getElementById('AppRoot'));
-		});
-
-		webfontPreloadService.runPreloader();
+		ReactDOM.render(<App />, document.getElementById('AppRoot'));
 	});
 
-	preloadService.runPreloader();
+	webfontPreloadService.runPreloader();
 };
 
 initialize();
-serviceWorkerRegister();
