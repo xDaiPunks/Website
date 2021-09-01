@@ -105,6 +105,7 @@ class Web3Service {
 					type: 'alertModal',
 					header: 'Wrong chain',
 					content: 'Please switch to the xDai chain in your wallet',
+					buttonText: 'Ok',
 				});
 				return false;
 			} else {
@@ -136,6 +137,7 @@ class Web3Service {
 									header: 'Wrong chain',
 									content:
 										'Please switch to the xDai chain in your wallet',
+									buttonText: 'Ok',
 								});
 								return false;
 							}

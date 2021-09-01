@@ -47,7 +47,7 @@ class Navigation extends PureComponent {
 		this.actionButtonComponent = this.actionButtonComponent.bind(this);
 
 		eventService.on('force:state', this.guid, () => {
-			console.log('force state navigation', userService.address);
+			// console.log('force state navigation', userService.address);
 			this.setState(this.state);
 			this.forceUpdate();
 		});
@@ -62,7 +62,7 @@ class Navigation extends PureComponent {
 
 			currentView = utilityService.lowerCaseFirst(view);
 
-			console.log('current view', currentView);
+			// console.log('current view', currentView);
 
 			this.setState({
 				currentView: currentView,
@@ -182,7 +182,7 @@ class Navigation extends PureComponent {
 		const vm = this;
 		const currentView = vm.state.currentView;
 
-		console.log(currentView);
+		// console.log(currentView);
 		if (currentView !== 'punk') {
 			return (
 				<button
@@ -304,7 +304,7 @@ class Navigation extends PureComponent {
 		const LogoComponent = vm.logoComponent;
 		const ActionButtonComponent = vm.actionButtonComponent;
 
-		console.log('CurrentView Render', currentView);
+		// console.log('CurrentView Render', currentView);
 
 		return (
 			<header className="Navigation">

@@ -33,11 +33,6 @@ class CountDown extends PureComponent {
 	}
 
 	setDate() {
-		let days;
-		let hours;
-		let minutes;
-		let seconds;
-
 		let timeDiff;
 		let countDown;
 
