@@ -11,6 +11,7 @@ import AppService from 'src/app/services/AppService';
 import ViewService from 'src/app/services/ViewService';
 import UserService from 'src/app/services/UserService';
 import PunkService from 'src/app/services/PunkService';
+import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
 import UtilityService from 'src/app/services/UtilityService';
@@ -20,6 +21,7 @@ const appService = new AppService();
 const viewService = new ViewService();
 const userService = new UserService();
 const punkService = new PunkService();
+const web3Service = new Web3Service();
 const eventService = new EventService();
 const routeService = new RouteService();
 const utilityService = new UtilityService();
@@ -41,6 +43,7 @@ class PunkAccount extends PureComponent {
 
 		this.getData = this.getData.bind(this);
 		this.withdraw = this.withdraw.bind(this);
+		this.disconnect = this.disconnect.bind(this);
 		this.updateState = this.updateState.bind(this);
 
 		this.punks = this.punks.bind(this);
@@ -67,8 +70,12 @@ class PunkAccount extends PureComponent {
 		});
 
 		eventService.on('force:state', vm.guid, () => {
-			this.setState(this.state);
-			this.forceUpdate();
+			if (userService.userSignedIn === true) {
+				vm.setState(this.state);
+				vm.forceUpdate();
+			} else {
+				routeService.navigateRoute('/');
+			}
 		});
 
 		eventService.on('change:language', vm.guid, () => {
@@ -110,6 +117,43 @@ class PunkAccount extends PureComponent {
 				}
 			}
 		});
+	}
+
+	getData() {
+		const vm = this;
+
+		if (userService.userSignedIn !== true) {
+			routeService.navigateRoute('/');
+		} else {
+			punkService.setPunkDetails();
+			appService
+				.pendingWithdrawals(userService.address)
+				.then((response) => {
+					userService.withdrawAmount = response;
+
+					vm.setState({ loading: false }, () => {
+						vm.loader.current.hideLoader(true);
+					});
+				})
+				.catch((responseError) => {});
+		}
+	}
+
+	withdraw() {
+		const vm = this;
+		appService
+			.withdraw()
+			.then((response) => {
+				vm.updateState();
+			})
+			.catch((responseError) => {
+				vm.updateState();
+			});
+	}
+
+	disconnect() {
+		const vm = this;
+		web3Service.disconnectWallet();
 	}
 
 	updateState() {
@@ -338,38 +382,6 @@ class PunkAccount extends PureComponent {
 				}
 			}
 		});
-	}
-
-	getData() {
-		const vm = this;
-
-		if (userService.userSignedIn !== true) {
-			routeService.navigateRoute('/');
-		} else {
-			punkService.setPunkDetails();
-			appService
-				.pendingWithdrawals(userService.address)
-				.then((response) => {
-					userService.withdrawAmount = response;
-
-					vm.setState({ loading: false }, () => {
-						vm.loader.current.hideLoader(true);
-					});
-				})
-				.catch((responseError) => {});
-		}
-	}
-
-	withdraw() {
-		const vm = this;
-		appService
-			.withdraw()
-			.then((response) => {
-				vm.updateState();
-			})
-			.catch((responseError) => {
-				vm.updateState();
-			});
 	}
 
 	punks(props) {
@@ -677,6 +689,7 @@ class PunkAccount extends PureComponent {
 											title={'Disconnect'}
 											onClick={(event) => {
 												event.preventDefault();
+												vm.disconnect();
 											}}
 											iconImage="/static/media/images/icon-disconnect-white.svg"
 											cssClass={'ActionButtonAccount'}

@@ -33,6 +33,7 @@ class Web3Service {
 			Instance.contract = null;
 			Instance.gasPrice = null;
 
+			Instance.provider = null;
 			Instance.walletType = null; // mm or wc
 			Instance.walletChainId = null;
 			Instance.walletProvider = null;
@@ -656,27 +657,38 @@ class Web3Service {
 		});
 	}
 
+	disconnectWallet() {
+		const vm = this;
+
+		userService.address = null;
+		userService.userSignedIn = null;
+
+		if (vm.provider && vm.provider.disconnect) {
+			vm.provider.disconnect();
+		}
+
+		eventService.dispatchObjectEvent('force:state');
+	}
+
 	connectMetaMask() {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			let ethereum;
-
 			if (!window.ethereum) {
 				reject({ result: 'error', errorType: 'noMetaMask' });
 			} else {
-				ethereum = window.ethereum;
-
-				vm.walletProvider = new Web3(ethereum);
-
 				window.ethereum
 					.send('eth_requestAccounts')
 					.then((response) => {
+						vm.provider = window.ethereum;
+
 						vm.walletType = 'mm';
 						vm.walletChainId = window.ethereum.chainId;
 
 						userService.userSignedIn = true;
 						userService.address = window.ethereum.selectedAddress;
+
+						vm.walletProvider = new Web3(window.ethereum);
 
 						setEvents();
 						checkCurrentNetwork();
@@ -708,7 +720,8 @@ class Web3Service {
 							vm.walletChainId = window.ethereum.chainId;
 
 							userService.userSignedIn = true;
-							userService.address = window.ethereum.selectedAddress;
+							userService.address =
+								window.ethereum.selectedAddress;
 
 							punkService.setPunkDetails();
 						}
@@ -757,7 +770,8 @@ class Web3Service {
 
 			function checkCurrentNetwork() {
 				const xdaiConfig = configService.web3.xdaiConfig;
-				ethereum
+
+				window.ethereum
 					.request({
 						method: 'wallet_switchEthereumChain',
 						params: [{ chainId: xdaiConfig.chainId }],
@@ -779,7 +793,7 @@ class Web3Service {
 
 			function metaMaskaddNewNetwork() {
 				const xdaiConfig = configService.web3.xdaiConfig;
-				ethereum
+				window.ethereum
 					.request({
 						method: 'wallet_addEthereumChain',
 						params: [xdaiConfig],
@@ -804,6 +818,7 @@ class Web3Service {
 			let rpc;
 			let xdai;
 			let chainId;
+			let provider;
 			let httpProvider;
 
 			const web3Config = configService.web3;
@@ -817,17 +832,26 @@ class Web3Service {
 			rpc[chainId] = httpProvider;
 
 			rpc[1] = 'https://cloudflare-eth.com';
+			rpc[10] = 'https://mainnet.optimism.io';
 			rpc[100] = 'https://rpc.xdaichain.com/';
 			rpc[56] = 'https://bsc-dataseed.binance.org/';
 			rpc[137] = 'https://rpc-mainnet.maticvigil.com/';
+			rpc[42161] =
+				'https://arbitrum-mainnet.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
 
-			//test url
+			//test urls
 			rpc[3] =
 				'https://ropsten.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
+			rpc[4] =
+				'https://rinkeby.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
+			rpc[5] =
+				'https://goerli.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
+			rpc[42] =
+				'https://kovan.infura.io/v3/93a1c93e80c44e55838a599056b3a9ec';
 
-			const provider = new WalletConnectProvider({
+			provider = new WalletConnectProvider({
 				rpc: rpc,
-
+				infuraId: '93a1c93e80c44e55838a599056b3a9ec',
 				chainId: chainId,
 				network: 'xDai',
 				qrcode: true,
@@ -837,6 +861,8 @@ class Web3Service {
 			});
 
 			provider.networkId = chainId;
+
+			vm.provider = provider;
 
 			provider
 				.enable()
