@@ -5,17 +5,14 @@
 	"scripts": {
 		"copy": "node scripts/copy.js",
 		"analyze": "source-map-explorer build/static/js/main.*",
-		"start": "npm run scss && npm run translations && cross-env NODE_ENV=development node ./scripts/start.js",
-		"build": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js",
-		"build-production": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false node ./scripts/build.js && npm run copy",
-		"build-development": "npm run scss && npm run translations && cross-env NODE_ENV=development GENERATE_SOURCEMAP=true node ./scripts/build.js  && npm run copy",
-		"build-production-map": "npm run scss && npm run translations && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js  && npm run copy",
+		"start": "npm run scss  && cross-env NODE_ENV=development node ./scripts/start.js",
+		"build": "npm run scss && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js",
+		"build-production": "npm run scss && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false node ./scripts/build.js && npm run copy",
+		"build-development": "npm run scss && cross-env NODE_ENV=development GENERATE_SOURCEMAP=true node ./scripts/build.js  && npm run copy",
+		"build-production-map": "npm run scss && cross-env NODE_ENV=production GENERATE_SOURCEMAP=true node ./scripts/build.js  && npm run copy",
 		"test": "node scripts/test.js",
 		"scss": "node ./scripts/scss.js",
 		"watch-scss": "npm run scss && node-sass-chokidar src/ -o src/ --watch --recursive",
-		"translations": "node ./scripts/translations.js",
-		"sw-production": "cross-env SW_BASE=https://xdaipunks.com node ./scripts/updateServiceWorker.js",
-		"sw-development": "cross-env SW_BASE=http://localhost:9999 node ./scripts/updateServiceWorker.js",
 		"test-coverage": "node ./scripts/test.js --env=jsdom --coverage && http-server ./coverage/lcov-report -o"
 	},
 	"dependencies": {
