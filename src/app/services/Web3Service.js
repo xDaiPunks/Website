@@ -696,6 +696,7 @@ class Web3Service {
 					eventService.off('preloader:show', vm.guid);
 					eventService.on('preloader:show', vm.guid, () => {
 						eventService.off('preloader:show', vm.guid);
+
 						if (accountArray.length === 0) {
 							vm.walletType = 'mm';
 							vm.walletChainId = window.ethereum.chainId;
@@ -707,7 +708,7 @@ class Web3Service {
 							vm.walletChainId = window.ethereum.chainId;
 
 							userService.userSignedIn = true;
-							userService.address = accountArray[0];
+							userService.address = window.ethereum.selectedAddress;
 
 							punkService.setPunkDetails();
 						}

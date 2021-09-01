@@ -231,7 +231,7 @@ class Modal extends PureComponent {
 				web3Service
 					.connectWalletConnect()
 					.then((response) => {
-						console.log(response);
+						// console.log(response);
 						vm.hideModal({
 							type: this.state.type,
 							animate: false,
@@ -247,9 +247,9 @@ class Modal extends PureComponent {
 							animate: false,
 						});
 
-						console.log(responseError);
+						// console.log(responseError);
 
-						console.log(responseError);
+						// console.log(responseError);
 						eventService.dispatchObjectEvent('hide:preloader');
 					});
 			});
@@ -264,7 +264,7 @@ class Modal extends PureComponent {
 				web3Service
 					.connectMetaMask()
 					.then((response) => {
-						console.log(response);
+						// console.log(response);
 						vm.hideModal({
 							type: this.state.type,
 							animate: false,
@@ -280,9 +280,9 @@ class Modal extends PureComponent {
 							animate: false,
 						});
 
-						console.log(responseError);
+						// console.log(responseError);
 
-						console.log(responseError);
+						// console.log(responseError);
 						eventService.dispatchObjectEvent('hide:preloader');
 					});
 			});
@@ -302,7 +302,7 @@ class Modal extends PureComponent {
 		const iconImageWalletConnect =
 			'/static/media/images/icon-walletconnect.svg';
 
-		console.log(mobileDevice);
+		// console.log(mobileDevice);
 
 		if (mobileDevice === true) {
 			return (
@@ -633,7 +633,7 @@ class Modal extends PureComponent {
 					);
 
 					if (value > 0 && value <= 20) {
-						console.log(value);
+						// console.log(value);
 						props.mintPunks(value);
 					}
 				}

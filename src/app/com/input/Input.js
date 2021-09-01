@@ -81,14 +81,14 @@ class Input extends PureComponent {
 
 		value = this.props.value;
 
-		console.log('State', this.state.value);
+		// console.log('State', this.state.value);
 
 		if (this.state.value !== undefined) {
 			value = this.state.value;
 		}
 
-		console.log('State', this.state.value);
-		console.log('Input value', value, this.state.value);
+		// console.log('State', this.state.value);
+		// console.log('Input value', value, this.state.value);
 
 		return (
 			<div className={className}>
