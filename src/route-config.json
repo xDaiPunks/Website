@@ -31,6 +31,14 @@
 		"component": "app/com/views/punkAccount/PunkAccount"
 	},
 
+	"walletTest": {
+		"path": "/wallet-test",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/walletTest/WalletTest"
+	},
+
 	"notfound": {
 		"type": "notfound",
 		"useRedirect": true,
