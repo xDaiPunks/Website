@@ -160,9 +160,9 @@ class PunkService {
 			}
 		}
 
-		console.log('BIDS', bidObject);
-		console.log('SALE', saleObject);
-		console.log('OWNED', ownedObject);
+		// console.log('BIDS', bidObject);
+		// console.log('SALE', saleObject);
+		// console.log('OWNED', ownedObject);
 
 		vm.bids = bidObject;
 		vm.sale = saleObject;
