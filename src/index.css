@@ -2346,19 +2346,23 @@ body {
           height: 32px;
           flex-direction: row;
           align-items: center; }
-          .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
+          .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialSpacer {
+            display: block;
+            height: 4px;
+            width: 25px; }
+          .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialIcon {
             display: block;
             position: relative;
-            width: 25px;
-            height: 25px; }
+            width: 32px;
+            height: 32px; }
             @media screen and (max-width: 1070px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
-                width: 25px;
-                height: 25px; } }
+              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialIcon {
+                width: 32px;
+                height: 32px; } }
             @media screen and (max-width: 986px) {
-              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterTwitter {
-                width: 25px;
-                height: 25px; } }
+              .Footer .FooterMenu .FooterMenuRow .FooterMenuBlock .FooterSocial .FooterSocialIcon {
+                width: 32px;
+                height: 32px; } }
   .Footer .FooterCopyright {
     display: flex;
     position: relative;

@@ -220,6 +220,7 @@ class Footer extends PureComponent {
 										}
 									/>
 								</a>
+								<div className="FooterSocialSpacer"></div>
 								<a
 									title="Github"
 									href="https://github.com/xDaiPunks/"

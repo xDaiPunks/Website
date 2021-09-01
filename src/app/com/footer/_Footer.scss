@@ -147,7 +147,13 @@
 					flex-direction: row;
 					align-items: center;
 
-					.FooterTwitter {
+					.FooterSocialSpacer {
+						display: block;
+						height: 4px;
+						width: 10px;
+					}
+
+					.FooterSocialIcon {
 						display: block;
 						position: relative;
 
