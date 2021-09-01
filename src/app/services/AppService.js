@@ -43,7 +43,6 @@ class AppService {
 			const promiseArray = [];
 
 			promiseArray.push(vm.punkData());
-			promiseArray.push(vm.walletData());
 			promiseArray.push(vm.blockchainData());
 
 			Promise.all(promiseArray)
@@ -88,20 +87,7 @@ class AppService {
 		});
 	}
 
-	walletData() {
-		const vm = this;
 
-		return new Promise((resolve, reject) => {
-			web3Service
-				.checkWallet()
-				.then((response) => {
-					resolve({ result: 'success' });
-				})
-				.catch((responseError) => {
-					resolve({ result: 'success' });
-				});
-		});
-	}
 
 	blockchainData() {
 		const vm = this;
@@ -267,19 +253,6 @@ class AppService {
 				})
 				.catch((responseError) => {
 					reject(responseError);
-				});
-		});
-	}
-
-	checkWeb3() {
-		return new Promise((resolve, reject) => {
-			web3Service
-				.checkWeb3()
-				.then((response) => {
-					resolve({ result: 'success' });
-				})
-				.catch((responseError) => {
-					resolve({ result: 'success' });
 				});
 		});
 	}

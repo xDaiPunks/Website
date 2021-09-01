@@ -679,83 +679,6 @@ class Web3Service {
 		});
 	}
 
-	checkWallet() {
-		const vm = this;
-
-		return new Promise((resolve, reject) => {
-			const wc = checkWalletConnect();
-
-			if (wc !== true) {
-				checkMetaMask();
-			}
-
-			function checkMetaMask() {
-				if (!window.ethereum) {
-					resolve({ result: 'success' });
-				} else {
-					if (!window.ethereum.selectedAddress) {
-						resolve({ result: 'success' });
-					} else {
-						vm.walletType = 'mm';
-						vm.walletChainId = window.ethereum.chainId;
-
-						userService.userSignedIn = true;
-						userService.address = window.ethereum.selectedAddress;
-
-						resolve({ result: 'success' });
-					}
-				}
-			}
-
-			function checkWalletConnect() {
-				let rpc;
-				let xdai;
-				let chainId;
-				let httpProvider;
-
-				const web3Config = configService.web3;
-
-				rpc = {};
-
-				xdai = web3Config.xdaiConfig;
-				chainId = xdai.chainId;
-				httpProvider = web3Config.httpProvider;
-
-				rpc[chainId] = httpProvider;
-
-				rpc[1] = 'https://cloudflare-eth.com';
-				rpc[100] = 'https://rpc.xdaichain.com/';
-
-				const provider = new WalletConnectProvider({
-					rpc: rpc,
-					infuraId: '93a1c93e80c44e55838a599056b3a9ec',
-					chainId: chainId,
-					network: 'xDai',
-					qrcode: true,
-					qrcodeModalOptions: {
-						mobileLinks: ['metamask', 'pillar'],
-					},
-				});
-
-				provider.networkId = chainId;
-
-				if (provider.connected === true) {
-					console.log(provider);
-
-					vm.walletType = 'wc';
-					vm.walletChainId = provider.chainId;
-
-					userService.userSignedIn = true;
-					userService.address = provider.accounts[0];
-
-					vm.walletProvider = new Web3(provider);
-					return true;
-				} else {
-					return false;
-				}
-			}
-		});
-	}
 
 	connectMetaMask() {
 		const vm = this;
@@ -1203,12 +1126,10 @@ class Web3Service {
 			})
 			.on('error', (error, receipt) => {
 				// Check the error event to restart the socket
-				console.log('Contract websocket error', error, receipt);
+				console.log('Reconnecting..');
 
-				setTimeout(() => {
-					vm.setContract();
-					vm.initializeContractEvents();
-				}, 5000);
+				vm.setContract();
+				vm.initializeContractEvents();
 			});
 	}
 }
