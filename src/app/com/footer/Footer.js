@@ -202,7 +202,7 @@ class Footer extends PureComponent {
 									label={'Issues with WalletConnect'}
 									title={'Issues with WalletConnect'}
 									onClick={() => {
-										routeService.navigateRoute('/wallet-connect-issues');
+										routeService.navigateRoute('/wallet-issues');
 									}}
 									cssClass={'FooterButton'}
 								/>

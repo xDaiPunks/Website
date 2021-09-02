@@ -47,6 +47,14 @@
 		"component": "app/com/views/xDaiOnRamp/XDaiOnRamp"
 	},
 
+	"walletIssues": {
+		"path": "/wallet-issues",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/walletIssues/WalletIssues"
+	},
+
 	"walletTest": {
 		"path": "/wallet-test",
 		"type": "public",
