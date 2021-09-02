@@ -243,179 +243,86 @@ class WalletIssues extends PureComponent {
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
 								<span className="Txt">
-									Using the marketplace
+									WalletConnect Issues
 								</span>
 								<span className="TitleImageContent"></span>
 							</div>
 							<div className="ContentItemContent">
-								The cool thing about xDaiPunks is that it has an
-								integrated marketplace. The marketplace uses the
-								underlying{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/contracts">
-									smart contract
-								</a>{' '}
-								directly which you can verify. On the
-								marketplacve you can offer Punks for sale, place
-								a bid for a Punk, Buy a Punk and accept a bid
-								for a Punk. So what are the basic functions of
-								the marketplace?
+								xDaiPunks offers you to connect your wallet
+								through WalletConnect. WalletConnnect is a great
+								project, especially when connecting your wallet
+								from a mobile device
+								<br />
+								<br />
+								But using WalletConnect does come with its fair
+								share of issues. As you can imagine bridging
+								your wallet through a websocket connection to
+								other devices is techically very challenging.
+								Connections can fail, wallet software might not
+								be working as should, devices might not be
+								connected anymore and so on. So sometimes,
+								WalletConnect just does not work
 							</div>
 						</div>
 
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
 								<span className="Txt">
-									Offering a punk for sale
+									Cannot connect my wallet
 								</span>
 								<span className="TitleImageContent"></span>
 							</div>
 							<div className="ContentItemContent">
-								You can offer your punk for sale at a minimum
-								price. To do so, just connect your wallet and go
-								to 'My Account'. Here you see which Punks you
-								own and on which Punks you have placed a bid
+								This can happen. The thing is, when you use
+								WalletConnect, sometimes patience is key. If you
+								click the WalletConnect button, you sometimes
+								need to wait a bit for the confirmation message
+								to appear in your wallet. Also the approval
+								sometimes takes time
 								<br />
-								<br />
-								Click on the Punk you own and click on 'Offer
-								for sale'. A popup will show where you can enter
-								the minimum amount for which you want to sell
-								you punk. After clicking 'Ok' you will need to
-								approve the transaction in your wallet. As you
-								can see the transaction costs are very low
+								If it just does not work you can try to clear
+								your cache and try again. WalletConnect stores a
+								localStorage variable that prevents you from
+								connecting over and over again. Sometimes a
+								connectionn just stays in a unusable state and
+								clear this property will let you reconnect your
+								wallet again
 							</div>
 						</div>
 
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
-								<span className="Txt">Removing the offer</span>
+								<span className="Txt">
+									Transaction not showing
+								</span>
 								<span className="TitleImageContent"></span>
 							</div>
 							<div className="ContentItemContent">
-								Connect your wallet and go to 'My Account'. Your
-								punk will have the status of 'Sale' when you
-								have offered it for sale. Click on the punk and
-								after that click on the 'Remove offer' button.
-								After clicking you will need to approve the
-								transaction in your wallet
-							</div>
-						</div>
-
-						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Bidding for a Punk</span>
-								<span className="TitleImageContent"></span>
-							</div>
-							<div className="ContentItemContent">
-								When a punk has been minted, it will receive the
-								status 'Market'. This status means that you can
-								place a bid for this Punk. It does not matter if
-								the owner has offered the punk for sale or not.
-								You can always bid on a minted Punk.
+								When your wallet is connected and you want to do
+								something on the marketplace, the transaction
+								confirmation message does not show in your
+								wallet
 								<br />
 								<br />
-								To place a bid, just select the Punk from the
-								market place. Now click the 'Enter a bid'
-								button. A pop-up will show where you can enter
-								the bid amount. Of course the higher the bid the
-								higher the chance that the owner will accept it.
-								If you click 'Ok' the transaction will be sent
-								to your connected wallet.
+								Again, when this happens, patience is key.
+								Sometimes it just takes a while for the message
+								to show. If still nothing happens, the best way
+								to reconnect is to go to the 'My Account' page.
+								You will see the disconnect button. Click on it
+								and your wallet will be disconnected the proper
+								way
 								<br />
 								<br />
-								Important to know is that a bid means that you
-								send the bid amount to the smart contract. This
-								amount will be deducted from your funds and will
-								be locked up in the contract. So bids are quite
-								serious, but you can always withdraw your bid
-								<br />
-								<br />
-								2 things can happen from now on. Either the
-								owner accepts the bid and you will receive
-								ownership of the Punk. Or, someone else will bid
-								higher and your bid will be removed
-								<br />
-								<br />
-								If this happens, and this is important, the
-								amount of your bid will not be be sent
-								automatically to your wallet. Instead it will be
-								made available to withdraw. You can see this
-								amount on the 'My Account' page. To receive this
-								amount you click the 'withdraw button'
-							</div>
-						</div>
-
-						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Removing a bid</span>
-								<span className="TitleImageContent"></span>
-							</div>
-							<div className="ContentItemContent">
-								When you want to remove a bid for a Punk, go to
-								your account page. The Punks that you have bid
-								for will be listed here. Click on the punk and
-								click 'Withdraw bid'
-								<br />
-								<br />
-								Once you have approved the transaction, the bid
-								amount will be available to withdraw. You can do
-								so from your account page
-							</div>
-						</div>
-
-						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Accepting a bid</span>
-								<span className="TitleImageContent"></span>
-							</div>
-							<div className="ContentItemContent">
-								When someone has place a bid on one of your
-								punks, it will recieve the status 'Bid' or 'Sale
-								& Bid'. People can always bid on your punk, even
-								if you have not offered it for sale yet. If you
-								offered it for sale at a certain price, people
-								can always bid a lower price. That is called
-								price discovery ;)
-								<br />
-								<br />
-								You can see this status on your account page. To
-								accept a bid, the only thing you have to do is
-								click on the Punk and click on the 'Accept bid'
-								button. After you have approved the transaction,
-								the ownership of your Punk will be transferred
-								and the bid amount will be available to withdraw
-							</div>
-						</div>
-
-						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Outright buy a Punk</span>
-								<span className="TitleImageContent"></span>
-							</div>
-							<div className="ContentItemContent">
-								If a punk has been offerd for sale, you can
-								outright buy the punk. Buying the punk means
-								that you need to meet the minimum price of the
-								Punk. But you can also offer more, that is up to
-								you.
-								<br />
-								<br />
-								Doing so is easy. Go to the marketplace and
-								select the Punk you want with the 'Sale' status.
-								Click on the punk and click on the button 'Buy
-								punk'. A pop-up will appear where the minimum
-								sale price will be shown. You can either click
-								'Ok' or change the price to a higher price if
-								your want. Everybody has their reasons so to say
-								;)
-								<br />
-								<br />
-								After you click 'Ok' you will need to approve
-								the transaction. If all goes well, you will
-								recieve ownership of the Punk. Your punk will be
-								listed on the 'My account page'
+								Now try to reconnect using WalletConnect again
+								and try to make a transaction again. This
+								usually soves the issue. If you still are unable
+								to approve a transaction, you can try to clear
+								your cache. The problem is that sometimes your
+								connection will stay in an unusable state and
+								clearing your cache can sometimes resolve this
+								If this always still fails, there is always the
+								desktop with a MetMask plugin in your browser to
+								resort to. That will always work
 							</div>
 						</div>
 
