@@ -508,12 +508,12 @@ class Home extends PureComponent {
 									You can get a Punk by minting one for 12
 									xDai. If the Punk you want is already minted
 									you might still get it by placing a bid
-									through the official xDaiPunks Marketplace.
-									This marketplace is completely driven by the
-									smart contract of xDai punks. On the
-									marketplace you can trade Punks and Bid on
-									punks you want to own. The marketplace will
-									be live when the mining phase has started
+									through the xDaiPunks Marketplace which is
+									based on the smart contract of xDaiPunks. On
+									the marketplace you can trade Punks and Bid
+									on punks you want to own. The marketplace
+									will be live when the mining phase has
+									started
 								</div>
 							</div>
 
@@ -611,13 +611,11 @@ class Home extends PureComponent {
 									capabilities of the xDai blockchain.
 									xDaiPunks is not in any shape way or form
 									affiliated with CryptoPunks and LarvaLabs.
-									xDaiPunks is a homage to CryptoPunks and a
-									completely separate project. As such the
-									value of a xDaiPunk is not related to the
-									value of a CryptoPunk.
+									The value of a xDaiPunk is not related to
+									the value of a CryptoPunk.
 									<br />
 									<br />
-									DaiPunks is a homage to the CryptoPunk
+									xDaiPunks is a homage to the CryptoPunk
 									project of LarvaLabs. With xDaiPunks we
 									thank LarvaLabs for their pioneering and for
 									creating the CryptoPunk project. The project
@@ -651,9 +649,7 @@ class Home extends PureComponent {
 									marketplaces in the near future. As the
 									minting phase is the only source of revenue
 									for this project, we have set the mining at
-									this price. It will cover the costs for
-									everything related to xDaiPunks for years to
-									come
+									this price
 								</div>
 							</div>
 						</div>
