@@ -92,13 +92,13 @@ class CountDown extends PureComponent {
 		} else {
 			return (
 				<div className="CountDown">
-					<div className="TimeText">{days}</div>
+					<div className="TimeText">{days + 'd'}</div>
 					<div className="TextDots">:</div>
-					<div className="TimeText">{hours}</div>
+					<div className="TimeText">{hours + 'h'}</div>
 					<div className="TextDots">:</div>
-					<div className="TimeText">{minutes}</div>
+					<div className="TimeText">{minutes + 'm'}</div>
 					<div className="TextDots">:</div>
-					<div className="TimeText">{seconds}</div>
+					<div className="TimeText">{seconds + 's'}</div>
 				</div>
 			);
 		}
