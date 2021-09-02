@@ -75,16 +75,6 @@ class PunkService {
 		vm.punkObjectData = internalObject;
 	}
 
-	get mintsCount() {
-		const vm = this;
-		return vm.mintsCountStore;
-	}
-
-	set mintsCount(internalNumber) {
-		const vm = this;
-		vm.mintsCountStore = internalNumber;
-	}
-
 	get publicSale() {
 		const vm = this;
 		return vm.publicSaleStore;
@@ -93,6 +83,16 @@ class PunkService {
 	set publicSale(bool) {
 		const vm = this;
 		vm.publicSaleStore = bool;
+	}
+
+	get mintsCount() {
+		const vm = this;
+		return vm.mintsCountStore;
+	}
+
+	set mintsCount(internalNumber) {
+		const vm = this;
+		vm.mintsCountStore = internalNumber;
 	}
 
 	getItem(idx) {

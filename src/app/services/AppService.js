@@ -90,12 +90,90 @@ class AppService {
 	blockchainData() {
 		const vm = this;
 		return new Promise((resolve, reject) => {
-			const promiseArray = [];
-
 			// public sale
 			// mints remaining
-			// punks owned by wallet
 
+			// we now direclty call the api
+
+			axios
+				.get(configService.apiUrl + '/init')
+				.then((response) => {
+					let val;
+					const data = response.data;
+
+					if (data.responseData) {
+						if (data.responseData.hasOwnProperty('publicSale')) {
+							punkService.publicSale =
+								data.responseData.publicSale;
+						}
+
+						if (data.responseData.hasOwnProperty('mintsCount')) {
+							punkService.mintsCount =
+								data.responseData.mintsCount;
+						}
+					}
+
+					if (
+						punkService.publicSale === true ||
+						punkService.publicSale === false
+					) {
+						if (punkService.mintsCount !== null) {
+							val = true;
+						}
+					}
+
+					if (val === true) {
+						resolve({ result: 'success' });
+					} else {
+						web3BlockchainData();
+					}
+				})
+				.catch((responseError) => {
+					punkService.generatePunkData();
+					resolve({ result: 'success' });
+				});
+
+			function web3BlockchainData() {
+				const promiseArray = [];
+				promiseArray.push(publicSale());
+				promiseArray.push(mintsRemaining());
+
+				Promise.all(promiseArray)
+					.then((responses) => {
+						resolve({ result: 'success' });
+					})
+					.catch((responsesError) => {
+						resolve({ result: 'success' });
+					});
+
+				function publicSale() {
+					return new Promise((resolve, reject) => {
+						web3Service
+							.publicSale()
+							.then((response) => {
+								resolve(response);
+							})
+							.catch((responseError) => {
+								reject(responseError);
+							});
+					});
+				}
+
+				function mintsRemaining() {
+					return new Promise((resolve, reject) => {
+						web3Service
+							.mintsRemaining()
+							.then((response) => {
+								resolve(response);
+							})
+							.catch((responseError) => {
+								resolve(responseError);
+							});
+					});
+				}
+			}
+			/*
+			const promiseArray = [];
 			promiseArray.push(publicSale());
 			promiseArray.push(mintsRemaining());
 
@@ -132,6 +210,7 @@ class AppService {
 						});
 				});
 			}
+			*/
 		});
 	}
 
