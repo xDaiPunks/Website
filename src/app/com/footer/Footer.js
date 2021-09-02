@@ -86,6 +86,15 @@ class Footer extends PureComponent {
 								xDaiPunks
 							</span>
 							<span className="FooterMenuItem">
+								<a
+									href="mailto:hello@xdaipunks.com"
+									target="_blank"
+									rel="noreferrer"
+									className="FooterButton">
+									<span className="Txt">Say hello</span>
+								</a>
+							</span>
+							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
 									label={'About xDai'}
@@ -181,9 +190,20 @@ class Footer extends PureComponent {
 									label={'Using the marketplace'}
 									title={'Using the marketplace'}
 									onClick={() => {
-										routeService.navigateRoute('/get-xdai');
+										routeService.navigateRoute('/using-marketplace');
 									}}
 									cssCla
+									cssClass={'FooterButton'}
+								/>
+							</span>
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'Issues with WalletConnect'}
+									title={'Issues with WalletConnect'}
+									onClick={() => {
+										routeService.navigateRoute('/wallet-connect-issues');
+									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>

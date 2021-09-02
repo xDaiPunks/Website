@@ -3512,6 +3512,266 @@ body {
       #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons .PunkDetailButtonContainer.Padding {
         padding-bottom: 15px; }
 
+#AppRoot .App .ViewContainer .XDaiOnRamp.View {
+  background: #fff; }
+  #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox {
+    display: flex; }
+    #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .Spacer {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 90px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .Spacer {
+          height: 90px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .Spacer {
+          height: 70px; } }
+    #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent {
+      display: flex;
+      position: relative;
+      z-index: 2;
+      flex-direction: column;
+      padding-top: 0px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent {
+          padding-bottom: 0px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent {
+          padding-bottom: 50px; } }
+      #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        padding-bottom: 70px;
+        padding-left: 48px;
+        padding-right: 48px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem {
+            padding-bottom: 70px;
+            padding-left: 40px;
+            padding-right: 40px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem {
+            padding-bottom: 50px;
+            padding-left: 30px;
+            padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+          display: block;
+          text-align: center;
+          color: #00f5f5;
+          max-width: 800px;
+          font-size: 60px;
+          font-weight: 900;
+          font-family: 'Gilroy', sans-serif; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+              max-width: 800px;
+              font-size: 60px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+              max-width: 600px;
+              font-size: 26px; } }
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding-left: 2px;
+          color: #111;
+          font-size: 60px;
+          font-weight: 900;
+          font-family: 'Gilroy', sans-serif; }
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .Highlight {
+            color: #00f5f5; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+              font-size: 60px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+              font-size: 26px; } }
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .Txt {
+            display: block;
+            position: relative; }
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+            display: flex;
+            position: relative;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            margin-top: 4px;
+            overflow: hidden;
+            background-color: #00f5f5; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+                width: 16px;
+                height: 16px;
+                border-radius: 8px;
+                margin-top: 4px; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+                width: 12px;
+                height: 12px;
+                border-radius: 9px;
+                margin-top: 2px;
+                margin-right: 5px; } }
+        #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+          display: block;
+          position: relative;
+          width: 60%;
+          padding-top: 10px;
+          padding-left: 2px;
+          color: #111;
+          font-size: 16px;
+          line-height: 22px;
+          font-weight: 400;
+          font-family: 'Roboto', sans-serif; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+              font-size: 16px;
+              line-height: 22px;
+              width: 60%; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+              font-size: 14px;
+              line-height: 20px;
+              width: auto; } }
+          #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
+            color: #7e13ff; }
+      #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
+        align-items: center;
+        justify-content: center; }
+
+#AppRoot .App .ViewContainer .MarketHelp.View {
+  background: #fff; }
+  #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox {
+    display: flex; }
+    #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .Spacer {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 90px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .Spacer {
+          height: 90px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .Spacer {
+          height: 70px; } }
+    #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent {
+      display: flex;
+      position: relative;
+      z-index: 2;
+      flex-direction: column;
+      padding-top: 0px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent {
+          padding-bottom: 0px; } }
+      @media screen and (max-width: 986px) {
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent {
+          padding-bottom: 50px; } }
+      #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        padding-bottom: 70px;
+        padding-left: 48px;
+        padding-right: 48px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem {
+            padding-bottom: 70px;
+            padding-left: 40px;
+            padding-right: 40px; } }
+        @media screen and (max-width: 986px) {
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem {
+            padding-bottom: 50px;
+            padding-left: 30px;
+            padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+          display: block;
+          text-align: center;
+          color: #00f5f5;
+          max-width: 800px;
+          font-size: 60px;
+          font-weight: 900;
+          font-family: 'Gilroy', sans-serif; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+              max-width: 800px;
+              font-size: 60px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
+              max-width: 600px;
+              font-size: 26px; } }
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding-left: 2px;
+          color: #111;
+          font-size: 60px;
+          font-weight: 900;
+          font-family: 'Gilroy', sans-serif; }
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .Highlight {
+            color: #00f5f5; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+              font-size: 60px; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
+              font-size: 26px; } }
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .Txt {
+            display: block;
+            position: relative; }
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+            display: flex;
+            position: relative;
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            margin-top: 4px;
+            overflow: hidden;
+            background-color: #00f5f5; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+                width: 16px;
+                height: 16px;
+                border-radius: 8px;
+                margin-top: 4px; } }
+            @media screen and (max-width: 986px) {
+              #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
+                width: 12px;
+                height: 12px;
+                border-radius: 9px;
+                margin-top: 2px;
+                margin-right: 5px; } }
+        #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+          display: block;
+          position: relative;
+          width: 60%;
+          padding-top: 10px;
+          padding-left: 2px;
+          color: #111;
+          font-size: 16px;
+          line-height: 22px;
+          font-weight: 400;
+          font-family: 'Roboto', sans-serif; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+              font-size: 16px;
+              line-height: 22px;
+              width: 60%; } }
+          @media screen and (max-width: 986px) {
+            #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
+              font-size: 14px;
+              line-height: 20px;
+              width: auto; } }
+          #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
+            color: #7e13ff; }
+      #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
+        align-items: center;
+        justify-content: center; }
+
 #AppRoot .App .ViewContainer .MarketPlace.View {
   background: #fff;
   background-color: #fff; }

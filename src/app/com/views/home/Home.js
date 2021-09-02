@@ -523,30 +523,39 @@ class Home extends PureComponent {
 									<span className="TitleImageContent"></span>
 								</div>
 								<div className="ContentItemContent">
-									The xDaiPunks project has the goal of
-									showing the coolness of owning a NFT based
-									Punk on the xDai blockchain. Because, well,
-									Punks and NFT’s are cool! As we all know,
-									the origins of the Non Fungible token lie in
-									the CryptoPunk project. The last couple of
-									years, CryptoPunks and NFT’s gained a lot of
-									interest. NFT’s are collectible digital
-									assets. They are unique and can’t be
-									replaced with something else.
+									xDaiPunks has the goal of showcasing the
+									Punks project on the xDai blockchain. Why?
+									Well, because Punks are cool and NFT’s are
+									cool. As we all know, the origins of the Non
+									Fungible token lie in the CryptoPunk
+									project. The last couple of years,
+									CryptoPunks and NFT’s gained a lot of
+									interest <br />
+									<br />
+									But things are not perfect. The majority of
+									the marketplaces for NFT’s are based on
+									Ethereum. Because of high gas fees, the
+									experience is less than optimal. As Ethereum
+									enthusiasts we are used to this. But if you
+									look at the real world it is kind of odd to
+									pay more than $10 USD for every time you
+									raise your hand during an auction
 									<br />
 									<br />
-									The xDai blockchain is an EVM based
-									blockchain that uses bridged Dai as currency
-									for transactions and gas fees. This unique
-									property makes transaction costs predictable
-									and low.
-									<br />
-									<br />
-									xDaiPunks shows what happens when NFT’s are
-									used on the xDai blockchain. The minting,
-									selling, bidding and buying of NFT’s work
-									like they are supposed to work. With low
-									costs for bidding and selling.
+									xDaiPunks has been built to show that things
+									can be better. The low gas fees and the high
+									transaction speed of the xDai blockchain
+									make buying, selling, offering and bidding a
+									breeze. That is why the marketplace will be
+									live directly when the minting phase starts.
+									The marketplace uses the underlying{' '}
+									<a
+										target="_blank"
+										rel="noreferrer"
+										href="https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/contracts">
+										smart contract
+									</a>{' '}
+									directly which you can verify
 								</div>
 							</div>
 
@@ -605,18 +614,46 @@ class Home extends PureComponent {
 									xDaiPunks is a homage to CryptoPunks and a
 									completely separate project. As such the
 									value of a xDaiPunk is not related to the
-									value of a CryptoPunk
+									value of a CryptoPunk.
 									<br />
 									<br />
+									DaiPunks is a homage to the CryptoPunk
+									project of LarvaLabs. With xDaiPunks we
+									thank LarvaLabs for their pioneering and for
+									creating the CryptoPunk project. The project
+									that basically started the ever growing NFT
+									movement
+								</div>
+							</div>
+
+							<div className="ContentItem">
+								<div className="ContentItemTitle">
+									<span className="Txt">
+										Why mint for 12 xDai?
+									</span>
+									<span className="TitleImageContent"></span>
+								</div>
+								<div className="ContentItemContent">
 									The minting of xDaiPunks is set at 12 xDai.
-									Why 12 xDai? First of all, the system that
-									is built on top of the smart contract will
-									need to be kept running and maintained for
-									years to come. And that will require funds.
-									Second, we would like to further develop the
-									system itself. And third, 12 is seen cool
-									number. A reference to your 12 word seed
-									phrase that you used to create your wallet.
+									This means that during the initial minting
+									phase, you will be able to generate a random
+									punk for 12 xDai. When all 10,000 Punks are
+									minted, you can get a Punk by using the
+									marketplace.
+									<br />
+									<br />
+									That the minting is set at 12 xDai has a
+									couple of reasons. As you know, keeping up,
+									maintaining and further developing a system
+									costs money. We want to keep xDaiPunks
+									running for years to come and we hope to
+									integrate xDaiPunks with other NFT
+									marketplaces in the near future. As the
+									minting phase is the only source of revenue
+									for this project, we have set the mining at
+									this price. It will cover the costs for
+									everything related to xDaiPunks for years to
+									come
 								</div>
 							</div>
 						</div>
