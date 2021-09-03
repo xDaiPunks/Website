@@ -7,6 +7,8 @@ import { BigNumber } from 'bignumber.js';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Input from 'src/app/com/input/Input';
+import Button from 'src/app/com/button/Button';
+import SearchFilter from 'src/app/com/searchFilter/SearchFilter';
 
 import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
@@ -30,6 +32,7 @@ class MarketPlace extends PureComponent {
 		this.searchTimeout = null;
 
 		this.data = punkService.punkData;
+
 		this.searchData = this.sortArray(
 			'status',
 			'-value',
@@ -38,17 +41,21 @@ class MarketPlace extends PureComponent {
 		);
 
 		this.state = {
+			filter: {},
 			sort: ['status', '-value', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
-
-		this.searchInput = React.createRef();
 
 		this.componentName = 'MarketPlace';
 
 		this.guid = utilityService.guid();
 
+		this.searchInput = React.createRef();
+		this.searchFilter = React.createRef();
+
 		this.getData = this.getData.bind(this);
+		this.showFilter = this.showFilter.bind(this);
+
 		this.searchChange = this.searchChange.bind(this);
 		this.listComponent = this.listComponent.bind(this);
 	}
@@ -327,6 +334,13 @@ class MarketPlace extends PureComponent {
 	evaluate(condition) {
 		return Function(`return ${condition}`)();
 	}
+
+	showFilter() {
+		const vm = this;
+		vm.searchFilter.current.showSearchFilter(vm.state.searchFilter);
+	}
+
+	filterChange() {}
 
 	searchChange(event) {
 		let value;
@@ -637,11 +651,24 @@ class MarketPlace extends PureComponent {
 								/>
 							</div>
 							<div className="ControlSpacer" />
-							<div className="FilterControl"></div>
+							<div className="FilterControl">
+								<Button
+									type={'actionButtonIcon'}
+									label={'Filter'}
+									title={'Filter'}
+									onClick={(event) => {
+										event.preventDefault();
+										vm.showFilter();
+									}}
+									iconImage="/static/media/images/icon-filter.svg"
+									cssClass={'ActionButtonFilter'}
+								/>
+							</div>
 						</div>
 					</div>
 					<ListComponent />
 				</div>
+				<SearchFilter ref={vm.searchFilter} animate={true} />
 			</div>
 		);
 	}

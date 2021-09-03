@@ -76,13 +76,13 @@
 								display: block;
 								position: relative;
 
-								width: 40vw;
-								height: 40vw;
+								width: 33vw;
+								height: 33vw;
 
 								border-radius: 22px;
 
 								background: radial-gradient(
-									40vw 40vw at 50% 100%,
+									33vw 33vw at 50% 100%,
 									#00f5f5,
 									#8000ff
 								);
@@ -153,7 +153,7 @@
 							.PunkDetailsBackground {
 								padding-top: 25px;
 								padding-left: 25px;
-								height: 40vw;
+								height: 33vw;
 								border-radius: 22px;
 
 								background-color: #f2f2f2;
@@ -315,7 +315,7 @@
 
 							flex-direction: column;
 
-							width: 40vw;
+							width: 33vw;
 
 							@include responsiveMax($responsiveMed) {
 								width: 40vw;

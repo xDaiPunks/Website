@@ -467,6 +467,65 @@
 	}
 }
 
+.ActionButtonFilter {
+	display: flex;
+	position: relative;
+
+	overflow: hidden;
+	
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: flex-start;
+
+	width: 112px;
+	height: 36px;
+	border-radius: 18px;
+
+	padding-left: 0px;
+	padding-right: 21px;
+
+	font-family: 'Gilroy', sans-serif;
+
+	background-color: #fff;
+
+	.Txt {
+		display: block;
+		position: static;
+
+		text-align: left;
+
+		user-select: none;
+
+		color: #111;
+
+		padding-left: 5px;
+
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: normal;
+
+		white-space: nowrap;
+
+		font-family: 'Gilroy', sans-serif;
+	}
+
+	.Icon {
+		display: flex;
+		position: relative;
+
+		height: 18px;
+		padding-bottom: 1px;
+
+		align-items: center;
+		justify-content: center;
+
+		.IconImage {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+
 .NavigationButton {
 	display: flex;
 	position: relative;
