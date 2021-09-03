@@ -11,6 +11,7 @@ import PunkService from 'src/app/services/PunkService';
 import UserService from 'src/app/services/UserService';
 import ViewService from 'src/app/services/ViewService';
 import EventService from 'src/app/services/EventService';
+import RouteService from 'src/app/services/RouteService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 
@@ -19,6 +20,7 @@ const punkService = new PunkService();
 const userService = new UserService();
 const viewService = new ViewService();
 const eventService = new EventService();
+const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
@@ -262,6 +264,8 @@ class Punk extends PureComponent {
 	}
 
 	punkDataComponent() {
+		let punkStatus;
+
 		let punkValue;
 		let punkBidValue;
 		let punkSaleValue;
@@ -271,6 +275,7 @@ class Punk extends PureComponent {
 		// console.log(vm.punkDetails);
 
 		const idx = vm.punkDetails.idx;
+		const mint = vm.punkDetails.mint;
 		const bid = vm.punkDetails.bid;
 		const sale = vm.punkDetails.sale;
 		const value = vm.punkDetails.value;
@@ -299,27 +304,30 @@ class Punk extends PureComponent {
 			}
 		}
 
+		punkStatus = 'Not Minted';
+
+		if (mint === true) {
+			if (bid !== true && sale !== true) {
+				punkStatus = 'Market';
+			} else {
+				if (bid === true && sale !== true) {
+					punkStatus = 'Bid';
+				}
+
+				if (bid !== true && sale === true) {
+					punkStatus = 'Sale';
+				}
+
+				if (bid === true && sale === true) {
+					punkStatus = 'Sale & Bid';
+				}
+			}
+		}
+
 		if (bid !== true && sale !== true) {
 			return (
 				<div className="PunkDetails">
-					<div className="PunkDetailItem">
-						<span className="PunkDetailItemTitle Big">Number</span>
-						<span className="PunkDetailItemContent Big">
-							{'#' + idx}
-						</span>
-					</div>
-					<div className="PunkDetailItem">
-						<span className="PunkDetailItemTitle">Value</span>
-						<span className="PunkDetailItemContent">
-							{punkValue + ' xDai'}
-						</span>
-					</div>
-				</div>
-			);
-		} else {
-			if (bid === true && sale !== true) {
-				return (
-					<div className="PunkDetails">
+					<div className="PunkDetailsBackground">
 						<div className="PunkDetailItem">
 							<span className="PunkDetailItemTitle Big">
 								Number
@@ -328,6 +336,7 @@ class Punk extends PureComponent {
 								{'#' + idx}
 							</span>
 						</div>
+
 						<div className="PunkDetailItem">
 							<span className="PunkDetailItemTitle">Value</span>
 							<span className="PunkDetailItemContent">
@@ -335,12 +344,52 @@ class Punk extends PureComponent {
 							</span>
 						</div>
 						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">
-								Has bid of
-							</span>
+							<span className="PunkDetailItemTitle">Status</span>
 							<span className="PunkDetailItemContent">
-								{punkBidValue + ' xDai'}
+								{punkStatus}
 							</span>
+						</div>
+					</div>
+				</div>
+			);
+		} else {
+			if (bid === true && sale !== true) {
+				return (
+					<div className="PunkDetails">
+						<div className="PunkDetailsBackground">
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle Big">
+									Number
+								</span>
+								<span className="PunkDetailItemContent Big">
+									{'#' + idx}
+								</span>
+							</div>
+
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Value
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkValue + ' xDai'}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Status
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkStatus}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Has bid of
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkBidValue + ' xDai'}
+								</span>
+							</div>
 						</div>
 					</div>
 				);
@@ -349,27 +398,40 @@ class Punk extends PureComponent {
 			if (bid !== true && sale === true) {
 				return (
 					<div className="PunkDetails">
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle Big">
-								Number
-							</span>
-							<span className="PunkDetailItemContent Big">
-								{'#' + idx}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Value</span>
-							<span className="PunkDetailItemContent">
-								{punkValue + ' xDai'}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">
-								Is offered for
-							</span>
-							<span className="PunkDetailItemContent">
-								{punkSaleValue + ' xDai'}
-							</span>
+						<div className="PunkDetailsBackground">
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle Big">
+									Number
+								</span>
+								<span className="PunkDetailItemContent Big">
+									{'#' + idx}
+								</span>
+							</div>
+
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Value
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkValue + ' xDai'}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Status
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkStatus}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Is offered for
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkSaleValue + ' xDai'}
+								</span>
+							</div>
 						</div>
 					</div>
 				);
@@ -378,35 +440,47 @@ class Punk extends PureComponent {
 			if (bid === true && sale === true) {
 				return (
 					<div className="PunkDetails">
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle Big">
-								Number
-							</span>
-							<span className="PunkDetailItemContent Big">
-								{'#' + idx}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Value</span>
-							<span className="PunkDetailItemContent">
-								{punkValue + ' xDai'}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">
-								Has bid of
-							</span>
-							<span className="PunkDetailItemContent">
-								{punkBidValue + ' xDai'}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">
-								Is offered for
-							</span>
-							<span className="PunkDetailItemContent">
-								{punkSaleValue + ' xDai'}
-							</span>
+						<div className="PunkDetailsBackground">
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle Big">
+									Number
+								</span>
+								<span className="PunkDetailItemContent Big">
+									{'#' + idx}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Value
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkValue + ' xDai'}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Status
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkStatus}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Has bid of
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkBidValue + ' xDai'}
+								</span>
+							</div>
+							<div className="PunkDetailItem">
+								<span className="PunkDetailItemTitle">
+									Is offered for
+								</span>
+								<span className="PunkDetailItemContent">
+									{punkSaleValue + ' xDai'}
+								</span>
+							</div>
 						</div>
 					</div>
 				);
@@ -426,6 +500,7 @@ class Punk extends PureComponent {
 		const owner = vm.punkDetails.owner;
 
 		const idx = vm.punkDetails.idx;
+		const mint = vm.punkDetails.mint;
 		const bid = vm.punkDetails.bid;
 		const sale = vm.punkDetails.sale;
 		const bidData = vm.punkDetails.bidData;
@@ -477,161 +552,126 @@ class Punk extends PureComponent {
 				</div>
 			);
 		} else {
-			if (owned !== true) {
-				if (isBidding !== true) {
-					if (sale === false) {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Enter a bid'}
-										title={'Enter a bid'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.enterBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-							</div>
-						);
-					} else {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer Padding">
-									<Button
-										type={'actionButton'}
-										label={'Buy punk'}
-										title={'Buy punk'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.buy();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Enter a bid'}
-										title={'Enter a bid'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.enterBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-							</div>
-						);
-					}
-				} else {
-					if (sale === false) {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Withdraw bid'}
-										title={'Withdraw bid'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.withdrawBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-							</div>
-						);
-					} else {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer Padding">
-									<Button
-										type={'actionButton'}
-										label={'Buy punk'}
-										title={'Buy punk'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.buy();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Withdraw bid'}
-										title={'Withdraw bid'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.withdrawBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
-							</div>
-						);
-					}
-				}
-			} else {
-				if (bid !== true && sale !== true) {
-					return (
-						<div className="PunkDetailButtons">
-							<div className="PunkDetailButtonContainer">
-								<Button
-									type={'actionButton'}
-									label={'Offer for sale'}
-									title={'Offer for sale'}
-									onClick={(event) => {
-										event.preventDefault();
-										vm.offerForSale();
-									}}
-									cssClass={'ActionButton'}
-								/>
-							</div>
+			if (mint !== true) {
+				return (
+					<div className="PunkDetailButtons">
+						<div className="PunkDetailButtonContainer">
+							<Button
+								type={'actionButton'}
+								label={'Try get this punk'}
+								title={'Try get this punk'}
+								onClick={(event) => {
+									event.preventDefault();
+									routeService.navigateRoute('/');
+								}}
+								cssClass={'ActionButton'}
+							/>
 						</div>
-					);
-				} else {
-					if (bid !== true && sale === true) {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Remove offer'}
-										title={'Remove offer'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.removeOffer();
-										}}
-										cssClass={'ActionButton'}
-									/>
+					</div>
+				);
+			} else {
+				if (owned !== true) {
+					if (isBidding !== true) {
+						if (sale === false) {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Enter a bid'}
+											title={'Enter a bid'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.enterBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
 								</div>
-							</div>
-						);
+							);
+						} else {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer Padding">
+										<Button
+											type={'actionButton'}
+											label={'Buy punk'}
+											title={'Buy punk'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.buy();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Enter a bid'}
+											title={'Enter a bid'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.enterBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+								</div>
+							);
+						}
+					} else {
+						if (sale === false) {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Withdraw bid'}
+											title={'Withdraw bid'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.withdrawBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+								</div>
+							);
+						} else {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer Padding">
+										<Button
+											type={'actionButton'}
+											label={'Buy punk'}
+											title={'Buy punk'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.buy();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Withdraw bid'}
+											title={'Withdraw bid'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.withdrawBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+								</div>
+							);
+						}
 					}
-
-					if (bid === true && sale !== true) {
+				} else {
+					if (bid !== true && sale !== true) {
 						return (
 							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer Padding">
-									<Button
-										type={'actionButton'}
-										label={'Accept bid'}
-										title={
-											'Accept bid of ' +
-											punkBidValue +
-											' xDai'
-										}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.acceptBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
-								</div>
 								<div className="PunkDetailButtonContainer">
 									<Button
 										type={'actionButton'}
@@ -646,41 +686,95 @@ class Punk extends PureComponent {
 								</div>
 							</div>
 						);
-					}
+					} else {
+						if (bid !== true && sale === true) {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Remove offer'}
+											title={'Remove offer'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.removeOffer();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+								</div>
+							);
+						}
 
-					if (bid === true && sale === true) {
-						return (
-							<div className="PunkDetailButtons">
-								<div className="PunkDetailButtonContainer Padding">
-									<Button
-										type={'actionButton'}
-										label={'Accept bid'}
-										title={
-											'Accept bid of ' +
-											punkBidValue +
-											' xDai'
-										}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.acceptBid();
-										}}
-										cssClass={'ActionButton'}
-									/>
+						if (bid === true && sale !== true) {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer Padding">
+										<Button
+											type={'actionButton'}
+											label={'Accept bid'}
+											title={
+												'Accept bid of ' +
+												punkBidValue +
+												' xDai'
+											}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.acceptBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Offer for sale'}
+											title={'Offer for sale'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.offerForSale();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
 								</div>
-								<div className="PunkDetailButtonContainer">
-									<Button
-										type={'actionButton'}
-										label={'Remove offer'}
-										title={'Remove offer'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.removeOffer();
-										}}
-										cssClass={'ActionButton'}
-									/>
+							);
+						}
+
+						if (bid === true && sale === true) {
+							return (
+								<div className="PunkDetailButtons">
+									<div className="PunkDetailButtonContainer Padding">
+										<Button
+											type={'actionButton'}
+											label={'Accept bid'}
+											title={
+												'Accept bid of ' +
+												punkBidValue +
+												' xDai'
+											}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.acceptBid();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
+									<div className="PunkDetailButtonContainer">
+										<Button
+											type={'actionButton'}
+											label={'Remove offer'}
+											title={'Remove offer'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.removeOffer();
+											}}
+											cssClass={'ActionButton'}
+										/>
+									</div>
 								</div>
-							</div>
-						);
+							);
+						}
 					}
 				}
 			}
@@ -743,13 +837,7 @@ class Punk extends PureComponent {
 				<div className="ViewBox">
 					<div className="Spacer"></div>
 					<div className="PunkPositioner">
-						<div className="PunkDot">
-							<img
-								alt={''}
-								className={'PunkDotImageDetail'}
-								src={punkImageUrl}
-							/>
-						</div>
+
 						<div className="PunkContainer">
 							<div className="PunkItem">
 								<img

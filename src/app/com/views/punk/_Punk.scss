@@ -58,52 +58,6 @@
 							padding-right: $paddingSmall;
 						}
 
-						.PunkDot {
-							display: flex;
-							position: absolute;
-
-							top: 0px;
-							right: $padding;
-
-							width: 36px;
-							height: 36px;
-
-							border-radius: 18px;
-
-							align-items: center;
-							justify-content: center;
-
-							background-color: #00f5f5;
-
-							.PunkDotImageDetail {
-								width: 100%;
-
-								border-radius: 18px;
-								overflow: hidden;
-
-								-ms-interpolation-mode: nearest-neighbor;
-								image-rendering: pixelated;
-								image-rendering: -moz-crisp-edges;
-							}
-
-							@include responsiveMax($responsiveSmall) {
-								display: none;
-								top: 0px;
-								right: $paddingSmall;
-
-								width: 0px;
-								height: 0px;
-
-								.PunkDotImageDetail {
-									display: none;
-
-									-ms-interpolation-mode: nearest-neighbor;
-									image-rendering: pixelated;
-									image-rendering: -moz-crisp-edges;
-								}
-							}
-						}
-
 						.PunkContainer {
 							display: flex;
 							position: relative;
@@ -183,11 +137,11 @@
 							flex-grow: 1;
 							flex-direction: column;
 
-							padding-top: 15px;
+							padding-top: 0px;
 							padding-left: 22px;
 
 							@include responsiveMax($responsiveMed) {
-								padding-top: 15px;
+								padding-top: 0px;
 								padding-left: 22px;
 							}
 
@@ -196,102 +150,135 @@
 								padding-left: 4px;
 							}
 
-							.PunkDetailItem {
-								display: flex;
-								position: relative;
+							.PunkDetailsBackground {
+								padding-top: 25px;
+								padding-left: 25px;
+								height: 40vw;
+								border-radius: 22px;
 
-								flex-direction: column;
+								background-color: #f2f2f2;
 
-								padding-bottom: 10px;
+								@include responsiveMax($responsiveMed) {
+									padding-top: 25px;
+									padding-left: 25px;
+									height: 40vw;
+									border-radius: 22px;
 
-								.PunkDetailItemTitle {
-									display: block;
+									background-color: #f2f2f2;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									padding-top: 0px;
+									padding-left: 0px;
+									height: auto;
+									border-radius: 0px;
+
+									background-color: transparent;
+								}
+
+								.PunkDetailItem {
+									display: flex;
 									position: relative;
 
-									color: #111;
+									flex-direction: column;
 
-									font-size: 14px;
-									font-weight: 600;
-									font-family: 'Gilroy', sans-serif;
+									padding-bottom: 10px;
 
-									@include responsiveMax($responsiveMed) {
-										font-size: 14px;
-									}
+									.PunkDetailItemTitle {
+										display: block;
+										position: relative;
 
-									@include responsiveMax($responsiveSmall) {
-										font-size: 10px;
-									}
-								}
-
-								.PunkDetailItemTitle.Big {
-									display: block;
-								}
-
-								.PunkDetailItemContent {
-									display: block;
-									position: relative;
-
-									color: #111;
-
-									font-size: 22px;
-									font-weight: 900;
-									font-family: 'Gilroy', sans-serif;
-
-									@include responsiveMax($responsiveMed) {
-										font-size: 22px;
-									}
-
-									@include responsiveMax($responsiveSmall) {
-										font-size: 14px;
-									}
-								}
-
-								.PunkDetailItemContent.Big {
-									display: block;
-									font-size: 48px;
-
-									@include responsiveMax($responsiveMed) {
-										font-size: 48px;
-									}
-
-									@include responsiveMax($responsiveSmall) {
-										font-size: 26px;
-										margin-top: -2px;
-										margin-bottom: -4px;
-									}
-								}
-
-								.PunkDetailItemAttributes {
-									display: block;
-									position: relative;
-
-									text-align: left;
-
-									.PunkDetailItemAttribute {
-										display: inline-block;
-
-										padding-left: 0px;
-										padding-right: 5px;
-
-										white-space: nowrap;
+										color: #111;
 
 										font-size: 14px;
-										font-weight: 700;
-
+										font-weight: 600;
 										font-family: 'Gilroy', sans-serif;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 14px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 10px;
+										}
+									}
+
+									.PunkDetailItemTitle.Big {
+										display: block;
+									}
+
+									.PunkDetailItemContent {
+										display: block;
+										position: relative;
+
+										color: #111;
+
+										font-size: 22px;
+										font-weight: 900;
+										font-family: 'Gilroy', sans-serif;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 22px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 14px;
+										}
+									}
+
+									.PunkDetailItemContent.Big {
+										display: block;
+										font-size: 48px;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 48px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 26px;
+											margin-top: -2px;
+											margin-bottom: -4px;
+										}
+									}
+
+									.PunkDetailItemAttributes {
+										display: block;
+										position: relative;
+
+										text-align: left;
+
+										.PunkDetailItemAttribute {
+											display: inline-block;
+
+											padding-left: 0px;
+											padding-right: 5px;
+
+											white-space: nowrap;
+
+											font-size: 14px;
+											font-weight: 700;
+
+											font-family: 'Gilroy', sans-serif;
+										}
 									}
 								}
-							}
 
-							.PunkDetailItem.AlignCenter {
-								align-items: center;
+								.PunkDetailItem.AlignCenter {
+									align-items: center;
 
-								.PunkDetailItemAttributes {
-									text-align: center;
+									.PunkDetailItemAttributes {
+										text-align: center;
 
-									.PunkDetailItemAttribute {
-										padding-left: 5px;
-										padding-right: 5px;
+										.PunkDetailItemAttribute {
+											padding-left: 5px;
+											padding-right: 5px;
+										}
 									}
 								}
 							}
@@ -329,11 +316,9 @@
 							flex-direction: column;
 
 							width: 40vw;
-							padding-top: 22px;
 
 							@include responsiveMax($responsiveMed) {
 								width: 40vw;
-								padding-top: 22px;
 							}
 
 							@include responsiveMax($responsiveSmall) {

@@ -24,7 +24,7 @@
 	},
 
 	"marketHelp": {
-		"path": "/using-marketplace",
+		"path": "/using-the-marketplace",
 		"type": "public",
 		"redirect": "none",
 		"animationType": "overlay",
