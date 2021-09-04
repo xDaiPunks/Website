@@ -8,7 +8,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Input from 'src/app/com/input/Input';
 import Button from 'src/app/com/button/Button';
-import SearchFilter from 'src/app/com/searchFilter/SearchFilter';
 
 import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
@@ -41,7 +40,10 @@ class MarketPlace extends PureComponent {
 		);
 
 		this.state = {
-			filter: {},
+			filter: {
+				state: null,
+				attributes: null,
+			},
 			sort: ['status', '-value', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
@@ -57,6 +59,8 @@ class MarketPlace extends PureComponent {
 		this.showFilter = this.showFilter.bind(this);
 
 		this.searchChange = this.searchChange.bind(this);
+		this.setSearchFilter = this.setSearchFilter.bind(this);
+
 		this.listComponent = this.listComponent.bind(this);
 	}
 
@@ -337,10 +341,13 @@ class MarketPlace extends PureComponent {
 
 	showFilter() {
 		const vm = this;
-		vm.searchFilter.current.showSearchFilter(vm.state.searchFilter);
-	}
+		const filter = utilityService.cloneObject(vm.state.filter);
 
-	filterChange() {}
+		eventService.dispatchObjectEvent('show:searchFilter', {
+			filter: filter,
+			setSearchFilter: vm.setSearchFilter,
+		});
+	}
 
 	searchChange(event) {
 		let value;
@@ -384,6 +391,11 @@ class MarketPlace extends PureComponent {
 						}
 					});
 
+					state.filter = {
+						state: null,
+						attributes: null,
+					};
+
 					vm.searchData = searchData;
 					state.items = vm.searchData.slice(0, 60);
 
@@ -410,6 +422,60 @@ class MarketPlace extends PureComponent {
 				}
 			}
 		}
+	}
+
+	setSearchFilter(searchFilter) {
+		let key;
+
+		let attributes;
+		let filterData;
+
+		let allAttributes;
+		let attributesCount;
+
+		let searchFilterAttributes;
+
+		const vm = this;
+		const state = utilityService.cloneObject(vm.state);
+
+		filterData = vm.data;
+
+		state.filter = searchFilter;
+
+		if (!searchFilter || !searchFilter.hasOwnProperty('attributes')) {
+			vm.searchData = vm.data;
+			state.items = vm.searchData.slice(0, 60);
+		} else {
+			attributesCount = Object.keys(searchFilter.attributes).length;
+
+			if (attributesCount === 0) {
+				vm.searchData = vm.data;
+				state.items = vm.searchData.slice(0, 60);
+			} else {
+				filterData = vm.data.filter((item, index) => {
+					if (item) {
+						attributes = item.attributes;
+						searchFilterAttributes = searchFilter.attributes;
+
+						allAttributes = true;
+						for (key in searchFilterAttributes) {
+							if (attributes.includes(key) !== true) {
+								allAttributes = false;
+							}
+						}
+
+						if (allAttributes === true) {
+							return item;
+						}
+					}
+				});
+			}
+
+			vm.searchData = filterData;
+			state.items = vm.searchData.slice(0, 60);
+		}
+
+		vm.setState(state);
 	}
 
 	listComponent() {
@@ -646,7 +712,7 @@ class MarketPlace extends PureComponent {
 									id={'inputSearch'}
 									type={'text'}
 									inputType={'inputSearch'}
-									placeholder={'Search by number'}
+									placeholder={'Number'}
 									onChange={vm.searchChange}
 								/>
 							</div>
@@ -668,7 +734,6 @@ class MarketPlace extends PureComponent {
 					</div>
 					<ListComponent />
 				</div>
-				<SearchFilter ref={vm.searchFilter} animate={true} />
 			</div>
 		);
 	}

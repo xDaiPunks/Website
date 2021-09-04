@@ -415,7 +415,7 @@
 	float: right;
 
 	overflow: hidden;
-	
+
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
@@ -472,7 +472,7 @@
 	position: relative;
 
 	overflow: hidden;
-	
+
 	flex-direction: row-reverse;
 	align-items: center;
 	justify-content: flex-start;
@@ -487,6 +487,14 @@
 	font-family: 'Gilroy', sans-serif;
 
 	background-color: #fff;
+
+	@include responsiveMax($responsiveMed) {
+		padding-right: 21px;
+	}
+
+	@include responsiveMax($responsiveSmall) {
+		padding-right: 0px;
+	}
 
 	.Txt {
 		display: block;

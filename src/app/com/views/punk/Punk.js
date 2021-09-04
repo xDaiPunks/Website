@@ -275,7 +275,10 @@ class Punk extends PureComponent {
 		// console.log(vm.punkDetails);
 
 		const idx = vm.punkDetails.idx;
+
 		const mint = vm.punkDetails.mint;
+		const rank = vm.punkDetails.rank;
+
 		const bid = vm.punkDetails.bid;
 		const sale = vm.punkDetails.sale;
 		const value = vm.punkDetails.value;
@@ -328,35 +331,7 @@ class Punk extends PureComponent {
 			return (
 				<div className="PunkDetails">
 					<div className="PunkDetailsBackground">
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle Big">
-								Number
-							</span>
-							<span className="PunkDetailItemContent Big">
-								{'#' + idx}
-							</span>
-						</div>
-
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Value</span>
-							<span className="PunkDetailItemContent">
-								{punkValue + ' xDai'}
-							</span>
-						</div>
-						<div className="PunkDetailItem">
-							<span className="PunkDetailItemTitle">Status</span>
-							<span className="PunkDetailItemContent">
-								{punkStatus}
-							</span>
-						</div>
-					</div>
-				</div>
-			);
-		} else {
-			if (bid === true && sale !== true) {
-				return (
-					<div className="PunkDetails">
-						<div className="PunkDetailsBackground">
+						<div className="PunkDetailItemContainer">
 							<div className="PunkDetailItem">
 								<span className="PunkDetailItemTitle Big">
 									Number
@@ -366,6 +341,17 @@ class Punk extends PureComponent {
 								</span>
 							</div>
 
+							<div className="PunkDetailItem AlignRight">
+								<span className="PunkDetailItemTitle Big">
+									Status
+								</span>
+								<span className="PunkDetailItemContent Big">
+									{punkStatus}
+								</span>
+							</div>
+						</div>
+
+						<div className="PunkDetailItemContainer">
 							<div className="PunkDetailItem">
 								<span className="PunkDetailItemTitle">
 									Value
@@ -374,21 +360,73 @@ class Punk extends PureComponent {
 									{punkValue + ' xDai'}
 								</span>
 							</div>
-							<div className="PunkDetailItem">
+
+							<div className="PunkDetailItem AlignRight">
 								<span className="PunkDetailItemTitle">
-									Status
+									Rank
 								</span>
 								<span className="PunkDetailItemContent">
-									{punkStatus}
+									{rank}
 								</span>
 							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Has bid of
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkBidValue + ' xDai'}
-								</span>
+						</div>
+					</div>
+				</div>
+			);
+		} else {
+			if (bid === true && sale !== true) {
+				return (
+					<div className="PunkDetails">
+						<div className="PunkDetailsBackground">
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle Big">
+										Number
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{'#' + idx}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle Big">
+										Status
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{punkStatus}
+									</span>
+								</div>
+							</div>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Value
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkValue + ' xDai'}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle">
+										Rank
+									</span>
+									<span className="PunkDetailItemContent">
+										{rank}
+									</span>
+								</div>
+							</div>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Has bid of
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkBidValue + ' xDai'}
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -399,38 +437,55 @@ class Punk extends PureComponent {
 				return (
 					<div className="PunkDetails">
 						<div className="PunkDetailsBackground">
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle Big">
-									Number
-								</span>
-								<span className="PunkDetailItemContent Big">
-									{'#' + idx}
-								</span>
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle Big">
+										Number
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{'#' + idx}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle Big">
+										Status
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{punkStatus}
+									</span>
+								</div>
 							</div>
 
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Value
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkValue + ' xDai'}
-								</span>
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Value
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkValue + ' xDai'}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle">
+										Rank
+									</span>
+									<span className="PunkDetailItemContent">
+										{rank}
+									</span>
+								</div>
 							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Status
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkStatus}
-								</span>
-							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Is offered for
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkSaleValue + ' xDai'}
-								</span>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Is offered for
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkSaleValue + ' xDai'}
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -441,45 +496,66 @@ class Punk extends PureComponent {
 				return (
 					<div className="PunkDetails">
 						<div className="PunkDetailsBackground">
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle Big">
-									Number
-								</span>
-								<span className="PunkDetailItemContent Big">
-									{'#' + idx}
-								</span>
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle Big">
+										Number
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{'#' + idx}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle Big">
+										Status
+									</span>
+									<span className="PunkDetailItemContent Big">
+										{punkStatus}
+									</span>
+								</div>
 							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Value
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkValue + ' xDai'}
-								</span>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Value
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkValue + ' xDai'}
+									</span>
+								</div>
+
+								<div className="PunkDetailItem AlignRight">
+									<span className="PunkDetailItemTitle">
+										Rank
+									</span>
+									<span className="PunkDetailItemContent">
+										{rank}
+									</span>
+								</div>
 							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Status
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkStatus}
-								</span>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Has bid of
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkBidValue + ' xDai'}
+									</span>
+								</div>
 							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Has bid of
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkBidValue + ' xDai'}
-								</span>
-							</div>
-							<div className="PunkDetailItem">
-								<span className="PunkDetailItemTitle">
-									Is offered for
-								</span>
-								<span className="PunkDetailItemContent">
-									{punkSaleValue + ' xDai'}
-								</span>
+
+							<div className="PunkDetailItemContainer">
+								<div className="PunkDetailItem">
+									<span className="PunkDetailItemTitle">
+										Is offered for
+									</span>
+									<span className="PunkDetailItemContent">
+										{punkSaleValue + ' xDai'}
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -837,7 +913,6 @@ class Punk extends PureComponent {
 				<div className="ViewBox">
 					<div className="Spacer"></div>
 					<div className="PunkPositioner">
-
 						<div className="PunkContainer">
 							<div className="PunkItem">
 								<img

@@ -4,7 +4,9 @@
 
 	overflow: hidden;
 
-	z-index: 50;
+	opacity: 0;
+
+	z-index: 100;
 
 	width: 100vw;
 	height: 100vh;
@@ -15,20 +17,119 @@
 
 	background-color: #f2f2f2;
 
-	.SearchFilterSpacer {
+	transition: opacity 0.4s $linear;
+
+	.SearchFilterHeader {
 		display: block;
 		position: fixed;
+
+		z-index: 10;
+
 		background-color: #f2f2f2;
 
 		width: 100%;
 		height: $heightHeader;
 
+		padding-left: $padding;
+
 		@include responsiveMax($responsiveMed) {
 			height: $heightHeaderMed;
+
+			padding-left: $paddingMed;
 		}
 
 		@include responsiveMax($responsiveSmall) {
 			height: $heightHeaderSmall;
+
+			padding-left: $paddingSmall;
+		}
+
+		.SearchFilterHeaderCountainer {
+			display: flex;
+			position: relative;
+
+			flex-direction: row;
+
+			.SearchFilterHeaderTxt {
+				display: block;
+				position: relative;
+
+				height: $heightHeader;
+				line-height: $heightHeader;
+
+				font-family: 'Gilroy';
+				font-size: 26px;
+				font-weight: 900;
+
+				@include responsiveMax($responsiveMed) {
+					height: $heightHeaderMed;
+					line-height: $heightHeaderMed;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					height: $heightHeaderSmall;
+					line-height: $heightHeaderSmall;
+				}
+			}
+
+			.CloseSearchFilterButton {
+				display: flex;
+				position: absolute;
+
+				height: $heightHeader;
+
+				padding-left: $padding;
+				padding-right: $padding;
+
+				right: 0px;
+				top: 0px;
+
+				z-index: 5;
+
+				align-items: center;
+				justify-content: center;
+
+				@include responsiveMax($responsiveMed) {
+					height: $heightHeaderMed;
+
+					padding-left: $paddingMed;
+					padding-right: $paddingMed;
+				}
+
+				@include responsiveMax($responsiveSmall) {
+					height: $heightHeaderSmall;
+
+					padding-left: $paddingSmall;
+					padding-right: $paddingSmall;
+				}
+
+				.Cross {
+					display: flex;
+					position: relative;
+
+					width: 22px;
+
+					justify-content: center;
+
+					.CloseCrossLine {
+						display: block;
+						position: absolute;
+
+						width: 20px;
+						height: 2px;
+
+						background-color: #111;
+					}
+
+					.CloseCrossLine.Left {
+						transform: rotate(-45deg);
+					}
+
+					.CloseCrossLine.Right {
+						transform: rotate(225deg);
+					}
+				}
+			}
 		}
 	}
 
@@ -46,14 +147,14 @@
 		padding-right: $padding;
 
 		@include responsiveMax($responsiveMed) {
-			height: $heightHeaderMed;
+			padding-top: $heightHeaderMed;
 
 			padding-left: $paddingMed;
 			padding-right: $paddingMed;
 		}
 
 		@include responsiveMax($responsiveSmall) {
-			height: $heightHeaderSmall;
+			padding-top: $heightHeaderSmall;
 
 			padding-left: $paddingSmall;
 			padding-right: $paddingSmall;
@@ -65,9 +166,11 @@
 
 			color: #111;
 
-			font-size: 26px;
+			font-size: 18px;
 			font-weight: 900;
 			font-family: 'Gilroy', sans-serif;
+
+			padding-bottom: 20px;
 		}
 
 		.AttributeComponent {
@@ -140,5 +243,5 @@
 }
 
 .SearchFilter.Animate {
-	transition: opacity 0.4s $linear;
+	opacity: 1;
 }

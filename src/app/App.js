@@ -4,6 +4,7 @@ import { Router, Route } from 'src/react/router/WebRouter';
 
 import Modal from 'src/app/com/modal/Modal';
 import Navigation from 'src/app/com/navigation/Navigation';
+import SearchFilter from 'src/app/com/searchFilter/SearchFilter';
 
 import AppService from 'src/app/services/AppService';
 import ViewService from 'src/app/services/ViewService';
@@ -94,6 +95,7 @@ class App extends Component {
 			return (
 				<div className="App">
 					<Modal />
+					<SearchFilter />
 					<Navigation />
 					<Router history={historyService.history}>
 						<Route render={routeService.application} />

@@ -8,23 +8,15 @@ import Input from 'src/app/com/input/Input';
 
 import Animate from 'src/app/services/Animate';
 
-import AppService from 'src/app/services/AppService';
-import Web3Service from 'src/app/services/Web3Service';
 import EventService from 'src/app/services/EventService';
-import ConfigService from 'src/app/services/ConfigService';
 import HistoryService from 'src/app/services/HistoryService';
 import UtilityService from 'src/app/services/UtilityService';
-import TranslationService from 'src/app/services/TranslationService';
 
 const animate = new Animate();
 
-const appService = new AppService();
-const web3Service = new Web3Service();
 const eventService = new EventService();
-const configService = new ConfigService();
 const historyService = new HistoryService();
 const utilityService = new UtilityService();
-const translationService = new TranslationService();
 
 class SearchFilter extends PureComponent {
 	constructor(props) {
@@ -41,9 +33,17 @@ class SearchFilter extends PureComponent {
 
 		this.buyInput = React.createRef();
 
+		this.filterEvent = this.filterEvent.bind(this);
+
 		this.showSearchFilter = this.showSearchFilter.bind(this);
 		this.hideSearchFilter = this.hideSearchFilter.bind(this);
 		this.closeSearchFilter = this.closeSearchFilter.bind(this);
+
+		this.stateFilter = this.stateFilter.bind(this);
+		this.attributeFilter = this.attributeFilter.bind(this);
+
+		this.setEventListeners = this.setEventListeners.bind(this);
+		this.setAttributeFilter = this.setAttributeFilter.bind(this);
 
 		this.attributeComponent = this.attributeComponent.bind(this);
 	}
@@ -61,25 +61,61 @@ class SearchFilter extends PureComponent {
 				});
 			}
 		);
+
+		eventService.on('hide:searchFilter', vm.guid, (props) => {
+			if (!props.animate) {
+				animate = true;
+			} else {
+				animate = props.animate;
+			}
+
+			vm.hideSearchFilter({
+				animate: animate,
+				type: props.type,
+			});
+		});
+
+		eventService.on('show:searchFilter', vm.guid, (props) => {
+			let key;
+			let propsObject = {};
+
+			for (key in props) {
+				propsObject[key] = props[key];
+			}
+
+			if (!props.animate) {
+				propsObject.animate = true;
+			} else {
+				propsObject.animate = props.animate;
+			}
+
+			vm.showSearchFilter(propsObject);
+		});
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
+		let filterElement;
 		let animationPromise;
 
 		const vm = this;
 
-		$('.SearchFilter')[0].scrollTop;
+		filterElement = $('.SearchFilter');
+		if (filterElement.length > 0) {
+			$('.SearchFilter')[0].scrollTop;
+		}
 
 		if (vm.state.action === 'showSearchFilter') {
-			$('.SearchFilter ').removeClass('Hidden');
+			$('.SearchFilter ').addClass('Animate');
+
+			vm.setEventListeners();
 		}
 
 		if (vm.state.action === 'hideSearchFilter') {
 			//$('.SearchFilter .SearchFilterBackground').addClass('Hidden');
 
-			animationPromise = animate.transitionAddClass(
+			animationPromise = animate.transitionRemoveClass(
 				$('.SearchFilter'),
-				'Hidden'
+				'Animate'
 			);
 
 			animationPromise.fail((error) => {
@@ -100,11 +136,13 @@ class SearchFilter extends PureComponent {
 		}
 	}
 
-	showSearchFilter(filter) {
+	showSearchFilter(props) {
 		const vm = this;
 
+		vm.stateProps = props;
+
 		vm.setState({
-			animate: true,
+			animate: props.animate,
 			action: 'showSearchFilter',
 		});
 	}
@@ -113,7 +151,7 @@ class SearchFilter extends PureComponent {
 		const vm = this;
 
 		vm.setState({
-			animate: true,
+			animate: props.animate,
 			action: 'hideSearchFilter',
 		});
 	}
@@ -126,27 +164,127 @@ class SearchFilter extends PureComponent {
 		});
 	}
 
-	attributeComponent() {
+	setEventListeners() {
+		let i;
+		let iCount;
+
 		const vm = this;
+		const attributeCheckboxes = document.querySelectorAll(
+			'.AttributeComponent [type="checkbox"]'
+		);
+
+		for (i = 0, iCount = attributeCheckboxes.length; i < iCount; i++) {
+			attributeCheckboxes[i].removeEventListener('click', vm.filterEvent);
+			attributeCheckboxes[i].addEventListener('click', vm.filterEvent);
+		}
+	}
+
+	filterEvent(event) {
+		const vm = this;
+
+		vm.setAttributeFilter({
+			checked: event.target.checked,
+			value: event.target.dataset.value,
+		});
+	}
+
+	stateFilter() {
+		let state = {};
+		const vm = this;
+
+		if (vm.stateProps) {
+			if (vm.stateProps.filter) {
+				if (vm.stateProps.filter.hasOwnProperty('state')) {
+					state = vm.stateProps.filter.state || {};
+				}
+			}
+		}
+		return state;
+	}
+
+	attributeFilter() {
+		let attributes = {};
+		const vm = this;
+
+		if (vm.stateProps) {
+			if (vm.stateProps.filter) {
+				if (vm.stateProps.filter.hasOwnProperty('attributes')) {
+					attributes = vm.stateProps.filter.attributes || {};
+				}
+			}
+		}
+		return attributes;
+	}
+
+	setStateFilter(state) {
+		const vm = this;
+	}
+
+	setAttributeFilter(attribute) {
+		let state;
+		let attributes;
+
+		const vm = this;
+
+		if (vm.stateProps) {
+			if (vm.stateProps.filter) {
+				state = vm.stateFilter();
+				attributes = vm.attributeFilter();
+
+				vm.stateProps.filter.state = state;
+				vm.stateProps.filter.attributes = attributes;
+
+				if (attribute.checked === true) {
+					vm.stateProps.filter.attributes[attribute.value] = true;
+				} else {
+					delete vm.stateProps.filter.attributes[attribute.value];
+				}
+			}
+
+			if (vm.stateProps.setSearchFilter) {
+				vm.hideSearchFilter({ animate: true });
+				vm.stateProps.setSearchFilter(vm.stateProps.filter);
+			}
+		}
+	}
+
+	attributeComponent() {
+		let checked;
+
+		const vm = this;
+		const attributeFilter = vm.attributeFilter();
 
 		return (
 			<>
-				<span className="AttributeTitle">Filter on attribute</span>
+				<span className="AttributeTitle">Attributes</span>
 				<div className="AttributeComponent">
-					{Object.keys(attributes).map((keyName, i) => (
-						<label className="CheckBox" key={i}>
-							<span className="Label">
-								{attributes[keyName].title}
-							</span>
-							<input
-								type="checkbox"
-								className="Input"
-								data-filter="attributes"
-								data-value={attributes[keyName].title}
-							/>
-							<span className="Checkmark" />
-						</label>
-					))}
+					{Object.keys(attributes).map((keyName, i) => {
+						if (
+							attributeFilter.hasOwnProperty(
+								attributes[keyName].title
+							)
+						) {
+							checked = true;
+						} else {
+							checked = false;
+						}
+
+						return (
+							<label className="CheckBox" key={i}>
+								<span className="Label">
+									{attributes[keyName].title}
+								</span>
+								<input
+									type="checkbox"
+									className="Input"
+									defaultChecked={checked}
+									data-filter="attributes"
+									data-value={attributes[keyName].title}
+								/>
+								<span className="Checkmark" />
+							</label>
+						);
+					})}
 				</div>
 			</>
 		);
@@ -170,7 +308,7 @@ class SearchFilter extends PureComponent {
 		if (vm.state.animate !== true) {
 			searchFilterClass = 'SearchFilter';
 		} else {
-			searchFilterClass = 'SearchFilter Animate';
+			searchFilterClass = 'SearchFilter';
 		}
 
 		if (!vm.state.action) {
@@ -178,7 +316,21 @@ class SearchFilter extends PureComponent {
 		} else {
 			return (
 				<div className={searchFilterClass}>
-					<div className="SearchFilterSpacer" />
+					<div className="SearchFilterHeader">
+						<div className="SearchFilterHeaderCountainer">
+							<span className="SearchFilterHeaderTxt">
+								Filter
+							</span>
+							<button
+								className="CloseSearchFilterButton"
+								onClick={onClick}>
+								<div className="Cross">
+									<div className="CloseCrossLine Left"></div>
+									<div className="CloseCrossLine Right"></div>
+								</div>
+							</button>
+						</div>
+					</div>
 					<div className="SearchFilterContent">
 						<AttributeComponent />
 					</div>

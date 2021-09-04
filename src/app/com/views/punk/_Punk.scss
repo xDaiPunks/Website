@@ -153,6 +153,8 @@
 							.PunkDetailsBackground {
 								padding-top: 25px;
 								padding-left: 25px;
+								padding-right: 25px;
+
 								height: 33vw;
 								border-radius: 22px;
 
@@ -161,6 +163,8 @@
 								@include responsiveMax($responsiveMed) {
 									padding-top: 25px;
 									padding-left: 25px;
+									padding-right: 25px;
+
 									height: 40vw;
 									border-radius: 22px;
 
@@ -170,114 +174,139 @@
 								@include responsiveMax($responsiveSmall) {
 									padding-top: 0px;
 									padding-left: 0px;
+									padding-right: 0px;
+
 									height: auto;
 									border-radius: 0px;
 
 									background-color: transparent;
 								}
 
-								.PunkDetailItem {
+								.PunkDetailItemContainer {
 									display: flex;
-									position: relative;
+									flex-direction: row;
+									justify-content: space-between;
 
-									flex-direction: column;
-
-									padding-bottom: 10px;
-
-									.PunkDetailItemTitle {
-										display: block;
+									.PunkDetailItem {
+										display: flex;
 										position: relative;
 
-										color: #111;
+										flex-direction: column;
 
-										font-size: 14px;
-										font-weight: 600;
-										font-family: 'Gilroy', sans-serif;
+										padding-bottom: 10px;
 
-										@include responsiveMax($responsiveMed) {
-											font-size: 14px;
-										}
+										.PunkDetailItemTitle {
+											display: block;
+											position: relative;
 
-										@include responsiveMax(
-											$responsiveSmall
-										) {
-											font-size: 10px;
-										}
-									}
-
-									.PunkDetailItemTitle.Big {
-										display: block;
-									}
-
-									.PunkDetailItemContent {
-										display: block;
-										position: relative;
-
-										color: #111;
-
-										font-size: 22px;
-										font-weight: 900;
-										font-family: 'Gilroy', sans-serif;
-
-										@include responsiveMax($responsiveMed) {
-											font-size: 22px;
-										}
-
-										@include responsiveMax(
-											$responsiveSmall
-										) {
-											font-size: 14px;
-										}
-									}
-
-									.PunkDetailItemContent.Big {
-										display: block;
-										font-size: 48px;
-
-										@include responsiveMax($responsiveMed) {
-											font-size: 48px;
-										}
-
-										@include responsiveMax(
-											$responsiveSmall
-										) {
-											font-size: 26px;
-											margin-top: -2px;
-											margin-bottom: -4px;
-										}
-									}
-
-									.PunkDetailItemAttributes {
-										display: block;
-										position: relative;
-
-										text-align: left;
-
-										.PunkDetailItemAttribute {
-											display: inline-block;
-
-											padding-left: 0px;
-											padding-right: 5px;
-
-											white-space: nowrap;
+											color: #111;
 
 											font-size: 14px;
-											font-weight: 700;
-
+											font-weight: 600;
 											font-family: 'Gilroy', sans-serif;
+
+											@include responsiveMax(
+												$responsiveMed
+											) {
+												font-size: 14px;
+											}
+
+											@include responsiveMax(
+												$responsiveSmall
+											) {
+												font-size: 10px;
+											}
+										}
+
+										.PunkDetailItemTitle.Big {
+											display: block;
+										}
+
+										.PunkDetailItemContent {
+											display: block;
+											position: relative;
+
+											color: #111;
+
+											font-size: 22px;
+											font-weight: 900;
+											font-family: 'Gilroy', sans-serif;
+
+											@include responsiveMax(
+												$responsiveMed
+											) {
+												font-size: 22px;
+											}
+
+											@include responsiveMax(
+												$responsiveSmall
+											) {
+												font-size: 14px;
+											}
+										}
+
+										.PunkDetailItemContent.Big {
+											display: block;
+											font-size: 48px;
+
+											@include responsiveMax(
+												$responsiveMed
+											) {
+												font-size: 48px;
+											}
+
+											@include responsiveMax(
+												$responsiveSmall
+											) {
+												font-size: 26px;
+												margin-top: -2px;
+												margin-bottom: -4px;
+											}
+										}
+
+										.PunkDetailItemAttributes {
+											display: block;
+											position: relative;
+
+											text-align: left;
+
+											.PunkDetailItemAttribute {
+												display: inline-block;
+
+												padding-left: 0px;
+												padding-right: 5px;
+
+												white-space: nowrap;
+
+												font-size: 14px;
+												font-weight: 700;
+
+												font-family: 'Gilroy',
+													sans-serif;
+											}
 										}
 									}
-								}
 
-								.PunkDetailItem.AlignCenter {
-									align-items: center;
+									.PunkDetailItem.AlignRight {
+										.PunkDetailItemTitle {
+											text-align: right;
+										}
 
-									.PunkDetailItemAttributes {
-										text-align: center;
+										.PunkDetailItemContent {
+											text-align: right;
+										}
+									}
 
-										.PunkDetailItemAttribute {
-											padding-left: 5px;
-											padding-right: 5px;
+									.PunkDetailItem.AlignCenter {
+										align-items: center;
+
+										.PunkDetailItemAttributes {
+											text-align: center;
+
+											.PunkDetailItemAttribute {
+												padding-left: 5px;
+												padding-right: 5px;
+											}
 										}
 									}
 								}
@@ -329,6 +358,14 @@
 
 						.PunkDetailButtonContainer.Padding {
 							padding-bottom: 15px;
+
+							@include responsiveMax($responsiveMed) {
+								padding-bottom: 15px;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								padding-bottom: 0px;
+							}
 						}
 					}
 				}

@@ -706,8 +706,8 @@ class PunkAccount extends PureComponent {
 									<div className="AccountItem">
 										<Button
 											type={'actionButtonIcon'}
-											label={'Widthdraw'}
-											title={'Widthdraw'}
+											label={'Withdraw'}
+											title={'Withdraw'}
 											onClick={(event) => {
 												event.preventDefault();
 												vm.withdraw();
