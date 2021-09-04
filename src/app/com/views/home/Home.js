@@ -648,7 +648,7 @@ class Home extends PureComponent {
 									integrate xDaiPunks with other NFT
 									marketplaces in the near future. As the
 									minting phase is the only source of revenue
-									for this project, we have set the mining at
+									for this project, we have set the minting at
 									this price
 								</div>
 							</div>

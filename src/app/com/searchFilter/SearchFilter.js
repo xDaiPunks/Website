@@ -130,22 +130,25 @@ class SearchFilter extends PureComponent {
 		const vm = this;
 
 		return (
-			<div className="attributeComponent">
-				{Object.keys(attributes).map((keyName, i) => (
-					<label className="CheckBox">
-						{attributes[keyName].title +
-							' (' +
-							attributes[keyName].count +
-							')'}
-						<input
-							type="checkbox"
-							data-filter="attributes"
-							data-value={attributes[keyName].title}
-						/>
-						<span class="checkmark" />
-					</label>
-				))}
-			</div>
+			<>
+				<span className="AttributeTitle">Filter on attribute</span>
+				<div className="AttributeComponent">
+					{Object.keys(attributes).map((keyName, i) => (
+						<label className="CheckBox" key={i}>
+							<span className="Label">
+								{attributes[keyName].title}
+							</span>
+							<input
+								type="checkbox"
+								className="Input"
+								data-filter="attributes"
+								data-value={attributes[keyName].title}
+							/>
+							<span className="Checkmark" />
+						</label>
+					))}
+				</div>
+			</>
 		);
 	}
 
@@ -175,6 +178,7 @@ class SearchFilter extends PureComponent {
 		} else {
 			return (
 				<div className={searchFilterClass}>
+					<div className="SearchFilterSpacer" />
 					<div className="SearchFilterContent">
 						<AttributeComponent />
 					</div>
