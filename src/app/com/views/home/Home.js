@@ -342,7 +342,7 @@ class Home extends PureComponent {
 					<span className="MintText">Number of minted punks</span>
 					<div className="MintedItems">
 						<span className="MintedItemsText">
-							{mintsCount} / 1000
+							{mintsCount} / 10000
 						</span>
 					</div>
 				</div>
