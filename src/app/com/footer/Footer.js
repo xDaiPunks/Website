@@ -86,13 +86,17 @@ class Footer extends PureComponent {
 								xDaiPunks
 							</span>
 							<span className="FooterMenuItem">
-								<a
-									href="mailto:hello@xdaipunks.com"
-									target="_blank"
-									rel="noreferrer"
-									className="FooterButton">
-									<span className="Txt">Say hello</span>
-								</a>
+								<Button
+									type={'footerButton'}
+									label={'How to mint a Punk'}
+									title={'How to mint a Punk'}
+									onClick={() => {
+										routeService.navigateRoute(
+											'/how-to-mint'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
 							</span>
 							<span className="FooterMenuItem">
 								<Button
@@ -190,7 +194,9 @@ class Footer extends PureComponent {
 									label={'Using the marketplace'}
 									title={'Using the marketplace'}
 									onClick={() => {
-										routeService.navigateRoute('/using-marketplace');
+										routeService.navigateRoute(
+											'/using-marketplace'
+										);
 									}}
 									cssCla
 									cssClass={'FooterButton'}
@@ -202,7 +208,9 @@ class Footer extends PureComponent {
 									label={'Issues with WalletConnect'}
 									title={'Issues with WalletConnect'}
 									onClick={() => {
-										routeService.navigateRoute('/wallet-issues');
+										routeService.navigateRoute(
+											'/wallet-issues'
+										);
 									}}
 									cssClass={'FooterButton'}
 								/>

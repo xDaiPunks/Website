@@ -23,6 +23,14 @@
 		"component": "app/com/views/marketPlace/MarketPlace"
 	},
 
+	"punkAccount": {
+		"path": "/my-account",
+		"type": "private",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/punkAccount/PunkAccount"
+	},
+
 	"marketHelp": {
 		"path": "/using-the-marketplace",
 		"type": "public",
@@ -31,12 +39,12 @@
 		"component": "app/com/views/marketHelp/MarketHelp"
 	},
 
-	"punkAccount": {
-		"path": "/my-account",
-		"type": "private",
+	"mintHelp": {
+		"path": "/how-to-mint",
+		"type": "public",
 		"redirect": "none",
 		"animationType": "overlay",
-		"component": "app/com/views/punkAccount/PunkAccount"
+		"component": "app/com/views/mintHelp/MintHelp"
 	},
 
 	"xDaiOnRamp": {
@@ -53,14 +61,6 @@
 		"redirect": "none",
 		"animationType": "overlay",
 		"component": "app/com/views/walletIssues/WalletIssues"
-	},
-
-	"walletTest": {
-		"path": "/wallet-test",
-		"type": "public",
-		"redirect": "none",
-		"animationType": "overlay",
-		"component": "app/com/views/walletTest/WalletTest"
 	},
 
 	"notfound": {

@@ -20,13 +20,13 @@ const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
-class WalletTest extends PureComponent {
+class MintHelp extends PureComponent {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
 
-		this.componentName = 'WalletTest';
+		this.componentName = 'MintHelp';
 
 		this.guid = utilityService.guid();
 
@@ -91,12 +91,12 @@ class WalletTest extends PureComponent {
 		let innerHeight;
 		const windowInnerHeight = window.innerHeight;
 
-		const introStartElement = $('.ViewBox .Intro .IntroStart');
+		const punkElement = $('.ViewBox');
 
 		if (utilityService.browserSupport.mobileDevice === true) {
 			innerHeight = windowInnerHeight;
 
-			introStartElement[0].style.minHeight = innerHeight + 'px';
+			punkElement[0].style.minHeight = innerHeight + 'px';
 		}
 	}
 
@@ -136,8 +136,8 @@ class WalletTest extends PureComponent {
 
 		// console.log('minstCount', mintsCount);
 
-		// console.log('WalletTest publicSale', publicSale);
-		// console.log('WalletTest mintscount', mintsCount);
+		// console.log('MintHelp publicSale', publicSale);
+		// console.log('MintHelp mintscount', mintsCount);
 
 		if (publicSale !== true) {
 			return (
@@ -222,15 +222,7 @@ class WalletTest extends PureComponent {
 	}
 
 	render() {
-		let number;
-		let randomImage;
-
 		let transitionClass;
-
-		const vm = this;
-
-		const SubContentItem = vm.subContentItem;
-		const ButtonFooterItem = vm.buttonFooterItem;
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -240,47 +232,113 @@ class WalletTest extends PureComponent {
 			transitionClass = 'Underlay';
 		}
 
-		number = Math.floor(Math.random() * 9999);
-		randomImage = '/punks/' + number + '.png';
-
 		return (
 			<div
 				className={
 					this.componentName + ' View ' + transitionClass + ' Load'
 				}>
 				<div className="ViewBox">
-					<div className="Intro">
-						<div className="IntroStart">
-							<div className="IntroItem">
-								<div className="PunkItem">
-									<div className="PunkImage">
-										<div className="PunkImageCircle">
-											<img
-												alt={''}
-												className={'Punk'}
-												src={randomImage}
-											/>
-										</div>
-									</div>
-									<span className="PunkText">
-										<span className="TextDark">xDAI</span>
-										<span className="TextLight">PUNKS</span>
-									</span>
-									<span className="PunkSubText">
-										Here is your chance to own a genuine
-										xDaiPunk!
-									</span>
-								</div>
-								<div className="IntroSubContent">
-									<SubContentItem />
-								</div>
-								<div className="IntroFooterContainer">
-									<div className="FooterContainerSizer">
-										<ButtonFooterItem />
-									</div>
-								</div>
+					<div className="Spacer" />
+					<div className="PageTextContent">
+						<div className="ContentItem">
+							<div className="ContentItemTitle">
+								<span className="Txt">How to mint a Punk</span>
+								<span className="TitleImageContent"></span>
+							</div>
+							<div className="ContentItemContent">
+								When the minting phase has started, you will be
+								able to mint one or more Punks for 12 xDai. The
+								Punks will be minted randomly so you do not know
+								which Punk you are going to mint
+								<br />
+								<br />
+								Minting a Punk is quite easy. It is a matter of
+								pressing a button. Selecting how many Punks you
+								want to mint and confirming the resulting
+								transaction in MetaMask. Below you will find a
+								step by step guide
 							</div>
 						</div>
+
+						<div className="ContentItem">
+							<div className="ContentItemTitle">
+								<span className="Txt">
+									1. Connect your wallet
+								</span>
+								<span className="TitleImageContent"></span>
+							</div>
+							<div className="ContentItemContent">
+								You connect your wallet by pressing the 'Connect
+								wallet' button. If it is the first time you are
+								connecting your wallet, a pop-up is shown asking
+								you if you want to connect using MetMask or
+								WalletConnect. On mobile devices you can only
+								select WalletConnect
+								<br />
+								<br />
+								We advise you to use MetaMask. This as the
+								reliability of MetaMask is better and that is
+								key during the minting phase
+								<br />
+								<br />
+								If you click the MetaMask button, your MetaMask
+								plugin will ask you to connect. Then click next
+								with your account selected. And then click
+								connect. Your wallet is now connected and the
+								button 'Connect wallet' has chenged in 'My
+								account'
+							</div>
+						</div>
+
+						<div className="ContentItem">
+							<div className="ContentItemTitle">
+								<span className="Txt">
+									2. Click Mint Button
+								</span>
+								<span className="TitleImageContent"></span>
+							</div>
+							<div className="ContentItemContent">
+								When the minting phase has started you will see
+								the 'Get a Punk for 12 xDai' button on the
+								homepage. If you click that button, a pop-up
+								will appear where you can fill in the amount of
+								Punks you want. Then click 'Get punks'
+								<br />
+								<br />
+								The maximum you can enter in the field is 20.
+								That is 20 xDaiPunks per transaction. You can do
+								multiple transactions and there is no limit on
+								the amount of xDaiPunks you can mint
+							</div>
+						</div>
+
+						<div className="ContentItem">
+							<div className="ContentItemTitle">
+								<span className="Txt">
+									3. Confirm the transaction
+								</span>
+								<span className="TitleImageContent"></span>
+							</div>
+							<div className="ContentItemContent">
+								After you have clicked the 'Get punks' button in
+								the pop-up, your MetaMask plugin will ask you to
+								confirm the transaction. The amount you see in
+								xDai is the total amount for minting one or more
+								xDaiPunks
+								<br />
+								<br />
+								Check if the address is the contract address:
+								<br />
+								0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90{' '}
+								<br />
+								<br />
+								Now click confirm to confirm the transaction.
+								Your xDaiPunks will now be minted. When the
+								transaction is successfull, the minted punks
+								will show in your account
+							</div>
+						</div>
+
 						<Footer />
 					</div>
 				</div>
@@ -289,4 +347,4 @@ class WalletTest extends PureComponent {
 	}
 }
 
-export default WalletTest;
+export default MintHelp;

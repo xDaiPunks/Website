@@ -1,0 +1,202 @@
+#AppRoot {
+	.App {
+		.ViewContainer {
+			.MintHelp.View {
+				background: $backgroundColor;
+
+				.ViewBox {
+					display: flex;
+
+					.Spacer {
+						display: block;
+						position: relative;
+
+						width: 100%;
+						height: $heightHeader;
+
+						@include responsiveMax($responsiveMed) {
+							height: $heightHeaderMed;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							height: $heightHeaderSmall;
+						}
+					}
+
+					.PageTextContent {
+						display: flex;
+						position: relative;
+						z-index: 2;
+
+						flex-direction: column;
+
+						padding-top: 0px;
+
+						@include responsiveMax($responsiveMed) {
+							padding-bottom: 0px;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							padding-bottom: 50px;
+						}
+
+						.ContentItem {
+							display: flex;
+							position: relative;
+
+							flex-direction: column;
+
+							padding-bottom: 70px;
+
+							padding-left: $padding;
+							padding-right: $padding;
+
+							@include responsiveMax($responsiveMed) {
+								padding-bottom: 70px;
+
+								padding-left: $paddingMed;
+								padding-right: $paddingMed;
+							}
+
+							@include responsiveMax($responsiveSmall) {
+								padding-bottom: 50px;
+
+								padding-left: $paddingSmall;
+								padding-right: $paddingSmall;
+							}
+
+							.BrightContent {
+								display: block;
+								text-align: center;
+
+								color: #00f5f5;
+
+								max-width: 800px;
+
+								font-size: 60px;
+								font-weight: 900;
+								font-family: 'Gilroy', sans-serif;
+
+								@include responsiveMax($responsiveMed) {
+									max-width: 800px;
+									font-size: 60px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									max-width: 600px;
+									font-size: 26px;
+								}
+							}
+
+							.ContentItemTitle {
+								display: flex;
+								flex-direction: row;
+
+								align-items: flex-start;
+								justify-content: space-between;
+
+								padding-left: 2px;
+
+								color: #111;
+
+								font-size: 60px;
+								font-weight: 900;
+								font-family: 'Gilroy', sans-serif;
+
+								.Highlight {
+									color: #00f5f5;
+								}
+
+								@include responsiveMax($responsiveMed) {
+									font-size: 60px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									font-size: 26px;
+								}
+
+								.Txt {
+									display: block;
+									position: relative;
+								}
+
+								.TitleImageContent {
+									display: flex;
+									position: relative;
+
+									width: 16px;
+									height: 16px;
+									border-radius: 8px;
+
+									margin-top: 4px;
+
+									overflow: hidden;
+
+									background-color: #00f5f5;
+
+									@include responsiveMax($responsiveMed) {
+										width: 16px;
+										height: 16px;
+										border-radius: 8px;
+
+										margin-top: 4px;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										width: 12px;
+										height: 12px;
+										border-radius: 9px;
+
+										margin-top: 2px;
+										margin-right: 5px;
+									}
+								}
+							}
+
+							.ContentItemContent {
+								display: block;
+								position: relative;
+
+								width: 60%;
+
+								padding-top: 10px;
+								padding-left: 2px;
+
+								color: #111;
+
+								font-size: 16px;
+								line-height: 22px;
+
+								font-weight: 400;
+								font-family: 'Roboto', sans-serif;
+
+								@include responsiveMax($responsiveMed) {
+									font-size: 16px;
+									line-height: 22px;
+
+									width: 60%;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									font-size: 14px;
+									line-height: 20px;
+
+									width: auto;
+								}
+
+								a {
+									color: #7e13ff;
+								}
+							}
+						}
+
+						.ContentItem.AlignCenter {
+							align-items: center;
+							justify-content: center;
+						}
+					}
+				}
+			}
+		}
+	}
+}

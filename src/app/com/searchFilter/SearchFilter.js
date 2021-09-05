@@ -4,8 +4,6 @@ import { attributes } from 'src/app/data/filters';
 
 import React, { PureComponent } from 'react';
 
-import Input from 'src/app/com/input/Input';
-
 import Animate from 'src/app/services/Animate';
 
 import EventService from 'src/app/services/EventService';
@@ -216,9 +214,7 @@ class SearchFilter extends PureComponent {
 		return attributes;
 	}
 
-	setStateFilter(state) {
-		const vm = this;
-	}
+	setStateFilter(state) {}
 
 	setAttributeFilter(attribute) {
 		let state;
