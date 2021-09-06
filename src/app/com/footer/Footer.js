@@ -195,7 +195,7 @@ class Footer extends PureComponent {
 									title={'Using the marketplace'}
 									onClick={() => {
 										routeService.navigateRoute(
-											'/using-marketplace'
+											'/using-the-marketplace'
 										);
 									}}
 									cssCla
