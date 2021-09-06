@@ -136,10 +136,12 @@ class Punk extends PureComponent {
 	}
 
 	buy() {
+		let idx;
 		let minAmount;
 
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		if (vm.punkDetails.sale === true) {
 			if (vm.punkDetails.saleData && vm.punkDetails.saleData.minValue) {
@@ -158,8 +160,10 @@ class Punk extends PureComponent {
 	}
 
 	enterBid() {
+		let idx;
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		eventService.dispatchObjectEvent('show:modal', {
 			type: 'bidModal',
@@ -169,8 +173,11 @@ class Punk extends PureComponent {
 	}
 
 	offerForSale() {
+		let idx;
+
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		eventService.dispatchObjectEvent('show:modal', {
 			type: 'offerModal',
@@ -180,8 +187,11 @@ class Punk extends PureComponent {
 	}
 
 	buyPunk(amount) {
+		let idx;
+
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		appService
 			.buyPunk(idx, amount)
@@ -194,8 +204,10 @@ class Punk extends PureComponent {
 	}
 
 	acceptBid() {
+		let idx;
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		appService
 			.acceptBidForPunk(idx)
@@ -208,8 +220,11 @@ class Punk extends PureComponent {
 	}
 
 	withdrawBid() {
+		let idx;
+
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		appService
 			.withdrawBidForPunk(idx)
@@ -222,8 +237,10 @@ class Punk extends PureComponent {
 	}
 
 	removeOffer() {
+		let idx;
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		appService
 			.punkNoLongerForSale(idx)
@@ -236,8 +253,10 @@ class Punk extends PureComponent {
 	}
 
 	enterBidForPunk(amount) {
+		let idx;
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+
+		idx = vm.punkDetails.idx;
 
 		appService
 			.enterBidForPunk(idx, amount)
@@ -250,8 +269,10 @@ class Punk extends PureComponent {
 	}
 
 	offerPunkForSale(amount) {
+		let idx;
+
 		const vm = this;
-		const idx = vm.punkDetails.idx;
+		idx = vm.punkDetails.idx;
 
 		appService
 			.offerPunkForSale(idx, amount)

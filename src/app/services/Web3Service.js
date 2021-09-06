@@ -449,6 +449,11 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
+			}
+
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
 				vm.xDaiPunkAddress
@@ -514,6 +519,11 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
+			}
+
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
 				vm.xDaiPunkAddress
@@ -543,6 +553,11 @@ class Web3Service {
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
 			}
 
 			contract = new vm.walletProvider.eth.Contract(
@@ -577,6 +592,11 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
+			}
+
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
 				vm.xDaiPunkAddress
@@ -607,6 +627,11 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
+			}
+
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
 				vm.xDaiPunkAddress
@@ -635,6 +660,11 @@ class Web3Service {
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
+			idx = idx.toString();
+			if (idx === '0') {
+				idx = '10000';
 			}
 
 			contract = new vm.walletProvider.eth.Contract(
