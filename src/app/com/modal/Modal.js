@@ -304,110 +304,50 @@ class Modal extends PureComponent {
 
 		// console.log(mobileDevice);
 
-		if (mobileDevice === true) {
+		if (ethereum) {
 			return (
 				<>
 					<button
 						onClick={(event) => {
 							event.preventDefault();
-							vm.connectWeb3Service('walletConnect');
+							vm.connectWeb3Service('metaMask');
 						}}
 						className={'WalletConnector'}>
 						<div className="WalletConnectorIcon">
 							<img
 								className="IconImage"
 								alt={''}
-								src={iconImageWalletConnect}
+								src={iconImageMetaMask}
 							/>
 						</div>
 						<span className="WalletConnectorText">
-							{'Wallet connnect'}
+							{'MetaMask'}
 						</span>
 					</button>
 				</>
 			);
 		} else {
-			if (ethereum) {
-				return (
-					<>
-						<button
-							onClick={(event) => {
-								event.preventDefault();
-								vm.connectWeb3Service('metaMask');
-							}}
-							className={'WalletConnector'}>
-							<div className="WalletConnectorIcon">
-								<img
-									className="IconImage"
-									alt={''}
-									src={iconImageMetaMask}
-								/>
-							</div>
-							<span className="WalletConnectorText">
-								{'MetaMask'}
-							</span>
-						</button>
-						<button
-							onClick={(event) => {
-								event.preventDefault();
-								vm.connectWeb3Service('walletConnect');
-							}}
-							className={'WalletConnector'}>
-							<div className="WalletConnectorIcon">
-								{' '}
-								<img
-									className="IconImage"
-									alt={''}
-									src={iconImageWalletConnect}
-								/>
-							</div>
-							<span className="WalletConnectorText">
-								{'Wallet connnect'}
-							</span>
-						</button>
-					</>
-				);
-			} else {
-				return (
-					<>
-						<button
-							onClick={(event) => {
-								event.preventDefault();
-								vm.connectWeb3Service('walletConnect');
-							}}
-							className={'WalletConnector'}>
-							<div className="WalletConnectorIcon">
-								{' '}
-								<img
-									className="IconImage"
-									alt={''}
-									src={iconImageWalletConnect}
-								/>
-							</div>
-							<span className="WalletConnectorText">
-								{'Wallet connnect'}
-							</span>
-						</button>
-						<button
-							onClick={(event) => {
-								event.preventDefault();
-								window.open('https://metamask.io/download');
-							}}
-							className={'WalletConnector'}>
-							<div className="WalletConnectorIcon">
-								<img
-									className="IconImage"
-									alt={''}
-									src={iconImageMetaMask}
-								/>
-							</div>
-							<span className="WalletConnectorText">
-								{'Install MetaMask'}
-							</span>
-						</button>
-					</>
-				);
-			}
+			return (
+				<>
+					<button
+						onClick={(event) => {
+							event.preventDefault();
+							window.open('https://metamask.io/download');
+						}}
+						className={'WalletConnector'}>
+						<div className="WalletConnectorIcon">
+							<img
+								className="IconImage"
+								alt={''}
+								src={iconImageMetaMask}
+							/>
+						</div>
+						<span className="WalletConnectorText">
+							{'Install MetaMask'}
+						</span>
+					</button>
+				</>
+			);
 		}
 	}
 

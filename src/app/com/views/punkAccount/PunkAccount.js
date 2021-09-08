@@ -135,7 +135,9 @@ class PunkAccount extends PureComponent {
 						vm.loader.current.hideLoader(true);
 					});
 				})
-				.catch((responseError) => {});
+				.catch((responseError) => {
+					vm.getData();
+				});
 		}
 	}
 
@@ -388,6 +390,7 @@ class PunkAccount extends PureComponent {
 		let rowCount;
 
 		const vm = this;
+		const type = props.type;
 		const items = props.items;
 		const PunkItems = vm.punkItems;
 
@@ -398,7 +401,11 @@ class PunkAccount extends PureComponent {
 					if (rowCount === 0) {
 						return (
 							<div className="PunkRow" key={'row' + index}>
-								<PunkItems items={items} rowIndex={index} />
+								<PunkItems
+									type={type}
+									items={items}
+									rowIndex={index}
+								/>
 							</div>
 						);
 					}
@@ -413,20 +420,19 @@ class PunkAccount extends PureComponent {
 		let number;
 		let status;
 
+		let bidTitle;
+		let bidValue;
+
 		let punkValue;
 
 		let imageUrl;
 
-		let rowCount;
-
 		let attributes;
-
-		let spacerClassL;
-		let spacerClassR;
 
 		const vm = this;
 		const rowArray = [];
 
+		const type = props.type;
 		const items = props.items;
 		const itemsCount = props.items.length;
 
@@ -438,71 +444,65 @@ class PunkAccount extends PureComponent {
 			}
 		}
 
-		rowCount = rowArray.length;
-
 		return (
 			<>
 				{rowArray.map((item, index) => {
 					if (items[item]) {
 						number = items[item].idx;
+						imageUrl = '/punks/' + items[item].idx + '.png';
 
 						attributes = items[item].attributes.join(' · ');
 						punkValue = BigNumber(items[item].value)
 							.div(1e18)
 							.toFormat(2);
 
-						imageUrl = '/punks/' + items[item].idx + '.png';
+						bidTitle = '';
+						bidValue = '';
 
-						status = 'Not Minted';
-						status = 'Not Minted';
+						if (type === 'bid') {
+							bidTitle = 'Bid';
+							bidValue =
+								BigNumber(items[item].bidData.value)
+									.div(1e18)
+									.toFormat(2) + ' xDai';
+						}
+
+						status = 'X';
 
 						if (items[item].mint === true) {
 							if (
 								items[item].bid !== true &&
 								items[item].sale !== true
 							) {
-								status = 'Market';
+								status = 'M';
 							} else {
 								if (
 									items[item].bid === true &&
 									items[item].sale !== true
 								) {
-									status = 'Bid';
+									status = 'B';
 								}
 
 								if (
 									items[item].bid !== true &&
 									items[item].sale === true
 								) {
-									status = 'Sale';
+									status = 'O';
 								}
 
 								if (
 									items[item].bid === true &&
 									items[item].sale === true
 								) {
-									status = 'Sale & Bid';
+									status = 'BO';
 								}
 							}
 						}
 
-						if (index === 1) {
-							spacerClassL = 'PunkSpacer';
-							spacerClassR = 'PunkSpacer';
-
-							if (rowCount === 2) {
-								spacerClassL = 'PunkSpacer';
-								spacerClassR = 'PunkSpacer Hidden';
-							}
-						} else {
-							spacerClassL = 'PunkSpacer Hidden';
-							spacerClassR = 'PunkSpacer Hidden';
-						}
-
 						return (
 							<React.Fragment key={'item' + item}>
-								<div className={spacerClassL}></div>
-								<div
+								<a
+									href={'/punk/' + items[item].idx}
 									className="PunkItem"
 									onClick={(event) => {
 										event.preventDefault();
@@ -548,10 +548,17 @@ class PunkAccount extends PureComponent {
 													{punkValue + ' xDai'}
 												</span>
 											</div>
+											<div className="PunkItemDetails">
+												<span className="DetailsTextTitle">
+													{bidTitle}
+												</span>
+												<span className="DetailsTextContent Bold">
+													{bidValue}
+												</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div className={spacerClassR}></div>
+								</a>
 							</React.Fragment>
 						);
 					}
@@ -581,7 +588,7 @@ class PunkAccount extends PureComponent {
 			return (
 				<div className="ContentBlock Items">
 					<div className="BlockTitle">My bids</div>
-					<Punks items={bidArray} />
+					<Punks type={'bid'} items={bidArray} />
 				</div>
 			);
 		}
@@ -608,7 +615,7 @@ class PunkAccount extends PureComponent {
 			return (
 				<div className="ContentBlock Items">
 					<div className="BlockTitle">My punks</div>
-					<Punks items={ownedArray} />
+					<Punks type={'owned'} items={ownedArray} />
 				</div>
 			);
 		}

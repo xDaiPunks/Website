@@ -521,6 +521,7 @@ class MarketPlace extends PureComponent {
 		function punkItems(props) {
 			let i;
 
+			let rank;
 			let number;
 			let status;
 
@@ -554,6 +555,7 @@ class MarketPlace extends PureComponent {
 				<>
 					{rowArray.map((item, index) => {
 						if (items[item]) {
+							rank = items[item].rank;
 							number = items[item].idx;
 
 							attributes = items[item].attributes.join(' · ');
@@ -564,55 +566,42 @@ class MarketPlace extends PureComponent {
 
 							imageUrl = '/punks/' + items[item].idx + '.png';
 
-							status = 'Not Minted';
+							status = 'X';
 
 							if (items[item].mint === true) {
 								if (
 									items[item].bid !== true &&
 									items[item].sale !== true
 								) {
-									status = 'Market';
+									status = 'M';
 								} else {
 									if (
 										items[item].bid === true &&
 										items[item].sale !== true
 									) {
-										status = 'Bid';
+										status = 'B';
 									}
 
 									if (
 										items[item].bid !== true &&
 										items[item].sale === true
 									) {
-										status = 'Sale';
+										status = 'O';
 									}
 
 									if (
 										items[item].bid === true &&
 										items[item].sale === true
 									) {
-										status = 'Sale & Bid';
+										status = 'BO';
 									}
 								}
 							}
 
-							if (index === 1) {
-								spacerClassL = 'PunkSpacer';
-								spacerClassR = 'PunkSpacer';
-
-								if (rowCount === 2) {
-									spacerClassL = 'PunkSpacer';
-									spacerClassR = 'PunkSpacer Hidden';
-								}
-							} else {
-								spacerClassL = 'PunkSpacer Hidden';
-								spacerClassR = 'PunkSpacer Hidden';
-							}
-
 							return (
 								<React.Fragment key={'item' + item}>
-									<div className={spacerClassL}></div>
-									<div
+									<a
+										href={'/punk/' + items[item].idx}
 										className="PunkItem"
 										onClick={(event) => {
 											event.preventDefault();
@@ -660,10 +649,17 @@ class MarketPlace extends PureComponent {
 														{punkValue + ' xDai'}
 													</span>
 												</div>
+												<div className="PunkItemDetails">
+													<span className="DetailsTextTitle">
+														Rank
+													</span>
+													<span className="DetailsTextContent Bold">
+														{rank}
+													</span>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div className={spacerClassR}></div>
+									</a>
 								</React.Fragment>
 							);
 						}

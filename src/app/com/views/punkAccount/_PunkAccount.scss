@@ -174,17 +174,17 @@
 
 						flex-direction: column;
 
-						padding-left: $padding;
-						padding-right: $padding;
+						padding-left: $padding - 10px;
+						padding-right: $padding - 10px;
 
 						@include responsiveMax($responsiveMed) {
-							padding-left: $paddingMed;
-							padding-right: $paddingMed;
+							padding-left: $paddingMed - 10px;
+							padding-right: $paddingMed - 10px;
 						}
 
 						@include responsiveMax($responsiveSmall) {
-							padding-left: $paddingSmall;
-							padding-right: $paddingSmall;
+							padding-left: $paddingSmall - 10px;
+							padding-right: $paddingSmall - 10px;
 						}
 
 						.PunkRow {
@@ -208,12 +208,23 @@
 								position: relative;
 
 								flex-grow: 1;
+								flex-basis: 33%;
 
+								margin-left: 10px;
+								margin-right: 10px;
 								margin-bottom: 20px;
 
 								border-radius: 18px;
 
 								background-color: #f2f2f2;
+
+								@include responsiveMax($responsiveMed) {
+									flex-basis: 33%;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									flex-basis: 100%;
+								}
 
 								.PunkItemContent {
 									display: flex;
@@ -292,14 +303,12 @@
 											position: relative;
 
 											flex-direction: row;
+											justify-content: space-between;
 										}
 
 										.PunkItemDetails {
 											display: flex;
 											position: relative;
-
-											flex-grow: 1;
-											flex-shrink: 1;
 
 											flex-direction: column;
 											align-items: flex-start;

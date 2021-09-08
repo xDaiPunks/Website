@@ -328,22 +328,22 @@ class Punk extends PureComponent {
 			}
 		}
 
-		punkStatus = 'Not Minted';
+		punkStatus = 'X';
 
 		if (mint === true) {
 			if (bid !== true && sale !== true) {
-				punkStatus = 'Market';
+				punkStatus = 'M';
 			} else {
 				if (bid === true && sale !== true) {
-					punkStatus = 'Bid';
+					punkStatus = 'B';
 				}
 
 				if (bid !== true && sale === true) {
-					punkStatus = 'Sale';
+					punkStatus = 'O';
 				}
 
 				if (bid === true && sale === true) {
-					punkStatus = 'Sale & Bid';
+					punkStatus = 'BO';
 				}
 			}
 		}

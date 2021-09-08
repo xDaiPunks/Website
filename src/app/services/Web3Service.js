@@ -71,9 +71,18 @@ class Web3Service {
 		const vm = this;
 		const web3 = new Web3(vm.httpProvider);
 
-		vm.web3 = web3;
+		const web3Socket = new Web3(
+			new Web3.providers.WebsocketProvider(vm.socketProvider, {
+				clientConfig: {
+					maxReceivedFrameSize: 20000000000,
+					maxReceivedMessageSize: 20000000000,
+				},
+			})
+		);
 
-		web3.eth.Contract.setProvider(vm.socketProvider);
+		vm.web3 = web3;
+		web3.eth.Contract.setProvider(web3Socket.currentProvider);
+
 		vm.contract = new web3.eth.Contract(
 			vm.xdaiPunksAbi,
 			vm.xDaiPunkAddress
@@ -348,6 +357,35 @@ class Web3Service {
 		};
 	}
 
+	getIdx(id) {
+		let idx;
+		idx = id.toString();
+
+		if (idx === '0') {
+			idx = '10000';
+		}
+
+		return idx;
+	}
+
+	checkBlockNumber(idx, eventType, blockNumber) {
+		const punkData = punkService.punkData;
+
+		if (eventType !== 'bid') {
+			if (blockNumber >= punkData[idx].blockLatestEvent) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			if (blockNumber >= punkData[idx].blockLatestEventBid) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
 	publicSale() {
 		const vm = this;
 
@@ -443,16 +481,13 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
-			const value = BigNumber(amount).times(1e18).toString();
+			const value = BigNumber(amount).times(1e18).toFixed();
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -519,10 +554,7 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -549,16 +581,13 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
-			const value = BigNumber(amount).times(1e18).toString();
+			const value = BigNumber(amount).times(1e18).toFixed();
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -586,16 +615,13 @@ class Web3Service {
 
 		return new Promise((resolve, reject) => {
 			let contract;
-			const value = BigNumber(amount).times(1e18).toString();
+			const value = BigNumber(amount).times(1e18).toFixed();
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -627,10 +653,7 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -662,10 +685,7 @@ class Web3Service {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
 
-			idx = idx.toString();
-			if (idx === '0') {
-				idx = '10000';
-			}
+			idx = vm.getIdx(idx);
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
@@ -718,7 +738,12 @@ class Web3Service {
 						userService.userSignedIn = true;
 						userService.address = window.ethereum.selectedAddress;
 
-						vm.walletProvider = new Web3(window.ethereum);
+						vm.walletProvider = new Web3(window.ethereum, {
+							clientConfig: {
+								maxReceivedFrameSize: 200000000, // bytes - default: 1MiB
+								maxReceivedMessageSize: 200000000, // bytes - default: 8MiB
+							},
+						});
 
 						setEvents();
 						checkCurrentNetwork();
@@ -1044,11 +1069,10 @@ class Web3Service {
 		*/
 
 		let idx;
-		let data;
 
-		let to;
-		let from;
 		let owner;
+
+		let eventType;
 
 		let toAddress;
 		let fromAddress;
@@ -1057,6 +1081,8 @@ class Web3Service {
 		let minValue;
 
 		let mintsCount;
+
+		const vm = this;
 
 		const event = eventData.event;
 		const blockNumber = eventData.blockNumber;
@@ -1079,7 +1105,8 @@ class Web3Service {
 
 				owner = returnValues.minter;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'mint';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					punkService.updateItem(idx, 'owner', owner);
 					punkService.updateItem(idx, 'mint', true);
 					punkService.updateItem(
@@ -1106,7 +1133,8 @@ class Web3Service {
 				minValue = returnValues.minValue;
 				toAddress = returnValues.toAddress;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'sale';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					punkService.updateItem(idx, 'sale', true);
 					punkService.updateItem(idx, 'saleData', {
 						minValue: minValue,
@@ -1135,7 +1163,8 @@ class Web3Service {
 				toAddress = returnValues.toAddress;
 				fromAddress = returnValues.fromAddress;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'sale';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					punkService.updateItem(idx, 'owner', toAddress);
 					punkService.updateItem(idx, 'value', value);
 					punkService.updateItem(idx, 'sale', false);
@@ -1151,6 +1180,7 @@ class Web3Service {
 							punkData[idx].bidData &&
 							punkData[idx].bidData.fromAddress === toAddress
 						) {
+							eventType = 'bid';
 							punkService.updateItem(idx, 'bid', false);
 							punkService.updateItem(idx, 'bidData', {});
 						}
@@ -1173,7 +1203,8 @@ class Web3Service {
 				value = returnValues.value;
 				fromAddress = returnValues.fromAddress;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'bid';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					punkService.updateItem(idx, 'bid', true);
 					punkService.updateItem(idx, 'bidData', {
 						value: value,
@@ -1201,7 +1232,8 @@ class Web3Service {
 				value = returnValues.value;
 				fromAddress = returnValues.fromAddress;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'bid';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					if (punkData[idx].bid === true) {
 						if (
 							punkData[idx].bidData &&
@@ -1236,7 +1268,8 @@ class Web3Service {
 				minValue = returnValues.minValue;
 				toAddress = returnValues.toAddress;
 
-				if (blockNumber >= punkData[idx].blockLatestEvent) {
+				eventType = 'sale';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
 					punkService.updateItem(idx, 'sale', false);
 					punkService.updateItem(idx, 'saleData', {});
 					punkService.updateItem(
