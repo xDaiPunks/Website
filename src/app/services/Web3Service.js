@@ -1445,9 +1445,11 @@ class Web3Service {
 			.allEvents()
 			.on('connected', (subscriptionId) => {
 				console.log('Contract connected');
+				/*
 				vm.punkData().catch(error=>{
 					console.log('PunkData not available');
 				})
+				*/
 			})
 			.on('data', (event) => {
 				vm.eventUpdatePunkData(event);
