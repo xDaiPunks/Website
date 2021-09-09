@@ -48,6 +48,7 @@ class PunkAccount extends PureComponent {
 
 		this.punks = this.punks.bind(this);
 		this.punkItems = this.punkItems.bind(this);
+		this.pendingWithdrawals = this.pendingWithdrawals.bind(this);
 
 		this.bidComponent = this.bidComponent.bind(this);
 		this.punkComponent = this.punkComponent.bind(this);
@@ -64,6 +65,7 @@ class PunkAccount extends PureComponent {
 		const pageElement = $('.' + vm.componentName + '.View');
 
 		vm.getData();
+		vm.loader.current.showLoader(false);
 
 		eventService.on('preloader:hide', vm.guid, () => {
 			pageElement.removeClass('Load');
@@ -126,18 +128,11 @@ class PunkAccount extends PureComponent {
 			routeService.navigateRoute('/');
 		} else {
 			punkService.setPunkDetails();
-			appService
-				.pendingWithdrawals(userService.address)
-				.then((response) => {
-					userService.withdrawAmount = response;
+			vm.setState({ loading: false }, () => {
+				vm.loader.current.hideLoader(true);
+			});
 
-					vm.setState({ loading: false }, () => {
-						vm.loader.current.hideLoader(true);
-					});
-				})
-				.catch((responseError) => {
-					vm.getData();
-				});
+			vm.pendingWithdrawals();
 		}
 	}
 
@@ -163,17 +158,21 @@ class PunkAccount extends PureComponent {
 
 		punkService.setPunkDetails();
 
+		vm.setState(vm.state);
+		vm.forceUpdate();
+	}
+
+	pendingWithdrawals() {
+		const vm = this;
 		appService
 			.pendingWithdrawals(userService.address)
 			.then((response) => {
 				userService.withdrawAmount = response;
 
-				vm.setState(vm.state);
-				vm.forceUpdate();
+				vm.updateState();
 			})
 			.catch((responseError) => {
-				vm.setState(vm.state);
-				vm.forceUpdate();
+				console.log('Available for withdraw error');
 			});
 	}
 
@@ -194,6 +193,32 @@ class PunkAccount extends PureComponent {
 		return array.sort((a, b) => {
 			a = utilityService.cloneObject(a);
 			b = utilityService.cloneObject(b);
+
+			a.value = parseFloat(a.value);
+			b.value = parseFloat(b.value);
+
+			a.rank = parseInt(a.rank, 10);
+			b.rank = parseInt(b.rank, 10);
+
+			a.bidValue = 0;
+			if (a.bidData.value) {
+				a.bidValue = parseFloat(a.bidData.value);
+			}
+
+			b.bidValue = 0;
+			if (b.bidData.value) {
+				b.bidValue = parseFloat(b.bidData.value);
+			}
+
+			a.saleValue = 0;
+			if (a.saleData.minValue) {
+				a.saleValue = parseFloat(a.saleData.minValue);
+			}
+
+			b.saleValue = 0;
+			if (b.saleData.minValue) {
+				b.saleValue = parseFloat(b.saleData.minValue);
+			}
 
 			if (prop1 === 'idx') {
 				a[prop1] = parseInt(a.idx, 10);
@@ -597,12 +622,12 @@ class PunkAccount extends PureComponent {
 	punkComponent() {
 		let key;
 		let Punks;
+		let ownedArray;
 
 		const vm = this;
-
-		const ownedArray = [];
 		const owned = punkService.owned;
 
+		ownedArray = [];
 		for (key in owned) {
 			ownedArray.push(punkService.punkObject[key]);
 		}
@@ -610,6 +635,14 @@ class PunkAccount extends PureComponent {
 		if (ownedArray.length === 0) {
 			return null;
 		} else {
+			ownedArray = vm.sortArray(
+				'-value',
+				'status',
+				'idx',
+
+				ownedArray
+			);
+
 			Punks = vm.punks;
 
 			return (
@@ -668,9 +701,13 @@ class PunkAccount extends PureComponent {
 			);
 		} else {
 			address = userService.address;
-			withdrawAmount = BigNumber(userService.withdrawAmount)
-				.div(1e18)
-				.toFixed(2);
+			if (!userService.withdrawAmount) {
+				withdrawAmount = 'loading';
+			} else {
+				withdrawAmount = BigNumber(userService.withdrawAmount)
+					.div(1e18)
+					.toFixed(2);
+			}
 
 			BidComponent = this.bidComponent;
 			PunkComponent = this.punkComponent;

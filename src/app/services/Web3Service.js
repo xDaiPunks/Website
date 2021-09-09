@@ -386,6 +386,157 @@ class Web3Service {
 		}
 	}
 
+	punkData() {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(configService.apiUrl + '/punkData')
+				.then((response) => {
+					const data = response.data;
+
+					if (
+						data &&
+						data.responseData &&
+						data.responseData.punkData
+					) {
+						punkService.generatePunkData(
+							data.responseData.punkData
+						);
+					}
+
+					resolve({ result: 'success' });
+				})
+				.catch((responseError) => {
+					punkService.generatePunkData();
+					resolve({ result: 'success' });
+				});
+		});
+	}
+
+	blockchainData() {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			// public sale
+			// mints remaining
+
+			// we now direclty call the api
+
+			axios
+				.get(configService.apiUrl + '/init')
+				.then((response) => {
+					let val;
+					const data = response.data;
+
+					if (data.responseData) {
+						if (data.responseData.hasOwnProperty('publicSale')) {
+							punkService.publicSale =
+								data.responseData.publicSale;
+						}
+
+						if (data.responseData.hasOwnProperty('mintsCount')) {
+							punkService.mintsCount =
+								data.responseData.mintsCount;
+						}
+					}
+
+					if (
+						punkService.publicSale === true ||
+						punkService.publicSale === false
+					) {
+						if (punkService.mintsCount !== null) {
+							val = true;
+						}
+					}
+
+					if (val === true) {
+						resolve({ result: 'success' });
+					} else {
+						web3BlockchainData();
+					}
+				})
+				.catch((responseError) => {
+					punkService.generatePunkData();
+					resolve({ result: 'success' });
+				});
+
+			function web3BlockchainData() {
+				const promiseArray = [];
+				promiseArray.push(publicSale());
+				promiseArray.push(mintsRemaining());
+
+				Promise.all(promiseArray)
+					.then((responses) => {
+						resolve({ result: 'success' });
+					})
+					.catch((responsesError) => {
+						resolve({ result: 'success' });
+					});
+
+				function publicSale() {
+					return new Promise((resolve, reject) => {
+						vm.publicSale()
+							.then((response) => {
+								resolve(response);
+							})
+							.catch((responseError) => {
+								reject(responseError);
+							});
+					});
+				}
+
+				function mintsRemaining() {
+					return new Promise((resolve, reject) => {
+						vm.mintsRemaining()
+							.then((response) => {
+								resolve(response);
+							})
+							.catch((responseError) => {
+								resolve(responseError);
+							});
+					});
+				}
+			}
+			/*
+			const promiseArray = [];
+			promiseArray.push(publicSale());
+			promiseArray.push(mintsRemaining());
+
+			Promise.all(promiseArray)
+				.then((responses) => {
+					resolve({ result: 'success' });
+				})
+				.catch((responsesError) => {
+					resolve({ result: 'success' });
+				});
+
+			function publicSale() {
+				return new Promise((resolve, reject) => {
+					web3Service
+						.publicSale()
+						.then((response) => {
+							resolve(response);
+						})
+						.catch((responseError) => {
+							reject(responseError);
+						});
+				});
+			}
+
+			function mintsRemaining() {
+				return new Promise((resolve, reject) => {
+					web3Service
+						.mintsRemaining()
+						.then((response) => {
+							resolve(response);
+						})
+						.catch((responseError) => {
+							resolve(responseError);
+						});
+				});
+			}
+			*/
+		});
+	}
+
 	publicSale() {
 		const vm = this;
 
@@ -1294,6 +1445,9 @@ class Web3Service {
 			.allEvents()
 			.on('connected', (subscriptionId) => {
 				console.log('Contract connected');
+				vm.punkData().catch(error=>{
+					console.log('PunkData not available');
+				})
 			})
 			.on('data', (event) => {
 				vm.eventUpdatePunkData(event);
@@ -1301,9 +1455,10 @@ class Web3Service {
 			.on('error', (error, receipt) => {
 				// Check the error event to restart the socket
 				console.log('Reconnecting..');
-
-				vm.setContract();
-				vm.initializeContractEvents();
+				setTimeout(() => {
+					vm.setContract();
+					vm.initializeContractEvents();
+				}, 3000);
 			});
 	}
 }

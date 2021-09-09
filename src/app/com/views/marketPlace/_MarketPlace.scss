@@ -71,8 +71,8 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									flex-grow: 2;
-									flex-basis: auto;
+									flex-grow: 1;
+									flex-basis: 50%;
 								}
 							}
 
@@ -86,8 +86,8 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									display: none;
-									width: 0px;
+									display: flex;
+									width: 15px;
 								}
 							}
 
@@ -96,7 +96,7 @@
 								flex-grow: 1;
 								flex-basis: 0;
 
-								justify-content: flex-end;
+								justify-content: space-between;
 
 								@include responsiveMax($responsiveMed) {
 									display: flex;
@@ -106,8 +106,8 @@
 
 								@include responsiveMax($responsiveSmall) {
 									display: flex;
-									flex-grow: 0;
-									flex-basis: 0;
+									flex-grow: 1;
+									flex-basis: auto;
 								}
 							}
 						}

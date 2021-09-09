@@ -114,12 +114,6 @@ class RouteService {
 			return;
 		}
 
-		scrollTo(window, { top: 0, behavior: 'auto' });
-		scrollTo(scrollService.scrollOriginalElement, {
-			top: 0,
-			behavior: 'auto',
-		});
-
 		if (location.pathname === '/') {
 			locationString =
 				location.pathname + location.search + location.hash;

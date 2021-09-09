@@ -989,18 +989,10 @@ body {
     color: #b4b4b4; }
 
 .Select {
-  display: block;
+  display: flex;
   position: relative;
-  height: 46px;
-  margin-bottom: 28px;
-  border: 2px solid #111;
-  border-radius: 23px; }
-  @media screen and (max-width: 1070px) {
-    .Select {
-      margin-bottom: 28px; } }
-  @media screen and (max-width: 986px) {
-    .Select {
-      margin-bottom: 18px; } }
+  height: 36px;
+  margin-bottom: 0px; }
   .Select select {
     display: block;
     position: relative;
@@ -1009,8 +1001,8 @@ body {
     z-index: 3;
     top: 0px;
     width: 100%;
-    height: 42px;
-    line-height: 42px;
+    height: 36px;
+    line-height: 36px;
     font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
@@ -1025,26 +1017,31 @@ body {
     outline: none;
     appearance: none;
     background-color: transparent;
-    color: #333;
-    font-family: 'Roboto', sans-serif; }
+    color: #111;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    white-space: nowrap;
+    font-family: 'Gilroy', sans-serif; }
   .Select .SelectOverlay {
     display: block;
     position: absolute;
     width: 100%;
-    height: 42px;
+    height: 36px;
     top: 0px;
     left: 0px;
-    color: #5605c7;
-    line-height: 42px;
-    font-family: 'Roboto', sans-serif; }
+    color: #111;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    white-space: nowrap;
+    font-family: 'Gilroy', sans-serif; }
     .Select .SelectOverlay input {
       display: block;
       box-sizing: border-box;
       width: 100%;
-      height: 42px;
-      line-height: 42px;
-      font-size: 16px;
-      font-weight: 600;
+      height: 36px;
+      line-height: 36px;
       white-space: nowrap;
       letter-spacing: normal;
       text-overflow: ellipsis;
@@ -1058,10 +1055,12 @@ body {
       outline: none;
       appearance: none;
       background-color: transparent;
-      padding-left: 20px;
-      padding-right: 20px;
       color: #111;
-      font-family: 'Roboto', sans-serif; }
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: normal;
+      white-space: nowrap;
+      font-family: 'Gilroy', sans-serif; }
   .Select .SelectOverlay.Placeholder input {
     color: rgba(61, 4, 174, 0.7); }
 
@@ -4158,8 +4157,8 @@ body {
               flex-basis: 20px; } }
           @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .SearchControl {
-              flex-grow: 2;
-              flex-basis: auto; } }
+              flex-grow: 1;
+              flex-basis: 50%; } }
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
           display: flex;
           width: 20px; }
@@ -4169,13 +4168,13 @@ body {
               width: 20px; } }
           @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .ControlSpacer {
-              display: none;
-              width: 0px; } }
+              display: flex;
+              width: 15px; } }
         #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
           display: flex;
           flex-grow: 1;
           flex-basis: 0;
-          justify-content: flex-end; }
+          justify-content: space-between; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
               display: flex;
@@ -4184,8 +4183,8 @@ body {
           @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Controls .ControlsContainer .FilterControl {
               display: flex;
-              flex-grow: 0;
-              flex-basis: 0; } }
+              flex-grow: 1;
+              flex-basis: auto; } }
     #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid {
       display: flex;
       position: relative;

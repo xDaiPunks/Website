@@ -33,9 +33,10 @@ class MarketPlace extends PureComponent {
 		this.data = punkService.punkData;
 
 		this.searchData = this.sortArray(
-			'status',
 			'-value',
+			'status',
 			'idx',
+
 			punkService.punkData
 		);
 
@@ -44,7 +45,7 @@ class MarketPlace extends PureComponent {
 				state: null,
 				attributes: null,
 			},
-			sort: ['status', '-value', 'idx'],
+			sort: ['-value', 'status', 'idx'],
 			items: this.searchData.slice(0, 60),
 		};
 
@@ -52,6 +53,7 @@ class MarketPlace extends PureComponent {
 
 		this.guid = utilityService.guid();
 
+		this.sortOrder = React.createRef();
 		this.searchInput = React.createRef();
 		this.searchFilter = React.createRef();
 
@@ -60,6 +62,7 @@ class MarketPlace extends PureComponent {
 
 		this.searchChange = this.searchChange.bind(this);
 		this.setSearchFilter = this.setSearchFilter.bind(this);
+		this.changeSortOrder = this.changeSortOrder.bind(this);
 
 		this.listComponent = this.listComponent.bind(this);
 	}
@@ -130,6 +133,32 @@ class MarketPlace extends PureComponent {
 		return array.sort((a, b) => {
 			a = utilityService.cloneObject(a);
 			b = utilityService.cloneObject(b);
+
+			a.value = parseFloat(a.value);
+			b.value = parseFloat(b.value);
+
+			a.rank = parseInt(a.rank, 10);
+			b.rank = parseInt(b.rank, 10);
+
+			a.bidValue = 0;
+			if (a.bidData.value) {
+				a.bidValue = parseFloat(a.bidData.value);
+			}
+
+			b.bidValue = 0;
+			if (b.bidData.value) {
+				b.bidValue = parseFloat(b.bidData.value);
+			}
+
+			a.saleValue = 0;
+			if (a.saleData.minValue) {
+				a.saleValue = parseFloat(a.saleData.minValue);
+			}
+
+			b.saleValue = 0;
+			if (b.saleData.minValue) {
+				b.saleValue = parseFloat(b.saleData.minValue);
+			}
 
 			if (prop1 === 'idx') {
 				a[prop1] = parseInt(a.idx, 10);
@@ -478,6 +507,141 @@ class MarketPlace extends PureComponent {
 		vm.setState(state);
 	}
 
+	changeSortOrder(event) {
+		const vm = this;
+
+		const order = vm.sortOrder.current.state.value;
+		const state = utilityService.cloneObject(vm.state);
+
+		switch (order) {
+			default:
+				vm.searchData = vm.sortArray(
+					'-value',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['-value', 'status', 'idx'];
+				state.items = this.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case '-rank':
+				vm.searchData = vm.sortArray(
+					'-rank',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['-rank', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case 'rank':
+				vm.searchData = vm.sortArray(
+					'rank',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['rank', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case '-value':
+				vm.searchData = vm.sortArray(
+					'-value',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['-value', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case 'value':
+				vm.searchData = vm.sortArray(
+					'value',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['value', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case '-bidValue':
+				vm.searchData = vm.sortArray(
+					'-bidValue',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['-bidValue', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case 'bidValue':
+				vm.searchData = vm.sortArray(
+					'bidValue',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['bidValue', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case '-saleValue':
+				vm.searchData = vm.sortArray(
+					'-saleValue',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['-saleValue', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+
+			case 'saleValue':
+				vm.searchData = vm.sortArray(
+					'saleValue',
+					'status',
+					'idx',
+
+					punkService.punkData
+				);
+				state.sort = ['saleValue', 'status', 'idx'];
+				state.items = vm.searchData.slice(0, 60);
+
+				vm.setState(state);
+				break;
+		}
+	}
+
 	listComponent() {
 		const vm = this;
 
@@ -679,9 +843,12 @@ class MarketPlace extends PureComponent {
 	}
 
 	render() {
+		let options;
 		let transitionClass;
 
 		const vm = this;
+
+		const ListComponent = vm.listComponent;
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -691,7 +858,16 @@ class MarketPlace extends PureComponent {
 			transitionClass = 'Underlay';
 		}
 
-		const ListComponent = vm.listComponent;
+		options = [
+			{ label: 'Value ↓', value: '-value' },
+			{ label: 'Value ↑', value: 'value' },
+			{ label: 'Bids ↓', value: '-bidValue' },
+			{ label: 'Bids ↑', value: 'bidValue' },
+			{ label: 'Rank ↓', value: 'rank' },
+			{ label: 'Rank ↑', value: '-rank' },
+			{ label: 'Offered ↓', value: '-saleValue' },
+			{ label: 'Offered ↑', value: 'saleValue' },
+		];
 
 		return (
 			<div
@@ -714,6 +890,17 @@ class MarketPlace extends PureComponent {
 							</div>
 							<div className="ControlSpacer" />
 							<div className="FilterControl">
+								<Input
+									ref={vm.sortOrder}
+									id={'sort'}
+									inputType={'select'}
+									options={options}
+									defaultValue={'-value'}
+									selectedOption={'-value'}
+									onChange={(event) => {
+										vm.changeSortOrder(event);
+									}}
+								/>
 								<Button
 									type={'actionButtonIcon'}
 									label={'Filter'}
