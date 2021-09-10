@@ -2,8 +2,7 @@
 	.App {
 		.ViewContainer {
 			.MarketPlace.View {
-				background: $backgroundColor;
-				background-color: #fff;
+				background-color: #111;
 
 				.ViewBox {
 					display: block;
@@ -14,7 +13,7 @@
 
 					min-height: 100vh;
 
-					background-color: #fff;
+					background-color: #111;
 
 					.Spacer {
 						display: block;
@@ -161,7 +160,7 @@
 
 								border-radius: 18px;
 
-								background-color: #f2f2f2;
+								background-color: #333;
 
 								@include responsiveMax($responsiveMed) {
 									flex-basis: 33%;
@@ -272,14 +271,14 @@
 
 												font-size: 8px;
 
-												color: #111;
+												color: #00f5f5;
 											}
 
 											.DetailsTextContent {
 												display: block;
 												position: relative;
 
-												color: #111;
+												color: #fff;
 
 												white-space: nowrap;
 												overflow: hidden;

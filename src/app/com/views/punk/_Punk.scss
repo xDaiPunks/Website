@@ -2,8 +2,7 @@
 	.App {
 		.ViewContainer {
 			.Punk.View {
-				background: $backgroundColor;
-				background-color: #fff;
+				background-color: #111;
 
 				.ViewBox {
 					display: flex;
@@ -14,7 +13,7 @@
 
 					min-height: 100vh;
 
-					background-color: #fff;
+					background-color: #111;
 
 					.Spacer {
 						display: block;
@@ -158,7 +157,7 @@
 								height: 33vw;
 								border-radius: 22px;
 
-								background-color: #f2f2f2;
+								background-color: #333;
 
 								@include responsiveMax($responsiveMed) {
 									padding-top: 25px;
@@ -168,7 +167,7 @@
 									height: 40vw;
 									border-radius: 22px;
 
-									background-color: #f2f2f2;
+									background-color: #333;
 								}
 
 								@include responsiveMax($responsiveSmall) {
@@ -199,7 +198,7 @@
 											display: block;
 											position: relative;
 
-											color: #111;
+											color: #00f5f5;
 
 											font-size: 14px;
 											font-weight: 600;
@@ -226,7 +225,7 @@
 											display: block;
 											position: relative;
 
-											color: #111;
+											color: #fff;
 
 											font-size: 22px;
 											font-weight: 900;

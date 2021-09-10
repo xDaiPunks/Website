@@ -909,7 +909,7 @@ class MarketPlace extends PureComponent {
 										event.preventDefault();
 										vm.showFilter();
 									}}
-									iconImage="/static/media/images/icon-filter.svg"
+									iconImage="/static/media/images/icon-filter-white.svg"
 									cssClass={'ActionButtonFilter'}
 								/>
 							</div>

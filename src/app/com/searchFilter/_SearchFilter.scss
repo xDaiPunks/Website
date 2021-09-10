@@ -15,7 +15,7 @@
 
 	overflow-y: scroll;
 
-	background-color: #f2f2f2;
+	background-color: #333;
 
 	transition: opacity 0.4s $linear;
 
@@ -25,7 +25,7 @@
 
 		z-index: 10;
 
-		background-color: #f2f2f2;
+		background-color: #333;
 
 		width: 100%;
 		height: $heightHeader;
@@ -56,6 +56,8 @@
 
 				height: $heightHeader;
 				line-height: $heightHeader;
+
+				color: #fff;
 
 				font-family: 'Gilroy';
 				font-size: 26px;
@@ -118,7 +120,7 @@
 						width: 20px;
 						height: 2px;
 
-						background-color: #111;
+						background-color: #00f5f5;
 					}
 
 					.CloseCrossLine.Left {
@@ -164,7 +166,7 @@
 			display: flex;
 			position: relative;
 
-			color: #111;
+			color: #fff;
 
 			font-size: 18px;
 			font-weight: 900;
@@ -210,6 +212,8 @@
 					white-space: nowrap;
 					text-overflow: ellipsis;
 
+					color: #fff;
+
 					font-size: 14px;
 					font-weight: 700;
 					font-family: 'Gilroy', sans-serif;
@@ -229,13 +233,13 @@
 					height: 14px;
 
 					border-radius: 4px;
-					border: 2px solid #111;
+					border: 2px solid #fff;
 
 					background-color: transparent;
 				}
 
 				input:checked ~ .Checkmark {
-					background-color: #111;
+					background-color: #fff;
 				}
 			}
 		}

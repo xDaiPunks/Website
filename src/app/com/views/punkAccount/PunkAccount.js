@@ -735,7 +735,7 @@ class PunkAccount extends PureComponent {
 												event.preventDefault();
 												vm.disconnect();
 											}}
-											iconImage="/static/media/images/icon-disconnect-white.svg"
+											iconImage="/static/media/images/icon-disconnect.svg"
 											cssClass={'ActionButtonAccount'}
 										/>
 										<div className="AccountItemContent">
@@ -756,7 +756,7 @@ class PunkAccount extends PureComponent {
 												event.preventDefault();
 												vm.withdraw();
 											}}
-											iconImage="/static/media/images/icon-money-white.svg"
+											iconImage="/static/media/images/icon-money.svg"
 											cssClass={'ActionButtonAccount'}
 										/>
 										<div className="AccountItemContent">

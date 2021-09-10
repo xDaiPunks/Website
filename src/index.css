@@ -891,7 +891,7 @@ body {
     width: 100vw;
     height: 120%;
     max-width: 100%;
-    background-color: #fff; }
+    background-color: #111; }
 
 #Preloader.Hide {
   opacity: 0; }
@@ -943,7 +943,7 @@ body {
   position: relative;
   height: 36px;
   flex-grow: 1;
-  border: 2px solid #111;
+  border: 2px solid #00f5f5;
   border-radius: 18px; }
   .InputSearch .SearchIcon {
     display: flex;
@@ -979,7 +979,7 @@ body {
     background-color: transparent;
     padding-left: 36px;
     padding-right: 36px;
-    color: #111;
+    color: #fff;
     font-family: 'Gilroy', sans-serif; }
   .InputSearch input::placeholder {
     color: #b4b4b4; }
@@ -1017,7 +1017,7 @@ body {
     outline: none;
     appearance: none;
     background-color: transparent;
-    color: #111;
+    color: #fff;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: normal;
@@ -1055,7 +1055,7 @@ body {
       outline: none;
       appearance: none;
       background-color: transparent;
-      color: #111;
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: normal;
@@ -1471,7 +1471,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   font-family: 'Gilroy', sans-serif;
-  background-color: #111; }
+  background-color: #00f5f5; }
   .ActionButton .Txt {
     display: block;
     position: static;
@@ -1479,7 +1479,7 @@ body {
     line-height: 34px;
     text-align: center;
     user-select: none;
-    color: #fff;
+    color: #111;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: normal;
@@ -1552,13 +1552,13 @@ body {
   padding-left: 17px;
   padding-right: 8px;
   font-family: 'Gilroy', sans-serif;
-  background-color: #111; }
+  background-color: #00f5f5; }
   .ActionButtonAccount .Txt {
     display: block;
     position: static;
     text-align: left;
     user-select: none;
-    color: #fff;
+    color: #111;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: normal;
@@ -1588,7 +1588,7 @@ body {
   padding-left: 0px;
   padding-right: 21px;
   font-family: 'Gilroy', sans-serif;
-  background-color: #fff; }
+  background-color: transparent; }
   @media screen and (max-width: 1070px) {
     .ActionButtonFilter {
       padding-right: 21px; } }
@@ -1600,7 +1600,7 @@ body {
     position: static;
     text-align: left;
     user-select: none;
-    color: #111;
+    color: #fff;
     padding-left: 5px;
     font-size: 14px;
     font-weight: 700;
@@ -1647,7 +1647,7 @@ body {
     height: 46px;
     line-height: 46px;
     text-align: left;
-    color: #111;
+    color: #fff;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: normal;
@@ -1735,13 +1735,13 @@ body {
   padding-left: 16px;
   padding-right: 18px;
   font-family: 'Gilroy', sans-serif;
-  background-color: #111; }
+  background-color: #00f5f5; }
   .NavigationButtonAction .Txt {
     display: block;
     position: static;
     text-align: center;
     user-select: none;
-    color: #fff;
+    color: #111;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: normal;
@@ -2001,7 +2001,7 @@ body {
     width: 100vw;
     height: 120%;
     max-width: 100%;
-    background-color: #fff; }
+    background-color: #111; }
 
 #Loader.Hide {
   opacity: 0; }
@@ -2562,7 +2562,7 @@ body {
           width: 20px;
           height: 2px;
           border-radius: 0px;
-          background-color: #111;
+          background-color: #00f5f5;
           flex: none;
           align-items: center;
           justify-content: center;
@@ -2575,7 +2575,7 @@ body {
           width: 20px;
           height: 2px;
           border-radius: 1px;
-          background-color: #111;
+          background-color: #00f5f5;
           transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in; }
         .Navigation .Content .NavigationMain .HamburgerButton .Hamburger .HamburgerLine:after {
           content: '';
@@ -2585,20 +2585,20 @@ body {
           width: 20px;
           height: 2px;
           border-radius: 1px;
-          background-color: #111;
+          background-color: #00f5f5;
           transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
       .Navigation .Content .NavigationMain .HamburgerButton .Hamburger.Active .HamburgerLine {
-        background-color: #111;
+        background-color: #00f5f5;
         transform: rotate(225deg);
         transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
       .Navigation .Content .NavigationMain .HamburgerButton .Hamburger.Active .HamburgerLine:before {
         top: 0;
         opacity: 0;
-        background-color: #111;
+        background-color: #00f5f5;
         transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out; }
       .Navigation .Content .NavigationMain .HamburgerButton .Hamburger.Active .HamburgerLine:after {
         bottom: 0;
-        background-color: #111;
+        background-color: #00f5f5;
         transform: rotate(-90deg);
         transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
     .Navigation .Content .NavigationMain .NavigationContent {
@@ -2740,7 +2740,7 @@ body {
             max-width: 100%;
             height: 100%;
             transform: translate3d(100vw, 0, 0);
-            background-color: #fafafa;
+            background-color: #333;
             transition: transform 0.6s 0.4s cubic-bezier(0.23, 1, 0.32, 1); } }
   .Navigation .NavigationBackground {
     display: block;
@@ -2748,7 +2748,7 @@ body {
     top: 0px;
     width: 100%;
     height: 90px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(17, 17, 17, 0.9);
     transition: opacity 0.35s ease-in; }
     @media screen and (max-width: 1070px) {
       .Navigation .NavigationBackground {
@@ -2807,13 +2807,13 @@ body {
   height: 100vh;
   max-width: 100%;
   overflow-y: scroll;
-  background-color: #f2f2f2;
+  background-color: #333;
   transition: opacity 0.4s linear; }
   .SearchFilter .SearchFilterHeader {
     display: block;
     position: fixed;
     z-index: 10;
-    background-color: #f2f2f2;
+    background-color: #333;
     width: 100%;
     height: 90px;
     padding-left: 48px; }
@@ -2834,6 +2834,7 @@ body {
         position: relative;
         height: 90px;
         line-height: 90px;
+        color: #fff;
         font-family: 'Gilroy';
         font-size: 26px;
         font-weight: 900; }
@@ -2876,7 +2877,7 @@ body {
             position: absolute;
             width: 20px;
             height: 2px;
-            background-color: #111; }
+            background-color: #00f5f5; }
           .SearchFilter .SearchFilterHeader .SearchFilterHeaderCountainer .CloseSearchFilterButton .Cross .CloseCrossLine.Left {
             transform: rotate(-45deg); }
           .SearchFilter .SearchFilterHeader .SearchFilterHeaderCountainer .CloseSearchFilterButton .Cross .CloseCrossLine.Right {
@@ -2902,7 +2903,7 @@ body {
     .SearchFilter .SearchFilterContent .AttributeTitle {
       display: flex;
       position: relative;
-      color: #111;
+      color: #fff;
       font-size: 18px;
       font-weight: 900;
       font-family: 'Gilroy', sans-serif;
@@ -2933,6 +2934,7 @@ body {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          color: #fff;
           font-size: 14px;
           font-weight: 700;
           font-family: 'Gilroy', sans-serif; }
@@ -2947,10 +2949,10 @@ body {
           width: 14px;
           height: 14px;
           border-radius: 4px;
-          border: 2px solid #111;
+          border: 2px solid #fff;
           background-color: transparent; }
         .SearchFilter .SearchFilterContent .AttributeComponent .CheckBox input:checked ~ .Checkmark {
-          background-color: #111; }
+          background-color: #fff; }
 
 .SearchFilter.Animate {
   opacity: 1; }
@@ -2964,7 +2966,7 @@ body {
       position: relative;
       width: 100vw;
       max-width: 100%;
-      background-color: #fff; }
+      background-color: #333; }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
         display: flex;
         position: relative;
@@ -2974,7 +2976,8 @@ body {
         justify-content: center;
         width: 100%;
         height: auto;
-        min-height: 100vh; }
+        min-height: 100vh;
+        background-color: #111; }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .Confetti {
           display: block;
           position: absolute;
@@ -3207,7 +3210,7 @@ body {
               padding-left: 48px;
               padding-right: 48px; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextDark {
-                color: #111; }
+                color: #fff; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkText .TextLight {
                 color: #00f5f5; }
               @media screen and (max-width: 1070px) {
@@ -3230,7 +3233,7 @@ body {
               padding-left: 48px;
               padding-right: 48px;
               text-align: center;
-              color: #111; }
+              color: #fff; }
               @media screen and (max-width: 1070px) {
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .PunkItem .PunkSubText {
                   font-size: 14px;
@@ -3275,7 +3278,7 @@ body {
                 font-family: 'Gilroy', sans-serif;
                 font-weight: 700;
                 font-size: 14px;
-                color: #111;
+                color: #fff;
                 text-align: center;
                 padding-bottom: 5px; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroSubContent .CountDownContainer .CountDown {
@@ -3313,7 +3316,7 @@ body {
                 font-family: 'Gilroy', sans-serif;
                 font-weight: 700;
                 font-size: 10px;
-                color: #111;
+                color: #fff;
                 text-align: center;
                 padding-bottom: 5px; }
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroSubContent .MintAmountContainer .MintedItems {
@@ -3329,14 +3332,14 @@ body {
                 padding-left: 16px;
                 padding-right: 16px;
                 font-family: 'Gilroy', sans-serif;
-                border: 2px solid #111;
-                background-color: #fff; }
+                border: 2px solid #00f5f5;
+                background-color: transparent; }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroItem .IntroSubContent .MintAmountContainer .MintedItems .MintedItemsText {
                   display: block;
                   position: static;
                   text-align: center;
                   user-select: none;
-                  color: #111;
+                  color: #00f5f5;
                   font-size: 14px;
                   font-weight: 700;
                   letter-spacing: normal;
@@ -3379,12 +3382,13 @@ body {
         position: relative;
         z-index: 2;
         flex-direction: column;
-        padding-top: 0px; }
+        padding-top: 40px; }
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
-            padding-bottom: 0px; } }
+            padding-bottom: 30px; } }
         @media screen and (max-width: 986px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
+            padding-top: 25px;
             padding-bottom: 50px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem {
           display: flex;
@@ -3425,7 +3429,7 @@ body {
             align-items: flex-start;
             justify-content: space-between;
             padding-left: 2px;
-            color: #111;
+            color: #fff;
             font-size: 60px;
             font-weight: 900;
             font-family: 'Gilroy', sans-serif; }
@@ -3468,7 +3472,7 @@ body {
             width: 60%;
             padding-top: 10px;
             padding-left: 2px;
-            color: #111;
+            color: #fff;
             font-size: 16px;
             line-height: 22px;
             font-weight: 400;
@@ -3484,21 +3488,20 @@ body {
                 line-height: 20px;
                 width: auto; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem .ContentItemContent a {
-              color: #7e13ff; }
+              color: #00f5f5; }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentItem.AlignCenter {
           align-items: center;
           justify-content: center; }
 
 #AppRoot .App .ViewContainer .Punk.View {
-  background: #fff;
-  background-color: #fff; }
+  background-color: #111; }
   #AppRoot .App .ViewContainer .Punk.View .ViewBox {
     display: flex;
     position: relative;
     width: 100vw;
     max-width: 100%;
     min-height: 100vh;
-    background-color: #fff; }
+    background-color: #111; }
     #AppRoot .App .ViewContainer .Punk.View .ViewBox .Spacer {
       display: block;
       position: relative;
@@ -3588,7 +3591,7 @@ body {
           padding-right: 25px;
           height: 33vw;
           border-radius: 22px;
-          background-color: #f2f2f2; }
+          background-color: #333; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDetails .PunkDetailsBackground {
               padding-top: 25px;
@@ -3596,7 +3599,7 @@ body {
               padding-right: 25px;
               height: 40vw;
               border-radius: 22px;
-              background-color: #f2f2f2; } }
+              background-color: #333; } }
           @media screen and (max-width: 986px) {
             #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDetails .PunkDetailsBackground {
               padding-top: 0px;
@@ -3617,7 +3620,7 @@ body {
               #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDetails .PunkDetailsBackground .PunkDetailItemContainer .PunkDetailItem .PunkDetailItemTitle {
                 display: block;
                 position: relative;
-                color: #111;
+                color: #00f5f5;
                 font-size: 14px;
                 font-weight: 600;
                 font-family: 'Gilroy', sans-serif; }
@@ -3632,7 +3635,7 @@ body {
               #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkDetails .PunkDetailsBackground .PunkDetailItemContainer .PunkDetailItem .PunkDetailItemContent {
                 display: block;
                 position: relative;
-                color: #111;
+                color: #fff;
                 font-size: 22px;
                 font-weight: 900;
                 font-family: 'Gilroy', sans-serif; }
@@ -3716,7 +3719,7 @@ body {
             padding-bottom: 0px; } }
 
 #AppRoot .App .ViewContainer .MintHelp.View {
-  background: #fff; }
+  background: #333; }
   #AppRoot .App .ViewContainer .MintHelp.View .ViewBox {
     display: flex; }
     #AppRoot .App .ViewContainer .MintHelp.View .ViewBox .Spacer {
@@ -3781,7 +3784,7 @@ body {
           align-items: flex-start;
           justify-content: space-between;
           padding-left: 2px;
-          color: #111;
+          color: #00f5f5;
           font-size: 60px;
           font-weight: 900;
           font-family: 'Gilroy', sans-serif; }
@@ -3824,7 +3827,7 @@ body {
           width: 60%;
           padding-top: 10px;
           padding-left: 2px;
-          color: #111;
+          color: #fff;
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
@@ -3840,13 +3843,13 @@ body {
               line-height: 20px;
               width: auto; } }
           #AppRoot .App .ViewContainer .MintHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
-            color: #7e13ff; }
+            color: #00f5f5; }
       #AppRoot .App .ViewContainer .MintHelp.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
         align-items: center;
         justify-content: center; }
 
 #AppRoot .App .ViewContainer .XDaiOnRamp.View {
-  background: #fff; }
+  background: #333; }
   #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox {
     display: flex; }
     #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .Spacer {
@@ -3911,7 +3914,7 @@ body {
           align-items: flex-start;
           justify-content: space-between;
           padding-left: 2px;
-          color: #111;
+          color: #00f5f5;
           font-size: 60px;
           font-weight: 900;
           font-family: 'Gilroy', sans-serif; }
@@ -3954,7 +3957,7 @@ body {
           width: 60%;
           padding-top: 10px;
           padding-left: 2px;
-          color: #111;
+          color: #fff;
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
@@ -3970,13 +3973,13 @@ body {
               line-height: 20px;
               width: auto; } }
           #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
-            color: #7e13ff; }
+            color: #00f5f5; }
       #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
         align-items: center;
         justify-content: center; }
 
 #AppRoot .App .ViewContainer .MarketHelp.View {
-  background: #fff; }
+  background: #333; }
   #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox {
     display: flex; }
     #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .Spacer {
@@ -4041,7 +4044,7 @@ body {
           align-items: flex-start;
           justify-content: space-between;
           padding-left: 2px;
-          color: #111;
+          color: #00f5f5;
           font-size: 60px;
           font-weight: 900;
           font-family: 'Gilroy', sans-serif; }
@@ -4084,7 +4087,7 @@ body {
           width: 60%;
           padding-top: 10px;
           padding-left: 2px;
-          color: #111;
+          color: #fff;
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
@@ -4100,21 +4103,20 @@ body {
               line-height: 20px;
               width: auto; } }
           #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
-            color: #7e13ff; }
+            color: #00f5f5; }
       #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
         align-items: center;
         justify-content: center; }
 
 #AppRoot .App .ViewContainer .MarketPlace.View {
-  background: #fff;
-  background-color: #fff; }
+  background-color: #111; }
   #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox {
     display: block;
     position: relative;
     width: 100vw;
     max-width: 100%;
     min-height: 100vh;
-    background-color: #fff; }
+    background-color: #111; }
     #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .Spacer {
       display: block;
       position: relative;
@@ -4219,7 +4221,7 @@ body {
           margin-right: 10px;
           margin-bottom: 20px;
           border-radius: 18px;
-          background-color: #f2f2f2; }
+          background-color: #333; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem {
               flex-basis: 33%; } }
@@ -4287,11 +4289,11 @@ body {
                   display: block;
                   position: relative;
                   font-size: 8px;
-                  color: #111; }
+                  color: #00f5f5; }
                 #AppRoot .App .ViewContainer .MarketPlace.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent {
                   display: block;
                   position: relative;
-                  color: #111;
+                  color: #fff;
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis; }
@@ -4329,15 +4331,14 @@ body {
           height: 0px; }
 
 #AppRoot .App .ViewContainer .PunkAccount.View {
-  background: #fff;
-  background-color: #fff; }
+  background-color: #111; }
   #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox {
     display: block;
     position: relative;
     width: 100vw;
     max-width: 100%;
     min-height: 100vh;
-    background-color: #fff; }
+    background-color: #111; }
     #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .Spacer {
       display: block;
       position: relative;
@@ -4382,7 +4383,7 @@ body {
         padding-top: 20px;
         padding-bottom: 30px;
         border-radius: 18px;
-        background-color: #f2f2f2; }
+        background-color: #333; }
         #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .ContentBlock .BlockContent .AccountItem {
           display: block;
           position: relative; }
@@ -4402,7 +4403,7 @@ body {
               display: block;
               position: relative;
               overflow: hidden;
-              color: #111;
+              color: #00f5f5;
               font-size: 10px;
               font-weight: 700;
               text-overflow: ellipsis;
@@ -4412,7 +4413,7 @@ body {
               display: block;
               position: relative;
               overflow: hidden;
-              color: #111;
+              color: #fff;
               font-size: 14px;
               font-weight: 900;
               text-overflow: ellipsis;
@@ -4469,7 +4470,7 @@ body {
           margin-right: 10px;
           margin-bottom: 20px;
           border-radius: 18px;
-          background-color: #f2f2f2; }
+          background-color: #333; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem {
               flex-basis: 33%; } }
@@ -4536,11 +4537,11 @@ body {
                   display: block;
                   position: relative;
                   font-size: 8px;
-                  color: #111; }
+                  color: #00f5f5; }
                 #AppRoot .App .ViewContainer .PunkAccount.View .ViewBox .PunkGrid .PunkRow .PunkItem .PunkItemContent .PunkDetailesContainer .PunkItemDetails .DetailsTextContent {
                   display: block;
                   position: relative;
-                  color: #111;
+                  color: #fff;
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis; }
@@ -4707,7 +4708,7 @@ body {
               line-height: 20px;
               width: auto; } }
           #AppRoot .App .ViewContainer .WalletIssues.View .ViewBox .PageTextContent .ContentItem .ContentItemContent a {
-            color: #7e13ff; }
+            color: #00f5f5; }
       #AppRoot .App .ViewContainer .WalletIssues.View .ViewBox .PageTextContent .ContentItem.AlignCenter {
         align-items: center;
         justify-content: center; }

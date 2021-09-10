@@ -209,7 +209,7 @@ class Input extends PureComponent {
 					<img
 						alt={''}
 						className="SearchIconImage"
-						src="/static/media/images/icon-search.svg"
+						src="/static/media/images/icon-search-blue.svg"
 					/>
 				</div>
 				<input

@@ -387,8 +387,8 @@ class Home extends PureComponent {
 				return (
 					<Button
 						type={'actionButton'}
-						label={'View the marketplace'}
-						title={'View the marketplace'}
+						label={'Visit the marketplace'}
+						title={'Visit the marketplace'}
 						onClick={(event) => {
 							event.preventDefault();
 							vm.getPunkAction();
@@ -458,8 +458,7 @@ class Home extends PureComponent {
 										<span className="TextLight">PUNKS</span>
 									</span>
 									<span className="PunkSubText">
-										Here is your chance to own a genuine
-										xDaiPunk!
+										Minting phase been completed in 7 hours!
 									</span>
 								</div>
 								<div className="IntroSubContent">

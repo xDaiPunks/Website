@@ -238,7 +238,7 @@ class Navigation extends PureComponent {
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButton MobileMenu'}
-						iconImage="/static/media/images/icon-wallet.svg"
+						iconImage="/static/media/images/icon-wallet-white.svg"
 					/>
 
 					<Button
@@ -251,7 +251,7 @@ class Navigation extends PureComponent {
 							vm.connectWallet(event);
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
-						iconImage="/static/media/images/icon-wallet-white.svg"
+						iconImage="/static/media/images/icon-wallet.svg"
 					/>
 				</>
 			);
@@ -268,7 +268,7 @@ class Navigation extends PureComponent {
 							routeService.navigateRoute('/my-account');
 						}}
 						cssClass={'NavigationButton MobileMenu'}
-						iconImage="/static/media/images/icon-wallet.svg"
+						iconImage="/static/media/images/icon-wallet-white.svg"
 					/>
 
 					<Button
@@ -281,7 +281,7 @@ class Navigation extends PureComponent {
 							routeService.navigateRoute('/my-account');
 						}}
 						cssClass={'NavigationButtonAction MobileMenu'}
-						iconImage="/static/media/images/icon-wallet-white.svg"
+						iconImage="/static/media/images/icon-wallet.svg"
 					/>
 				</>
 			);
@@ -358,7 +358,7 @@ class Navigation extends PureComponent {
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}
-										iconImage="/static/media/images/icon-home.svg"
+										iconImage="/static/media/images/icon-home-white.svg"
 									/>
 								</li>
 
@@ -379,7 +379,7 @@ class Navigation extends PureComponent {
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}
-										iconImage="/static/media/images/icon-cart.svg"
+										iconImage="/static/media/images/icon-cart-white.svg"
 									/>
 								</li>
 
@@ -394,7 +394,7 @@ class Navigation extends PureComponent {
 											vm.xDaiOnRamp();
 										}}
 										cssClass={'NavigationButton'}
-										iconImage="/static/media/images/icon-card.svg"
+										iconImage="/static/media/images/icon-card-white.svg"
 									/>
 								</li>
 

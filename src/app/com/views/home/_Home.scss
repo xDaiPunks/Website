@@ -15,7 +15,7 @@
 
 						max-width: 100%;
 
-						background-color: #fff;
+						background-color: #333;
 
 						.IntroStart {
 							display: flex;
@@ -30,6 +30,8 @@
 							width: 100%;
 							height: auto;
 							min-height: 100vh;
+
+							background-color: #111;
 
 							.Confetti {
 								display: block;
@@ -408,7 +410,7 @@
 										padding-right: $padding;
 
 										.TextDark {
-											color: #111;
+											color: #fff;
 										}
 
 										.TextLight {
@@ -446,7 +448,7 @@
 
 										text-align: center;
 
-										color: #111;
+										color: #fff;
 
 										@include responsiveMax($responsiveMed) {
 											font-size: 14px;
@@ -515,7 +517,7 @@
 
 											font-size: 14px;
 
-											color: #111;
+											color: #fff;
 
 											text-align: center;
 											padding-bottom: 5px;
@@ -580,7 +582,7 @@
 
 											font-size: 10px;
 
-											color: #111;
+											color: #fff;
 
 											text-align: center;
 											padding-bottom: 5px;
@@ -606,8 +608,8 @@
 
 											font-family: 'Gilroy', sans-serif;
 
-											border: 2px solid #111;
-											background-color: #fff;
+											border: 2px solid #00f5f5;
+											background-color: transparent;
 
 											.MintedItemsText {
 												display: block;
@@ -617,7 +619,7 @@
 
 												user-select: none;
 
-												color: #111;
+												color: #00f5f5;
 
 												font-size: 14px;
 												font-weight: 700;
@@ -688,13 +690,14 @@
 
 							flex-direction: column;
 
-							padding-top: 0px;
+							padding-top: 40px;
 
 							@include responsiveMax($responsiveMed) {
-								padding-bottom: 0px;
+								padding-bottom: 30px;
 							}
 
 							@include responsiveMax($responsiveSmall) {
+								padding-top: 25px;
 								padding-bottom: 50px;
 							}
 
@@ -755,7 +758,7 @@
 
 									padding-left: 2px;
 
-									color: #111;
+									color: #fff;
 
 									font-size: 60px;
 									font-weight: 900;
@@ -822,7 +825,7 @@
 									padding-top: 10px;
 									padding-left: 2px;
 
-									color: #111;
+									color: #fff;
 
 									font-size: 16px;
 									line-height: 22px;
@@ -845,7 +848,7 @@
 									}
 
 									a {
-										color: #7e13ff;
+										color: #00f5f5;
 									}
 								}
 							}

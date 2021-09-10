@@ -2,7 +2,7 @@
 	.App {
 		.ViewContainer {
 			.XDaiOnRamp.View {
-				background: $backgroundColor;
+				background: #333;
 
 				.ViewBox {
 					display: flex;
@@ -97,7 +97,7 @@
 
 								padding-left: 2px;
 
-								color: #111;
+								color: #00f5f5;
 
 								font-size: 60px;
 								font-weight: 900;
@@ -162,7 +162,7 @@
 								padding-top: 10px;
 								padding-left: 2px;
 
-								color: #111;
+								color: #fff;
 
 								font-size: 16px;
 								line-height: 22px;
@@ -185,7 +185,7 @@
 								}
 
 								a {
-									color: #7e13ff;
+									color: #00f5f5;
 								}
 							}
 						}

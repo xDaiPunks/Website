@@ -139,7 +139,7 @@
 						height: 2px;
 						border-radius: 0px;
 
-						background-color: #111;
+						background-color: #00f5f5;
 
 						flex: none;
 						align-items: center;
@@ -160,7 +160,7 @@
 						height: 2px;
 						border-radius: 1px;
 
-						background-color: #111;
+						background-color: #00f5f5;
 
 						transition: top 0.1s 0.25s $easeIn, opacity 0.1s $easeIn;
 					}
@@ -176,7 +176,7 @@
 						height: 2px;
 						border-radius: 1px;
 
-						background-color: #111;
+						background-color: #00f5f5;
 
 						transition: bottom 0.1s 0.25s $easeIn,
 							transform 0.22s
@@ -186,7 +186,7 @@
 
 				.Hamburger.Active {
 					.HamburgerLine {
-						background-color: #111;
+						background-color: #00f5f5;
 
 						transform: rotate(225deg);
 
@@ -198,7 +198,7 @@
 						top: 0;
 						opacity: 0;
 
-						background-color: #111;
+						background-color: #00f5f5;
 
 						transition: top 0.1s $easeOut,
 							opacity 0.1s 0.12s $easeOut;
@@ -207,7 +207,7 @@
 					.HamburgerLine:after {
 						bottom: 0;
 
-						background-color: #111;
+						background-color: #00f5f5;
 
 						transform: rotate(-90deg);
 						transition: bottom 0.1s $easeOut,
@@ -431,7 +431,7 @@
 
 						transform: translate3d(100vw, 0, 0);
 
-						background-color: #fafafa;
+						background-color: #333;
 
 						transition: transform 0.6s 0.4s $easeOutQuint;
 					}
@@ -449,7 +449,7 @@
 		width: 100%;
 		height: $heightHeader;
 
-		background-color: rgba(255, 255, 255, 0.95);
+		background-color: rgba(17, 17, 17, 0.9);
 
 		transition: opacity 0.35s $easeIn;
 
