@@ -57,6 +57,7 @@ class Web3Service {
 
 		vm.setAbi();
 		vm.setContract();
+		vm.setWeb3Events();
 		vm.setContractEvents();
 	}
 
@@ -87,6 +88,180 @@ class Web3Service {
 			vm.xdaiPunksAbi,
 			vm.xDaiPunkAddress
 		);
+	}
+
+	setWeb3Events() {
+		let ethereum;
+		let connected;
+
+		const vm = this;
+
+		/*
+
+		if (window.ethereum) {
+			ethereum = window.ethereum;
+
+			window.web3 = new Web3(ethereum);
+
+			connected = ethereum.isConnected();
+
+			if (connected === true) {
+				if (!ethereum.selectedAddress) {
+					userService.address = null;
+					userService.userSignedIn = null;
+				} else {
+					userService.address = ethereum.selectedAddress;
+					userService.userSignedIn = true;
+				}
+			}
+
+			ethereum.on('disconnect', (accountArray) => {
+				console.log('disconnect event', accountArray);
+
+				eventService.off('preloader:show', vm.guid);
+				eventService.on('preloader:show', vm.guid, () => {
+					eventService.off('preloader:show', vm.guid);
+					if (accountArray.length === 0) {
+						userService.address = null;
+						userService.userSignedIn = null;
+					} else {
+						userService.address = accountArray[0];
+						userService.userSignedIn = true;
+
+						punkService.setPunkDetails();
+					}
+
+					eventService.dispatchObjectEvent('force:state');
+					eventService.dispatchObjectEvent('hide:preloader');
+				});
+
+				eventService.dispatchObjectEvent('show:preloader');
+			});
+
+			ethereum.on('connect', (event) => {
+				console.log('connect event', event);
+			});
+
+			ethereum.on('chainChanged', (event) => {
+				console.log('chainChange event', event);
+			});
+
+			ethereum.on('accountsChanged', (accountArray) => {
+				console.log('accountChange event', accountArray);
+
+				eventService.off('preloader:show', vm.guid);
+				eventService.on('preloader:show', vm.guid, () => {
+					eventService.off('preloader:show', vm.guid);
+					if (accountArray.length === 0) {
+						userService.address = null;
+						userService.userSignedIn = null;
+					} else {
+						userService.address = accountArray[0];
+						userService.userSignedIn = true;
+
+						punkService.setPunkDetails();
+					}
+
+					eventService.dispatchObjectEvent('force:state');
+					eventService.dispatchObjectEvent('hide:preloader');
+				});
+
+				eventService.dispatchObjectEvent('show:preloader');
+			});
+		}
+		*/
+
+		if (window.ethereum) {
+			ethereum = window.ethereum;
+			connected = ethereum.isConnected();
+
+			if (connected === true) {
+				if (!ethereum.selectedAddress) {
+					vm.walletType = 'mm';
+					vm.walletChainId = window.ethereum.chainId;
+
+					userService.address = null;
+					userService.userSignedIn = null;
+				} else {
+					vm.walletType = 'mm';
+					vm.walletChainId = window.ethereum.chainId;
+
+					userService.userSignedIn = true;
+					userService.address = window.ethereum.selectedAddress;
+
+					punkService.setPunkDetails();
+				}
+			}
+
+			vm.walletProvider = new Web3(window.ethereum, {
+				clientConfig: {
+					maxReceivedFrameSize: 200000000, // bytes - default: 1MiB
+					maxReceivedMessageSize: 200000000, // bytes - default: 8MiB
+				},
+			});
+
+			window.ethereum.on('disconnect', (accountArray) => {
+				eventService.off('preloader:show', vm.guid);
+				eventService.on('preloader:show', vm.guid, () => {
+					eventService.off('preloader:show', vm.guid);
+
+					if (accountArray.length === 0) {
+						vm.walletType = 'mm';
+						vm.walletChainId = window.ethereum.chainId;
+
+						userService.address = null;
+						userService.userSignedIn = null;
+					} else {
+						vm.walletType = 'mm';
+						vm.walletChainId = window.ethereum.chainId;
+
+						userService.userSignedIn = true;
+						userService.address = window.ethereum.selectedAddress;
+
+						punkService.setPunkDetails();
+					}
+
+					eventService.dispatchObjectEvent('force:state');
+					eventService.dispatchObjectEvent('hide:preloader');
+				});
+
+				eventService.dispatchObjectEvent('show:preloader');
+			});
+
+			window.ethereum.on('connect', (event) => {});
+
+			window.ethereum.on('chainChanged', (event) => {
+				vm.walletType = 'mm';
+				vm.walletChainId = window.ethereum.chainId;
+			});
+
+			window.ethereum.on('accountsChanged', (accountArray) => {
+				eventService.off('preloader:show', vm.guid);
+				eventService.on('preloader:show', vm.guid, () => {
+					eventService.off('preloader:show', vm.guid);
+					if (accountArray.length === 0) {
+						vm.walletType = 'mm';
+						vm.walletChainId = window.ethereum.chainId;
+
+						userService.address = null;
+						userService.userSignedIn = null;
+					} else {
+						vm.walletType = 'mm';
+						vm.walletChainId = window.ethereum.chainId;
+
+						userService.address = accountArray[0];
+						userService.userSignedIn = true;
+
+						punkService.setPunkDetails();
+					}
+
+					eventService.dispatchObjectEvent('force:state');
+					eventService.dispatchObjectEvent('hide:preloader');
+				});
+
+				eventService.dispatchObjectEvent('show:preloader');
+			});
+		}
 	}
 
 	setContractEvents() {
@@ -896,7 +1071,7 @@ class Web3Service {
 							},
 						});
 
-						setEvents();
+						//setEvents();
 						checkCurrentNetwork();
 					})
 					.catch((responseError) => {
