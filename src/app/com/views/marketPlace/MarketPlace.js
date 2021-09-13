@@ -96,21 +96,7 @@ class MarketPlace extends PureComponent {
 
 		eventService.on('change:punkData', vm.guid, (eventData) => {
 			if (eventData.type !== 'publicSale') {
-				const state = utilityService.cloneObject(vm.state);
-
-				vm.data = punkService.punkData;
-
-				vm.searchData = vm.sortArray(
-					state.sort[0],
-					state.sort[1],
-					state.sort[2],
-					punkService.punkData
-				);
-
-				state.items = vm.searchData.slice(0, 60);
-
-				this.setState(state);
-				this.forceUpdate();
+				vm.setSortFilter(true);
 			}
 		});
 	}
@@ -551,7 +537,12 @@ class MarketPlace extends PureComponent {
 
 		state.items = vm.searchData.slice(0, 60);
 
-		vm.state = state;
+		if (updateState !== true) {
+			vm.state = state;
+		} else {
+			vm.setState(state);
+			vm.forceUpdate();
+		}
 	}
 
 	searchChange(event) {

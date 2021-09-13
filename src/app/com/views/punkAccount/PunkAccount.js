@@ -200,14 +200,14 @@ class PunkAccount extends PureComponent {
 			a.rank = parseInt(a.rank, 10);
 			b.rank = parseInt(b.rank, 10);
 
-			a.bidValue = 0;
+			a.extraValue = 0;
 			if (a.bidData.value) {
-				a.bidValue = parseFloat(a.bidData.value);
+				a.extraValue = parseFloat(a.bidData.value);
 			}
 
-			b.bidValue = 0;
+			b.extraValue = 0;
 			if (b.bidData.value) {
-				b.bidValue = parseFloat(b.bidData.value);
+				b.extraValue = parseFloat(b.bidData.value);
 			}
 
 			a.saleValue = 0;
@@ -445,8 +445,8 @@ class PunkAccount extends PureComponent {
 		let number;
 		let status;
 
-		let bidTitle;
-		let bidValue;
+		let extraTitle;
+		let extraValue;
 
 		let punkValue;
 
@@ -481,12 +481,17 @@ class PunkAccount extends PureComponent {
 							.div(1e18)
 							.toFormat(2);
 
-						bidTitle = '';
-						bidValue = '';
+						extraTitle = '';
+						extraValue = '';
+
+						if (type !== 'bid') {
+							extraTitle = 'Rank';
+							extraValue = items[item].rank;
+						}
 
 						if (type === 'bid') {
-							bidTitle = 'Bid';
-							bidValue =
+							extraTitle = 'Bid';
+							extraValue =
 								BigNumber(items[item].bidData.value)
 									.div(1e18)
 									.toFormat(2) + ' xDai';
@@ -575,10 +580,10 @@ class PunkAccount extends PureComponent {
 											</div>
 											<div className="PunkItemDetails">
 												<span className="DetailsTextTitle">
-													{bidTitle}
+													{extraTitle}
 												</span>
 												<span className="DetailsTextContent Bold">
-													{bidValue}
+													{extraValue}
 												</span>
 											</div>
 										</div>
@@ -636,8 +641,8 @@ class PunkAccount extends PureComponent {
 			return null;
 		} else {
 			ownedArray = vm.sortArray(
+				'rank',
 				'-value',
-				'status',
 				'idx',
 
 				ownedArray
