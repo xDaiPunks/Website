@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-import { attributes } from 'src/app/data/filters';
+import { statuses, attributes } from 'src/app/data/filters';
 
 import React, { PureComponent } from 'react';
 
@@ -31,18 +31,22 @@ class SearchFilter extends PureComponent {
 
 		this.buyInput = React.createRef();
 
-		this.filterEvent = this.filterEvent.bind(this);
-
 		this.showSearchFilter = this.showSearchFilter.bind(this);
 		this.hideSearchFilter = this.hideSearchFilter.bind(this);
 		this.closeSearchFilter = this.closeSearchFilter.bind(this);
 
-		this.stateFilter = this.stateFilter.bind(this);
+		this.statusFilter = this.statusFilter.bind(this);
 		this.attributeFilter = this.attributeFilter.bind(this);
 
 		this.setEventListeners = this.setEventListeners.bind(this);
+
+		this.setStatusFilter = this.setStatusFilter.bind(this);
 		this.setAttributeFilter = this.setAttributeFilter.bind(this);
 
+		this.filterEventStatus = this.filterEventStatus.bind(this);
+		this.filterEventAttribute = this.filterEventAttribute.bind(this);
+
+		this.statusComponent = this.statusComponent.bind(this);
 		this.attributeComponent = this.attributeComponent.bind(this);
 	}
 
@@ -167,17 +171,45 @@ class SearchFilter extends PureComponent {
 		let iCount;
 
 		const vm = this;
+
+		const statusCheckboxes = document.querySelectorAll(
+			'.StatusComponent [type="checkbox"]'
+		);
+
 		const attributeCheckboxes = document.querySelectorAll(
 			'.AttributeComponent [type="checkbox"]'
 		);
 
+		for (i = 0, iCount = statusCheckboxes.length; i < iCount; i++) {
+			statusCheckboxes[i].removeEventListener(
+				'click',
+				vm.filterEventStatus
+			);
+			statusCheckboxes[i].addEventListener('click', vm.filterEventStatus);
+		}
+
 		for (i = 0, iCount = attributeCheckboxes.length; i < iCount; i++) {
-			attributeCheckboxes[i].removeEventListener('click', vm.filterEvent);
-			attributeCheckboxes[i].addEventListener('click', vm.filterEvent);
+			attributeCheckboxes[i].removeEventListener(
+				'click',
+				vm.filterEventAttribute
+			);
+			attributeCheckboxes[i].addEventListener(
+				'click',
+				vm.filterEventAttribute
+			);
 		}
 	}
 
-	filterEvent(event) {
+	filterEventStatus(event) {
+		const vm = this;
+
+		vm.setStatusFilter({
+			checked: event.target.checked,
+			value: event.target.dataset.value,
+		});
+	}
+
+	filterEventAttribute(event) {
 		const vm = this;
 
 		vm.setAttributeFilter({
@@ -186,18 +218,19 @@ class SearchFilter extends PureComponent {
 		});
 	}
 
-	stateFilter() {
-		let state = {};
+	statusFilter() {
+		let statuses = {};
 		const vm = this;
 
 		if (vm.stateProps) {
 			if (vm.stateProps.filter) {
-				if (vm.stateProps.filter.hasOwnProperty('state')) {
-					state = vm.stateProps.filter.state || {};
+				if (vm.stateProps.filter.hasOwnProperty('statuses')) {
+					statuses = vm.stateProps.filter.statuses || {};
 				}
 			}
 		}
-		return state;
+
+		return statuses;
 	}
 
 	attributeFilter() {
@@ -211,23 +244,50 @@ class SearchFilter extends PureComponent {
 				}
 			}
 		}
+
 		return attributes;
 	}
 
-	setStateFilter(state) {}
-
-	setAttributeFilter(attribute) {
-		let state;
+	setStatusFilter(status) {
+		let statuses;
 		let attributes;
 
 		const vm = this;
 
 		if (vm.stateProps) {
 			if (vm.stateProps.filter) {
-				state = vm.stateFilter();
+				statuses = vm.statusFilter();
 				attributes = vm.attributeFilter();
 
-				vm.stateProps.filter.state = state;
+				vm.stateProps.filter.statuses = statuses;
+				vm.stateProps.filter.attributes = attributes;
+
+				if (status.checked === true) {
+					vm.stateProps.filter.statuses[status.value] = true;
+				} else {
+					delete vm.stateProps.filter.statuses[status.value];
+				}
+			}
+
+			if (vm.stateProps.setSearchFilter) {
+				vm.hideSearchFilter({ animate: true });
+				vm.stateProps.setSearchFilter(vm.stateProps.filter);
+			}
+		}
+	}
+
+	setAttributeFilter(attribute) {
+		let statuses;
+		let attributes;
+
+		const vm = this;
+
+		if (vm.stateProps) {
+			if (vm.stateProps.filter) {
+				statuses = vm.statusFilter();
+				attributes = vm.attributeFilter();
+
+				vm.stateProps.filter.statuses = statuses;
 				vm.stateProps.filter.attributes = attributes;
 
 				if (attribute.checked === true) {
@@ -242,6 +302,46 @@ class SearchFilter extends PureComponent {
 				vm.stateProps.setSearchFilter(vm.stateProps.filter);
 			}
 		}
+	}
+
+	statusComponent() {
+		let checked;
+
+		const vm = this;
+		const statusFilter = vm.statusFilter();
+
+		return (
+			<>
+				<span className="StatusTitle">Status</span>
+				<div className="StatusComponent">
+					{Object.keys(statuses).map((keyName, i) => {
+						if (
+							statusFilter.hasOwnProperty(statuses[keyName].value)
+						) {
+							checked = true;
+						} else {
+							checked = false;
+						}
+
+						return (
+							<label className="CheckBox" key={i}>
+								<span className="Label">
+									{statuses[keyName].title}
+								</span>
+								<input
+									type="checkbox"
+									className="Input"
+									defaultChecked={checked}
+									data-filter="attributes"
+									data-value={statuses[keyName].value}
+								/>
+								<span className="Checkmark" />
+							</label>
+						);
+					})}
+				</div>
+			</>
+		);
 	}
 
 	attributeComponent() {
@@ -299,6 +399,7 @@ class SearchFilter extends PureComponent {
 
 		onClick = vm.closeSearchFilter;
 
+		const StatusComponent = vm.statusComponent;
 		const AttributeComponent = vm.attributeComponent;
 
 		if (vm.state.animate !== true) {
@@ -328,6 +429,7 @@ class SearchFilter extends PureComponent {
 						</div>
 					</div>
 					<div className="SearchFilterContent">
+						<StatusComponent />
 						<AttributeComponent />
 					</div>
 				</div>

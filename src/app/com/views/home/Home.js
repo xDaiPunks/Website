@@ -458,7 +458,7 @@ class Home extends PureComponent {
 										<span className="TextLight">PUNKS</span>
 									</span>
 									<span className="PunkSubText">
-										Minting phase been completed in 7 hours!
+										Minting phase completed within 7 hours!
 									</span>
 								</div>
 								<div className="IntroSubContent">

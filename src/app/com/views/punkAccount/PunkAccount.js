@@ -567,7 +567,7 @@ class PunkAccount extends PureComponent {
 											</div>
 											<div className="PunkItemDetails">
 												<span className="DetailsTextTitle">
-													Value
+													Traded value
 												</span>
 												<span className="DetailsTextContent Bold">
 													{punkValue + ' xDai'}
@@ -761,7 +761,7 @@ class PunkAccount extends PureComponent {
 										/>
 										<div className="AccountItemContent">
 											<span className="AccountItemTitleText">
-												Available for withdraw
+												Pending withdrawels
 											</span>
 											<span className="AccountItemContentText">
 												{withdrawAmount + ' xDai'}

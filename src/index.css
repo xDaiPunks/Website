@@ -1055,7 +1055,7 @@ body {
       outline: none;
       appearance: none;
       background-color: transparent;
-      color: #111;
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: normal;
@@ -2900,10 +2900,64 @@ body {
         padding-top: 70px;
         padding-left: 30px;
         padding-right: 30px; } }
+    .SearchFilter .SearchFilterContent .StatusTitle {
+      display: flex;
+      position: relative;
+      color: #00f5f5;
+      font-size: 18px;
+      font-weight: 900;
+      font-family: 'Gilroy', sans-serif;
+      padding-bottom: 20px; }
+    .SearchFilter .SearchFilterContent .StatusComponent {
+      display: flex;
+      position: relative;
+      width: 100%;
+      padding-bottom: 25px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start; }
+      .SearchFilter .SearchFilterContent .StatusComponent .CheckBox {
+        display: block;
+        position: relative;
+        height: 20px;
+        width: 33%; }
+        @media screen and (max-width: 1070px) {
+          .SearchFilter .SearchFilterContent .StatusComponent .CheckBox {
+            width: 50%; } }
+        @media screen and (max-width: 986px) {
+          .SearchFilter .SearchFilterContent .StatusComponent .CheckBox {
+            width: 50%; } }
+        .SearchFilter .SearchFilterContent .StatusComponent .CheckBox .Label {
+          position: absolute;
+          width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          font-family: 'Gilroy', sans-serif; }
+        .SearchFilter .SearchFilterContent .StatusComponent .CheckBox .Input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+          display: hidden; }
+        .SearchFilter .SearchFilterContent .StatusComponent .CheckBox .Checkmark {
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          border-radius: 4px;
+          border: 2px solid #fff;
+          background-color: transparent; }
+        .SearchFilter .SearchFilterContent .StatusComponent .CheckBox input:checked ~ .Checkmark {
+          background-color: #fff; }
     .SearchFilter .SearchFilterContent .AttributeTitle {
       display: flex;
       position: relative;
-      color: #fff;
+      color: #00f5f5;
       font-size: 18px;
       font-weight: 900;
       font-family: 'Gilroy', sans-serif;
@@ -2912,6 +2966,7 @@ body {
       display: flex;
       position: relative;
       width: 100%;
+      padding-bottom: 25px;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start; }

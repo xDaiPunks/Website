@@ -28,25 +28,20 @@ class MarketPlace extends PureComponent {
 		super(props);
 
 		this.raf = null;
+
+		this.searchData = null;
+
 		this.searchTimeout = null;
 
 		this.data = punkService.punkData;
 
-		this.searchData = this.sortArray(
-			'-value',
-			'status',
-			'idx',
-
-			punkService.punkData
-		);
-
 		this.state = {
 			filter: {
-				state: null,
+				statuses: null,
 				attributes: null,
 			},
-			sort: ['-value', 'status', 'idx'],
-			items: this.searchData.slice(0, 60),
+			sort: null,
+			items: null,
 		};
 
 		this.componentName = 'MarketPlace';
@@ -60,11 +55,15 @@ class MarketPlace extends PureComponent {
 		this.getData = this.getData.bind(this);
 		this.showFilter = this.showFilter.bind(this);
 
+		this.getSortFilter = this.getSortFilter.bind(this);
+
 		this.searchChange = this.searchChange.bind(this);
 		this.setSearchFilter = this.setSearchFilter.bind(this);
 		this.changeSortOrder = this.changeSortOrder.bind(this);
 
 		this.listComponent = this.listComponent.bind(this);
+
+		this.setSortFilter();
 	}
 
 	updateView() {
@@ -378,7 +377,185 @@ class MarketPlace extends PureComponent {
 		});
 	}
 
+	getSortFilter() {
+		const vm = this;
+		const sort = utilityService.getParameterByName('sort');
+		const statuses = utilityService.getParameterByName('statuses');
+		const attributes = utilityService.getParameterByName('attributes');
+
+		return {
+			sort,
+			statuses,
+			attributes,
+		};
+	}
+
+	setSortFilter(updateState) {
+		let key;
+
+		let i;
+		let iCount;
+
+		let filterData;
+
+		let attributeArray;
+		let attributesItem;
+		let attributesCount;
+
+		let allAttributes;
+		let filterAttributes;
+
+		const vm = this;
+
+		const state = utilityService.cloneObject(vm.state);
+
+		const sort = utilityService.getParameterByName('sort');
+		const statuses = utilityService.getParameterByName('statuses');
+		const attributes = utilityService.getParameterByName('attributes');
+
+		switch (sort) {
+			default:
+				state.sort = ['-value', 'status', 'idx'];
+				break;
+
+			case '-rank':
+				state.sort = ['-rank', 'status', 'idx'];
+				break;
+
+			case 'rank':
+				state.sort = ['rank', 'status', 'idx'];
+				break;
+
+			case '-value':
+				state.sort = ['-value', 'status', 'idx'];
+				break;
+
+			case 'value':
+				state.sort = ['value', 'status', 'idx'];
+				break;
+
+			case '-bidValue':
+				state.sort = ['-bidValue', 'status', 'idx'];
+				break;
+
+			case 'bidValue':
+				state.sort = ['bidValue', 'status', 'idx'];
+				break;
+
+			case '-saleValue':
+				state.sort = ['-saleValue', 'status', 'idx'];
+				break;
+
+			case 'saleValue':
+				state.sort = ['saleValue', 'status', 'idx'];
+				break;
+		}
+
+		switch (statuses) {
+			default:
+				state.filter.statuses = null;
+				break;
+
+			case 'bids':
+				state.filter.statuses = {
+					bids: true,
+				};
+				break;
+
+			case 'offered':
+				state.filter.statuses = {
+					offered: true,
+				};
+				break;
+
+			case 'bids,offered':
+				state.filter.statuses = {
+					bids: true,
+					offered: true,
+				};
+				break;
+		}
+
+		if (attributes) {
+			attributeArray = attributes.split(',');
+			if (attributeArray.length === 0) {
+				state.filter.attributes = null;
+			} else {
+				state.filter.attributes = {};
+
+				for (i = 0, iCount = attributeArray.length; i < iCount; i++) {
+					state.filter.attributes[attributeArray[i]] = true;
+				}
+			}
+		}
+
+		filterData = vm.data;
+
+		if (state.filter) {
+			if (state.filter.statuses) {
+				if (
+					state.filter.statuses.hasOwnProperty('bids') ||
+					state.filter.statuses.hasOwnProperty('offered')
+				) {
+					filterData = filterData.filter((item, index) => {
+						if (item) {
+							if (
+								item.bid === true &&
+								state.filter.statuses.hasOwnProperty('bids')
+							) {
+								return item;
+							}
+
+							if (
+								item.sale === true &&
+								state.filter.statuses.hasOwnProperty('offered')
+							) {
+								return item;
+							}
+						}
+					});
+				}
+			}
+
+			if (state.filter.attributes) {
+				attributesCount = Object.keys(state.filter.attributes).length;
+				if (attributesCount > 0) {
+					filterData = filterData.filter((item, index) => {
+						if (item) {
+							attributesItem = item.attributes;
+							filterAttributes = state.filter.attributes;
+
+							allAttributes = true;
+							for (key in filterAttributes) {
+								if (attributesItem.includes(key) !== true) {
+									allAttributes = false;
+								}
+							}
+
+							if (allAttributes === true) {
+								return item;
+							}
+						}
+					});
+				}
+			}
+		}
+
+		vm.searchData = vm.sortArray(
+			state.sort[0],
+			state.sort[1],
+			state.sort[2],
+
+			filterData
+		);
+
+		state.items = vm.searchData.slice(0, 60);
+
+		vm.state = state;
+	}
+
 	searchChange(event) {
+		let url;
 		let value;
 		let searchData;
 
@@ -410,18 +587,18 @@ class MarketPlace extends PureComponent {
 						if (item) {
 							if (
 								item.idx &&
-								item.idx
-									.toString()
-									.toLowerCase()
-									.indexOf(value) !== -1
+								item.idx.toString().toLowerCase() === value
 							) {
 								return item;
 							}
 						}
 					});
 
+					url = '/marketplace';
+					window.history.pushState({ page: url }, '', '');
+
 					state.filter = {
-						state: null,
+						statuses: null,
 						attributes: null,
 					};
 
@@ -456,188 +633,201 @@ class MarketPlace extends PureComponent {
 	setSearchFilter(searchFilter) {
 		let key;
 
+		let url;
+
+		let sort;
+		let statuses;
 		let attributes;
-		let filterData;
 
-		let allAttributes;
-		let attributesCount;
-
-		let searchFilterAttributes;
+		let statusArray;
+		let attributeArray;
 
 		const vm = this;
-		const state = utilityService.cloneObject(vm.state);
+		const sortFilter = vm.getSortFilter();
 
-		filterData = vm.data;
+		sort = sortFilter.sort;
+		statuses = sortFilter.statuses;
+		attributes = sortFilter.attributes;
 
-		state.filter = searchFilter;
+		url = '/marketplace';
 
-		if (!searchFilter || !searchFilter.hasOwnProperty('attributes')) {
-			vm.searchData = vm.data;
-			state.items = vm.searchData.slice(0, 60);
+		if (!sort) {
+			url += '?';
 		} else {
-			attributesCount = Object.keys(searchFilter.attributes).length;
-
-			if (attributesCount === 0) {
-				vm.searchData = vm.data;
-				state.items = vm.searchData.slice(0, 60);
-			} else {
-				filterData = vm.data.filter((item, index) => {
-					if (item) {
-						attributes = item.attributes;
-						searchFilterAttributes = searchFilter.attributes;
-
-						allAttributes = true;
-						for (key in searchFilterAttributes) {
-							if (attributes.includes(key) !== true) {
-								allAttributes = false;
-							}
-						}
-
-						if (allAttributes === true) {
-							return item;
-						}
-					}
-				});
-			}
-
-			vm.searchData = filterData;
-			state.items = vm.searchData.slice(0, 60);
+			url += '?sort=';
+			url += sort;
 		}
 
-		vm.setState(state);
+		statusArray = [];
+
+		if (Object.keys(searchFilter.statuses).length > 0) {
+			if (searchFilter.statuses.hasOwnProperty('bids')) {
+				statusArray.push('bids');
+			}
+
+			if (searchFilter.statuses.hasOwnProperty('offered')) {
+				statusArray.push('offered');
+			}
+		}
+
+		attributeArray = [];
+
+		if (Object.keys(searchFilter.attributes).length > 0) {
+			for (key in searchFilter.attributes) {
+				attributeArray.push(key);
+			}
+		}
+
+		if (statusArray.length > 0) {
+			if (!sort) {
+				url += 'statuses=' + statusArray.join(',');
+			} else {
+				url += '&statuses=' + statusArray.join(',');
+			}
+		}
+
+		if (attributeArray.length > 0) {
+			if (!sort) {
+				if (statusArray.length === 0) {
+					url += 'attributes=' + attributeArray.join(',');
+				} else {
+					url += '&attributes=' + attributeArray.join(',');
+				}
+			} else {
+				url += '&attributes=' + attributeArray.join(',');
+			}
+		}
+
+		routeService.navigateRoute(url);
 	}
 
 	changeSortOrder(event) {
+		let url;
+
+		let sort;
+		let statuses;
+		let attributes;
+
 		const vm = this;
+
+		const sortFilter = vm.getSortFilter();
 
 		const order = vm.sortOrder.current.state.value;
 		const state = utilityService.cloneObject(vm.state);
 
+		sort = sortFilter.sort;
+		statuses = sortFilter.statuses;
+		attributes = sortFilter.attributes;
+
+		url = '/marketplace';
+
 		switch (order) {
 			default:
-				vm.searchData = vm.sortArray(
-					'-value',
-					'status',
-					'idx',
+				url += '';
 
-					punkService.punkData
-				);
-				state.sort = ['-value', 'status', 'idx'];
-				state.items = this.searchData.slice(0, 60);
+				if (statuses) {
+					url += '?statuses=' + statuses;
+				}
 
-				vm.setState(state);
+				if (attributes) {
+					if (!statuses) {
+						url += '?attributes=' + attributes;
+					} else {
+						url += '&attributes=' + attributes;
+					}
+				}
+
+				routeService.navigateRoute(url);
 				break;
 
 			case '-rank':
-				vm.searchData = vm.sortArray(
-					'-rank',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['-rank', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=-rank';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 
 			case 'rank':
-				vm.searchData = vm.sortArray(
-					'rank',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['rank', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=rank';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 
 			case '-value':
-				vm.searchData = vm.sortArray(
-					'-value',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['-value', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=-value';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 
 			case 'value':
-				vm.searchData = vm.sortArray(
-					'value',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['value', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=value';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 
 			case '-bidValue':
-				vm.searchData = vm.sortArray(
-					'-bidValue',
-					'status',
-					'idx',
+				url += '?sort=-bidValue';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 
-					punkService.punkData
-				);
-				state.sort = ['-bidValue', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
 				break;
 
 			case 'bidValue':
-				vm.searchData = vm.sortArray(
-					'bidValue',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['bidValue', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=bidValue';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 
 			case '-saleValue':
-				vm.searchData = vm.sortArray(
-					'-saleValue',
-					'status',
-					'idx',
+				url += '?sort=-saleValue';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 
-					punkService.punkData
-				);
-				state.sort = ['-saleValue', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
 				break;
 
 			case 'saleValue':
-				vm.searchData = vm.sortArray(
-					'saleValue',
-					'status',
-					'idx',
-
-					punkService.punkData
-				);
-				state.sort = ['saleValue', 'status', 'idx'];
-				state.items = vm.searchData.slice(0, 60);
-
-				vm.setState(state);
+				url += '?sort=saleValue';
+				if (statuses) {
+					url += '&statuses=' + statuses;
+				}
+				if (attributes) {
+					url += '&attributes=' + attributes;
+				}
+				routeService.navigateRoute(url);
 				break;
 		}
 	}
@@ -807,7 +997,7 @@ class MarketPlace extends PureComponent {
 												</div>
 												<div className="PunkItemDetails">
 													<span className="DetailsTextTitle">
-														Value
+														Traded value
 													</span>
 													<span className="DetailsTextContent Bold">
 														{punkValue + ' xDai'}
@@ -844,19 +1034,13 @@ class MarketPlace extends PureComponent {
 
 	render() {
 		let options;
+		let sortValue;
 		let transitionClass;
 
 		const vm = this;
+		const sortFilter = vm.getSortFilter();
 
 		const ListComponent = vm.listComponent;
-
-		if (this.props.animationType === 'overlay') {
-			transitionClass = 'Overlay';
-		}
-
-		if (this.props.animationType === 'underlay') {
-			transitionClass = 'Underlay';
-		}
 
 		options = [
 			{ label: 'Value ↓', value: '-value' },
@@ -868,6 +1052,20 @@ class MarketPlace extends PureComponent {
 			{ label: 'Offered ↓', value: '-saleValue' },
 			{ label: 'Offered ↑', value: 'saleValue' },
 		];
+
+		if (this.props.animationType === 'overlay') {
+			transitionClass = 'Overlay';
+		}
+
+		if (this.props.animationType === 'underlay') {
+			transitionClass = 'Underlay';
+		}
+
+		if (!sortFilter.sort) {
+			sortValue = '-value';
+		} else {
+			sortValue = sortFilter.sort;
+		}
 
 		return (
 			<div
@@ -895,8 +1093,8 @@ class MarketPlace extends PureComponent {
 									id={'sort'}
 									inputType={'select'}
 									options={options}
-									defaultValue={'-value'}
-									selectedOption={'-value'}
+									defaultValue={sortValue}
+									selectedOption={sortValue}
 									onChange={(event) => {
 										vm.changeSortOrder(event);
 									}}

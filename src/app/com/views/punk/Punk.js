@@ -375,7 +375,7 @@ class Punk extends PureComponent {
 						<div className="PunkDetailItemContainer">
 							<div className="PunkDetailItem">
 								<span className="PunkDetailItemTitle">
-									Value
+									Traded value
 								</span>
 								<span className="PunkDetailItemContent">
 									{punkValue + ' xDai'}
@@ -422,7 +422,7 @@ class Punk extends PureComponent {
 							<div className="PunkDetailItemContainer">
 								<div className="PunkDetailItem">
 									<span className="PunkDetailItemTitle">
-										Value
+										Traded value
 									</span>
 									<span className="PunkDetailItemContent">
 										{punkValue + ' xDai'}
@@ -481,7 +481,7 @@ class Punk extends PureComponent {
 							<div className="PunkDetailItemContainer">
 								<div className="PunkDetailItem">
 									<span className="PunkDetailItemTitle">
-										Value
+										Traded value
 									</span>
 									<span className="PunkDetailItemContent">
 										{punkValue + ' xDai'}
@@ -540,7 +540,7 @@ class Punk extends PureComponent {
 							<div className="PunkDetailItemContainer">
 								<div className="PunkDetailItem">
 									<span className="PunkDetailItemTitle">
-										Value
+										Traded value
 									</span>
 									<span className="PunkDetailItemContent">
 										{punkValue + ' xDai'}

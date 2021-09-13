@@ -1452,6 +1452,24 @@ class Web3Service {
 			}
 		}
 
+		if (event === 'Transfer') {
+			if (returnValues && returnValues.tokenId) {
+				idx = vm.getIdx(returnValues.tokenId);
+
+				owner = returnValues.to;
+
+				eventType = 'transfer';
+				if (vm.checkBlockNumber(idx, eventType, blockNumber) === true) {
+					punkService.updateItem(idx, 'owner', owner);
+					punkService.updateItem(
+						idx,
+						'blockLatestEvent',
+						blockNumber
+					);
+				}
+			}
+		}
+
 		if (event === 'PunkOffered') {
 			if (returnValues && returnValues.punkIndex) {
 				idx = returnValues.punkIndex.toString();

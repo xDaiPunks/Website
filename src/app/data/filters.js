@@ -1,3 +1,15 @@
+export const statuses = {
+	'Bids': {
+		title: 'Bids',
+		value: 'bids'
+	},
+
+	'Offered': {
+		title: 'Offered',
+		value: 'offered'
+	}
+};
+
 export const attributes = {
 	'3D Glasses': {
 		title: '3D Glasses',

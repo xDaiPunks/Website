@@ -21,8 +21,10 @@ class UtilityService {
 
 			Instance.transformProperty = Instance.detectTransformProperty();
 			Instance.transitionProperty = Instance.detectTransitionProperty();
-			Instance.animationEndProperty = Instance.detectAnimationEndProperty();
-			Instance.transitionEndProperty = Instance.detectTransitionEndProperty();
+			Instance.animationEndProperty =
+				Instance.detectAnimationEndProperty();
+			Instance.transitionEndProperty =
+				Instance.detectTransitionEndProperty();
 		}
 	}
 
@@ -329,7 +331,8 @@ class UtilityService {
 	}
 
 	validateEmail(email) {
-		let filter = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+		let filter =
+			/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 		let result = filter.test(email);
 		return result;
 	}
@@ -437,6 +440,24 @@ class UtilityService {
 				hash: match[3],
 			}
 		);
+	}
+
+	getParameterByName(name, url = window.location.href) {
+		let regex;
+		let results;
+		name = name.replace(/[\[\]]/g, '\\$&');
+		regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+		results = regex.exec(url);
+
+		if (!results) {
+			return null;
+		} else {
+			if (!results[2]) {
+				return '';
+			} else {
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+		}
 	}
 
 	formatRoutePath(path) {
@@ -941,15 +962,16 @@ class UtilityService {
 			});
 		};
 
-		eventObject.removeAllEventListeners = function removeAllEventListeners() {
-			let key;
+		eventObject.removeAllEventListeners =
+			function removeAllEventListeners() {
+				let key;
 
-			for (key in eventObject.eventListeners) {
-				delete eventObject.eventListeners[key];
-			}
+				for (key in eventObject.eventListeners) {
+					delete eventObject.eventListeners[key];
+				}
 
-			eventObject.eventListeners = {};
-		};
+				eventObject.eventListeners = {};
+			};
 
 		eventObject.dispatchObjectEvent = function dispatchObjectEvent() {
 			let i;
@@ -1004,71 +1026,68 @@ class UtilityService {
 			}
 		};
 
-		eventObject.removeObjectEventListener = function removeObjectEventListener(
-			key,
-			guid,
-			listenerMethod
-		) {
-			let i;
-			let objectKey;
-			let arrayCount;
+		eventObject.removeObjectEventListener =
+			function removeObjectEventListener(key, guid, listenerMethod) {
+				let i;
+				let objectKey;
+				let arrayCount;
 
-			let methodArray;
-			let fuzzyString;
+				let methodArray;
+				let fuzzyString;
 
-			let newMethodArray = [];
+				let newMethodArray = [];
 
-			if (key.indexOf('*') === -1) {
-				methodArray = eventObject.eventListeners[key] || [];
+				if (key.indexOf('*') === -1) {
+					methodArray = eventObject.eventListeners[key] || [];
 
-				for (
-					i = 0, arrayCount = methodArray.length;
-					i < arrayCount;
-					i++
-				) {
-					if (guid !== methodArray[i].guid) {
-						newMethodArray.push(methodArray[i]);
-					} else {
-						delete methodArray[i].component;
-
-						delete methodArray[i].listenerMethod;
-						delete methodArray[i].listenerMethodName;
-					}
-				}
-
-				eventObject.eventListeners[key] = newMethodArray;
-			}
-
-			if (key.indexOf('*') !== -1) {
-				fuzzyString = key.split('*')[0];
-				for (objectKey in eventObject.eventListeners) {
-					if (
-						fuzzyString ===
-						objectKey.substring(0, fuzzyString.length)
+					for (
+						i = 0, arrayCount = methodArray.length;
+						i < arrayCount;
+						i++
 					) {
-						methodArray =
-							eventObject.eventListeners[objectKey] || [];
+						if (guid !== methodArray[i].guid) {
+							newMethodArray.push(methodArray[i]);
+						} else {
+							delete methodArray[i].component;
 
-						for (
-							i = 0, arrayCount = methodArray.length;
-							i < arrayCount;
-							i++
-						) {
-							if (guid !== methodArray[i].guid) {
-								newMethodArray.push(methodArray[i]);
-							} else {
-								delete methodArray[i].component;
-
-								delete methodArray[i].listenerMethod;
-								delete methodArray[i].listenerMethodName;
-							}
+							delete methodArray[i].listenerMethod;
+							delete methodArray[i].listenerMethodName;
 						}
+					}
 
-						eventObject.eventListeners[key] = newMethodArray;
+					eventObject.eventListeners[key] = newMethodArray;
+				}
+
+				if (key.indexOf('*') !== -1) {
+					fuzzyString = key.split('*')[0];
+					for (objectKey in eventObject.eventListeners) {
+						if (
+							fuzzyString ===
+							objectKey.substring(0, fuzzyString.length)
+						) {
+							methodArray =
+								eventObject.eventListeners[objectKey] || [];
+
+							for (
+								i = 0, arrayCount = methodArray.length;
+								i < arrayCount;
+								i++
+							) {
+								if (guid !== methodArray[i].guid) {
+									newMethodArray.push(methodArray[i]);
+								} else {
+									delete methodArray[i].component;
+
+									delete methodArray[i].listenerMethod;
+									delete methodArray[i].listenerMethodName;
+								}
+							}
+
+							eventObject.eventListeners[key] = newMethodArray;
+						}
 					}
 				}
-			}
-		};
+			};
 
 		eventObject.eventListeners = {};
 		eventObject.on = eventObject.addObjectEventListener;

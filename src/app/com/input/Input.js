@@ -465,6 +465,7 @@ class Input extends PureComponent {
 		}
 
 		for (i = 0, arrayCount = options.length; i < arrayCount; i++) {
+			console.log(selectedOption);
 			if (options[i].value !== selectedOption) {
 				optionItems.push(
 					<option key={i + 1} value={options[i].value}>
@@ -480,11 +481,11 @@ class Input extends PureComponent {
 						{options[i].label}
 					</option>
 				);
-			}
 
-			if (this.state.value !== undefined) {
-				if (this.state.value === options[i].value) {
-					labelValue = options[i].label;
+				if (this.state.value !== undefined) {
+					if (this.state.value === options[i].value) {
+						labelValue = options[i].label;
+					}
 				}
 			}
 		}
