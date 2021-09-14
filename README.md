@@ -19,6 +19,8 @@ To build a production version:
 npm run build-production
 ```
 
+After generating the production version, you can run it locally by running a server like http-server from the build folder
+
 The production build will throw an error as the copy file 
 
 
