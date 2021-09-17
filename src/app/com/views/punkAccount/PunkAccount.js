@@ -48,6 +48,8 @@ class PunkAccount extends PureComponent {
 
 		this.punks = this.punks.bind(this);
 		this.punkItems = this.punkItems.bind(this);
+
+		this.toggleOverlay = this.toggleOverlay.bind(this);
 		this.pendingWithdrawals = this.pendingWithdrawals.bind(this);
 
 		this.bidComponent = this.bidComponent.bind(this);
@@ -160,6 +162,16 @@ class PunkAccount extends PureComponent {
 
 		vm.setState(vm.state);
 		vm.forceUpdate();
+	}
+
+	toggleOverlay(idx) {
+		const element = document.getElementById('Overlay' + idx);
+
+		if (!element.style.display) {
+			element.style.display = 'flex';
+		} else {
+			element.style.removeProperty('display');
+		}
 	}
 
 	pendingWithdrawals() {
@@ -452,7 +464,11 @@ class PunkAccount extends PureComponent {
 
 		let imageUrl;
 
-		let attributes;
+		let overlayOneTitle;
+		let overlayOneContent;
+
+		let overlayTwoTitle;
+		let overlayTwoContent;
 
 		const vm = this;
 		const rowArray = [];
@@ -476,7 +492,6 @@ class PunkAccount extends PureComponent {
 						number = items[item].idx;
 						imageUrl = '/punks/' + items[item].idx + '.png';
 
-						attributes = items[item].attributes.join(' · ');
 						punkValue = BigNumber(items[item].value)
 							.div(1e18)
 							.toFormat(2);
@@ -498,6 +513,11 @@ class PunkAccount extends PureComponent {
 						}
 
 						status = 'X';
+						overlayOneTitle = 'Offered for';
+						overlayTwoTitle = 'Has a bid of';
+
+						overlayOneContent = 'Not offered';
+						overlayTwoContent = 'No bids received';
 
 						if (items[item].mint === true) {
 							if (
@@ -505,12 +525,19 @@ class PunkAccount extends PureComponent {
 								items[item].sale !== true
 							) {
 								status = 'M';
+								overlayOneContent = 'Not offered';
+								overlayTwoContent = 'No bids received';
 							} else {
 								if (
 									items[item].bid === true &&
 									items[item].sale !== true
 								) {
 									status = 'B';
+									overlayOneContent = 'Not offered';
+									overlayTwoContent =
+										BigNumber(items[item].bidData.value)
+											.div(1e18)
+											.toFormat(2) + ' xDai';
 								}
 
 								if (
@@ -518,6 +545,11 @@ class PunkAccount extends PureComponent {
 									items[item].sale === true
 								) {
 									status = 'O';
+									overlayOneContent =
+										BigNumber(items[item].saleData.minValue)
+											.div(1e18)
+											.toFormat(2) + ' xDai';
+									overlayTwoContent = 'No bids received';
 								}
 
 								if (
@@ -525,6 +557,14 @@ class PunkAccount extends PureComponent {
 									items[item].sale === true
 								) {
 									status = 'BO';
+									overlayOneContent =
+										BigNumber(items[item].saleData.minValue)
+											.div(1e18)
+											.toFormat(2) + ' xDai';
+									overlayTwoContent =
+										BigNumber(items[item].bidData.value)
+											.div(1e18)
+											.toFormat(2) + ' xDai';
 								}
 							}
 						}
@@ -536,6 +576,7 @@ class PunkAccount extends PureComponent {
 									className="PunkItem"
 									onClick={(event) => {
 										event.preventDefault();
+										event.stopPropagation();
 
 										routeService.navigateRoute(
 											'/punk/' + items[item].idx
@@ -551,7 +592,47 @@ class PunkAccount extends PureComponent {
 												/>
 											</div>
 										</div>
-										<div className="PunkDetailesContainer">
+										<button
+											className="OverlayButton"
+											onClick={(event) => {
+												event.preventDefault();
+												event.stopPropagation();
+
+												vm.toggleOverlay(
+													items[item].idx
+												);
+											}}>
+											<span className="ButtonTitle">
+												Status
+											</span>
+											<span className="ButtonContent">
+												{status}
+											</span>
+										</button>
+										<div
+											id={'Overlay' + +items[item].idx}
+											className="PunkDetailsOverlay">
+											<div className="DetailsOverlay">
+												<div className="DetailsOverlayContent">
+													<span className="DetailsTextTitle">
+														{overlayOneTitle}
+													</span>
+													<span className="DetailsTextContent Bold">
+														{overlayOneContent}
+													</span>
+												</div>
+												<div className="DetailsOverlayContent">
+													<span className="DetailsTextTitle">
+														{overlayTwoTitle}
+													</span>
+													<span className="DetailsTextContent Bold">
+														{overlayTwoContent}
+													</span>
+												</div>
+											</div>
+										</div>
+
+										<div className="PunkDetailsContainer">
 											<div className="PunkItemTop">
 												<div className="PunkItemDetails">
 													<span className="DetailsTextTitle">
@@ -559,14 +640,6 @@ class PunkAccount extends PureComponent {
 													</span>
 													<span className="DetailsTextContent Bold">
 														{'#' + number}
-													</span>
-												</div>
-												<div className="PunkItemDetails Right">
-													<span className="DetailsTextTitle">
-														Status
-													</span>
-													<span className="DetailsTextContent Bold">
-														{status}
 													</span>
 												</div>
 											</div>

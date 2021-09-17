@@ -239,6 +239,51 @@
 									padding-top: 20px;
 									padding-bottom: 30px;
 
+									.OverlayButton {
+										display: flex;
+										position: absolute;
+
+										z-index: 10;
+
+										top: 18px;
+										right: 20px;
+
+										width: 120px;
+										height: 53px;
+
+										padding-top: 5px;
+										padding-bottom: 5px;
+
+										flex-direction: column;
+										align-items: flex-end;
+
+										font-family: 'Gilroy', sans-serif;
+										font-size: 14px;
+										font-weight: 600;
+
+										.ButtonTitle {
+											display: block;
+											position: relative;
+
+											font-size: 8px;
+
+											color: #00f5f5;
+										}
+
+										.ButtonContent {
+											display: block;
+											position: relative;
+
+											color: #fff;
+
+											font-weight: 900;
+
+											white-space: nowrap;
+											overflow: hidden;
+											text-overflow: ellipsis;
+										}
+									}
+
 									.PunkImageContainer {
 										display: flex;
 										position: relative;
@@ -286,7 +331,80 @@
 										}
 									}
 
-									.PunkDetailesContainer {
+									.PunkDetailsOverlay {
+										display: none;
+										position: absolute;
+
+										z-index: 5;
+
+										top: 0px;
+										left: 130px;
+
+										width: calc(100% - 130px);
+										height: 100%;
+
+										overflow: hidden;
+
+										flex-grow: 1;
+
+										flex-direction: column;
+
+										border-top-right-radius: 18px;
+										border-bottom-right-radius: 18px;
+
+										background-color: #333;
+
+										.DetailsOverlay {
+											position: relative;
+											padding-top: 23px;
+											padding-left: 0px;
+											padding-right: 20px;
+											padding-bottom: 30px;
+
+											flex-grow: 1;
+
+											flex-direction: column;
+										}
+
+										.DetailsOverlayContent {
+											display: flex;
+											position: relative;
+											flex-direction: column;
+
+											padding-bottom: 5px;
+
+											align-items: flex-start;
+											justify-content: space-between;
+
+											font-family: 'Gilroy', sans-serif;
+											font-size: 14px;
+											font-weight: 600;
+
+											.DetailsTextTitle {
+												display: block;
+												position: relative;
+
+												font-size: 8px;
+
+												color: #00f5f5;
+											}
+
+											.DetailsTextContent {
+												display: block;
+												position: relative;
+
+												color: #fff;
+
+												font-weight: 900;
+
+												white-space: nowrap;
+												overflow: hidden;
+												text-overflow: ellipsis;
+											}
+										}
+									}
+
+									.PunkDetailsContainer {
 										display: flex;
 										position: relative;
 

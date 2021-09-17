@@ -58,6 +58,8 @@ class MarketPlace extends PureComponent {
 		this.getSortFilter = this.getSortFilter.bind(this);
 
 		this.searchChange = this.searchChange.bind(this);
+		this.toggleOverlay = this.toggleOverlay.bind(this);
+
 		this.setSearchFilter = this.setSearchFilter.bind(this);
 		this.changeSortOrder = this.changeSortOrder.bind(this);
 
@@ -351,6 +353,16 @@ class MarketPlace extends PureComponent {
 
 	evaluate(condition) {
 		return Function(`return ${condition}`)();
+	}
+
+	toggleOverlay(idx) {
+		const element = document.getElementById('Overlay' + idx);
+
+		if (!element.style.display) {
+			element.style.display = 'flex';
+		} else {
+			element.style.removeProperty('display');
+		}
 	}
 
 	showFilter() {
@@ -874,12 +886,11 @@ class MarketPlace extends PureComponent {
 
 			let imageUrl;
 
-			let rowCount;
+			let overlayOneTitle;
+			let overlayOneContent;
 
-			let attributes;
-
-			let spacerClassL;
-			let spacerClassR;
+			let overlayTwoTitle;
+			let overlayTwoContent;
 
 			const rowArray = [];
 
@@ -894,16 +905,12 @@ class MarketPlace extends PureComponent {
 				}
 			}
 
-			rowCount = rowArray.length;
-
 			return (
 				<>
 					{rowArray.map((item, index) => {
 						if (items[item]) {
 							rank = items[item].rank;
 							number = items[item].idx;
-
-							attributes = items[item].attributes.join(' · ');
 
 							punkValue = BigNumber(items[item].value)
 								.div(1e18)
@@ -912,6 +919,11 @@ class MarketPlace extends PureComponent {
 							imageUrl = '/punks/' + items[item].idx + '.png';
 
 							status = 'X';
+							overlayOneTitle = 'Offered for';
+							overlayTwoTitle = 'Has a bid of';
+
+							overlayOneContent = 'Not offered';
+							overlayTwoContent = 'No bids received';
 
 							if (items[item].mint === true) {
 								if (
@@ -919,12 +931,19 @@ class MarketPlace extends PureComponent {
 									items[item].sale !== true
 								) {
 									status = 'M';
+									overlayOneContent = 'Not offered';
+									overlayTwoContent = 'No bids received';
 								} else {
 									if (
 										items[item].bid === true &&
 										items[item].sale !== true
 									) {
 										status = 'B';
+										overlayOneContent = 'Not offered';
+										overlayTwoContent =
+											BigNumber(items[item].bidData.value)
+												.div(1e18)
+												.toFormat(2) + ' xDai';
 									}
 
 									if (
@@ -932,6 +951,13 @@ class MarketPlace extends PureComponent {
 										items[item].sale === true
 									) {
 										status = 'O';
+										overlayOneContent =
+											BigNumber(
+												items[item].saleData.minValue
+											)
+												.div(1e18)
+												.toFormat(2) + ' xDai';
+										overlayTwoContent = 'No bids received';
 									}
 
 									if (
@@ -939,6 +965,16 @@ class MarketPlace extends PureComponent {
 										items[item].sale === true
 									) {
 										status = 'BO';
+										overlayOneContent =
+											BigNumber(
+												items[item].saleData.minValue
+											)
+												.div(1e18)
+												.toFormat(2) + ' xDai';
+										overlayTwoContent =
+											BigNumber(items[item].bidData.value)
+												.div(1e18)
+												.toFormat(2) + ' xDai';
 									}
 								}
 							}
@@ -950,6 +986,7 @@ class MarketPlace extends PureComponent {
 										className="PunkItem"
 										onClick={(event) => {
 											event.preventDefault();
+											event.stopPropagation();
 
 											routeService.navigateRoute(
 												'/punk/' + items[item].idx
@@ -967,7 +1004,48 @@ class MarketPlace extends PureComponent {
 													/>
 												</div>
 											</div>
-											<div className="PunkDetailesContainer">
+											<button
+												className="OverlayButton"
+												onClick={(event) => {
+													event.preventDefault();
+													event.stopPropagation();
+
+													vm.toggleOverlay(
+														items[item].idx
+													);
+												}}>
+												<span className="ButtonTitle">
+													Status
+												</span>
+												<span className="ButtonContent">
+													{status}
+												</span>
+											</button>
+											<div
+												id={
+													'Overlay' + +items[item].idx
+												}
+												className="PunkDetailsOverlay">
+												<div className="DetailsOverlay">
+													<div className="DetailsOverlayContent">
+														<span className="DetailsTextTitle">
+															{overlayOneTitle}
+														</span>
+														<span className="DetailsTextContent Bold">
+															{overlayOneContent}
+														</span>
+													</div>
+													<div className="DetailsOverlayContent">
+														<span className="DetailsTextTitle">
+															{overlayTwoTitle}
+														</span>
+														<span className="DetailsTextContent Bold">
+															{overlayTwoContent}
+														</span>
+													</div>
+												</div>
+											</div>
+											<div className="PunkDetailsContainer">
 												<div className="PunkItemTop">
 													<div className="PunkItemDetails">
 														<span className="DetailsTextTitle">
@@ -975,14 +1053,6 @@ class MarketPlace extends PureComponent {
 														</span>
 														<span className="DetailsTextContent Bold">
 															{'#' + number}
-														</span>
-													</div>
-													<div className="PunkItemDetails Right">
-														<span className="DetailsTextTitle">
-															Status
-														</span>
-														<span className="DetailsTextContent Bold">
-															{status}
 														</span>
 													</div>
 												</div>
