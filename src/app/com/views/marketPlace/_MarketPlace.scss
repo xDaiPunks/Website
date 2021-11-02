@@ -176,149 +176,30 @@
 
 									flex-grow: 1;
 
-									flex-direction: row;
+									flex-direction: column;
 
-									padding-left: 20px;
-									padding-right: 20px;
-
-									padding-top: 20px;
-									padding-bottom: 30px;
-
-									.OverlayButton {
+									.OverlayData {
 										display: flex;
 										position: absolute;
 
 										z-index: 10;
 
-										top: 18px;
-										right: 20px;
+										width: 100%;
 
-										width: 120px;
-										height: 53px;
+										padding-top: 15px;
 
-										padding-top: 5px;
-										padding-bottom: 5px;
+										padding-left: 18px;
+										padding-right: 18px;
 
-										flex-direction: column;
-										align-items: flex-end;
+										flex-direction: row;
 
-										font-family: 'Gilroy', sans-serif;
-										font-size: 14px;
-										font-weight: 600;
-
-										.ButtonTitle {
-											display: block;
-											position: relative;
-
-											font-size: 8px;
-
-											color: #00f5f5;
-										}
-
-										.ButtonContent {
-											display: block;
-											position: relative;
-
-											color: #fff;
-
-											font-weight: 900;
-
-											white-space: nowrap;
-											overflow: hidden;
-											text-overflow: ellipsis;
-										}
-									}
-
-									.PunkImageContainer {
-										display: flex;
-										position: relative;
-
-										width: 100px;
-										height: 100px;
-
-										border-radius: 50px;
-
-										overflow: hidden;
-
-										align-items: center;
-										justify-content: center;
-
-										background-color: #00f5f5;
-
-										.PunkImageContainerBG {
+										.PunkItemDetails {
 											display: flex;
 											position: relative;
 
-											width: 92px;
-											height: 92px;
-
-											border-radius: 46px;
-
-											overflow: hidden;
-
-											align-items: flex-end;
-											justify-content: center;
-
-											background: radial-gradient(
-												92px 92px at 50% 100%,
-												transparent,
-												#8000ff
-											);
-
-											.PunkImageGrid {
-												width: 92px;
-												height: 92px;
-
-												-ms-interpolation-mode: nearest-neighbor;
-												image-rendering: pixelated;
-												image-rendering: -moz-crisp-edges;
-											}
-										}
-									}
-
-									.PunkDetailsOverlay {
-										display: none;
-										position: absolute;
-
-										z-index: 5;
-
-										top: 0px;
-										left: 130px;
-
-										width: calc(100% - 130px);
-										height: 100%;
-
-										overflow: hidden;
-
-										flex-grow: 1;
-
-										flex-direction: column;
-
-										border-top-right-radius: 18px;
-										border-bottom-right-radius: 18px;
-
-										background-color: #333;
-
-										.DetailsOverlay {
-											position: relative;
-											padding-top: 23px;
-											padding-left: 0px;
-											padding-right: 20px;
-											padding-bottom: 30px;
-
-											flex-grow: 1;
+											width: 50%;
 
 											flex-direction: column;
-										}
-
-										.DetailsOverlayContent {
-											display: flex;
-											position: relative;
-											flex-direction: column;
-
-											padding-bottom: 5px;
-
-											align-items: flex-start;
 											justify-content: space-between;
 
 											font-family: 'Gilroy', sans-serif;
@@ -331,7 +212,7 @@
 
 												font-size: 8px;
 
-												color: #00f5f5;
+												color: #fff;
 											}
 
 											.DetailsTextContent {
@@ -340,12 +221,53 @@
 
 												color: #fff;
 
-												font-weight: 900;
-
 												white-space: nowrap;
 												overflow: hidden;
 												text-overflow: ellipsis;
 											}
+
+											.DetailsTextContent.Bold {
+												font-weight: 900;
+											}
+										}
+
+										.PunkItemDetails.Left {
+											align-items: flex-start;
+										}
+
+										.PunkItemDetails.Right {
+											align-items: flex-end;
+										}
+									}
+
+									.PunkImageContainer {
+										display: flex;
+										position: relative;
+
+										padding-top: 40px;
+
+										border-top-left-radius: 18px;
+										border-top-right-radius: 18px;
+
+										overflow: hidden;
+
+										align-items: center;
+										justify-content: center;
+
+										background: linear-gradient(
+											335deg,
+											#cf15b4,
+											#00c9c9
+										);
+
+										background-color: #00f5f5;
+
+										.PunkImageGrid {
+											width: 50%;
+
+											-ms-interpolation-mode: nearest-neighbor;
+											image-rendering: pixelated;
+											image-rendering: -moz-crisp-edges;
 										}
 									}
 
@@ -353,8 +275,11 @@
 										display: flex;
 										position: relative;
 
-										padding-top: 3px;
-										padding-left: 10px;
+										padding-left: 18px;
+										padding-right: 18px;
+
+										padding-top: 15px;
+										padding-bottom: 28px;
 
 										flex-grow: 1;
 
@@ -374,10 +299,9 @@
 
 											flex-direction: column;
 											align-items: flex-start;
-
 											justify-content: space-between;
 
-											padding-bottom: 5px;
+											padding-bottom: 8px;
 
 											font-family: 'Gilroy', sans-serif;
 											font-size: 14px;

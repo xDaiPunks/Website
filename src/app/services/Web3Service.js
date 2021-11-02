@@ -16,7 +16,7 @@ import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
-const xDaiPunksAbi = require('src/app//abi/xDaiPunks.json');
+const xDaiPunksAbi = require('src/app/abi/xDaiPunks.json');
 
 const abiService = new AbiService();
 const punkService = new PunkService();

@@ -146,25 +146,24 @@
 
 			.View.Overlay.Route-enter {
 				opacity: 0;
-				transform: translate3d(0, 45px, 0);
+				transform: translate3d(0, 0, 0);
 			}
 
 			.View.Overlay.Route-enter-active {
 				opacity: 1;
 				transform: translate3d(0, 0, 0);
 
-				transition: opacity 0.5s $linear, transform 0.5s $easeOut;
+				transition: opacity 0.3s $linear;
 			}
 
 			.View.Overlay.Route-exit {
-				transition: visibility 0.5s, opacity 0.5s $linear,
-					transform 0.5s $easeOut;
+				transition: visibility 0.3s, opacity 0.3s $linear;
 			}
 
 			.View.Overlay.Route-exit.Route-exit-active {
 				opacity: 0;
 				visibility: hidden;
-				transform: translate3d(0, 45px, 0);
+				transform: translate3d(0, 0, 0);
 			}
 
 			.View.Underlay {
@@ -177,11 +176,11 @@
 
 			.View.Underlay.Route-enter-active {
 				transform: translate3d(0, 0, 0);
-				transition: transform 0.6s $linear;
+				transition: transform 0.3s $linear;
 			}
 
 			.View.Underlay.Route-exit {
-				transition: transform 0.6s $linear;
+				transition: transform 0.3s $linear;
 			}
 
 			.View.Underlay.Route-exit.Route-exit-active {

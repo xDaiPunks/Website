@@ -886,11 +886,8 @@ class MarketPlace extends PureComponent {
 
 			let imageUrl;
 
-			let overlayOneTitle;
-			let overlayOneContent;
-
-			let overlayTwoTitle;
-			let overlayTwoContent;
+			let offeredContent;
+			let bidContent;
 
 			const rowArray = [];
 
@@ -918,61 +915,55 @@ class MarketPlace extends PureComponent {
 
 							imageUrl = '/punks/' + items[item].idx + '.png';
 
-							status = 'X';
-							overlayOneTitle = 'Offered for';
-							overlayTwoTitle = 'Has a bid of';
-
-							overlayOneContent = 'Not offered';
-							overlayTwoContent = 'No bids received';
+							bidContent = 'No bids';
+							offeredContent = 'Not yet offered';
 
 							if (items[item].mint === true) {
 								if (
 									items[item].bid !== true &&
 									items[item].sale !== true
 								) {
-									status = 'M';
-									overlayOneContent = 'Not offered';
-									overlayTwoContent = 'No bids received';
+									bidContent = 'No bids';
+									offeredContent = 'Not yet offered';
 								} else {
 									if (
 										items[item].bid === true &&
 										items[item].sale !== true
 									) {
-										status = 'B';
-										overlayOneContent = 'Not offered';
-										overlayTwoContent =
+										bidContent =
 											BigNumber(items[item].bidData.value)
 												.div(1e18)
 												.toFormat(2) + ' xDai';
+
+										offeredContent = 'Not yet offered';
 									}
 
 									if (
 										items[item].bid !== true &&
 										items[item].sale === true
 									) {
-										status = 'O';
-										overlayOneContent =
+										bidContent = 'No bids';
+										offeredContent =
 											BigNumber(
 												items[item].saleData.minValue
 											)
 												.div(1e18)
 												.toFormat(2) + ' xDai';
-										overlayTwoContent = 'No bids received';
 									}
 
 									if (
 										items[item].bid === true &&
 										items[item].sale === true
 									) {
-										status = 'BO';
-										overlayOneContent =
+										bidContent =
+											BigNumber(items[item].bidData.value)
+												.div(1e18)
+												.toFormat(2) + ' xDai';
+
+										offeredContent =
 											BigNumber(
 												items[item].saleData.minValue
 											)
-												.div(1e18)
-												.toFormat(2) + ' xDai';
-										overlayTwoContent =
-											BigNumber(items[item].bidData.value)
 												.div(1e18)
 												.toFormat(2) + ' xDai';
 									}
@@ -993,78 +984,17 @@ class MarketPlace extends PureComponent {
 											);
 										}}>
 										<div className="PunkItemContent">
-											<div className="PunkImageContainer">
-												<div className="PunkImageContainerBG">
-													<img
-														alt={''}
-														className={
-															'PunkImageGrid'
-														}
-														src={imageUrl}
-													/>
-												</div>
-											</div>
-											<button
-												className="OverlayButton"
-												onClick={(event) => {
-													event.preventDefault();
-													event.stopPropagation();
-
-													vm.toggleOverlay(
-														items[item].idx
-													);
-												}}>
-												<span className="ButtonTitle">
-													Status
-												</span>
-												<span className="ButtonContent">
-													{status}
-												</span>
-											</button>
-											<div
-												id={
-													'Overlay' + +items[item].idx
-												}
-												className="PunkDetailsOverlay">
-												<div className="DetailsOverlay">
-													<div className="DetailsOverlayContent">
-														<span className="DetailsTextTitle">
-															{overlayOneTitle}
-														</span>
-														<span className="DetailsTextContent Bold">
-															{overlayOneContent}
-														</span>
-													</div>
-													<div className="DetailsOverlayContent">
-														<span className="DetailsTextTitle">
-															{overlayTwoTitle}
-														</span>
-														<span className="DetailsTextContent Bold">
-															{overlayTwoContent}
-														</span>
-													</div>
-												</div>
-											</div>
-											<div className="PunkDetailsContainer">
-												<div className="PunkItemTop">
-													<div className="PunkItemDetails">
-														<span className="DetailsTextTitle">
-															Number
-														</span>
-														<span className="DetailsTextContent Bold">
-															{'#' + number}
-														</span>
-													</div>
-												</div>
-												<div className="PunkItemDetails">
+											<div className="OverlayData">
+												<div className="PunkItemDetails Left">
 													<span className="DetailsTextTitle">
-														Traded value
+														Number
 													</span>
 													<span className="DetailsTextContent Bold">
-														{punkValue + ' xDai'}
+														{'#' + number}
 													</span>
 												</div>
-												<div className="PunkItemDetails">
+
+												<div className="PunkItemDetails Right">
 													<span className="DetailsTextTitle">
 														Rank
 													</span>
@@ -1072,6 +1002,45 @@ class MarketPlace extends PureComponent {
 														{rank}
 													</span>
 												</div>
+											</div>
+											<div className="PunkImageContainer">
+												<img
+													alt={''}
+													className={'PunkImageGrid'}
+													src={imageUrl}
+												/>
+											</div>
+
+											<div className="PunkDetailsContainer">
+												<div className="PunkItemTop">
+													<div className="PunkItemDetails">
+														<span className="DetailsTextTitle">
+															Bid
+														</span>
+														<span className="DetailsTextContent Bold">
+															{bidContent}
+														</span>
+													</div>
+												</div>
+
+												<div className="PunkItemDetails">
+													<span className="DetailsTextTitle">
+														Last sale
+													</span>
+													<span className="DetailsTextContent Bold">
+														{punkValue + ' xDai'}
+													</span>
+												</div>
+
+												<div className="PunkItemDetails">
+													<span className="DetailsTextTitle">
+														Offered for
+													</span>
+													<span className="DetailsTextContent Bold">
+														{offeredContent}
+													</span>
+												</div>
+								
 											</div>
 										</div>
 									</a>
@@ -1104,14 +1073,14 @@ class MarketPlace extends PureComponent {
 		const ListComponent = vm.listComponent;
 
 		options = [
-			{ label: 'Value ↓', value: '-value' },
-			{ label: 'Value ↑', value: 'value' },
-			{ label: 'Bids ↓', value: '-bidValue' },
-			{ label: 'Bids ↑', value: 'bidValue' },
+			{ label: 'Last sale ↓', value: '-value' },
+			{ label: 'Last sale ↑', value: 'value' },
+			{ label: 'Bid ↓', value: '-bidValue' },
+			{ label: 'Bid ↑', value: 'bidValue' },
 			{ label: 'Rank ↓', value: 'rank' },
 			{ label: 'Rank ↑', value: '-rank' },
-			{ label: 'Offered ↓', value: '-saleValue' },
-			{ label: 'Offered ↑', value: 'saleValue' },
+			{ label: 'Offered for ↓', value: '-saleValue' },
+			{ label: 'Offered for ↑', value: 'saleValue' },
 		];
 
 		if (this.props.animationType === 'overlay') {

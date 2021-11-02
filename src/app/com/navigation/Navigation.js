@@ -196,7 +196,7 @@ class Navigation extends PureComponent {
 						alt={'Home'}
 						title={'Home'}
 						className={'ButtonLogoImage'}
-						src={'/static/media/images/logo.svg'}
+						src={'/static/media/images/logo.png'}
 					/>
 				</button>
 			);
@@ -346,8 +346,8 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'Home'}
-										title={'Home'}
+										label={'About'}
+										title={'About'}
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
@@ -358,7 +358,22 @@ class Navigation extends PureComponent {
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}
-										iconImage="/static/media/images/icon-home-white.svg"
+										iconImage="/static/media/images/icon-about-white.svg"
+									/>
+								</li>
+
+								<li>
+									<Button
+										type={'navigationButton'}
+										label={'Punk token'}
+										title={'Punk token'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											vm.xDaiOnRamp();
+										}}
+										cssClass={'NavigationButton'}
+										iconImage="/static/media/images/icon-token-white.svg"
 									/>
 								</li>
 
@@ -380,21 +395,6 @@ class Navigation extends PureComponent {
 												: 'NavigationButton'
 										}
 										iconImage="/static/media/images/icon-cart-white.svg"
-									/>
-								</li>
-
-								<li>
-									<Button
-										type={'navigationButton'}
-										label={'Get xDai'}
-										title={'Marketplace'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.hideMobileMenu();
-											vm.xDaiOnRamp();
-										}}
-										cssClass={'NavigationButton'}
-										iconImage="/static/media/images/icon-card-white.svg"
 									/>
 								</li>
 
