@@ -454,26 +454,19 @@ class PunkAccount extends PureComponent {
 	punkItems(props) {
 		let i;
 
+		let rank;
 		let number;
 		let status;
-
-		let extraTitle;
-		let extraValue;
 
 		let punkValue;
 
 		let imageUrl;
 
-		let overlayOneTitle;
-		let overlayOneContent;
+		let offeredContent;
+		let bidContent;
 
-		let overlayTwoTitle;
-		let overlayTwoContent;
-
-		const vm = this;
 		const rowArray = [];
 
-		const type = props.type;
 		const items = props.items;
 		const itemsCount = props.items.length;
 
@@ -489,80 +482,60 @@ class PunkAccount extends PureComponent {
 			<>
 				{rowArray.map((item, index) => {
 					if (items[item]) {
+						rank = items[item].rank;
 						number = items[item].idx;
-						imageUrl = '/punks/' + items[item].idx + '.png';
 
 						punkValue = BigNumber(items[item].value)
 							.div(1e18)
 							.toFormat(2);
 
-						extraTitle = '';
-						extraValue = '';
+						imageUrl = '/punks/' + items[item].idx + '.png';
 
-						if (type !== 'bid') {
-							extraTitle = 'Rank';
-							extraValue = items[item].rank;
-						}
-
-						if (type === 'bid') {
-							extraTitle = 'Bid';
-							extraValue =
-								BigNumber(items[item].bidData.value)
-									.div(1e18)
-									.toFormat(2) + ' xDai';
-						}
-
-						status = 'X';
-						overlayOneTitle = 'Offered for';
-						overlayTwoTitle = 'Has a bid of';
-
-						overlayOneContent = 'Not offered';
-						overlayTwoContent = 'No bids received';
+						bidContent = 'No bids';
+						offeredContent = 'Not yet offered';
 
 						if (items[item].mint === true) {
 							if (
 								items[item].bid !== true &&
 								items[item].sale !== true
 							) {
-								status = 'M';
-								overlayOneContent = 'Not offered';
-								overlayTwoContent = 'No bids received';
+								bidContent = 'No bids';
+								offeredContent = 'Not yet offered';
 							} else {
 								if (
 									items[item].bid === true &&
 									items[item].sale !== true
 								) {
-									status = 'B';
-									overlayOneContent = 'Not offered';
-									overlayTwoContent =
+									bidContent =
 										BigNumber(items[item].bidData.value)
 											.div(1e18)
 											.toFormat(2) + ' xDai';
+
+									offeredContent = 'Not yet offered';
 								}
 
 								if (
 									items[item].bid !== true &&
 									items[item].sale === true
 								) {
-									status = 'O';
-									overlayOneContent =
+									bidContent = 'No bids';
+									offeredContent =
 										BigNumber(items[item].saleData.minValue)
 											.div(1e18)
 											.toFormat(2) + ' xDai';
-									overlayTwoContent = 'No bids received';
 								}
 
 								if (
 									items[item].bid === true &&
 									items[item].sale === true
 								) {
-									status = 'BO';
-									overlayOneContent =
-										BigNumber(items[item].saleData.minValue)
+									bidContent =
+										BigNumber(items[item].bidData.value)
 											.div(1e18)
 											.toFormat(2) + ' xDai';
-									overlayTwoContent =
-										BigNumber(items[item].bidData.value)
+
+									offeredContent =
+										BigNumber(items[item].saleData.minValue)
 											.div(1e18)
 											.toFormat(2) + ' xDai';
 								}
@@ -583,80 +556,60 @@ class PunkAccount extends PureComponent {
 										);
 									}}>
 									<div className="PunkItemContent">
-										<div className="PunkImageContainer">
-											<div className="PunkImageContainerBG">
-												<img
-													alt={''}
-													className={'PunkImageGrid'}
-													src={imageUrl}
-												/>
+										<div className="OverlayData">
+											<div className="PunkItemDetails Left">
+												<span className="DetailsTextTitle">
+													Number
+												</span>
+												<span className="DetailsTextContent Bold">
+													{'#' + number}
+												</span>
+											</div>
+
+											<div className="PunkItemDetails Right">
+												<span className="DetailsTextTitle">
+													Rank
+												</span>
+												<span className="DetailsTextContent Bold">
+													{rank}
+												</span>
 											</div>
 										</div>
-										<button
-											className="OverlayButton"
-											onClick={(event) => {
-												event.preventDefault();
-												event.stopPropagation();
-
-												vm.toggleOverlay(
-													items[item].idx
-												);
-											}}>
-											<span className="ButtonTitle">
-												Status
-											</span>
-											<span className="ButtonContent">
-												{status}
-											</span>
-										</button>
-										<div
-											id={'Overlay' + +items[item].idx}
-											className="PunkDetailsOverlay">
-											<div className="DetailsOverlay">
-												<div className="DetailsOverlayContent">
-													<span className="DetailsTextTitle">
-														{overlayOneTitle}
-													</span>
-													<span className="DetailsTextContent Bold">
-														{overlayOneContent}
-													</span>
-												</div>
-												<div className="DetailsOverlayContent">
-													<span className="DetailsTextTitle">
-														{overlayTwoTitle}
-													</span>
-													<span className="DetailsTextContent Bold">
-														{overlayTwoContent}
-													</span>
-												</div>
-											</div>
+										<div className="PunkImageContainer">
+											<img
+												alt={''}
+												className={'PunkImageGrid'}
+												src={imageUrl}
+											/>
 										</div>
 
 										<div className="PunkDetailsContainer">
 											<div className="PunkItemTop">
 												<div className="PunkItemDetails">
 													<span className="DetailsTextTitle">
-														Number
+														Bid
 													</span>
 													<span className="DetailsTextContent Bold">
-														{'#' + number}
+														{bidContent}
 													</span>
 												</div>
 											</div>
+
 											<div className="PunkItemDetails">
 												<span className="DetailsTextTitle">
-													Traded value
+													Last sale
 												</span>
 												<span className="DetailsTextContent Bold">
 													{punkValue + ' xDai'}
 												</span>
 											</div>
+
 											<div className="PunkItemDetails">
 												<span className="DetailsTextTitle">
-													{extraTitle}
+													Offered for
 												</span>
 												<span className="DetailsTextContent Bold">
-													{extraValue}
+													{offeredContent}
 												</span>
 											</div>
 										</div>
@@ -690,7 +643,7 @@ class PunkAccount extends PureComponent {
 
 			return (
 				<div className="ContentBlock Items">
-					<div className="BlockTitle">My bids</div>
+					<div className="BlockTitle">My punk bids</div>
 					<Punks type={'bid'} items={bidArray} />
 				</div>
 			);
@@ -725,7 +678,7 @@ class PunkAccount extends PureComponent {
 
 			return (
 				<div className="ContentBlock Items">
-					<div className="BlockTitle">My punks</div>
+					<div className="BlockTitle">My punk collection</div>
 					<Punks type={'owned'} items={ownedArray} />
 				</div>
 			);
@@ -807,6 +760,48 @@ class PunkAccount extends PureComponent {
 									<div className="AccountItem">
 										<Button
 											type={'actionButtonIcon'}
+											label={'Withdraw'}
+											title={'Withdraw funds'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.withdraw();
+											}}
+											iconImage="/static/media/images/icon-money.svg"
+											cssClass={'ActionButtonAccount'}
+										/>
+										<div className="AccountItemContent">
+											<span className="AccountItemTitleText">
+												Pending withdrawels
+											</span>
+											<span className="AccountItemContentText">
+												{withdrawAmount + ' xDai'}
+											</span>
+										</div>
+									</div>
+									<div className="AccountItem">
+										<Button
+											type={'actionButtonIcon'}
+											label={'Withdraw'}
+											title={'Withdraw Punk tokens'}
+											onClick={(event) => {
+												event.preventDefault();
+												vm.withdraw();
+											}}
+											iconImage="/static/media/images/icon-money.svg"
+											cssClass={'ActionButtonAccount'}
+										/>
+										<div className="AccountItemContent">
+											<span className="AccountItemTitleText">
+												Punk available to withdraw
+											</span>
+											<span className="AccountItemContentText">
+												{'0.00 Punk'}
+											</span>
+										</div>
+									</div>
+									<div className="AccountItem">
+										<Button
+											type={'actionButtonIcon'}
 											label={'Disconnect'}
 											title={'Disconnect'}
 											onClick={(event) => {
@@ -822,27 +817,6 @@ class PunkAccount extends PureComponent {
 											</span>
 											<span className="AccountItemContentText">
 												{address}
-											</span>
-										</div>
-									</div>
-									<div className="AccountItem">
-										<Button
-											type={'actionButtonIcon'}
-											label={'Withdraw'}
-											title={'Withdraw'}
-											onClick={(event) => {
-												event.preventDefault();
-												vm.withdraw();
-											}}
-											iconImage="/static/media/images/icon-money.svg"
-											cssClass={'ActionButtonAccount'}
-										/>
-										<div className="AccountItemContent">
-											<span className="AccountItemTitleText">
-												Pending withdrawels
-											</span>
-											<span className="AccountItemContentText">
-												{withdrawAmount + ' xDai'}
 											</span>
 										</div>
 									</div>

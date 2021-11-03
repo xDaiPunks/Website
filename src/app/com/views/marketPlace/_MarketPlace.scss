@@ -38,18 +38,16 @@
 
 						padding-left: $padding;
 						padding-right: $padding;
-						padding-bottom: $padding;
+						padding-bottom: 20px;
 
 						@include responsiveMax($responsiveMed) {
 							padding-left: $paddingMed;
 							padding-right: $paddingMed;
-							padding-bottom: $paddingMed;
 						}
 
 						@include responsiveMax($responsiveSmall) {
 							padding-left: $paddingSmall;
 							padding-right: $paddingSmall;
-							padding-bottom: 20px;
 						}
 
 						.ControlsContainer {
@@ -265,6 +263,9 @@
 										.PunkImageGrid {
 											width: 50%;
 
+											max-width: 160px;
+											max-height: 160px;
+
 											-ms-interpolation-mode: nearest-neighbor;
 											image-rendering: pixelated;
 											image-rendering: -moz-crisp-edges;
@@ -279,7 +280,7 @@
 										padding-right: 18px;
 
 										padding-top: 15px;
-										padding-bottom: 28px;
+										padding-bottom: 18px;
 
 										flex-grow: 1;
 
