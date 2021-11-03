@@ -72,13 +72,6 @@ class Footer extends PureComponent {
 	render() {
 		return (
 			<div className="Footer">
-				<div className="LogoFooter">
-					<img
-						alt={'Muevo'}
-						className={'LogoFooterImage'}
-						src={'/static/media/images/logo.svg'}
-					/>
-				</div>
 				<div className="FooterMenu">
 					<div className="FooterMenuRow">
 						<div className="FooterMenuBlock">

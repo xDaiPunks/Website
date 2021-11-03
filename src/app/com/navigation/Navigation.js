@@ -351,10 +351,10 @@ class Navigation extends PureComponent {
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
-											routeService.navigateRoute('/');
+											routeService.navigateRoute('/about');
 										}}
 										cssClass={
-											currentView === 'home'
+											currentView === 'about'
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}

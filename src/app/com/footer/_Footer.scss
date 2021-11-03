@@ -7,58 +7,25 @@
 	width: 100vw;
 	max-width: 100%;
 
-	padding-top: $padding;
-
+	padding-top: $padding - 10px;
 	padding-left: $padding;
 	padding-right: $padding;
 	padding-bottom: $padding * 2;
 
-	background-color: #f5f5f5;
+	background-color: #333;
 
 	@include responsiveMax($responsiveMed) {
-		padding-top: $paddingMed;
+		padding-top: $paddingMed - 10px;;
 		padding-left: $paddingMed;
 		padding-right: $paddingMed;
 		padding-bottom: $paddingMed * 2;
 	}
 
 	@include responsiveMax($responsiveSmall) {
-		padding-top: $paddingSmall;
+		padding-top: $paddingSmall - 10px;;
 		padding-left: $paddingSmall;
 		padding-right: $paddingSmall;
 		padding-bottom: $paddingSmall * 2;
-	}
-
-	.LogoFooter {
-		display: block;
-		position: relative;
-
-		padding-bottom: $padding;
-
-		@include responsiveMax($responsiveMed) {
-			padding-bottom: $paddingMed;
-		}
-
-		@include responsiveMax($responsiveSmall) {
-			padding-bottom: $paddingSmall;
-		}
-
-		.LogoFooterImage {
-			display: block;
-
-			width: 44px;
-			height: 44px;
-
-			@include responsiveMax($responsiveMed) {
-				width: 44px;
-				height: 44px;
-			}
-
-			@include responsiveMax($responsiveSmall) {
-				width: 44px;
-				height: 44px;
-			}
-		}
 	}
 
 	.FooterMenu {
@@ -110,7 +77,7 @@
 					display: block;
 					position: relative;
 
-					color: #111;
+					color: #fff;
 
 					height: 32px;
 					line-height: 32px;
@@ -129,7 +96,7 @@
 					height: 32px;
 					line-height: 32px;
 
-					color: rgba(17, 17, 17, 0.7);
+					color: rgba(255, 255, 255, 0.7);
 
 					font-size: 14px;
 					font-weight: 700;

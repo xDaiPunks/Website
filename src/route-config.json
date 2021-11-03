@@ -15,6 +15,14 @@
 		"component": "app/com/views/homes/Homes"
 	},
 
+	"about": {
+		"path": "/about",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "underlay",
+		"component": "app/com/views/about/About"
+	},
+
 	"punk": {
 		"path": "/punk/:id",
 		"type": "public",
