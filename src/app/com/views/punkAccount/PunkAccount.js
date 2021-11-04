@@ -492,7 +492,7 @@ class PunkAccount extends PureComponent {
 						imageUrl = '/punks/' + items[item].idx + '.png';
 
 						bidContent = 'No bids';
-						offeredContent = 'Not yet offered';
+						offeredContent = 'Not offered by owner';
 
 						if (items[item].mint === true) {
 							if (
@@ -500,7 +500,7 @@ class PunkAccount extends PureComponent {
 								items[item].sale !== true
 							) {
 								bidContent = 'No bids';
-								offeredContent = 'Not yet offered';
+								offeredContent = 'Not offered by owner';
 							} else {
 								if (
 									items[item].bid === true &&
@@ -511,7 +511,7 @@ class PunkAccount extends PureComponent {
 											.div(1e18)
 											.toFormat(2) + ' xDai';
 
-									offeredContent = 'Not yet offered';
+									offeredContent = 'Not offered by owner';
 								}
 
 								if (

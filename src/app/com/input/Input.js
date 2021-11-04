@@ -465,7 +465,6 @@ class Input extends PureComponent {
 		}
 
 		for (i = 0, arrayCount = options.length; i < arrayCount; i++) {
-			console.log(selectedOption);
 			if (options[i].value !== selectedOption) {
 				optionItems.push(
 					<option key={i + 1} value={options[i].value}>

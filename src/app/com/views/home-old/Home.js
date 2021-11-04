@@ -20,18 +20,19 @@ const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
-class Homes extends PureComponent {
+class Home extends PureComponent {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
 
-		this.componentName = 'Homes';
+		this.componentName = 'Home';
 
 		this.guid = utilityService.guid();
 
 		this.getPunkAction = this.getPunkAction.bind(this);
 
+		this.confettiItem = this.confettiItem.bind(this);
 		this.subContentItem = this.subContentItem.bind(this);
 		this.buttonFooterItem = this.buttonFooterItem.bind(this);
 	}
@@ -139,6 +140,183 @@ class Homes extends PureComponent {
 		}
 	}
 
+	confettiItem() {
+		let number00 = Math.floor(Math.random() * 9999);
+		let number01 = Math.floor(Math.random() * 9999);
+		let number02 = Math.floor(Math.random() * 9999);
+		let number03 = Math.floor(Math.random() * 9999);
+		let number04 = Math.floor(Math.random() * 9999);
+		let number05 = Math.floor(Math.random() * 9999);
+		let number06 = Math.floor(Math.random() * 9999);
+		let number07 = Math.floor(Math.random() * 9999);
+		let number08 = Math.floor(Math.random() * 9999);
+		let number09 = Math.floor(Math.random() * 9999);
+		let number10 = Math.floor(Math.random() * 9999);
+		let number11 = Math.floor(Math.random() * 9999);
+		let number12 = Math.floor(Math.random() * 9999);
+
+		let randomImage00 = '/punks/' + number00 + '.png';
+		let randomImage01 = '/punks/' + number01 + '.png';
+		let randomImage02 = '/punks/' + number02 + '.png';
+		let randomImage03 = '/punks/' + number03 + '.png';
+		let randomImage04 = '/punks/' + number04 + '.png';
+		let randomImage05 = '/punks/' + number05 + '.png';
+		let randomImage06 = '/punks/' + number06 + '.png';
+		let randomImage07 = '/punks/' + number07 + '.png';
+		let randomImage08 = '/punks/' + number08 + '.png';
+		let randomImage09 = '/punks/' + number09 + '.png';
+		let randomImage10 = '/punks/' + number10 + '.png';
+		let randomImage11 = '/punks/' + number11 + '.png';
+		let randomImage12 = '/punks/' + number12 + '.png';
+
+		return (
+			<div className="Confetti">
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage00}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage01}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage02}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage03}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage04}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage05}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage06}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage07}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage08}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage09}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage10}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage11}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="ConfettiItem">
+					<div className="ConfettiItemContainer">
+						<div className="ConfettiBackground">
+							<img
+								alt={''}
+								className={'ConfettiPunkImage'}
+								src={randomImage12}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 
 	subContentItem() {
 		// const vm = this;
@@ -148,8 +326,8 @@ class Homes extends PureComponent {
 
 		// console.log('minstCount', mintsCount);
 
-		// console.log('Homes publicSale', publicSale);
-		// console.log('Homes mintscount', mintsCount);
+		// console.log('Home publicSale', publicSale);
+		// console.log('Home mintscount', mintsCount);
 
 		if (publicSale !== true) {
 			return (
@@ -240,7 +418,7 @@ class Homes extends PureComponent {
 		let transitionClass;
 
 		const vm = this;
-
+		const ConfettiItem = vm.confettiItem;
 		const SubContentItem = vm.subContentItem;
 		const ButtonFooterItem = vm.buttonFooterItem;
 
@@ -263,8 +441,35 @@ class Homes extends PureComponent {
 				<div className="ViewBox">
 					<div className="Intro">
 						<div className="IntroStart">
-						
-
+							<ConfettiItem />
+							<div className="IntroItem">
+								<div className="PunkItem">
+									<div className="PunkImage">
+										<div className="PunkImageCircle">
+											<img
+												alt={''}
+												className={'Punk'}
+												src={randomImage}
+											/>
+										</div>
+									</div>
+									<span className="PunkText">
+										<span className="TextDark">xDAI</span>
+										<span className="TextLight">PUNKS</span>
+									</span>
+									<span className="PunkSubText">
+										Minting phase completed within 7 hours!
+									</span>
+								</div>
+								<div className="IntroSubContent">
+									<SubContentItem />
+								</div>
+								<div className="IntroFooterContainer">
+									<div className="FooterContainerSizer">
+										<ButtonFooterItem />
+									</div>
+								</div>
+							</div>
 						</div>
 						<div className="IntroContent">
 							<div className="ContentItem">
@@ -455,4 +660,4 @@ class Homes extends PureComponent {
 	}
 }
 
-export default Homes;
+export default Home;

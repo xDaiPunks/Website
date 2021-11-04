@@ -413,7 +413,7 @@ class MarketPlace extends PureComponent {
 
 		switch (sort) {
 			default:
-				state.sort = ['-value', 'status', 'idx'];
+				state.sort = ['-value', '-saleValue', 'idx'];
 				break;
 
 			case '-rank':
@@ -425,27 +425,27 @@ class MarketPlace extends PureComponent {
 				break;
 
 			case '-value':
-				state.sort = ['-value', 'status', 'idx'];
+				state.sort = ['-value', '-saleValue', 'idx'];
 				break;
 
 			case 'value':
-				state.sort = ['value', 'status', 'idx'];
+				state.sort = ['value', 'saleValue', 'idx'];
 				break;
 
 			case '-bidValue':
-				state.sort = ['-bidValue', 'status', 'idx'];
+				state.sort = ['-bidValue', '-saleValue', 'idx'];
 				break;
 
 			case 'bidValue':
-				state.sort = ['bidValue', 'status', 'idx'];
+				state.sort = ['bidValue', 'saleValue', 'idx'];
 				break;
 
 			case '-saleValue':
-				state.sort = ['-saleValue', 'status', 'idx'];
+				state.sort = ['-saleValue', '-value', 'idx'];
 				break;
 
 			case 'saleValue':
-				state.sort = ['saleValue', 'status', 'idx'];
+				state.sort = ['saleValue', 'value', 'idx'];
 				break;
 		}
 
@@ -916,7 +916,7 @@ class MarketPlace extends PureComponent {
 							imageUrl = '/punks/' + items[item].idx + '.png';
 
 							bidContent = 'No bids';
-							offeredContent = 'Not yet offered';
+							offeredContent = 'Not offered by owner';
 
 							if (items[item].mint === true) {
 								if (
@@ -924,7 +924,7 @@ class MarketPlace extends PureComponent {
 									items[item].sale !== true
 								) {
 									bidContent = 'No bids';
-									offeredContent = 'Not yet offered';
+									offeredContent = 'Not offered by owner';
 								} else {
 									if (
 										items[item].bid === true &&
@@ -935,7 +935,7 @@ class MarketPlace extends PureComponent {
 												.div(1e18)
 												.toFormat(2) + ' xDai';
 
-										offeredContent = 'Not yet offered';
+										offeredContent = 'Not offered by owner';
 									}
 
 									if (

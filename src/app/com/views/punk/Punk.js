@@ -301,7 +301,7 @@ class Punk extends PureComponent {
 		const AttributesComponent = this.attributesComponent;
 
 		punkBidValue = 'No bids';
-		punkSaleValue = 'Not offered yet';
+		punkSaleValue = 'Not offered by owner';
 
 		if (value) {
 			punkValue = BigNumber(value).div(1e18).toFixed(2);

@@ -7,14 +7,6 @@
 		"component": "app/com/views/home/Home"
 	},
 
-	"homes": {
-		"path": "/homes",
-		"type": "public",
-		"redirect": "none",
-		"animationType": "underlay",
-		"component": "app/com/views/homes/Homes"
-	},
-
 	"about": {
 		"path": "/about",
 		"type": "public",
