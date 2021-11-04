@@ -623,9 +623,7 @@ class Punk extends PureComponent {
 		// console.log(attributes);
 		return (
 			<div className="PunkDetailItemAttributes">
-				<div className="PunkDetailItemTitle">
-					Attributes
-				</div>
+				<div className="PunkDetailItemTitle">Attributes</div>
 				{attributes.map((item, index) => {
 					return (
 						<div

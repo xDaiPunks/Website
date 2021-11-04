@@ -95,10 +95,6 @@
 											.ConfettiPunkImage {
 												width: 32px;
 												height: 32px;
-
-												-ms-interpolation-mode: nearest-neighbor;
-												image-rendering: pixelated;
-												image-rendering: -moz-crisp-edges;
 											}
 										}
 									}
@@ -388,9 +384,6 @@
 												width: 190px;
 												height: 190px;
 												bottom: 0px;
-												-ms-interpolation-mode: nearest-neighbor;
-												image-rendering: pixelated;
-												image-rendering: -moz-crisp-edges;
 											}
 										}
 									}

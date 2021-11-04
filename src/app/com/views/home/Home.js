@@ -38,8 +38,6 @@ class Home extends PureComponent {
 
 		this.saleComponent = this.saleComponent.bind(this);
 		this.floorComponent = this.floorComponent.bind(this);
-
-		console.log(this.data);
 	}
 
 	updateView() {

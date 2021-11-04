@@ -1003,6 +1003,7 @@ class MarketPlace extends PureComponent {
 													</span>
 												</div>
 											</div>
+
 											<div className="PunkImageContainer">
 												<img
 													alt={''}
@@ -1040,7 +1041,6 @@ class MarketPlace extends PureComponent {
 														{offeredContent}
 													</span>
 												</div>
-								
 											</div>
 										</div>
 									</a>

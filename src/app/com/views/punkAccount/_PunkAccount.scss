@@ -318,14 +318,19 @@
 										background-color: #00f5f5;
 
 										.PunkImageGrid {
+											display: block;
+											position: relative;
+
 											width: 50%;
 
 											max-width: 160px;
 											max-height: 160px;
+										}
 
-											-ms-interpolation-mode: nearest-neighbor;
-											image-rendering: pixelated;
-											image-rendering: -moz-crisp-edges;
+										.PunkImageGrid:before {
+											content: '';
+											display: block;
+											padding-top: 100%;
 										}
 									}
 
