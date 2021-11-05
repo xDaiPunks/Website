@@ -165,6 +165,20 @@ class Footer extends PureComponent {
 								</a>
 								<div className="FooterSocialSpacer"></div>
 								<a
+									title="Discord"
+									href="https://discord.gg/zxjzRmEH"
+									target="_blank"
+									rel="noreferrer">
+									<img
+										alt={'Discord'}
+										className={'FooterSocialIcon'}
+										src={
+											'/static/media/images/footer-discord.svg'
+										}
+									/>
+								</a>
+								<div className="FooterSocialSpacer"></div>
+								<a
 									title="Telegram"
 									href="https://t.me/xDaiPunks"
 									target="_blank"
@@ -177,6 +191,7 @@ class Footer extends PureComponent {
 										}
 									/>
 								</a>
+								
 								<div className="FooterSocialSpacer"></div>
 								<a
 									title="Github"

@@ -97,7 +97,7 @@
 
 								padding-left: 2px;
 
-								color: #00f5f5;
+								color: #fff;
 
 								font-size: 60px;
 								font-weight: 900;
@@ -112,44 +112,45 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									font-size: 26px;
+									font-size: 40px;
 								}
 
 								.Txt {
 									display: block;
 									position: relative;
 								}
+							}
 
-								.TitleImageContent {
-									display: flex;
+							.ContentItemSubTitle {
+								display: flex;
+								flex-direction: row;
+
+								align-items: flex-start;
+								justify-content: space-between;
+
+								padding-left: 2px;
+
+								color: #fff;
+
+								font-size: 40px;
+								font-weight: 800;
+								font-family: 'Gilroy', sans-serif;
+
+								.Highlight {
+									color: #00f5f5;
+								}
+
+								@include responsiveMax($responsiveMed) {
+									font-size: 40px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									font-size: 30px;
+								}
+
+								.Txt {
+									display: block;
 									position: relative;
-
-									width: 16px;
-									height: 16px;
-									border-radius: 8px;
-
-									margin-top: 4px;
-
-									overflow: hidden;
-
-									background-color: #00f5f5;
-
-									@include responsiveMax($responsiveMed) {
-										width: 16px;
-										height: 16px;
-										border-radius: 8px;
-
-										margin-top: 4px;
-									}
-
-									@include responsiveMax($responsiveSmall) {
-										width: 12px;
-										height: 12px;
-										border-radius: 9px;
-
-										margin-top: 2px;
-										margin-right: 5px;
-									}
 								}
 							}
 

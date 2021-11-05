@@ -128,96 +128,79 @@ class About extends PureComponent {
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
 								<span className="Txt">About xDaiPunks</span>
-								
+							</div>
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Our story</span>
 							</div>
 							<div className="ContentItemContent">
-								xDai is the native currency of the xDai
-								blockchain. So what is xDai? xDai is a stable
-								coin that is soft pegged to the US Dollar. This
-								currency is created by bridging the Dai
-								cryptocurrency form the Ethereum mainnet to the
-								xDai mainnet through a set of auditable smart
-								contracts. This means that 1 xDai will always be
-								one Dai
+								xDaiPunks started as a collection of 10.000
+								unique non-fungible tokens (NFTs) created in
+								August 2021 on the xDai blockchain. In a matter
+								of days a vibrant and active community formed
+								with people from all over the world. As a result
+								the minting phase, which started on 5 September
+								at 23:55, sold out in 7 hours. And because the
+								marketplace was online from the get-go, trading
+								of Punks already stared when the minting phase
+								was still in progress.
 								<br />
 								<br />
-								There are 2 ways to get xDai in your wallet. An
-								important thing to remember is that not all
-								wallets support the xDai blockchain. MetaMask
-								and Pillar are 2 of wallets that are supported
-								you can get a list of supported wallets{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://www.xdaichain.com/for-users/wallets">
-									here
-								</a>
+								Within days, the xDaiPunk community stared to
+								share ideas on how to move forward. One of first
+								ideas was to make our beloved Punks more
+								desirable and ready for the metaverse. As a
+								result, our Punks “bit-shifted” to 3d Punks on
+								November the 5th. Remember, remember… <br />
+								<br />
+								At the same time efforts are being made to turn
+								the xDaiPunk community into a real DAO. In the
+								very near future the $PUNK token will launch.
+								This token will allow us to enter the next
+								chapter of our existence. Not only will our
+								token be a governance token, it will also be a
+								token that can be vested by xDaiPunk NFT
+								hodlers. The token itself will be backed by the
+								revenue of our upcoming NFT marketplace called
+								NiftFair. NiftyFair has the goal to reduce the
+								friction in creating and trading NFTs.
 							</div>
 						</div>
 
 						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Ramp Network</span>
-								
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Our future</span>
 							</div>
 							<div className="ContentItemContent">
-								If you want to directly on-ramp fiat currency
-								then the xDai blockchain has got you covered.
-								They have partnered with Ramp Network to provide
-								a direct fiat to xDai gateway. The cool thing is
-								that the fees of Ramp Network are very low, like
-								in unbeatable low! You can on-ramp using debit
-								cards of well know credit card issuers. Next to
-								that you can even use Apple Pay for on-ramping.
-								To do so, you can click{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://buy.ramp.network/?defaultAsset=xDAI">
-									here
-								</a>
-							</div>
-						</div>
-
-						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">xDai TokenBridge</span>
-								
-							</div>
-							<div className="ContentItemContent">
-								What is cool about the xDai blockchain is that
-								you can easily bridge Dai from the Ethereum
-								mainnet to the xDai mainnet. This is done
-								through the TokenBridge The bridge converts Dai
-								into xDai. Once converted, xDai is used as a
-								native token. When a user is finished using
-								xDai, they can convert it back to Dai using the
-								same bridge
+								Our community is moving mountains and things
+								happen at light-speed. What we only could dream
+								of a couple of months ago is now quickly
+								becoming reality. Our goal of becoming a real
+								DAO will be achieved in a matter of weeks. The
+								efforts of our community and the cooperation
+								within the xDai ecosystem is making this
+								possible.
 								<br />
 								<br />
-								The bridge uses smart contracts on both chains
-								to process transfers, and a group of validators
-								confirm bridge transactions. When a bridge
-								transfer is initiated, the specified amount of
-								Dai is locked in a smart contract on the
-								Ethereum mainnet, and the same amount of xDai is
-								minted on the xDai chain and sent to the user's
-								wallet on the xDai chain. When xDai is
-								transferred back, xDai is burned, and the
-								corresponding amount of Dai is unlocked in the
-								contract and released to the user's wallet on
-								the Ethereum mainnet. The bridge mechanism
-								ensures that the amount of xDai can never exceed
-								the amount of Dai locked in the bridge contract{' '}
+								Not long from now, we will have a
+								governance/vesting token and an NFT marketplace.
+								And then comes the question what is next? Our
+								Punks are ready to move from chain to chain and
+								they are backed by an open-source 3d model. The
+								metaverse is being created as we speak and the
+								walls from the gardens are coming down.
 								<br />
 								<br />
-								You can find the TokenBridge
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://bridge.xdaichain.com/">
-									here
-								</a>
+								This gives us new and really exciting
+								opportunities. Next year we will see Punks
+								crossing borders and entering new worlds. Worlds
+								that our community and our ecosystem are
+								creating. Worlds where people can meetup, get
+								together, celebrate, play games, gain knowledge
+								and gain friendships. And these worlds will not
+								exist in a virtual form only. Our community of
+								Punks will organize IRL events where you as a
+								Punk hodler will get access to. And believe us,
+								our events are going to “kick the lama’s ass” 🦙
 							</div>
 						</div>
 

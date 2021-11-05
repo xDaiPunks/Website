@@ -1420,7 +1420,7 @@ body {
     height: 32px;
     text-align: left;
     line-height: 32px;
-    color: rgba(255, 255, 255, 0.7);
+    color: white;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: normal;
@@ -3488,7 +3488,7 @@ body {
           align-items: flex-start;
           justify-content: space-between;
           padding-left: 2px;
-          color: #00f5f5;
+          color: #fff;
           font-size: 60px;
           font-weight: 900;
           font-family: 'Gilroy', sans-serif; }
@@ -3499,32 +3499,31 @@ body {
               font-size: 60px; } }
           @media screen and (max-width: 800px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle {
-              font-size: 26px; } }
+              font-size: 40px; } }
           #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .Txt {
             display: block;
             position: relative; }
-          #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
-            display: flex;
-            position: relative;
-            width: 16px;
-            height: 16px;
-            border-radius: 8px;
-            margin-top: 4px;
-            overflow: hidden;
-            background-color: #00f5f5; }
-            @media screen and (max-width: 1070px) {
-              #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
-                width: 16px;
-                height: 16px;
-                border-radius: 8px;
-                margin-top: 4px; } }
-            @media screen and (max-width: 800px) {
-              #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemTitle .TitleImageContent {
-                width: 12px;
-                height: 12px;
-                border-radius: 9px;
-                margin-top: 2px;
-                margin-right: 5px; } }
+        #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemSubTitle {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding-left: 2px;
+          color: #fff;
+          font-size: 40px;
+          font-weight: 800;
+          font-family: 'Gilroy', sans-serif; }
+          #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemSubTitle .Highlight {
+            color: #00f5f5; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemSubTitle {
+              font-size: 40px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemSubTitle {
+              font-size: 30px; } }
+          #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemSubTitle .Txt {
+            display: block;
+            position: relative; }
         #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
           display: block;
           position: relative;
