@@ -139,30 +139,30 @@ class About extends PureComponent {
 								of days a vibrant and active community formed
 								with people from all over the world. As a result
 								the minting phase, which started on 5 September
-								at 23:55, sold out in 7 hours. And because the
+								at 23:55, sold out in 7 hours. As the
 								marketplace was online from the get-go, trading
-								of Punks already stared when the minting phase
+								of Punks started when the minting phase
 								was still in progress.
 								<br />
 								<br />
-								Within days, the xDaiPunk community stared to
-								share ideas on how to move forward. One of first
+								Within days, the xDaiPunk community started to
+								share ideas on how to move the project forward. One of the first
 								ideas was to make our beloved Punks more
 								desirable and ready for the metaverse. As a
 								result, our Punks “bit-shifted” to 3d Punks on
-								November the 5th. Remember, remember… <br />
+								November the 5th. (Remember, remember…) <br />
 								<br />
-								At the same time efforts are being made to turn
-								the xDaiPunk community into a real DAO. In the
-								very near future the $PUNK token will launch.
+								At the same time, efforts are being made to turn
+								the xDaiPunk community into a DAO. In the
+								very near future, the $PUNK token will be launched.
 								This token will allow us to enter the next
-								chapter of our existence. Not only will our
+								chapter of our existence - not only will our
 								token be a governance token, it will also be a
 								token that can be vested by xDaiPunk NFT
 								hodlers. The token itself will be backed by the
 								revenue of our upcoming NFT marketplace called
-								NiftFair. NiftyFair has the goal to reduce the
-								friction in creating and trading NFTs.
+								NiftyFair. NiftyFair's goal is to reduce the
+								friction in creating, minting and trading NFTs.
 							</div>
 						</div>
 
@@ -172,12 +172,12 @@ class About extends PureComponent {
 							</div>
 							<div className="ContentItemContent">
 								Our community is moving mountains and things
-								happen at light-speed. What we only could dream
+								happen at light-speed. What we could only dream
 								of a couple of months ago is now quickly
-								becoming reality. Our goal of becoming a real
+								becoming reality. Our goal of becoming a
 								DAO will be achieved in a matter of weeks. The
 								efforts of our community and the cooperation
-								within the xDai ecosystem is making this
+								within the xDai ecosystem makes this
 								possible.
 								<br />
 								<br />
@@ -187,20 +187,20 @@ class About extends PureComponent {
 								Punks are ready to move from chain to chain and
 								they are backed by an open-source 3d model. The
 								metaverse is being created as we speak and the
-								walls from the gardens are coming down.
+								gardens walls are being torned down.
 								<br />
 								<br />
 								This gives us new and really exciting
 								opportunities. Next year we will see Punks
 								crossing borders and entering new worlds. Worlds
 								that our community and our ecosystem are
-								creating. Worlds where people can meetup, get
+								creating. Worlds where people can meet, get
 								together, celebrate, play games, gain knowledge
-								and gain friendships. And these worlds will not
+								and make friendships. And these worlds will not
 								exist in a virtual form only. Our community of
 								Punks will organize IRL events where you as a
 								Punk hodler will get access to. And believe us,
-								our events are going to “kick the lama’s ass” 🦙
+								our events are going to “whip the lama’s ass” 🦙
 							</div>
 						</div>
 
