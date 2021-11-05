@@ -15,14 +15,14 @@
 	background-color: #333;
 
 	@include responsiveMax($responsiveMed) {
-		padding-top: $paddingMed - 10px;;
+		padding-top: $paddingMed - 10px;
 		padding-left: $paddingMed;
 		padding-right: $paddingMed;
 		padding-bottom: $paddingMed * 2;
 	}
 
 	@include responsiveMax($responsiveSmall) {
-		padding-top: $paddingSmall - 10px;;
+		padding-top: $paddingSmall - 10px;
 		padding-left: $paddingSmall;
 		padding-right: $paddingSmall;
 		padding-bottom: $paddingSmall * 2;
@@ -79,14 +79,19 @@
 
 					color: #fff;
 
-					height: 32px;
-					line-height: 32px;
-
-					font-size: 14px;
-					font-weight: 700;
+					font-size: 40px;
+					font-weight: 800;
 					letter-spacing: normal;
 					white-space: nowrap;
 					font-family: 'Gilroy', sans-serif;
+
+					@include responsiveMax($responsiveMed) {
+						font-size: 40px;
+					}
+	
+					@include responsiveMax($responsiveSmall) {
+						font-size: 30px;
+					}
 				}
 
 				.FooterMenuItem {

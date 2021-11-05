@@ -243,95 +243,65 @@ class XDaiOnRamp extends PureComponent {
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
 								<span className="Txt">Getting xDai</span>
-								<span className="TitleImageContent"></span>
 							</div>
 							<div className="ContentItemContent">
-								xDai is the native currency of the xDai
-								blockchain. So what is xDai? xDai is a stable
-								coin that is soft pegged to the US Dollar. This
-								currency is created by bridging the Dai
-								cryptocurrency form the Ethereum mainnet to the
-								xDai mainnet through a set of auditable smart
-								contracts. This means that 1 xDai will always be
-								one Dai
-								<br />
-								<br />
-								There are 2 ways to get xDai in your wallet. An
-								important thing to remember is that not all
-								wallets support the xDai blockchain. MetaMask
-								and Pillar are 2 of wallets that are supported
-								you can get a list of supported wallets{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://www.xdaichain.com/for-users/wallets">
-									here
-								</a>
+								Getting xDai is very easy. Once you have setup
+								MetaMask for xDai, you can either Buy xDai or
+								Bridge xDai from other networks
 							</div>
 						</div>
 
 						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">Ramp Network</span>
-								<span className="TitleImageContent"></span>
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Buy xDai</span>
 							</div>
 							<div className="ContentItemContent">
-								If you want to directly on-ramp fiat currency
-								then the xDai blockchain has got you covered.
-								They have partnered with Ramp Network to provide
-								a direct fiat to xDai gateway. The cool thing is
-								that the fees of Ramp Network are very low, like
-								in unbeatable low! You can on-ramp using debit
-								cards of well know credit card issuers. Next to
-								that you can even use Apple Pay for on-ramping.
-								To do so, you can click{' '}
+								Buying xDai directly can be done using Ramp<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
 									href="https://buy.ramp.network/?defaultAsset=xDAI">
-									here
+									Ramp
 								</a>
 							</div>
 						</div>
 
 						<div className="ContentItem">
-							<div className="ContentItemTitle">
-								<span className="Txt">xDai TokenBridge</span>
-								<span className="TitleImageContent"></span>
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Bridge from Ethereum</span>
 							</div>
 							<div className="ContentItemContent">
-								What is cool about the xDai blockchain is that
-								you can easily bridge Dai from the Ethereum
-								mainnet to the xDai mainnet. This is done
-								through the TokenBridge The bridge converts Dai
-								into xDai. Once converted, xDai is used as a
-								native token. When a user is finished using
-								xDai, they can convert it back to Dai using the
-								same bridge
-								<br />
-								<br />
-								The bridge uses smart contracts on both chains
-								to process transfers, and a group of validators
-								confirm bridge transactions. When a bridge
-								transfer is initiated, the specified amount of
-								Dai is locked in a smart contract on the
-								Ethereum mainnet, and the same amount of xDai is
-								minted on the xDai chain and sent to the user's
-								wallet on the xDai chain. When xDai is
-								transferred back, xDai is burned, and the
-								corresponding amount of Dai is unlocked in the
-								contract and released to the user's wallet on
-								the Ethereum mainnet. The bridge mechanism
-								ensures that the amount of xDai can never exceed
-								the amount of Dai locked in the bridge contract{' '}
-								<br />
-								<br />
-								You can find the TokenBridge
+								xDai can be bridged from Ethereum using the xDai Bridge. More info can be found here {' '} <a
+									target="_blank"
+									rel="noreferrer"
+									href="https://www.xdaichain.com/for-users/bridges/converting-xdai-via-bridge/moving-dai-to-xdai">
+									here
+								</a>.{' '} the direct link to xDai Bridge:<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
 									href="https://bridge.xdaichain.com/">
+									xDai Bridge
+								</a>
+							</div>
+						</div>
+
+						<div className="ContentItem">
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Bridge from BSC, Polygon or Fantom</span>
+							</div>
+							<div className="ContentItemContent">
+								xDai can be bridged from BSC, Polygon or Fantom. This can be done through xPollinate {' '}. More info on xPollinate can be found here <a
+									target="_blank"
+									rel="noreferrer"
+									href="https://www.xdaichain.com/for-users/bridges/xdai-matic-connext-bridge">
 									here
+								</a>.{' '} the direct link to xPollinate:<br />
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://xpollinate.io/">
+									xPollinate Bridge
 								</a>
 							</div>
 						</div>

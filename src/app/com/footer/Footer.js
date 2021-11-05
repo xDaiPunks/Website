@@ -75,22 +75,8 @@ class Footer extends PureComponent {
 				<div className="FooterMenu">
 					<div className="FooterMenuRow">
 						<div className="FooterMenuBlock">
-							<span className="FooterMenuBlockHeader">
-								xDaiPunks
-							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'How to mint a Punk'}
-									title={'How to mint a Punk'}
-									onClick={() => {
-										routeService.navigateRoute(
-											'/how-to-mint'
-										);
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
+							<span className="FooterMenuBlockHeader">More</span>
+
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
@@ -107,11 +93,24 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'Verify Genuineness'}
-									title={'Verify Genuineness'}
+									label={'Setup metamask'}
+									title={'Setup metamask'}
 									onClick={() => {
 										window.open(
-											'https://github.com/xDaiPunks/Genuineness'
+											'https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'Get xDai'}
+									title={'Get xDai'}
+									onClick={() => {
+										routeService.navigateRoute(
+											'/get-xdai'
 										);
 									}}
 									cssClass={'FooterButton'}
@@ -138,71 +137,6 @@ class Footer extends PureComponent {
 									onClick={() => {
 										window.open(
 											'https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/read-contract'
-										);
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
-						</div>
-						<div className="FooterMenuBlock">
-							<span className="FooterMenuBlockHeader">Help</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Get xDai'}
-									title={'Get xDai'}
-									onClick={() => {
-										routeService.navigateRoute('/get-xdai');
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Using MetaMask'}
-									title={'Using MetaMask'}
-									onClick={() => {
-										window.open('https://metamask.io/faqs');
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Connecting to xDai'}
-									title={'Connecting to xDai'}
-									onClick={() => {
-										window.open(
-											'https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup'
-										);
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Using the marketplace'}
-									title={'Using the marketplace'}
-									onClick={() => {
-										routeService.navigateRoute(
-											'/using-the-marketplace'
-										);
-									}}
-									cssCla
-									cssClass={'FooterButton'}
-								/>
-							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Issues with WalletConnect'}
-									title={'Issues with WalletConnect'}
-									onClick={() => {
-										routeService.navigateRoute(
-											'/wallet-issues'
 										);
 									}}
 									cssClass={'FooterButton'}

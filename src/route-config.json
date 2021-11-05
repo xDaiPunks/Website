@@ -47,28 +47,12 @@
 		"component": "app/com/views/marketHelp/MarketHelp"
 	},
 
-	"mintHelp": {
-		"path": "/how-to-mint",
-		"type": "public",
-		"redirect": "none",
-		"animationType": "overlay",
-		"component": "app/com/views/mintHelp/MintHelp"
-	},
-
 	"xDaiOnRamp": {
 		"path": "/get-xdai",
 		"type": "public",
 		"redirect": "none",
 		"animationType": "overlay",
 		"component": "app/com/views/xDaiOnRamp/XDaiOnRamp"
-	},
-
-	"walletIssues": {
-		"path": "/wallet-issues",
-		"type": "public",
-		"redirect": "none",
-		"animationType": "overlay",
-		"component": "app/com/views/walletIssues/WalletIssues"
 	},
 
 	"notfound": {

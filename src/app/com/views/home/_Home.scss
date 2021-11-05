@@ -248,6 +248,15 @@
 									font-weight: 800;
 
 									font-family: 'Gilroy', sans-serif;
+
+									@include responsiveMax($responsiveMed) {
+										font-size: 40px;
+										
+									}
+	
+									@include responsiveMax($responsiveSmall) {
+										font-size: 30px;
+									}
 								}
 
 								.BlockContent {
