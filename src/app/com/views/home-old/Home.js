@@ -440,7 +440,9 @@ class Home extends PureComponent {
 				}>
 				<div className="ViewBox">
 					<div className="Intro">
-						<div className="IntroStart">
+						<div className="IntroStart" style={{
+							backgroundImage: '/s'
+						}}>
 							<ConfettiItem />
 							<div className="IntroItem">
 								<div className="PunkItem">

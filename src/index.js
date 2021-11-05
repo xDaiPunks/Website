@@ -19,15 +19,22 @@ const preloadService = new PreloadService();
 const webfontPreloadService = new WebfontPreloadService();
 
 const initialize = () => {
-	webfontPreloadService.preload('Gilroy', '900');
+	preloadService.preload('/static/media/images/astronaut.png');
+	preloadService.preload('/static/media/images/intro-background.jpg');
 
-	webfontPreloadService.on('preloadReady', this, (e) => {
-		webfontPreloadService.off('preloadReady', this);
+	preloadService.on('preloadReady', this, (e) => {
+		webfontPreloadService.preload('Gilroy', '900');
 
-		ReactDOM.render(<App />, document.getElementById('AppRoot'));
+		webfontPreloadService.on('preloadReady', this, (e) => {
+			webfontPreloadService.off('preloadReady', this);
+
+			ReactDOM.render(<App />, document.getElementById('AppRoot'));
+		});
+
+		webfontPreloadService.runPreloader();
 	});
 
-	webfontPreloadService.runPreloader();
+	preloadService.runPreloader();
 };
 
 initialize();

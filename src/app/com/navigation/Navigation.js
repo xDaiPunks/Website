@@ -365,21 +365,6 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'Punk token'}
-										title={'Punk token'}
-										onClick={(event) => {
-											event.preventDefault();
-											vm.hideMobileMenu();
-											vm.xDaiOnRamp();
-										}}
-										cssClass={'NavigationButton'}
-										iconImage="/static/media/images/icon-token-white.svg"
-									/>
-								</li>
-
-								<li>
-									<Button
-										type={'navigationButton'}
 										label={'Marketplace'}
 										title={'Marketplace'}
 										onClick={(event) => {

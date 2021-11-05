@@ -630,7 +630,7 @@ html {
 
 body {
   font-size: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Gilroy", sans-serif;
   background-color: #111; }
 
 #AppRoot {
@@ -1094,7 +1094,7 @@ body {
     transform-origin: top center;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     color: #111;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
     @media screen and (max-width: 1070px) {
       .InputUnderline label {
         font-size: 18px; } }
@@ -1124,7 +1124,7 @@ body {
     background-color: transparent;
     appearance: none;
     color: #111;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
     @media screen and (max-width: 1070px) {
       .InputUnderline input {
         font-size: 18px; } }
@@ -1201,7 +1201,7 @@ body {
     transform-origin: top center;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     color: #111;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
     @media screen and (max-width: 1070px) {
       .TextareaUnderline label {
         font-size: 18px; } }
@@ -1231,7 +1231,7 @@ body {
     appearance: none;
     margin-top: 6px;
     color: #111;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
     @media screen and (max-width: 1070px) {
       .TextareaUnderline textarea {
         font-size: 18px; } }
@@ -1288,7 +1288,7 @@ body {
   background-color: #0ff;
   flex-direction: row;
   justify-content: center;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Gilroy', sans-serif; }
   .AppButton .Txt {
     display: block;
     position: static;
@@ -1303,7 +1303,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
 
 .AppButtonOutline {
   display: flex;
@@ -1317,7 +1317,7 @@ body {
   background-color: transparent;
   flex-direction: row;
   justify-content: center;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Gilroy', sans-serif; }
   .AppButtonOutline .Txt {
     display: block;
     position: static;
@@ -1332,7 +1332,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
 
 .FormButton {
   display: flex;
@@ -1343,7 +1343,7 @@ body {
   border-radius: 22px;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   background-color: #111;
   padding-left: 20px;
   padding-right: 15px; }
@@ -1367,7 +1367,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
   .FormButton .Icon {
     display: flex;
     position: relative;
@@ -1437,7 +1437,7 @@ body {
   height: 36px;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Gilroy', sans-serif; }
   .FormPageButton .Txt {
     display: block;
     position: static;
@@ -1450,7 +1450,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
     @media screen and (max-width: 1070px) {
       .FormPageButton .Txt {
         font-size: 18px; } }
@@ -1774,7 +1774,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   border: 2px solid #0ff;
   padding-left: 20px;
   padding-right: 15px; }
@@ -1796,7 +1796,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
   .IntroStartButtonAction .Icon {
     display: flex;
     position: relative;
@@ -1818,7 +1818,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   border: 2px solid #111;
   padding-left: 20px;
   padding-right: 15px; }
@@ -1840,7 +1840,7 @@ body {
     font-weight: 600;
     letter-spacing: normal;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Gilroy', sans-serif; }
   .FooterItemButtonAction .Icon {
     display: flex;
     position: relative;
@@ -2097,7 +2097,7 @@ body {
         text-align: center;
         font-size: 14px;
         font-weight: 400;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Gilroy', sans-serif;
         padding-left: 20px;
         padding-right: 20px; }
       .Modal .ModalContent .ModalContentBlock .MintInput {
@@ -2196,7 +2196,7 @@ body {
           color: #111;
           font-size: 16px;
           font-weight: 600;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
       .Modal .ModalContent .ModalContentBlock .LanguageSelector.Selected .LanguageSelectorIcon {
         background-color: #111; }
       .Modal .ModalContent .ModalContentBlock .WalletButtonSpacer {
@@ -2421,7 +2421,7 @@ body {
         font-size: 12px;
         font-weight: 600;
         letter-spacing: normal;
-        font-family: 'Roboto', sans-serif; }
+        font-family: 'Gilroy', sans-serif; }
         @media screen and (max-width: 1070px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextLeft {
             font-size: 12px; } }
@@ -2435,7 +2435,7 @@ body {
         font-size: 12px;
         font-weight: 600;
         letter-spacing: normal;
-        font-family: 'Roboto', sans-serif; }
+        font-family: 'Gilroy', sans-serif; }
         @media screen and (max-width: 1070px) {
           .Footer .FooterCopyright .RegistrationText .RegistrationTextRight {
             font-size: 12px; } }
@@ -2999,12 +2999,115 @@ body {
         position: relative;
         z-index: 2;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
         width: 100%;
         height: auto;
         min-height: 100vh;
-        background-color: #111; }
+        background-color: #111;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: 50%; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
+            background-position-x: 50%; } }
+        @media screen and (max-width: 800px) {
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
+            background-position-x: 25%; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroTopGradient {
+          display: block;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 70vh;
+          background: #111111;
+          background: linear-gradient(0deg, rgba(17, 17, 17, 0) 0%, #111111 100%); }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText {
+          display: block;
+          position: absolute;
+          z-index: 10;
+          left: 0px;
+          bottom: 10vh; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText {
+              bottom: 10vh; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText {
+              bottom: 15vh; } }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+            display: block;
+            font-size: 80px;
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 900;
+            padding-top: 10px;
+            text-align: left;
+            padding-left: 48px;
+            padding-right: 48px; }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText .TextDark {
+              color: #fff; }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText .TextLight {
+              color: #00f5f5; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+                font-size: 80px;
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+                font-size: 40px;
+                padding-left: 30px;
+                padding-right: 30px; } }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+            display: block;
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            padding-top: 0px;
+            margin-top: -10px;
+            padding-left: 48px;
+            padding-right: 48px;
+            text-align: left;
+            color: #fff;
+            text-shadow: 0px 0px 5px #000; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+                font-size: 18px;
+                margin-top: -10px;
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+                font-size: 16px;
+                margin-top: 0px;
+                padding-left: 30px;
+                padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
+          display: block;
+          position: absolute;
+          width: 450px;
+          top: 90px;
+          left: 48px;
+          animation: float 6s ease-in-out infinite; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
+              width: 450px;
+              top: 90px;
+              left: 40px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
+              width: 82vw;
+              top: 60px;
+              left: 30px; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroBottomGradient {
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 100%;
+          height: 40vh;
+          background: #111111;
+          background: linear-gradient(0deg, #111111 0%, rgba(17, 17, 17, 0) 100%); }
       #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent {
         display: flex;
         position: relative;
@@ -3021,7 +3124,7 @@ body {
           display: flex;
           position: relative;
           flex-direction: column;
-          padding-bottom: 30px;
+          padding-bottom: 80px;
           padding-left: 48px;
           padding-right: 48px; }
           @media screen and (max-width: 1070px) {
@@ -3036,8 +3139,8 @@ body {
             display: block;
             position: relative;
             padding-bottom: 5px;
-            color: #00f5f5;
-            font-size: 26px;
+            color: #fff;
+            font-size: 40px;
             font-weight: 800;
             font-family: 'Gilroy', sans-serif; }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent {
@@ -3086,6 +3189,29 @@ body {
                   text-overflow: ellipsis;
                   white-space: nowrap;
                   font-family: 'Gilroy', sans-serif; }
+          #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+            display: block;
+            position: relative;
+            width: 60%;
+            padding-top: 10px;
+            padding-left: 2px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 400;
+            font-family: 'Gilroy', sans-serif; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+                font-size: 16px;
+                line-height: 22px;
+                width: 60%; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+                font-size: 14px;
+                line-height: 20px;
+                width: auto; } }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent a {
+              color: #00f5f5; }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock.Items {
           padding-left: 0px;
           padding-right: 0px;
@@ -3278,6 +3404,14 @@ body {
           width: 100%;
           height: 20px; }
 
+@keyframes float {
+  0% {
+    transform: translatey(0px); }
+  50% {
+    transform: translatey(40px); }
+  100% {
+    transform: translatey(0px); } }
+
 #AppRoot .App .ViewContainer .About.View {
   background: #111; }
   #AppRoot .App .ViewContainer .About.View .ViewBox {
@@ -3391,7 +3525,7 @@ body {
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
               font-size: 16px;
@@ -3819,7 +3953,7 @@ body {
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .MintHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
               font-size: 16px;
@@ -3949,7 +4083,7 @@ body {
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
               font-size: 16px;
@@ -4079,7 +4213,7 @@ body {
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .MarketHelp.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
               font-size: 16px;
@@ -4382,7 +4516,7 @@ body {
         display: block;
         position: relative;
         padding-bottom: 5px;
-        color: #00f5f5;
+        color: #fff;
         font-size: 26px;
         font-weight: 800;
         font-family: 'Gilroy', sans-serif; }
@@ -4737,7 +4871,7 @@ body {
           font-size: 16px;
           line-height: 22px;
           font-weight: 400;
-          font-family: 'Roboto', sans-serif; }
+          font-family: 'Gilroy', sans-serif; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .WalletIssues.View .ViewBox .PageTextContent .ContentItem .ContentItemContent {
               font-size: 16px;

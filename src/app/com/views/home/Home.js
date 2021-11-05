@@ -558,7 +558,7 @@ class Home extends PureComponent {
 
 		return (
 			<div className="ContentBlock Items">
-				<div className="BlockTitle">Highest sale</div>
+				<div className="BlockTitle">Highest sales</div>
 				<Punks type={'owned'} items={data} />
 			</div>
 		);
@@ -615,7 +615,6 @@ class Home extends PureComponent {
 
 		const vm = this;
 		const SaleComponent = vm.saleComponent;
-		const FloorComponent = vm.floorComponent;
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -632,10 +631,79 @@ class Home extends PureComponent {
 				}>
 				<div className="ViewBox">
 					<div className="Intro">
-						<div className="IntroStart"></div>
+						<div
+							className="IntroStart"
+							style={{
+								backgroundImage:
+									'url("/static/media/images/intro-background.jpg")',
+							}}>
+							<div className="IntroTopGradient" />
+							<div className="IntroText">
+								<span className="IntroPunkText">
+									<span className="TextDark">xDai</span>
+									<span className="TextLight">Punks</span>
+								</span>
+								<span className="IntroPunkSubText">
+									xDaiPunks is a collection of 3D Punk NFTs, a
+									vibrant community and much more
+									<br />
+									Be ready for the metaverse. Get a Punk!
+								</span>
+							</div>
+							<img
+								alt={''}
+								className={'IntroAstronaut'}
+								src={'/static/media/images/astronaut.png'}
+							/>
+							<div className="IntroBottomGradient" />
+						</div>
 						<div className="IntroContent">
+							<div className="ContentBlock">
+								<div className="BlockTitle">xDaiPunks</div>
+								<div className="ContentItemContent">
+									xDaiPunks is a collection of 3D Punk NFTs
+									that lives on the xDai blockchain. You
+									xDaiPunk doubles as a membership to a
+									vibrant community. Owning a Punk also allows
+									you to vest the upcomming $PUNK token
+									<br />
+									<br />
+									The Punks have been created using our Punk
+									3d model. This model is open-source and will
+									be used to let our xDaiPunks enter the
+									metaverse
+									<br />
+									<br />
+									In the near future our community will also
+									launch a new NFT marketplace. This
+									marketplace is called NiftFair and will be a
+									marketplace that will not chatge royalties
+									for every sale. Because we believe that
+									royalties should belong to creators or
+									owners. A market place that is owned and
+									governed by a bunch of Punks
+								</div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">Roadmap</div>
+								<div className="ContentItemContent">
+									<b>5 November 2021</b>
+									<br />
+									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									<br />
+									<b>End of November 2021</b>
+									<br />
+									Launch of the $PUNK governance and vesting
+									token
+									<br />
+									<br />
+									<b>Mid December 2021</b>
+									<br />
+									Launch of the beta version of NiftyFair
+								</div>
+							</div>
 							<SaleComponent />
-							<FloorComponent />
 						</div>
 						<Footer />
 					</div>
