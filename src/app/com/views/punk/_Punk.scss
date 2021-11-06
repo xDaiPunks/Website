@@ -204,6 +204,28 @@
 									display: block;
 									position: relative;
 									width: 100%;
+
+									border-top-left-radius: 18px;
+									border-top-right-radius: 18px;
+
+									border-bottom-left-radius: 18px;
+									border-bottom-right-radius: 18px;
+
+									@include responsiveMax($responsiveMed) {
+										border-top-left-radius: 18px;
+										border-top-right-radius: 18px;
+
+										border-bottom-left-radius: 18px;
+										border-bottom-right-radius: 18px;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										border-top-left-radius: 18px;
+										border-top-right-radius: 18px;
+
+										border-bottom-left-radius: 0px;
+										border-bottom-right-radius: 0px;
+									}
 								}
 							}
 

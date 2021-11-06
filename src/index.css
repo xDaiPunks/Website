@@ -3676,7 +3676,23 @@ body {
           #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkContainer .PunkItem .PunkImageDetail {
             display: block;
             position: relative;
-            width: 100%; }
+            width: 100%;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkContainer .PunkItem .PunkImageDetail {
+                border-top-left-radius: 18px;
+                border-top-right-radius: 18px;
+                border-bottom-left-radius: 18px;
+                border-bottom-right-radius: 18px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkContainer .PunkItem .PunkImageDetail {
+                border-top-left-radius: 18px;
+                border-top-right-radius: 18px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px; } }
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkPositioner .PunkContainer .PunkItem:after {
             content: '';

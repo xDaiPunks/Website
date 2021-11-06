@@ -404,7 +404,7 @@ class Home extends PureComponent {
 							.div(1e18)
 							.toFormat(2);
 
-						imageUrl = '/punks/' + items[item].idx + '.png';
+						imageUrl = '/punks3d/' + items[item].idx + '_mask.png';
 
 						bidContent = 'No bids';
 						offeredContent = 'Not offered by owner';
