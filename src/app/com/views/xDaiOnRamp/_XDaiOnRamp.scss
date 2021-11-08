@@ -46,23 +46,20 @@
 
 							flex-direction: column;
 
-							padding-bottom: 70px;
-
 							padding-left: $padding;
 							padding-right: $padding;
+							padding-bottom: $padding;
 
 							@include responsiveMax($responsiveMed) {
-								padding-bottom: 70px;
-
 								padding-left: $paddingMed;
 								padding-right: $paddingMed;
+								padding-bottom: $paddingMed;
 							}
 
 							@include responsiveMax($responsiveSmall) {
-								padding-bottom: 50px;
-
 								padding-left: $paddingSmall;
 								padding-right: $paddingSmall;
+								padding-bottom: $paddingSmall;
 							}
 
 							.BrightContent {
@@ -161,6 +158,7 @@
 								width: 60%;
 
 								padding-top: 10px;
+								padding-bottom: 15px;
 								padding-left: 2px;
 
 								color: #fff;

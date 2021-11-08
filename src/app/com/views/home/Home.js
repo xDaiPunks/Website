@@ -645,7 +645,7 @@ class Home extends PureComponent {
 								</span>
 								<span className="IntroPunkSubText">
 									xDaiPunks is a collection of 3D Punk NFTs, a
-									vibrant community and much more
+									vibrant community and much more.{' '}
 									<br />
 									Be ready for the metaverse. Get a Punk!
 								</span>

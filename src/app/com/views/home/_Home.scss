@@ -70,18 +70,19 @@
 								z-index: 10;
 
 								left: 0px;
-								bottom: 10vh;
+								bottom: 90px;
 
 								@include responsiveMax($responsiveMed) {
-									bottom: 10vh;
+									bottom: 90px;
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									bottom: 15vh;
+									bottom: 70px;
 								}
 
 								.IntroPunkText {
 									display: block;
+									position: relative;
 
 									font-size: 80px;
 
@@ -119,8 +120,10 @@
 
 								.IntroPunkSubText {
 									display: block;
+									position: relative;
+
 									font-family: 'Gilroy', sans-serif;
-									font-weight: 700;
+									font-weight: 600;
 									font-size: 18px;
 
 									padding-top: 0px;
@@ -147,8 +150,14 @@
 										font-size: 16px;
 										margin-top: 0px;
 
+										width: 90vw;
+
 										padding-left: $paddingSmall;
 										padding-right: $paddingSmall;
+
+										br {
+											display: none;
+										}
 									}
 								}
 							}
@@ -157,7 +166,7 @@
 								display: block;
 								position: absolute;
 
-								width: 450px;
+								width: 400px;
 
 								top: 90px;
 								left: $padding;
@@ -165,17 +174,17 @@
 								animation: float 6s ease-in-out infinite;
 
 								@include responsiveMax($responsiveMed) {
-									width: 450px;
+									width: 400px;
 
 									top: 90px;
 									left: $paddingMed;
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									width: 82vw;
+									width: 95vw;
 
 									top: 60px;
-									left: $paddingSmall;
+									left: 0px;
 								}
 							}
 
@@ -251,9 +260,8 @@
 
 									@include responsiveMax($responsiveMed) {
 										font-size: 40px;
-										
 									}
-	
+
 									@include responsiveMax($responsiveSmall) {
 										font-size: 30px;
 									}
@@ -343,34 +351,34 @@
 								.ContentItemContent {
 									display: block;
 									position: relative;
-	
+
 									width: 60%;
-	
+
 									padding-top: 10px;
 									padding-left: 2px;
-	
+
 									color: #fff;
-	
+
 									font-size: 16px;
 									line-height: 22px;
-	
+
 									font-weight: 400;
 									font-family: 'Gilroy', sans-serif;
-	
+
 									@include responsiveMax($responsiveMed) {
 										font-size: 16px;
 										line-height: 22px;
-	
+
 										width: 60%;
 									}
-	
+
 									@include responsiveMax($responsiveSmall) {
 										font-size: 14px;
 										line-height: 20px;
-	
+
 										width: auto;
 									}
-	
+
 									a {
 										color: #00f5f5;
 									}

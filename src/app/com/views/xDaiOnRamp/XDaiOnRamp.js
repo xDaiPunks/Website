@@ -249,14 +249,13 @@ class XDaiOnRamp extends PureComponent {
 								MetaMask for xDai, you can either Buy xDai or
 								Bridge xDai from other networks
 							</div>
-						</div>
 
-						<div className="ContentItem">
 							<div className="ContentItemSubTitle">
 								<span className="Txt">Buy xDai</span>
 							</div>
 							<div className="ContentItemContent">
-								Buying xDai directly can be done using Ramp<br />
+								Buying xDai directly can be done using Ramp
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
@@ -268,15 +267,21 @@ class XDaiOnRamp extends PureComponent {
 
 						<div className="ContentItem">
 							<div className="ContentItemSubTitle">
-								<span className="Txt">Bridge from Ethereum</span>
+								<span className="Txt">
+									Bridge from Ethereum
+								</span>
 							</div>
 							<div className="ContentItemContent">
-								xDai can be bridged from Ethereum using the xDai Bridge. More info can be found here {' '} <a
+								xDai can be bridged from Ethereum using the xDai
+								Bridge. More info can be found here{' '}
+								<a
 									target="_blank"
 									rel="noreferrer"
 									href="https://www.xdaichain.com/for-users/bridges/converting-xdai-via-bridge/moving-dai-to-xdai">
 									here
-								</a>.{' '} the direct link to xDai Bridge:<br />
+								</a>
+								. the direct link to xDai Bridge:
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
@@ -288,15 +293,22 @@ class XDaiOnRamp extends PureComponent {
 
 						<div className="ContentItem">
 							<div className="ContentItemSubTitle">
-								<span className="Txt">Bridge from BSC, Polygon or Fantom</span>
+								<span className="Txt">
+									Bridge from BSC, Polygon or Fantom
+								</span>
 							</div>
 							<div className="ContentItemContent">
-								xDai can be bridged from BSC, Polygon or Fantom. This can be done through xPollinate {' '}. More info on xPollinate can be found here <a
+								xDai can be bridged from BSC, Polygon or Fantom.
+								This can be done through xPollinate . More info
+								on xPollinate can be found here{' '}
+								<a
 									target="_blank"
 									rel="noreferrer"
 									href="https://www.xdaichain.com/for-users/bridges/xdai-matic-connext-bridge">
 									here
-								</a>.{' '} the direct link to xPollinate:<br />
+								</a>
+								. the direct link to xPollinate:
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"

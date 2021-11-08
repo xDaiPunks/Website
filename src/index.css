@@ -3032,15 +3032,16 @@ body {
           position: absolute;
           z-index: 10;
           left: 0px;
-          bottom: 10vh; }
+          bottom: 90px; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText {
-              bottom: 10vh; } }
+              bottom: 90px; } }
           @media screen and (max-width: 800px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText {
-              bottom: 15vh; } }
+              bottom: 70px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
             display: block;
+            position: relative;
             font-size: 80px;
             font-family: 'Gilroy', sans-serif;
             font-weight: 900;
@@ -3064,8 +3065,9 @@ body {
                 padding-right: 30px; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
             display: block;
+            position: relative;
             font-family: 'Gilroy', sans-serif;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 18px;
             padding-top: 0px;
             margin-top: -10px;
@@ -3084,25 +3086,28 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
                 font-size: 16px;
                 margin-top: 0px;
+                width: 90vw;
                 padding-left: 30px;
-                padding-right: 30px; } }
+                padding-right: 30px; }
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText br {
+                  display: none; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
           display: block;
           position: absolute;
-          width: 450px;
+          width: 400px;
           top: 90px;
           left: 48px;
           animation: float 6s ease-in-out infinite; }
           @media screen and (max-width: 1070px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
-              width: 450px;
+              width: 400px;
               top: 90px;
               left: 40px; } }
           @media screen and (max-width: 800px) {
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
-              width: 82vw;
+              width: 95vw;
               top: 60px;
-              left: 30px; } }
+              left: 0px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroBottomGradient {
           display: block;
           position: absolute;
@@ -3453,19 +3458,19 @@ body {
         display: flex;
         position: relative;
         flex-direction: column;
-        padding-bottom: 70px;
         padding-left: 48px;
-        padding-right: 48px; }
+        padding-right: 48px;
+        padding-bottom: 48px; }
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem {
-            padding-bottom: 70px;
             padding-left: 40px;
-            padding-right: 40px; } }
+            padding-right: 40px;
+            padding-bottom: 40px; } }
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem {
-            padding-bottom: 50px;
             padding-left: 30px;
-            padding-right: 30px; } }
+            padding-right: 30px;
+            padding-bottom: 30px; } }
         #AppRoot .App .ViewContainer .About.View .ViewBox .PageTextContent .ContentItem .BrightContent {
           display: block;
           text-align: center;
@@ -3528,8 +3533,9 @@ body {
           display: block;
           position: relative;
           width: 60%;
-          padding-top: 10px;
           padding-left: 2px;
+          padding-top: 10px;
+          padding-bottom: 15px;
           color: #fff;
           font-size: 16px;
           line-height: 22px;
@@ -3896,19 +3902,19 @@ body {
         display: flex;
         position: relative;
         flex-direction: column;
-        padding-bottom: 70px;
         padding-left: 48px;
-        padding-right: 48px; }
+        padding-right: 48px;
+        padding-bottom: 48px; }
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem {
-            padding-bottom: 70px;
             padding-left: 40px;
-            padding-right: 40px; } }
+            padding-right: 40px;
+            padding-bottom: 40px; } }
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem {
-            padding-bottom: 50px;
             padding-left: 30px;
-            padding-right: 30px; } }
+            padding-right: 30px;
+            padding-bottom: 30px; } }
         #AppRoot .App .ViewContainer .XDaiOnRamp.View .ViewBox .PageTextContent .ContentItem .BrightContent {
           display: block;
           text-align: center;
@@ -3972,6 +3978,7 @@ body {
           position: relative;
           width: 60%;
           padding-top: 10px;
+          padding-bottom: 15px;
           padding-left: 2px;
           color: #fff;
           font-size: 16px;
