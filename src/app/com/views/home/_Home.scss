@@ -181,10 +181,10 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									width: 95vw;
+									width: 85vw;
 
 									top: 60px;
-									left: 0px;
+									left: $paddingSmall;
 								}
 							}
 

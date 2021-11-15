@@ -677,7 +677,7 @@ class Home extends PureComponent {
 									In the near future our community will also
 									launch a new NFT marketplace. This
 									marketplace is called NiftFair and will be a
-									marketplace that will not chatge royalties
+									marketplace that will not charge royalties
 									for every sale. Because we believe that
 									royalties should belong to creators or
 									owners. A market place that is owned and
