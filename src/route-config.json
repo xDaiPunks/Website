@@ -15,6 +15,14 @@
 		"component": "app/com/views/about/About"
 	},
 
+	"token": {
+		"path": "/token",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "underlay",
+		"component": "app/com/views/token/Token"
+	},
+
 	"punk": {
 		"path": "/punk/:id",
 		"type": "public",

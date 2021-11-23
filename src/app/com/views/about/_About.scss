@@ -96,7 +96,7 @@
 
 								color: #fff;
 
-								font-size: 60px;
+								font-size: 100px;
 								font-weight: 900;
 								font-family: 'Gilroy', sans-serif;
 
@@ -105,11 +105,11 @@
 								}
 
 								@include responsiveMax($responsiveMed) {
-									font-size: 60px;
+									font-size: 72px;
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									font-size: 40px;
+									font-size: 36px;
 								}
 
 								.Txt {
@@ -142,7 +142,7 @@
 								}
 
 								@include responsiveMax($responsiveSmall) {
-									font-size: 30px;
+									font-size: 22px;
 								}
 
 								.Txt {
@@ -156,10 +156,10 @@
 								position: relative;
 
 								width: 60%;
+								max-width: 590px;
 
 								padding-left: 2px;
 
-								padding-top: 10px;
 								padding-bottom: 15px;
 
 								color: #fff;

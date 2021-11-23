@@ -365,6 +365,25 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
+										label={'Token'}
+										title={'Token'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute('/token');
+										}}
+										cssClass={
+											currentView === 'token'
+												? 'NavigationButton Active'
+												: 'NavigationButton'
+										}
+										iconImage="/static/media/images/icon-token-white.svg"
+									/>
+								</li>
+
+								<li>
+									<Button
+										type={'navigationButton'}
 										label={'Marketplace'}
 										title={'Marketplace'}
 										onClick={(event) => {

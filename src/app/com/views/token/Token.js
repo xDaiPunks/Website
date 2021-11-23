@@ -21,13 +21,13 @@ const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
-class Home extends PureComponent {
+class Token extends PureComponent {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
 
-		this.componentName = 'Home';
+		this.componentName = 'Token';
 
 		this.guid = utilityService.guid();
 
@@ -634,56 +634,186 @@ class Home extends PureComponent {
 							className="IntroStart"
 							style={{
 								backgroundImage:
-									'url("/static/media/images/intro-background.jpg")',
+									'url("/static/media/images/token-background.jpg")',
 							}}>
 							<div className="IntroTopGradient" />
 							<div className="IntroText">
 								<span className="IntroPunkText">
-									<span className="TextDark">xDai</span>
-									<span className="TextLight">Punks</span>
+									<span className="TextDark">PUNK</span>
+									<span className="TextLight"> token</span>
 								</span>
 								<span className="IntroPunkSubText">
-									xDaiPunks is a collection of 3D Punk NFTs, a
-									vibrant community and much more. <br />
-									Be ready for the metaverse. Get a Punk!
+									The basis of our community and the backbone
+									for our upcoming marketplace. <br />
+									Our pre-sale will start on December the
+									1st
 								</span>
 							</div>
-							<img
-								alt={''}
-								className={'IntroAstronaut'}
-								src={'/static/media/images/astronaut.png'}
-							/>
 							<div className="IntroBottomGradient" />
 						</div>
 						<div className="IntroContent">
 							<div className="ContentBlock">
-								<div className="BlockTitle">xDaiPunks</div>
+								<div className="BlockTitle">PUNK token</div>
 								<div className="ContentItemContent">
-									xDaiPunks is a collection of 3D Punk NFTs
-									that lives on the xDai blockchain. You
-									xDaiPunk doubles as a membership to a
-									vibrant community. Owning a Punk also allows
-									you to vest the upcomming $PUNK token
+									xDaiPunks has become a community driven
+									multifaceted NFT project. What started out
+									as a 2d collection of 10.000 Punks quickly
+									evolved into a community driven project that
+									builds, owns governs projects that help to
+									improve and reduce friction in the xDai NFT
+									ecosystem. <br />
+									<br />
+									Our collection “bit-shifted” from 2d Punks
+									to 3d Punks and now includes an open-source
+									3d model. This model makes our collection
+									ready for the metaverse. Next to that, we
+									are building an OpenSea-like marketplace
+									called NiftyFair. It uses a different
+									business model that is both nifty and fair
+									as we believe that royalties should belong
+									to owners/creators and not to a marketplace.
 									<br />
 									<br />
-									The Punks have been created using our Punk
-									3d model. This model is open-source and will
-									be used to let our xDaiPunks enter the
-									metaverse
+									Everything we do as a community is tied
+									together by the PUNK token. The PUNK token
+									has 3 functions: vote, burn and vest.
 									<br />
 									<br />
-									In the near future our community will also
-									launch a new NFT marketplace. This
-									marketplace is called NiftFair and will be a
-									marketplace that will not charge royalties
-									for every sale. Because we believe that
-									royalties should belong to creators or
-									owners. A market place that is owned and
-									governed by a bunch of Punks
+									<span className="SubTitleInline">Vote</span>
+									<br />
+									xDaiPunks is a DAO and PUNK is our
+									governance token. Holders can use it to vote
+									on proposals that community members bring
+									forward. Tools like gardens and snapshot
+									will be used to manage our DAO and the PUNK
+									token will give community members a voice
+									<br />
+									<br />
+									<span className="SubTitleInline">Burn</span>
+									<br />
+									Currently we are building a new OpenSea-like
+									marketplace called NiftyFair. As we have the
+									goal to reduce friction in the xDai NFT
+									ecosystem, NiftyFair will have a different
+									business model. The revenue from the
+									marketplace will come from listing and
+									marketing fees. Revenue from the marketplace
+									will be used to buy PUNK tokens in the open
+									market and burn them.
+									<br />
+									<br />
+									<span className="SubTitleInline">Vest</span>
+									<br />
+									50% of the total PUNK supply will be dropped
+									on the Punk NFT collection. As a result,
+									each Punk NFT will have 10k PUNK tokens
+									locked-up. Through the vesting contract the
+									locked-up tokens will be released over a
+									period of 36 months. During this period,
+									called the vesting period, the Punk owner
+									can claim vested tokens. Tokens will be
+									released every block, so in theory a Punk
+									Hodler can claim newly released Punk tokens
+									every block.
+									<br />
+									<br />
+									Although the full 10K PUNK tokens will not
+									be released immediately, the value of the
+									PUNK tokens, which is the remaining claim,
+									will be locked-up in the Punk NFT. This in
+									theory should add value to the Punk NFT
+									itself. The Punk NFTs are tradable and
+									change in ownership during the vesting
+									period also means change of ownership of the
+									remaining claim.
+									<br />
+									<br />
+									The vesting period will start 2 months after
+									the token pre-sale. This to incentivize long
+									term commitment into our project and to have
+									our upcoming marketplace up and running to
+									alleviate the inflation from the vested
+									tokens.
+								</div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">Marketplace</div>
+								<div className="ContentItemContent">
+									<b>5 November 2021</b>
+									<br />
+									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									<br />
+									<b>End of November 2021</b>
+									<br />
+									Launch of the $PUNK governance and vesting
+									token
+									<br />
+									<br />
+									<b>Mid December 2021</b>
+									<br />
+									Launch of the beta version of NiftyFair
+								</div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">Tokenomics</div>
+								<div className="ContentItemContent">
+									<b>5 November 2021</b>
+									<br />
+									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									<br />
+									<b>End of November 2021</b>
+									<br />
+									Launch of the $PUNK governance and vesting
+									token
+									<br />
+									<br />
+									<b>Mid December 2021</b>
+									<br />
+									Launch of the beta version of NiftyFair
+								</div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">Token sale</div>
+								<div className="ContentItemContent">
+									<b>5 November 2021</b>
+									<br />
+									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									<br />
+									<b>End of November 2021</b>
+									<br />
+									Launch of the $PUNK governance and vesting
+									token
+									<br />
+									<br />
+									<b>Mid December 2021</b>
+									<br />
+									Launch of the beta version of NiftyFair
 								</div>
 							</div>
 							<div className="ContentBlock">
 								<div className="BlockTitle">Roadmap</div>
+								<div className="ContentItemContent">
+									<b>5 November 2021</b>
+									<br />
+									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									<br />
+									<b>End of November 2021</b>
+									<br />
+									Launch of the $PUNK governance and vesting
+									token
+									<br />
+									<br />
+									<b>Mid December 2021</b>
+									<br />
+									Launch of the beta version of NiftyFair
+								</div>
+							</div>
+							<div className="ContentBlock">
+								<div className="BlockTitle">Token timeline</div>
 								<div className="ContentItemContent">
 									<b>5 November 2021</b>
 									<br />
@@ -710,4 +840,4 @@ class Home extends PureComponent {
 	}
 }
 
-export default Home;
+export default Token;
