@@ -645,8 +645,20 @@ class Home extends PureComponent {
 								<span className="IntroPunkSubText">
 									xDaiPunks is a collection of 3D Punk NFTs, a
 									vibrant community and much more. <br />
-									Be ready for the metaverse. Get a Punk!
+									Tokens sale on december 1st
 								</span>
+								<div className="HeaderButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Read more'}
+										title={'Read more'}
+										onClick={(event) => {
+											event.preventDefault();
+											routeService.navigateRoute('/token')
+										}}
+										cssClass={'HeaderButtonAction'}
+									/>
+								</div>
 							</div>
 							<img
 								alt={''}
@@ -683,22 +695,73 @@ class Home extends PureComponent {
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Roadmap</div>
-								<div className="ContentItemContent">
-									<b>5 November 2021</b>
-									<br />
-									Reveal of the 3d Punks and the Punk 3d model
-									<br />
-									<br />
-									<b>End of November 2021</b>
-									<br />
-									Launch of the $PUNK governance and vesting
-									token
-									<br />
-									<br />
-									<b>Mid December 2021</b>
-									<br />
-									Launch of the beta version of NiftyFair
+								<div
+									className="BlockTitle"
+									style={{ paddingBottom: '15px' }}>
+									xDaiPunks Roadmap
+								</div>
+
+								<div className="ContentItemRoadmap">
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												September 5th 2021
+											</span>
+											<span className="RoadMapContent">
+												NFT Drop
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												November 5th 2021
+											</span>
+											<span className="RoadMapContent">
+												Release 3d Punks
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												December 1st 2021
+											</span>
+											<span className="RoadMapContent">
+												Start PUNK token sale
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												December 9th 2021
+											</span>
+											<span className="RoadMapContent">
+												DEX listings
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												January 15th 2022
+											</span>
+											<span className="RoadMapContent">
+												Beta release NiftyFair
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												February 15th
+											</span>
+											<span className="RoadMapContent">
+												Official release NiftyFair
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

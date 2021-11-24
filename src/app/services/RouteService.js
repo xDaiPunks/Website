@@ -197,7 +197,7 @@ class RouteService {
 
 		scrollTo(window, { top: 0, behavior: 'auto' });
 
-		position = domElement.offset().top + scrollService.scrollY;
+		position = domElement.offset().top - 100 + scrollService.scrollY;
 
 		scrollTo(scrollService.scrollOriginalElement, {
 			top: position,

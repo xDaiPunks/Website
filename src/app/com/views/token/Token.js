@@ -31,18 +31,18 @@ class Token extends PureComponent {
 
 		this.guid = utilityService.guid();
 
-		this.data = punkService.punkData;
-
-		this.punks = this.punks.bind(this);
-		this.punkItems = this.punkItems.bind(this);
-
-		this.saleComponent = this.saleComponent.bind(this);
-		this.floorComponent = this.floorComponent.bind(this);
 	}
 
 	updateView() {
 		viewService.setViewSpacing();
 		viewService.updateScrollWidth();
+	}
+
+	scrollToContent() {
+		let domElement;
+
+		domElement = $('#PunkToken');
+		routeService.navigateScrollPosition(domElement);
 	}
 
 	componentDidMount() {
@@ -104,500 +104,6 @@ class Token extends PureComponent {
 		}
 	}
 
-	sortArray(prop1, prop2, prop3, array) {
-		let sortOrder1;
-		let sortOrder2;
-		let sortOrder3;
-
-		sortOrder1 = 1;
-		sortOrder2 = 1;
-		sortOrder3 = 1;
-
-		if (prop1.substr(0, 1) === '-') {
-			sortOrder1 = -1;
-			prop1 = prop1.substr(1);
-		}
-
-		return array.sort((a, b) => {
-			a = utilityService.cloneObject(a);
-			b = utilityService.cloneObject(b);
-
-			a.value = parseFloat(a.value);
-			b.value = parseFloat(b.value);
-
-			a.rank = parseInt(a.rank, 10);
-			b.rank = parseInt(b.rank, 10);
-
-			a.extraValue = 0;
-			if (a.bidData.value) {
-				a.extraValue = parseFloat(a.bidData.value);
-			}
-
-			b.extraValue = 0;
-			if (b.bidData.value) {
-				b.extraValue = parseFloat(b.bidData.value);
-			}
-
-			a.saleValue = 0;
-			if (a.saleData.minValue) {
-				a.saleValue = parseFloat(a.saleData.minValue);
-			}
-
-			b.saleValue = 0;
-			if (b.saleData.minValue) {
-				b.saleValue = parseFloat(b.saleData.minValue);
-			}
-
-			if (prop1 === 'idx') {
-				a[prop1] = parseInt(a.idx, 10);
-				b[prop1] = parseInt(b.idx, 10);
-			}
-
-			if (prop1 === 'status') {
-				if (a.mint !== true) {
-					a[prop1] = 4;
-				} else {
-					if (a.bid !== true && a.sale !== true) {
-						a[prop1] = 3;
-					} else {
-						if (a.bid === true && a.sale !== true) {
-							a[prop1] = 2;
-						}
-
-						if (a.bid !== true && a.sale === true) {
-							a[prop1] = 1;
-						}
-
-						if (a.bid === true && a.sale === true) {
-							a[prop1] = 0;
-						}
-					}
-				}
-
-				if (b.mint !== true) {
-					b[prop1] = 4;
-				} else {
-					if (b.bid !== true && b.sale !== true) {
-						b[prop1] = 3;
-					} else {
-						if (b.bid === true && b.sale === false) {
-							b[prop1] = 2;
-						}
-
-						if (b.bid === false && b.sale === true) {
-							b[prop1] = 1;
-						}
-
-						if (b.bid === true && b.sale === true) {
-							b[prop1] = 0;
-						}
-					}
-				}
-			}
-
-			if (a[prop1] < b[prop1]) {
-				return -1 * sortOrder1;
-			} else {
-				if (a[prop1] > b[prop1]) {
-					return 1 * sortOrder1;
-				} else {
-					if (prop2.substr(0, 1) === '-') {
-						sortOrder2 = -1;
-						prop2 = prop2.substr(1);
-					}
-
-					if (prop2 === 'idx') {
-						a[prop2] = parseInt(a.idx, 10);
-						b[prop2] = parseInt(b.idx, 10);
-					}
-
-					if (prop2 === 'status') {
-						if (a.mint === false) {
-							a[prop2] = 4;
-						} else {
-							if (a.bid === false && a.sale === false) {
-								a[prop2] = 3;
-							} else {
-								if (a.bid === true && a.sale === false) {
-									a[prop2] = 2;
-								}
-
-								if (a.bid === false && a.sale === true) {
-									a[prop2] = 1;
-								}
-
-								if (a.bid === true && a.sale === true) {
-									a[prop2] = 0;
-								}
-							}
-						}
-
-						if (b.mint === false) {
-							b[prop2] = 4;
-						} else {
-							if (b.bid === false && b.sale === false) {
-								b[prop2] = 3;
-							} else {
-								if (b.bid === true && b.sale === false) {
-									b[prop2] = 2;
-								}
-
-								if (b.bid === false && b.sale === true) {
-									b[prop2] = 1;
-								}
-
-								if (b.bid === true && b.sale === true) {
-									b[prop2] = 0;
-								}
-							}
-						}
-					}
-
-					if (a[prop2] < b[prop2]) {
-						return -1 * sortOrder2;
-					} else {
-						if (a[prop2] > b[prop2]) {
-							return 1 * sortOrder2;
-						} else {
-							if (prop3.substr(0, 1) === '-') {
-								sortOrder3 = -1;
-								prop3 = prop3.substr(1);
-							}
-
-							if (prop3 === 'idx') {
-								a[prop3] = parseInt(a.idx, 10);
-								b[prop3] = parseInt(b.idx, 10);
-							}
-
-							if (prop3 === 'status') {
-								if (a.mint === false) {
-									a[prop3] = 4;
-								} else {
-									if (a.bid === false && a.sale === false) {
-										a[prop3] = 3;
-									} else {
-										if (
-											a.bid === true &&
-											a.sale === false
-										) {
-											a[prop3] = 2;
-										}
-
-										if (
-											a.bid === false &&
-											a.sale === true
-										) {
-											a[prop3] = 1;
-										}
-
-										if (a.bid === true && a.sale === true) {
-											a[prop3] = 0;
-										}
-									}
-								}
-
-								if (b.mint === false) {
-									b[prop3] = 4;
-								} else {
-									if (b.bid === false && b.sale === false) {
-										b[prop3] = 3;
-									} else {
-										if (
-											b.bid === true &&
-											b.sale === false
-										) {
-											b[prop3] = 2;
-										}
-
-										if (
-											b.bid === false &&
-											b.sale === true
-										) {
-											b[prop3] = 1;
-										}
-
-										if (b.bid === true && b.sale === true) {
-											b[prop3] = 0;
-										}
-									}
-								}
-							}
-
-							if (a[prop3] < b[prop3]) {
-								return -1 * sortOrder3;
-							} else {
-								if (a[prop3] > b[prop3]) {
-									return 1 * sortOrder3;
-								} else {
-									return 0;
-								}
-							}
-						}
-					}
-				}
-			}
-		});
-	}
-
-	punks(props) {
-		let rowCount;
-
-		const vm = this;
-		const type = props.type;
-		const items = props.items;
-		const PunkItems = vm.punkItems;
-
-		return (
-			<div className="PunkGrid">
-				{items.map((item, index) => {
-					rowCount = index % 3;
-					if (rowCount === 0) {
-						return (
-							<div className="PunkRow" key={'row' + index}>
-								<PunkItems
-									type={type}
-									items={items}
-									rowIndex={index}
-								/>
-							</div>
-						);
-					}
-				})}
-			</div>
-		);
-	}
-
-	punkItems(props) {
-		let i;
-
-		let rank;
-		let number;
-
-		let punkValue;
-
-		let imageUrl;
-
-		let offeredContent;
-		let bidContent;
-
-		const rowArray = [];
-
-		const items = props.items;
-		const itemsCount = props.items.length;
-
-		const rowIndex = props.rowIndex;
-
-		for (i = 0; i < 3; i++) {
-			if (rowIndex + i < itemsCount) {
-				rowArray.push(i + rowIndex);
-			}
-		}
-
-		return (
-			<>
-				{rowArray.map((item, index) => {
-					if (items[item]) {
-						rank = items[item].rank;
-						number = items[item].idx;
-
-						punkValue = BigNumber(items[item].value)
-							.div(1e18)
-							.toFormat(2);
-
-						imageUrl = '/punks3d/' + items[item].idx + '_mask.png';
-
-						bidContent = 'No bids';
-						offeredContent = 'Not offered by owner';
-
-						if (items[item].mint === true) {
-							if (
-								items[item].bid !== true &&
-								items[item].sale !== true
-							) {
-								bidContent = 'No bids';
-								offeredContent = 'Not offered by owner';
-							} else {
-								if (
-									items[item].bid === true &&
-									items[item].sale !== true
-								) {
-									bidContent =
-										BigNumber(items[item].bidData.value)
-											.div(1e18)
-											.toFormat(2) + ' xDai';
-
-									offeredContent = 'Not offered by owner';
-								}
-
-								if (
-									items[item].bid !== true &&
-									items[item].sale === true
-								) {
-									bidContent = 'No bids';
-									offeredContent =
-										BigNumber(items[item].saleData.minValue)
-											.div(1e18)
-											.toFormat(2) + ' xDai';
-								}
-
-								if (
-									items[item].bid === true &&
-									items[item].sale === true
-								) {
-									bidContent =
-										BigNumber(items[item].bidData.value)
-											.div(1e18)
-											.toFormat(2) + ' xDai';
-
-									offeredContent =
-										BigNumber(items[item].saleData.minValue)
-											.div(1e18)
-											.toFormat(2) + ' xDai';
-								}
-							}
-						}
-
-						return (
-							<React.Fragment key={'item' + item}>
-								<a
-									href={'/punk/' + items[item].idx}
-									className="PunkItem"
-									onClick={(event) => {
-										event.preventDefault();
-										event.stopPropagation();
-
-										routeService.navigateRoute(
-											'/punk/' + items[item].idx
-										);
-									}}>
-									<div className="PunkItemContent">
-										<div className="OverlayData">
-											<div className="PunkItemDetails Left">
-												<span className="DetailsTextTitle">
-													Number
-												</span>
-												<span className="DetailsTextContent Bold">
-													{'#' + number}
-												</span>
-											</div>
-
-											<div className="PunkItemDetails Right">
-												<span className="DetailsTextTitle">
-													Rank
-												</span>
-												<span className="DetailsTextContent Bold">
-													{rank}
-												</span>
-											</div>
-										</div>
-										<div className="PunkImageContainer">
-											<img
-												alt={''}
-												className={'PunkImageGrid'}
-												src={imageUrl}
-											/>
-										</div>
-
-										<div className="PunkDetailsContainer">
-											<div className="PunkItemTop">
-												<div className="PunkItemDetails">
-													<span className="DetailsTextTitle">
-														Bid
-													</span>
-													<span className="DetailsTextContent Bold">
-														{bidContent}
-													</span>
-												</div>
-											</div>
-
-											<div className="PunkItemDetails">
-												<span className="DetailsTextTitle">
-													Last sale
-												</span>
-												<span className="DetailsTextContent Bold">
-													{punkValue + ' xDai'}
-												</span>
-											</div>
-
-											<div className="PunkItemDetails">
-												<span className="DetailsTextTitle">
-													Offered for
-												</span>
-												<span className="DetailsTextContent Bold">
-													{offeredContent}
-												</span>
-											</div>
-										</div>
-									</div>
-								</a>
-							</React.Fragment>
-						);
-					}
-				})}
-			</>
-		);
-	}
-
-	saleComponent() {
-		let data;
-		let Punks;
-
-		const vm = this;
-
-		data = vm.sortArray(
-			'-value',
-			'rank',
-			'idx',
-
-			vm.data
-		);
-
-		data = data.slice(0, 6);
-
-		Punks = vm.punks;
-
-		return (
-			<div className="ContentBlock Items">
-				<div className="BlockTitle">Highest sales</div>
-				<Punks type={'owned'} items={data} />
-			</div>
-		);
-	}
-
-	floorComponent() {
-		let data;
-
-		let Punks;
-
-		const vm = this;
-
-		data = vm.data.filter((item, index) => {
-			if (item) {
-				if (item.sale === true) {
-					return item;
-				}
-			}
-		});
-
-		data = vm.sortArray(
-			'saleValue',
-			'value',
-			'idx',
-
-			data
-		);
-
-		data = data.slice(0, 6);
-
-		Punks = vm.punks;
-
-		return (
-			<div className="ContentBlock Items">
-				<div className="BlockTitle">Current floor price</div>
-				<Punks type={'owned'} items={data} />
-			</div>
-		);
-	}
 
 	componentWillUnmount() {
 		const vm = this;
@@ -645,15 +151,27 @@ class Token extends PureComponent {
 								<span className="IntroPunkSubText">
 									The basis of our community and the backbone
 									for our upcoming marketplace. <br />
-									Our pre-sale will start on December the
+									Our token sale will start on December the
 									1st
 								</span>
+								<div className="HeaderButtonContainer">
+									<Button
+										type={'actionButton'}
+										label={'Read more'}
+										title={'Read more'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.scrollToContent();
+										}}
+										cssClass={'HeaderButtonAction'}
+									/>
+								</div>
 							</div>
 							<div className="IntroBottomGradient" />
 						</div>
 						<div className="IntroContent">
 							<div className="ContentBlock">
-								<div className="BlockTitle">PUNK token</div>
+								<div id="PunkToken" className="BlockTitle">PUNK token</div>
 								<div className="ContentItemContent">
 									xDaiPunks has become a community driven
 									multifaceted NFT project. What started out
@@ -738,97 +256,387 @@ class Token extends PureComponent {
 							</div>
 							<div className="ContentBlock">
 								<div className="BlockTitle">Marketplace</div>
+								<a
+									className="TextImage"
+									href="/static/media/images/niftyfair-site.jpg"
+									target="_blank">
+									<img
+										alt={''}
+										className={'TextImageContent'}
+										style={{ borderRadius: '25px' }}
+										src={
+											'/static/media/images/niftyfair-thumb.jpg'
+										}
+									/>
+								</a>
 								<div className="ContentItemContent">
-									<b>5 November 2021</b>
+									Our upcoming marketplace, called NiftyFair,
+									is key to our tokenomics. The marketplace,
+									which will live on the xDai blockchain, has
+									the goal to create a friction-less
+									experience for creating, minting and trading
+									NFTs. Low gas fees and fast transaction
+									times already reduce friction, but there is
+									more.
 									<br />
-									Reveal of the 3d Punks and the Punk 3d model
+									<br />
+									The revenue model of NiftyFair will be based
+									on listing fees and promotion features. Why?
+									Because we believe that a marketplace should
+									never be a middle man and royalties should
+									therefore never be the revenue model of a
+									marketplace. On NiftyFair, royalties go to
+									creators, owners or promotors. And this is
+									what makes our marketplace fair.
 									<br />
 									<br />
-									<b>End of November 2021</b>
+									Furthermore, we have given a lot of thought
+									on the features. On NiftyFair, you can
+									easily create NFTs or even entire NFT
+									collection without the need for writing
+									smart contracts. Even an NFT drop is easily
+									created. As a buyer your can easily message
+									sellers to negotiate deals. And you have
+									even the option to make a certain percentage
+									of the sale price available to promotors to
+									market your NFT or your NFT collection. This
+									is what makes our marketplace nifty
 									<br />
-									Launch of the $PUNK governance and vesting
-									token
 									<br />
-									<br />
-									<b>Mid December 2021</b>
-									<br />
-									Launch of the beta version of NiftyFair
+									The backbone of NiftyFair is the PUNK token.
+									Revenue generated by NiftyFair will be used
+									to buy PUNK tokens on the open market. These
+									tokens will be burned and as a result, the
+									total supply of PUNK will decrease.
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Tokenomics</div>
+								<div className="BlockTitle">Token supply</div>
+								<div
+									className="ContentItemContent"
+									style={{ paddingBottom: '10px' }}>
+									The total supply of PUNK is 200 million
+									tokens. 50% of the total supply, that is 100
+									million tokens, will be distributed to our
+									vesting program. This means these tokens are
+									locked until the vesting program starts. The
+									vesting period will start after the token
+									sale has been completed. This period starts
+									with a grace period of 2 months.
+								</div>
+								<div className="TextImage">
+									<img
+										alt={''}
+										className={'TextImageContent'}
+										src={
+											'/static/media/images/token-supply-chart.png'
+										}
+									/>
+								</div>
 								<div className="ContentItemContent">
-									<b>5 November 2021</b>
+									<span className="SubTitleInline">
+										Token sale
+									</span>
 									<br />
-									Reveal of the 3d Punks and the Punk 3d model
+									25% of the token supply will be used for the
+									token sale. The token sale will start on
+									December 1st through a so-called Initial
+									Bond Curve Offering. You can find more
+									details on the token sale below.
 									<br />
 									<br />
-									<b>End of November 2021</b>
+									<span className="SubTitleInline">
+										Treasury
+									</span>
 									<br />
-									Launch of the $PUNK governance and vesting
-									token
+									20% of the token supply, that is 40 million
+									tokens, will be distributed to our treasury.
+									The treasury will be managed by the DAO. In
+									the current proposal the tokens that will be
+									available for the treasury will be
+									distributed in the following way:
+									<ul>
+										<li>25% liquidity</li>
+										<li>25% marketing</li>
+										<li>25% development</li>
+										<li>25% Emergency fund</li>
+									</ul>
+									<span className="SubTitleInline">Team</span>
+									<br />
+									5% of the token supply will be distributed
+									to the team. 2% will be directly distributed
+									and 3% will be linearly distributed over a
+									period of 36 months.
 									<br />
 									<br />
-									<b>Mid December 2021</b>
+									<span className="SubTitleInline">
+										Vesting program
+									</span>
 									<br />
-									Launch of the beta version of NiftyFair
+									50% of the total supply, that is 100 million
+									tokens, will be distributed to Punk owners
+									through the vesting program. The vesting
+									program will airdrop 100 million tokens on
+									the 10.000 Punk NFTs. These tokens will be
+									locked-up. The unlocking of the locked
+									tokens will be spread out over the vesting
+									period of 36 months. A Punk owner can then
+									claim the unlocked tokens.
+									<br />
+									<br />
+									Every Punk NFT will 10.000 tokens locked-up.
+									This means that value of the tokens is also
+									locked-up in the Punk NFT. During the
+									vesting period of 36 months a fraction of
+									these tokens will be unlocked. This happens
+									every block. Punk owners can claim unlocked
+									tokens every block. All tokens will be
+									unlocked when the vesting period ends.
+									<br />
+									<br />
+									If a Punk is traded, the remaining locked
+									and unclaimed tokens will transfer to the
+									new owner. The new unlocked tokens as well
+									as the unclaimed tokens can be claimed by
+									the new owner. Although the value of the
+									tokens is locked-up in the Punk NFT, the
+									Punk NFTs themselves can be traded
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Token sale</div>
+								<div className="BlockTitle">
+									PUNK token sale
+								</div>
+								<div
+									className="ContentItemContent"
+									style={{ paddingBottom: '10px' }}>
+									On December 1st, our token sale will start.
+									25% off the total supply, that is 50 million
+									PUNK tokens, will be available for this
+									event. We wanted to create a token sale that
+									is as fair as possible. That is why our
+									token sale will be held through a so-called
+									Initial Bond Curve Offering. An IBCO is not
+									as complicated as it sounds. See the
+									graphical example below.
+								</div>
+								<div className="TextImage">
+									<img
+										alt={''}
+										className={'TextImageContent'}
+										src={
+											'/static/media/images/ibco-example-chart.png'
+										}
+									/>
+								</div>
 								<div className="ContentItemContent">
-									<b>5 November 2021</b>
+									<span className="SubTitleInline">
+										IBCO explained
+									</span>
 									<br />
-									Reveal of the 3d Punks and the Punk 3d model
+									An Initial Bond Curve Offering works as
+									follows. A fixed amount of tokens is locked
+									up in a smart contract. During a set
+									timeframe, participants can contribute by
+									sending funds to this contract. When the
+									timeframe has passed the tokens are
+									released, pro rata, to the participants.
+									Because the amount of tokens is fixed, a
+									price for the token is set. This is done by
+									dividing the amount of tokens by the total
+									amount of funds that are sent to the
+									contract.
 									<br />
 									<br />
-									<b>End of November 2021</b>
+									In the graphical example above, there is a
+									fixed amount of 1000 tokens and there are 4
+									participants. The total of contributed funds
+									is 100 xDai. When we divide that by the
+									total supply of 1000 tokens, we get a token
+									price of 0.1 xDai. The amount of tokens
+									Participant 1 is able to claim is 250
+									tokens. Participant 2 can claim 200 tokens,
+									participant 3 can claim 500 tokens and
+									participant 4 can claim 50 tokens.
 									<br />
-									Launch of the $PUNK governance and vesting
-									token
+									<br />
+									Why is an IBCO fair? Because an IBCO has the
+									following properties:
+									<br />
+									<ul>
+										<li>
+											Same settlement price for everyone
+										</li>
+										<li>No front-running</li>
+										<li>No pumps & dumps by whales</li>
+										<li>No price manipulations</li>
+										<li>
+											Price increases with every purchase
+										</li>
+										<li>
+											Collective, not competitive,
+											contributions
+										</li>
+										<li>
+											Pooling contributions in one batch
+										</li>
+									</ul>
 									<br />
 									<br />
-									<b>Mid December 2021</b>
+									<span className="SubTitleInline">
+										PUNK token sale
+									</span>
 									<br />
-									Launch of the beta version of NiftyFair
+									On December 1st, our token sale will start.
+									25% off the total supply, that is 50 million
+									PUNK tokens, will be available for this
+									event. The token sale will happen on the
+									xDai blockchain. The token sale will last 7
+									days. After 7 days, on the 8th of December,
+									participants can claim their PUNK tokens.
+									This claim is pro rata.
+									<br />
+									<br />
+									A day after the token sale, liquidity will
+									be provided on different decentralized
+									exchanges with on xDai and on Ethereum
+									Mainnet.
+									<br />
+									<br />
+									The token sale requires no minimal
+									contribution. Contributions are in xDai.
+									Anyone can contribute confirming that they
+									are not based in a jurisdiction where
+									buying, trading and/or owning the PUNK token
+									would be prohibited or restricted in any
+									manner.
+									<br />
+									<br />
+									<span className="SubTitleInline">
+										Token sale legal notice
+									</span>
+									<br />
+									Investment in a token sale entails risks of
+									a partial or complete loss of the
+									investment. No guarantee is given regarding
+									the value of the tokens acquired in the
+									offering and the exchange value of said
+									tokens in legal currency. Tokens do not
+									constitute financial instruments or
+									securities tokens and confer no other right
+									than those described. In addition, the
+									regulatory framework applicable to the
+									offering and to the tokens as well as the
+									tax regime applicable to the holding of
+									tokens are not defined to date in certain
+									jurisdictions. Please consult your local tax
+									and legal advisor before considering
+									purchasing tokens or interacting with the
+									protocol.
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Roadmap</div>
+								<div className="BlockTitle">Token release</div>
+								<div className="TextImage">
+									<img
+										alt={''}
+										className={'TextImageContent'}
+										src={
+											'/static/media/images/token-timeline-chart.png'
+										}
+									/>
+								</div>
+
 								<div className="ContentItemContent">
-									<b>5 November 2021</b>
+									<span className="SubTitleInline">
+										Periods
+									</span>
 									<br />
-									Reveal of the 3d Punks and the Punk 3d model
+									Our token sale will start on December 1st
+									and will end on December 8th. After the
+									token sale has ended a grace period of 2
+									months will start. After the grace period,
+									the vesting period will start for both the
+									team and the Punk owners.
 									<br />
 									<br />
-									<b>End of November 2021</b>
-									<br />
-									Launch of the $PUNK governance and vesting
-									token
-									<br />
-									<br />
-									<b>Mid December 2021</b>
-									<br />
-									Launch of the beta version of NiftyFair
+									The grace period and the vesting period
+									still require DAO approval. The vote for
+									this approval will be held in the first week
+									of the grace period. This means that the
+									grace period and the vesting period can
+									change. The vote will include the
+									participants of the token sale.
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Token timeline</div>
-								<div className="ContentItemContent">
-									<b>5 November 2021</b>
-									<br />
-									Reveal of the 3d Punks and the Punk 3d model
-									<br />
-									<br />
-									<b>End of November 2021</b>
-									<br />
-									Launch of the $PUNK governance and vesting
-									token
-									<br />
-									<br />
-									<b>Mid December 2021</b>
-									<br />
-									Launch of the beta version of NiftyFair
+								<div
+									className="BlockTitle"
+									style={{ paddingBottom: '15px' }}>
+									xDaiPunks Roadmap
+								</div>
+
+								<div className="ContentItemRoadmap">
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												September 5th 2021
+											</span>
+											<span className="RoadMapContent">
+												NFT Drop
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												November 5th 2021
+											</span>
+											<span className="RoadMapContent">
+												Release 3d Punks
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												December 1st 2021
+											</span>
+											<span className="RoadMapContent">
+												Start PUNK token sale
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												December 9th 2021
+											</span>
+											<span className="RoadMapContent">
+												DEX listings
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												January 15th 2022
+											</span>
+											<span className="RoadMapContent">
+												Beta release NiftyFair
+											</span>
+										</div>
+									</div>
+									<div className="RoadMapItem">
+										<div className="RoadMapContainer">
+											<span className="RoadMapTitle">
+												February 15th
+											</span>
+											<span className="RoadMapContent">
+												Official release NiftyFair
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

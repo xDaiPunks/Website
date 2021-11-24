@@ -753,72 +753,44 @@
 	}
 }
 
-.IntroStartButtonAction {
+.HeaderButtonAction {
 	display: flex;
 	position: relative;
 
 	overflow: hidden;
 
-	height: 40px;
-	border-radius: 20px;
-
-	flex-direction: row;
+	flex-direction: row-reverse;
 
 	align-items: center;
 	justify-content: center;
 
+	height: 36px;
+	border-radius: 18px;
+
+	padding-left: 16px;
+	padding-right: 16px;
+
 	font-family: 'Gilroy', sans-serif;
 
-	border: 2px solid #0ff;
-
-	padding-left: 20px;
-	padding-right: 15px;
-
-	@include responsiveMax($responsiveMed) {
-		padding-left: 20px;
-		padding-right: 15px;
-	}
-
-	@include responsiveMax($responsiveSmall) {
-		padding-left: 20px;
-		padding-right: 15px;
-	}
+	background-color: #00f5f5;
 
 	.Txt {
 		display: block;
 		position: static;
 
+		text-align: center;
+
 		user-select: none;
 
-		text-align: left;
+		color: #111;
 
-		color: #fff;
-
-		font-size: 16px;
-		font-weight: 600;
+		font-size: 14px;
+		font-weight: 700;
 		letter-spacing: normal;
 
 		white-space: nowrap;
 
 		font-family: 'Gilroy', sans-serif;
-	}
-
-	.Icon {
-		display: flex;
-		position: relative;
-
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-
-		padding-left: 10px;
-
-		.IconImage {
-			display: block;
-			position: relative;
-
-			height: 14px;
-		}
 	}
 }
 
