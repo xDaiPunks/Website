@@ -456,6 +456,16 @@
 										#00c9c9
 									);
 
+									@include responsiveMax($responsiveMed) {
+										width: 60%;
+										max-width: auto;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										width: auto;
+										max-width: auto;
+									}
+
 									.RoadMapItem {
 										display: flex;
 										position: relative;

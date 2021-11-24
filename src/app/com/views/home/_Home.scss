@@ -163,7 +163,7 @@
 
 								.HeaderButtonContainer {
 									padding-top: 20px;
-									
+
 									padding-left: $padding;
 									padding-right: $padding;
 
@@ -427,6 +427,16 @@
 										#cf15b4,
 										#00c9c9
 									);
+
+									@include responsiveMax($responsiveMed) {
+										width: 60%;
+										max-width: auto;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										width: auto;
+										max-width: auto;
+									}
 
 									.RoadMapItem {
 										display: flex;

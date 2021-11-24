@@ -3235,6 +3235,14 @@ body {
             align-items: center;
             justify-content: flex-start;
             background: linear-gradient(335deg, #cf15b4, #00c9c9); }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: 60%;
+                max-width: auto; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: auto;
+                max-width: auto; } }
             #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem {
               display: flex;
               position: relative;
@@ -3726,6 +3734,14 @@ body {
             align-items: center;
             justify-content: flex-start;
             background: linear-gradient(335deg, #cf15b4, #00c9c9); }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: 60%;
+                max-width: auto; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: auto;
+                max-width: auto; } }
             #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem {
               display: flex;
               position: relative;
