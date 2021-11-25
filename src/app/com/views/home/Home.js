@@ -645,7 +645,7 @@ class Home extends PureComponent {
 								<span className="IntroPunkSubText">
 									xDaiPunks is a collection of 3D Punk NFTs, a
 									vibrant community and much more. <br />
-									Tokens sale on december 1st
+									Our Token sale starts on December 1st.
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
@@ -672,10 +672,10 @@ class Home extends PureComponent {
 								<div className="BlockTitle">xDaiPunks</div>
 								<div className="ContentItemContent">
 									xDaiPunks is a collection of 3D Punk NFTs
-									that lives on the xDai blockchain. You
-									xDaiPunk doubles as a membership to a
+									that lives on the xDai blockchain. Your
+									xDaiPunk doubles as a membership to our
 									vibrant community. Owning a Punk also allows
-									you to vest the upcomming $PUNK token
+									you to vest the upcomming $PUNK token.
 									<br />
 									<br />
 									The Punks have been created using our Punk
@@ -684,14 +684,12 @@ class Home extends PureComponent {
 									metaverse
 									<br />
 									<br />
-									In the near future our community will also
-									launch a new NFT marketplace. This
-									marketplace is called NiftFair and will be a
-									marketplace that will not charge royalties
-									for every sale. Because we believe that
-									royalties should belong to creators or
-									owners. A market place that is owned and
-									governed by a bunch of Punks
+									In the near future, our community will also
+									launch a new NFT marketplace named NiftyFair - 
+									a marketplace that will not charge royalties
+									for every sale. We believe royalties should 
+									belong to creators or owners. A marketplace 
+									owned and governed by a bunch of Punks!
 								</div>
 							</div>
 							<div className="ContentBlock">
@@ -738,7 +736,7 @@ class Home extends PureComponent {
 												December 9th 2021
 											</span>
 											<span className="RoadMapContent">
-												DEX listings
+												DEXs listing
 											</span>
 										</div>
 									</div>
@@ -748,7 +746,7 @@ class Home extends PureComponent {
 												January 15th 2022
 											</span>
 											<span className="RoadMapContent">
-												Beta release NiftyFair
+												Beta release of NiftyFair
 											</span>
 										</div>
 									</div>
@@ -758,7 +756,7 @@ class Home extends PureComponent {
 												February 15th
 											</span>
 											<span className="RoadMapContent">
-												Official release NiftyFair
+												Official release of NiftyFair
 											</span>
 										</div>
 									</div>
