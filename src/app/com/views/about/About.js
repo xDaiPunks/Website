@@ -141,7 +141,7 @@ class About extends PureComponent {
 								the minting phase (which started on 5 September 
 								at 23:55) sold out in just 7 hours. As the 
 								xDaiPunks marketplace was online from the get-go,
-								trading of Punks started when the minting phase
+								trading of Punks started while the minting phase
 								was still in progress.
 								<br />
 								<br />
