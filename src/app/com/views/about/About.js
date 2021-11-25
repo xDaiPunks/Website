@@ -136,33 +136,33 @@ class About extends PureComponent {
 								xDaiPunks started as a collection of 10.000
 								unique non-fungible tokens (NFTs) created in
 								August 2021 on the xDai blockchain. In a matter
-								of days a vibrant and active community formed
-								with people from all over the world. As a result
-								the minting phase, which started on 5 September
-								at 23:55, sold out in 7 hours. As the
-								marketplace was online from the get-go, trading
-								of Punks started when the minting phase
+								of days, a vibrant and active community formed
+								with people from all over the world. As a result,
+								the minting phase (which started on 5 September 
+								at 23:55) sold out in just 7 hours. As the 
+								xDaiPunks marketplace was online from the get-go,
+								trading of Punks started when the minting phase
 								was still in progress.
 								<br />
 								<br />
-								Within days, the xDaiPunk community started to
+								Within days the xDaiPunk community started to
 								share ideas on how to move the project forward. One of the first
 								ideas was to make our beloved Punks more
-								desirable and ready for the metaverse. As a
-								result, our Punks “bit-shifted” to 3d Punks on
-								November the 5th. (Remember, remember…) <br />
+								desirable, unique and ready for the metaverse, so
+								our Punks were “bit-shifted” from 2d to 3d on the 
+								5th of November. (Remember, remember…) 
 								<br />
-								At the same time, efforts are being made to turn
-								the xDaiPunk community into a DAO. In the
-								very near future, the $PUNK token will be launched.
-								This token will allow us to enter the next
-								chapter of our existence - not only will our
-								token be a governance token, it will also be a
-								token that can be vested by xDaiPunk NFT
-								hodlers. The token itself will be backed by the
-								revenue of our upcoming NFT marketplace called
-								NiftyFair. NiftyFair's goal is to reduce the
-								friction in creating, minting and trading NFTs.
+								<br />
+								At present, efforts are being made to turn
+								the xDaiPunk community into a DAO, so next week 
+								our $PUNK token will be launched. This token will 
+								allow us to enter the next chapter of our existence
+								- not only will our token be a governance token,
+								but it will be vested by xDaiPunk NFT hodlers.
+								The token itself will be backed by the revenue of
+								our upcoming NFT marketplace, called NiftyFair.
+								NiftyFair's goal is to reduce the friction in creating,
+								minting and trading NFTs.
 							</div>
 						</div>
 
@@ -177,13 +177,13 @@ class About extends PureComponent {
 								becoming reality. Our goal of becoming a
 								DAO will be achieved in a matter of weeks. The
 								efforts of our community and the cooperation
-								within the xDai ecosystem makes this
+								within the xDai ecosystem has made this
 								possible.
 								<br />
 								<br />
 								Not long from now, we will have a
 								governance/vesting token and an NFT marketplace.
-								And then comes the question what is next? Our
+								And then comes the question: "what's next?". Our
 								Punks are ready to move from chain to chain and
 								they are backed by an open-source 3d model. The
 								metaverse is being created as we speak and the
@@ -198,9 +198,9 @@ class About extends PureComponent {
 								together, celebrate, play games, gain knowledge
 								and make friendships. And these worlds will not
 								exist in a virtual form only. Our community of
-								Punks will organize IRL events where you as a
+								Punks will organize IRL events, where you as a
 								Punk hodler will get access to. And believe us,
-								our events are going to “whip the lama’s ass” 🦙
+								our events are going to “whip the lama’s ass!” 🦙
 							</div>
 						</div>
 
