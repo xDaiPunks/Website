@@ -84,25 +84,13 @@ class Footer extends PureComponent {
 									title={'About xDai'}
 									onClick={() => {
 										window.open(
-											'https://www.xdaichain.com/'
+											'https://www.xdaichain.com/#xdai-stable-chain'
 										);
 									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
-							<span className="FooterMenuItem">
-								<Button
-									type={'footerButton'}
-									label={'Setup metamask'}
-									title={'Setup metamask'}
-									onClick={() => {
-										window.open(
-											'https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup'
-										);
-									}}
-									cssClass={'FooterButton'}
-								/>
-							</span>
+
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
@@ -116,19 +104,21 @@ class Footer extends PureComponent {
 									cssClass={'FooterButton'}
 								/>
 							</span>
+							
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'xDaiPunks Github'}
-									title={'xDaiPunks Github'}
+									label={'Setup Metamask'}
+									title={'Setup Metamask'}
 									onClick={() => {
 										window.open(
-											'https://github.com/xDaiPunks'
+											'https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup#setting-up-metamask-for-xdai'
 										);
 									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
+
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
