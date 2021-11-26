@@ -16,6 +16,7 @@ import UtilityService from 'src/app/services/UtilityService';
 
 let Instance;
 
+const ibcoAbi = require('src/app/abi/ibco.json');
 const xDaiPunksAbi = require('src/app/abi/xDaiPunks.json');
 
 const abiService = new AbiService();
@@ -30,6 +31,7 @@ class Web3Service {
 		if (!Instance) {
 			Instance = this;
 
+			Instance.ibco = null;
 			Instance.contract = null;
 			Instance.gasPrice = null;
 
@@ -43,6 +45,7 @@ class Web3Service {
 			Instance.httpProvider = configService.web3.httpProvider;
 			Instance.socketProvider = configService.web3.socketProvider;
 
+			Instance.ibcoAddress = configService.web3.ibcoAddress;
 			Instance.xDaiPunksAddress = configService.web3.xDaiPunksAddress;
 
 			Instance.initialize();
@@ -64,6 +67,9 @@ class Web3Service {
 	setAbi() {
 		const vm = this;
 
+		vm.ibcoAbi = ibcoAbi;
+		vm.ibcoAddress = vm.ibcoAddress;
+
 		vm.xdaiPunksAbi = xDaiPunksAbi;
 		vm.xDaiPunkAddress = vm.xDaiPunksAddress;
 	}
@@ -83,6 +89,8 @@ class Web3Service {
 
 		vm.web3 = web3;
 		web3.eth.Contract.setProvider(web3Socket.currentProvider);
+
+		vm.ibco = new web3.eth.Contract(vm.ibcoAbi, vm.ibcoAddress);
 
 		vm.contract = new web3.eth.Contract(
 			vm.xdaiPunksAbi,
@@ -334,6 +342,7 @@ class Web3Service {
 	}
 
 	// general web3 functions
+
 	getCode(accountAddress) {
 		const vm = this;
 		return new Promise((resolve, reject) => {
@@ -1032,6 +1041,24 @@ class Web3Service {
 				});
 		});
 	}
+
+	totalRevenue() {
+		const vm = this;
+		return new Promise((resolve, reject) => {
+			vm.ibco.methods
+				.totalRevenue()
+				.call()
+				.then((totalRevenue) => {
+					
+					resolve(totalRevenue);
+				})
+				.catch((totalRevenueError) => {
+					reject(totalRevenueError);
+				});
+		});
+	}
+
+	senderContribution() {}
 
 	disconnectWallet() {
 		const vm = this;

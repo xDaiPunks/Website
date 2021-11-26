@@ -61,6 +61,24 @@ class AppService {
 		});
 	}
 
+	getSaleData() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			const promiseArray = [];
+			promiseArray.push(web3Service.totalRevenue());
+
+			Promise.all(promiseArray)
+				.then((responses) => {
+					console.log(responses);
+					resolve({ result: 'success' });
+				})
+				.catch((responsesError) => {
+					reject({ result: 'error', errorType: 'initializeError' });
+				});
+		});
+	}
+
 	buyPunk(idx, amount) {
 		return new Promise((resolve, reject) => {
 			web3Service

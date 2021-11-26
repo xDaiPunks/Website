@@ -3,9 +3,10 @@
 import React, { PureComponent } from 'react';
 import { BigNumber } from 'bignumber.js';
 
-import Footer from 'src/app/com/footer/Footer';
+
 import Loader from 'src/app/com/loader/Loader';
 import Button from 'src/app/com/button/Button';
+import Footer from 'src/app/com/footer/Footer';
 
 import AppService from 'src/app/services/AppService';
 import ViewService from 'src/app/services/ViewService';

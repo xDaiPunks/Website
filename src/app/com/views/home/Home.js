@@ -100,7 +100,7 @@ class Home extends PureComponent {
 		if (utilityService.browserSupport.mobileDevice === true) {
 			innerHeight = windowInnerHeight;
 
-			introStartElement[0].style.minHeight = innerHeight + 'px';
+			introStartElement[0].style.height = innerHeight + 'px';
 		}
 	}
 
@@ -645,18 +645,35 @@ class Home extends PureComponent {
 								<span className="IntroPunkSubText">
 									xDaiPunks is a collection of 3D Punk NFTs, a
 									vibrant community and much more. <br />
-									Our Token sale starts on December 1st.
+									Token sale starts on December 1st
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
-										type={'actionButton'}
+										type={'navigationButton'}
 										label={'Read more'}
 										title={'Read more'}
 										onClick={(event) => {
 											event.preventDefault();
-											routeService.navigateRoute('/token')
+											routeService.navigateRoute(
+												'/token'
+											);
 										}}
-										cssClass={'HeaderButtonAction'}
+										cssClass={'NavigationButtonAction'}
+										iconImage="/static/media/images/icon-read.svg"
+									/>
+									<div className="HeaderButtonSpacer" />
+									<Button
+										type={'navigationButton'}
+										label={'Token sale'}
+										title={'Token sale'}
+										onClick={(event) => {
+											event.preventDefault();
+											routeService.navigateRoute(
+												'/token-sale'
+											);
+										}}
+										cssClass={'NavigationButtonAction'}
+										iconImage="/static/media/images/icon-wallet.svg"
 									/>
 								</div>
 							</div>
@@ -685,11 +702,12 @@ class Home extends PureComponent {
 									<br />
 									<br />
 									In the near future, our community will also
-									launch a new NFT marketplace named NiftyFair - 
-									a marketplace that will not charge royalties
-									for every sale. We believe royalties should 
-									belong to creators or owners. A marketplace 
-									owned and governed by a bunch of Punks!
+									launch a new NFT marketplace named NiftyFair
+									- a marketplace that will not charge
+									royalties for every sale. We believe
+									royalties should belong to creators or
+									owners. A marketplace owned and governed by
+									a bunch of Punks!
 								</div>
 							</div>
 							<div className="ContentBlock">
@@ -763,9 +781,9 @@ class Home extends PureComponent {
 								</div>
 							</div>
 						</div>
-						<Footer />
 					</div>
 				</div>
+				<Footer />
 			</div>
 		);
 	}

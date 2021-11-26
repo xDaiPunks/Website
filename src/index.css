@@ -2987,17 +2987,19 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         width: 100%;
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 640px;
         background-color: #111;
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: 50%; }
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
+            min-height: 640px;
             background-position-x: 50%; } }
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart {
+            min-height: 500px;
             background-position-x: 25%; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroTopGradient {
           display: block;
@@ -3024,7 +3026,7 @@ body {
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
             display: block;
             position: relative;
-            font-size: 140px;
+            font-size: 120px;
             font-family: 'Gilroy', sans-serif;
             font-weight: 900;
             padding-top: 10px;
@@ -3049,10 +3051,10 @@ body {
             display: block;
             position: relative;
             font-family: 'Gilroy', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 16px;
             padding-top: 0px;
-            margin-top: -10px;
+            margin-top: -20px;
             padding-left: 48px;
             padding-right: 48px;
             text-align: left;
@@ -3060,20 +3062,23 @@ body {
             text-shadow: 0px 0px 5px #000; }
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
-                font-size: 18px;
-                margin-top: -10px;
+                font-size: 16px;
+                margin-top: -20px;
                 padding-left: 40px;
                 padding-right: 40px; } }
             @media screen and (max-width: 800px) {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
-                font-size: 16px;
-                margin-top: 0px;
+                font-size: 14px;
+                margin-top: -5px;
                 padding-left: 30px;
                 padding-right: 30px; }
                 #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText br {
                   display: none; } }
           #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
+            display: flex;
+            position: relative;
             padding-top: 20px;
+            flex-direction: row;
             padding-left: 48px;
             padding-right: 48px; }
             @media screen and (max-width: 1070px) {
@@ -3084,6 +3089,15 @@ body {
               #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
                 padding-left: 30px;
                 padding-right: 30px; } }
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+              display: block;
+              width: 15px; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+                  width: 15px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+                  width: 10px; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronaut {
           display: block;
           position: absolute;
@@ -3467,17 +3481,19 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         width: 100%;
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 640px;
         background-color: #111;
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: 50%; }
         @media screen and (max-width: 1070px) {
           #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart {
+            min-height: 640px;
             background-position-x: 50%; } }
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart {
+            min-height: 500px;
             background-position-x: 25%; } }
         #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroTopGradient {
           display: block;
@@ -3504,7 +3520,7 @@ body {
           #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
             display: block;
             position: relative;
-            font-size: 140px;
+            font-size: 120px;
             font-family: 'Gilroy', sans-serif;
             font-weight: 900;
             padding-top: 10px;
@@ -3529,10 +3545,10 @@ body {
             display: block;
             position: relative;
             font-family: 'Gilroy', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 16px;
             padding-top: 0px;
-            margin-top: -10px;
+            margin-top: -20px;
             padding-left: 48px;
             padding-right: 48px;
             text-align: left;
@@ -3540,20 +3556,23 @@ body {
             text-shadow: 0px 0px 5px #000; }
             @media screen and (max-width: 1070px) {
               #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
-                font-size: 18px;
-                margin-top: -10px;
+                font-size: 16px;
+                margin-top: -20px;
                 padding-left: 40px;
                 padding-right: 40px; } }
             @media screen and (max-width: 800px) {
               #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
-                font-size: 16px;
-                margin-top: 0px;
+                font-size: 14px;
+                margin-top: -5px;
                 padding-left: 30px;
                 padding-right: 30px; }
                 #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText br {
                   display: none; } }
           #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
+            display: flex;
+            position: relative;
             padding-top: 20px;
+            flex-direction: row;
             padding-left: 48px;
             padding-right: 48px; }
             @media screen and (max-width: 1070px) {
@@ -3564,6 +3583,15 @@ body {
               #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
                 padding-left: 30px;
                 padding-right: 30px; } }
+            #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+              display: block;
+              width: 15px; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+                  width: 15px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer .HeaderButtonSpacer {
+                  width: 10px; } }
         #AppRoot .App .ViewContainer .Token.View .ViewBox .Intro .IntroStart .IntroBottomGradient {
           display: block;
           position: absolute;
@@ -4123,6 +4151,485 @@ body {
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons .PunkDetailButtonContainer.Padding {
             padding-bottom: 0px; } }
+
+#AppRoot .App .ViewContainer .TokenSale.View {
+  background: #fff; }
+  #AppRoot .App .ViewContainer .TokenSale.View .ViewBox {
+    display: flex; }
+    #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro {
+      display: block;
+      position: relative;
+      width: 100vw;
+      max-width: 100%;
+      background-color: #111; }
+      #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart {
+        display: flex;
+        position: relative;
+        z-index: 2;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100vh;
+        min-height: 640px;
+        background-color: #111;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: 50%; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart {
+            min-height: 640px;
+            background-position-x: 50%; } }
+        @media screen and (max-width: 800px) {
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart {
+            min-height: 500px;
+            background-position-x: 75%; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroTopGradient {
+          display: block;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 70vh;
+          background: #111111;
+          background: linear-gradient(0deg, rgba(17, 17, 17, 0) 0%, #111111 100%); }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText {
+          display: block;
+          position: absolute;
+          z-index: 10;
+          width: 100%;
+          left: 0px;
+          bottom: 90px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText {
+              bottom: 90px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText {
+              bottom: 70px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+            display: block;
+            position: relative;
+            font-size: 120px;
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 900;
+            padding-top: 10px;
+            text-align: left;
+            padding-left: 48px;
+            padding-right: 48px; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText .TextDark {
+              color: #fff; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText .TextLight {
+              color: #00f5f5; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+                font-size: 120px;
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkText {
+                font-size: 44px;
+                padding-left: 30px;
+                padding-right: 30px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+            display: block;
+            position: relative;
+            font-family: 'Gilroy', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            padding-top: 0px;
+            margin-top: -20px;
+            padding-left: 48px;
+            padding-right: 48px;
+            text-align: left;
+            color: #fff;
+            text-shadow: 0px 0px 5px #000; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+                font-size: 16px;
+                margin-top: -20px;
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText {
+                font-size: 14px;
+                margin-top: -5px;
+                padding-left: 30px;
+                padding-right: 30px; }
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .IntroPunkSubText br {
+                  display: none; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
+            display: flex;
+            position: relative;
+            padding-top: 20px;
+            flex-direction: row;
+            padding-left: 48px;
+            padding-right: 48px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroText .HeaderButtonContainer {
+                padding-left: 30px;
+                padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo {
+          display: block;
+          position: absolute;
+          z-index: 90;
+          width: 100%;
+          left: 0px;
+          top: 110px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo {
+              top: 110px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo {
+              top: 70px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain {
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            padding-left: 48px;
+            padding-right: 48px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain {
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain {
+                padding-left: 30px;
+                padding-right: 30px; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain .TokenSaleSpacer {
+              display: block;
+              position: relative;
+              width: 48px; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain .TokenSaleSpacer {
+                  width: 40px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleMain .TokenSaleSpacer {
+                  width: 0px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem {
+            display: flex;
+            position: relative;
+            flex-direction: column; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleTitle {
+              display: block;
+              position: relative;
+              color: #00f5f5;
+              font-size: 40px;
+              font-family: 'Gilroy', sans-serif;
+              font-weight: 800; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleTitle {
+                  font-size: 40px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleTitle {
+                  font-size: 30px; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleContent {
+              display: block;
+              position: relative;
+              color: #fff;
+              font-size: 16px;
+              font-family: 'Gilroy', sans-serif;
+              font-weight: 400; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleContent {
+                  font-size: 16px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleItem .TokenSaleContent {
+                  font-size: 14px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubMain {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            padding-top: 20px;
+            padding-left: 48px;
+            padding-right: 48px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubMain {
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubMain {
+                padding-left: 30px;
+                padding-right: 30px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            padding-bottom: 20px; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubTitle {
+              display: block;
+              position: relative;
+              color: #00f5f5;
+              font-size: 16px;
+              font-family: 'Gilroy', sans-serif;
+              font-weight: 800; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubTitle {
+                  font-size: 16px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubTitle {
+                  font-size: 14px; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubContent {
+              display: block;
+              position: relative;
+              color: #fff;
+              font-size: 18px;
+              font-family: 'Gilroy', sans-serif;
+              font-weight: 400; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubContent {
+                  font-size: 18px; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .TokenSaleInfo .TokenSaleSubItem .TokenSaleSubContent {
+                  font-size: 16px; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroStart .IntroBottomGradient {
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 100%;
+          height: 40vh;
+          background: #111111;
+          background: linear-gradient(0deg, #111111 0%, rgba(17, 17, 17, 0) 100%); }
+      #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent {
+        display: flex;
+        position: relative;
+        z-index: 2;
+        flex-direction: column;
+        padding-top: 40px; }
+        @media screen and (max-width: 1070px) {
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent {
+            padding-top: 40px; } }
+        @media screen and (max-width: 800px) {
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent {
+            padding-top: 25px; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock {
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-bottom: 80px;
+          padding-left: 48px;
+          padding-right: 48px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock {
+              padding-left: 40px;
+              padding-right: 40px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock {
+              padding-left: 30px;
+              padding-right: 30px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockTitle {
+            display: block;
+            position: relative;
+            padding-bottom: 5px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 800;
+            font-family: 'Gilroy', sans-serif; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockTitle {
+                font-size: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockTitle {
+                font-size: 30px; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            min-height: 150px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            border-radius: 18px;
+            background-color: #333; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem {
+              display: block;
+              position: relative; }
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+                display: block;
+                position: relative;
+                overflow: hidden;
+                padding-bottom: 15px;
+                margin-right: 200px; }
+                @media screen and (max-width: 1070px) {
+                  #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+                    margin-right: 200px; } }
+                @media screen and (max-width: 800px) {
+                  #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem .AccountItemContent {
+                    margin-right: 115px; } }
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem .AccountItemContent .AccountItemTitleText {
+                  display: block;
+                  position: relative;
+                  overflow: hidden;
+                  color: #00f5f5;
+                  font-size: 10px;
+                  font-weight: 700;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  font-family: 'Gilroy', sans-serif; }
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .BlockContent .AccountItem .AccountItemContent .AccountItemContentText {
+                  display: block;
+                  position: relative;
+                  overflow: hidden;
+                  color: #fff;
+                  font-size: 14px;
+                  font-weight: 900;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  font-family: 'Gilroy', sans-serif; }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .TextImage {
+            display: block;
+            position: relative;
+            width: 60%;
+            max-width: 590px;
+            padding-top: 10px;
+            padding-bottom: 10px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .TextImage {
+                width: 60%;
+                max-width: auto; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .TextImage {
+                width: auto;
+                max-width: auto; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .TextImage .TextImageContent {
+              border: 0;
+              margin: 0;
+              padding: 0;
+              width: 100%; }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+            display: block;
+            position: relative;
+            width: 60%;
+            max-width: 590px;
+            padding-top: 10px;
+            padding-left: 2px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 400;
+            font-family: 'Gilroy', sans-serif; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+                font-size: 16px;
+                line-height: 22px;
+                width: 60%;
+                max-width: auto; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent {
+                font-size: 14px;
+                line-height: 20px;
+                width: auto;
+                max-width: auto; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent a {
+              color: #00f5f5; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent ul {
+              padding-left: 18px; }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent .SubTitleInline {
+              font-size: 24px;
+              font-weight: 800;
+              color: #00f5f5; }
+              @media screen and (max-width: 1070px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent .SubTitleInline {
+                  font-size: 24px;
+                  font-weight: 800; } }
+              @media screen and (max-width: 800px) {
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemContent .SubTitleInline {
+                  font-size: 18px;
+                  font-weight: 800; } }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+            display: flex;
+            position: relative;
+            width: 60%;
+            max-width: 590px;
+            border-radius: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 25px;
+            padding-bottom: 30px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(335deg, #cf15b4, #00c9c9); }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: 60%;
+                max-width: auto; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap {
+                width: auto;
+                max-width: auto; } }
+            #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem {
+              display: flex;
+              position: relative;
+              flex-direction: row;
+              width: 100%;
+              margin-bottom: 10px; }
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                flex-grow: 1;
+                border-radius: 15px;
+                background-color: rgba(0, 0, 0, 0.2);
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 15px;
+                padding-bottom: 20px; }
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapTitle {
+                  display: block;
+                  position: relative;
+                  color: #fff;
+                  font-size: 16px;
+                  line-height: 22px;
+                  font-weight: 900;
+                  font-family: 'Gilroy', sans-serif; }
+                  @media screen and (max-width: 1070px) {
+                    #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapTitle {
+                      font-size: 16px; } }
+                  @media screen and (max-width: 800px) {
+                    #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapTitle {
+                      font-size: 14px; } }
+                #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapContent {
+                  display: block;
+                  position: relative;
+                  color: #fff;
+                  font-size: 16px;
+                  line-height: 22px;
+                  font-weight: 400;
+                  font-family: 'Gilroy', sans-serif; }
+                  @media screen and (max-width: 1070px) {
+                    #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapContent {
+                      font-size: 16px; } }
+                  @media screen and (max-width: 800px) {
+                    #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock .ContentItemRoadmap .RoadMapItem .RoadMapContainer .RoadMapContent {
+                      font-size: 14px; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock.Items {
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-bottom: 20px; }
+          #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock.Items .BlockTitle {
+            display: block;
+            position: relative;
+            padding-left: 48px;
+            padding-right: 48px; }
+            @media screen and (max-width: 1070px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock.Items .BlockTitle {
+                padding-left: 40px;
+                padding-right: 40px; } }
+            @media screen and (max-width: 800px) {
+              #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .ContentBlock.Items .BlockTitle {
+                padding-left: 30px;
+                padding-right: 30px; } }
+        #AppRoot .App .ViewContainer .TokenSale.View .ViewBox .Intro .IntroContent .SpacerBottom {
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 20px; }
 
 #AppRoot .App .ViewContainer .XDaiOnRamp.View {
   background: #111; }

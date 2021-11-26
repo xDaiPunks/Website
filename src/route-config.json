@@ -55,6 +55,14 @@
 		"component": "app/com/views/marketHelp/MarketHelp"
 	},
 
+	"tokenSale": {
+		"path": "/token-sale",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "underlay",
+		"component": "app/com/views/tokenSale/TokenSale"
+	},
+
 	"xDaiOnRamp": {
 		"path": "/get-xdai",
 		"type": "public",

@@ -1,7 +1,7 @@
 #AppRoot {
 	.App {
 		.ViewContainer {
-			.Home.View {
+			.TokenSale.View {
 				background: $backgroundColor;
 
 				.ViewBox {
@@ -44,7 +44,7 @@
 
 							@include responsiveMax($responsiveSmall) {
 								min-height: 500px;
-								background-position-x: 25%;
+								background-position-x: 75%;
 							}
 
 							.IntroTopGradient {
@@ -183,47 +183,189 @@
 										padding-left: $paddingSmall;
 										padding-right: $paddingSmall;
 									}
+								}
+							}
 
-									.HeaderButtonSpacer {
+							.TokenSaleInfo {
+								display: block;
+								position: absolute;
+
+								z-index: 90;
+
+								width: 100%;
+
+								left: 0px;
+								top: 110px;
+
+								@include responsiveMax($responsiveMed) {
+									top: 110px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									top: 70px;
+								}
+
+								.TokenSaleMain {
+									display: flex;
+									position: relative;
+
+									flex-direction: row;
+
+									padding-left: $padding;
+									padding-right: $padding;
+
+									@include responsiveMax($responsiveMed) {
+										padding-left: $paddingMed;
+										padding-right: $paddingMed;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										padding-left: $paddingSmall;
+										padding-right: $paddingSmall;
+									}
+
+									.TokenSaleSpacer {
 										display: block;
-										width: 15px;
+										position: relative;
+
+										width: $padding;
 
 										@include responsiveMax($responsiveMed) {
-											width: 15px;
+											width: $paddingMed;
 										}
 
 										@include responsiveMax(
 											$responsiveSmall
 										) {
-											width: 10px;
+											width: 0px;
 										}
 									}
 								}
-							}
 
-							.IntroAstronaut {
-								display: block;
-								position: absolute;
+								.TokenSaleItem {
+									display: flex;
+									position: relative;
 
-								width: 400px;
+									flex-direction: column;
 
-								top: 90px;
-								left: $padding;
+									.TokenSaleTitle {
+										display: block;
+										position: relative;
 
-								animation: float 6s ease-in-out infinite;
+										color: #00f5f5;
 
-								@include responsiveMax($responsiveMed) {
-									width: 400px;
+										font-size: 40px;
 
-									top: 90px;
-									left: $paddingMed;
+										font-family: 'Gilroy', sans-serif;
+										font-weight: 800;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 40px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 30px;
+										}
+									}
+
+									.TokenSaleContent {
+										display: block;
+										position: relative;
+
+										color: #fff;
+
+										font-size: 16px;
+
+										font-family: 'Gilroy', sans-serif;
+										font-weight: 400;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 16px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 14px;
+										}
+									}
+								}
+								
+								.TokenSaleSubMain {
+									display: flex;
+									position: relative;
+
+									flex-direction: column;
+
+									padding-top: 20px;
+
+									padding-left: $padding;
+									padding-right: $padding;
+
+									@include responsiveMax($responsiveMed) {
+										padding-left: $paddingMed;
+										padding-right: $paddingMed;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										padding-left: $paddingSmall;
+										padding-right: $paddingSmall;
+									}
 								}
 
-								@include responsiveMax($responsiveSmall) {
-									width: 85vw;
+								.TokenSaleSubItem {
+									display: flex;
+									position: relative;
 
-									top: 60px;
-									left: $paddingSmall;
+									flex-direction: column;
+
+									padding-bottom: 20px;
+
+									.TokenSaleSubTitle {
+										display: block;
+										position: relative;
+
+										color: #00f5f5;
+
+										font-size: 16px;
+
+										font-family: 'Gilroy', sans-serif;
+										font-weight: 800;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 16px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 14px;
+										}
+									}
+
+									.TokenSaleSubContent {
+										display: block;
+										position: relative;
+
+										color: #fff;
+
+										font-size: 18px;
+
+										font-family: 'Gilroy', sans-serif;
+										font-weight: 400;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 18px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 16px;
+										}
+									}
 								}
 							}
 
@@ -387,6 +529,35 @@
 									}
 								}
 
+								.TextImage {
+									display: block;
+									position: relative;
+
+									width: 60%;
+									max-width: 590px;
+
+									padding-top: 10px;
+									padding-bottom: 10px;
+
+									@include responsiveMax($responsiveMed) {
+										width: 60%;
+										max-width: auto;
+									}
+
+									@include responsiveMax($responsiveSmall) {
+										width: auto;
+										max-width: auto;
+									}
+
+									.TextImageContent {
+										border: 0;
+										margin: 0;
+										padding: 0;
+
+										width: 100%;
+									}
+								}
+
 								.ContentItemContent {
 									display: block;
 									position: relative;
@@ -410,6 +581,7 @@
 										line-height: 22px;
 
 										width: 60%;
+										max-width: auto;
 									}
 
 									@include responsiveMax($responsiveSmall) {
@@ -417,10 +589,34 @@
 										line-height: 20px;
 
 										width: auto;
+										max-width: auto;
 									}
 
 									a {
 										color: #00f5f5;
+									}
+
+									ul {
+										padding-left: 18px;
+									}
+
+									.SubTitleInline {
+										font-size: 24px;
+										font-weight: 800;
+
+										color: #00f5f5;
+
+										@include responsiveMax($responsiveMed) {
+											font-size: 24px;
+											font-weight: 800;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											font-size: 18px;
+											font-weight: 800;
+										}
 									}
 								}
 
@@ -586,17 +782,5 @@
 				}
 			}
 		}
-	}
-}
-
-@keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(40px);
-	}
-	100% {
-		transform: translatey(0px);
 	}
 }

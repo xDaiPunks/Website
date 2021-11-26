@@ -19,8 +19,6 @@ class CountDown extends PureComponent {
 			seconds: null,
 
 			active: true,
-
-			countDown: configService.countDown,
 		};
 
 		this.setDate = this.setDate.bind(this);
@@ -34,15 +32,13 @@ class CountDown extends PureComponent {
 
 	setDate() {
 		let timeDiff;
-		let countDown;
 
 		const vm = this;
 		const time = new Date().getTime();
 
 		const state = utilityService.cloneObject(vm.state);
 
-		countDown = state.countDown;
-		timeDiff = countDown - time;
+		timeDiff = vm.props.endDate - time;
 
 		if (timeDiff >= 0) {
 			state.active = true;
@@ -91,15 +87,12 @@ class CountDown extends PureComponent {
 			return null;
 		} else {
 			return (
-				<div className="CountDown">
-					<div className="TimeText">{days + 'd'}</div>
-					<div className="TextDots">:</div>
-					<div className="TimeText">{hours + 'h'}</div>
-					<div className="TextDots">:</div>
-					<div className="TimeText">{minutes + 'm'}</div>
-					<div className="TextDots">:</div>
-					<div className="TimeText">{seconds + 's'}</div>
-				</div>
+				<>
+					<span className="TimeText">{days + ' Days '}</span>
+					<span className="TimeText">{hours + ' Hours '}</span>
+					<span className="TimeText">{minutes + ' Minutes '}</span>
+					<span className="TimeText">{seconds + ' Seconds'}</span>
+				</>
 			);
 		}
 	}

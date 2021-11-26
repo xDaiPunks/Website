@@ -9,7 +9,8 @@ class ConfigService {
 			Instance.selectedLanguage = '';
 			Instance.availableLanguages = ['en', 'es'];
 
-			Instance.countDown = parseInt(process.env.REACT_APP_WEB3_COUNTDOWN, 10);
+			Instance.countDownEnd = parseInt(process.env.REACT_APP_WEB3_COUNTDOWN_END, 10);
+			Instance.countDownStart = parseInt(process.env.REACT_APP_WEB3_COUNTDOWN_START, 10);
 
 			Instance.userImageUrl = process.env.REACT_APP_USER_IMAGE_URL;
 
@@ -25,6 +26,8 @@ class ConfigService {
 				gasServiceLimit: process.env.REACT_APP_WEB3_GAS_SERVICE_LIMIT,
 
 				gasOracleUrl: process.env.REACT_APP_WEB3_GAS_ORACLE_URL,
+
+				ibcoAddress: process.env.REACT_APP_WEB3_IBCO_ADDRESS,
 				xDaiPunksAddress: process.env.REACT_APP_WEB3_XDAI_PUNKS_ADDRESS,
 
 				httpProvider: process.env.REACT_APP_WEB3_HTTP_PROVIDER,

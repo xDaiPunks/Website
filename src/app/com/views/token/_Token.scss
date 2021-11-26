@@ -28,8 +28,8 @@
 							justify-content: flex-start;
 
 							width: 100%;
-							height: auto;
-							min-height: 100vh;
+							height: 100vh;
+							min-height: 640px;
 
 							background-color: #111;
 
@@ -38,10 +38,12 @@
 							background-position-x: 50%;
 
 							@include responsiveMax($responsiveMed) {
+								min-height: 640px;
 								background-position-x: 50%;
 							}
 
 							@include responsiveMax($responsiveSmall) {
+								min-height: 500px;
 								background-position-x: 25%;
 							}
 
@@ -86,7 +88,7 @@
 									display: block;
 									position: relative;
 
-									font-size: 140px;
+									font-size: 120px;
 
 									font-family: 'Gilroy', sans-serif;
 									font-weight: 900;
@@ -125,11 +127,11 @@
 									position: relative;
 
 									font-family: 'Gilroy', sans-serif;
-									font-weight: 600;
-									font-size: 18px;
+									font-weight: 400;
+									font-size: 16px;
 
 									padding-top: 0px;
-									margin-top: -10px;
+									margin-top: -20px;
 
 									padding-left: $padding;
 									padding-right: $padding;
@@ -141,16 +143,16 @@
 									text-shadow: 0px 0px 5px #000;
 
 									@include responsiveMax($responsiveMed) {
-										font-size: 18px;
-										margin-top: -10px;
+										font-size: 16px;
+										margin-top: -20px;
 
 										padding-left: $paddingMed;
 										padding-right: $paddingMed;
 									}
 
 									@include responsiveMax($responsiveSmall) {
-										font-size: 16px;
-										margin-top: 0px;
+										font-size: 14px;
+										margin-top: -5px;
 
 										padding-left: $paddingSmall;
 										padding-right: $paddingSmall;
@@ -161,8 +163,14 @@
 									}
 								}
 
+
 								.HeaderButtonContainer {
+									display: flex;
+									position: relative;
+
 									padding-top: 20px;
+
+									flex-direction: row;
 
 									padding-left: $padding;
 									padding-right: $padding;
@@ -175,6 +183,21 @@
 									@include responsiveMax($responsiveSmall) {
 										padding-left: $paddingSmall;
 										padding-right: $paddingSmall;
+									}
+
+									.HeaderButtonSpacer {
+										display: block;
+										width: 15px;
+
+										@include responsiveMax($responsiveMed) {
+											width: 15px;
+										}
+
+										@include responsiveMax(
+											$responsiveSmall
+										) {
+											width: 10px;
+										}
 									}
 								}
 							}

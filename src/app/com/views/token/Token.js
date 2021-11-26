@@ -99,7 +99,7 @@ class Token extends PureComponent {
 		if (utilityService.browserSupport.mobileDevice === true) {
 			innerHeight = windowInnerHeight;
 
-			introStartElement[0].style.minHeight = innerHeight + 'px';
+			introStartElement[0].style.height = innerHeight + 'px';
 		}
 	}
 
@@ -144,24 +144,38 @@ class Token extends PureComponent {
 							<div className="IntroText">
 								<span className="IntroPunkText">
 									<span className="TextDark">PUNK</span>
-									<span className="TextLight"> token</span>
+									<span className="TextDark"> token</span>
 								</span>
 								<span className="IntroPunkSubText">
-									The basis of our community and the backbone
-									for our upcoming marketplace. <br />
-									Our token sale will start on December the
-									1st
+									The basis of our community & the backbone of
+									our upcoming marketplace. <br />
+									Token sale starts on December 1st
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
-										type={'actionButton'}
+										type={'navigationButton'}
 										label={'Read more'}
 										title={'Read more'}
 										onClick={(event) => {
 											event.preventDefault();
 											vm.scrollToContent();
 										}}
-										cssClass={'HeaderButtonAction'}
+										cssClass={'NavigationButtonAction'}
+										iconImage="/static/media/images/icon-read.svg"
+									/>
+									<div className="HeaderButtonSpacer" />
+									<Button
+										type={'navigationButton'}
+										label={'Token sale'}
+										title={'Token sale'}
+										onClick={(event) => {
+											event.preventDefault();
+											routeService.navigateRoute(
+												'/token-sale'
+											);
+										}}
+										cssClass={'NavigationButtonAction'}
+										iconImage="/static/media/images/icon-wallet.svg"
 									/>
 								</div>
 							</div>
@@ -639,9 +653,9 @@ class Token extends PureComponent {
 								</div>
 							</div>
 						</div>
-						<Footer />
 					</div>
 				</div>
+				<Footer />
 			</div>
 		);
 	}
