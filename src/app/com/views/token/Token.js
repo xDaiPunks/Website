@@ -30,7 +30,6 @@ class Token extends PureComponent {
 		this.componentName = 'Token';
 
 		this.guid = utilityService.guid();
-
 	}
 
 	updateView() {
@@ -104,7 +103,6 @@ class Token extends PureComponent {
 		}
 	}
 
-
 	componentWillUnmount() {
 		const vm = this;
 
@@ -171,13 +169,15 @@ class Token extends PureComponent {
 						</div>
 						<div className="IntroContent">
 							<div className="ContentBlock">
-								<div id="PunkToken" className="BlockTitle">PUNK token</div>
+								<div id="PunkToken" className="BlockTitle">
+									PUNK token
+								</div>
 								<div className="ContentItemContent">
 									xDaiPunks has become a community driven
 									multifaceted NFT project. What started out
 									as a collection of 10.000 2d Punks quickly
 									evolved into a community-driven project that
-									builds, owns and governs other projects that 
+									builds, owns and governs other projects that
 									help to improve and reduce friction in the
 									xDai NFT ecosystem.
 									<br />
@@ -203,9 +203,10 @@ class Token extends PureComponent {
 									xDaiPunks is a DAO and PUNK is our
 									governance token. Holders can use it to vote
 									on proposals that community members bring
-									forward. Tools like 1Hive Gardens and Snapshot
-									will be used to manage our DAO and the PUNK
-									token will give community members a voice.
+									forward. Tools like 1Hive Gardens and
+									Snapshot will be used to manage our DAO and
+									the PUNK token will give community members a
+									voice.
 									<br />
 									<br />
 									<span className="SubTitleInline">Burn</span>
@@ -218,40 +219,42 @@ class Token extends PureComponent {
 									marketplace will come from listing and
 									marketing fees. Revenue from the marketplace
 									will be used to buy PUNK tokens in the open
-									market and burn them, making them deflacionary.
+									market and burn them, making them
+									deflacionary.
 									<br />
 									<br />
 									<span className="SubTitleInline">Vest</span>
 									<br />
-									50% of the total PUNK supply will be 'airdropped'
-									on the Punk NFT collection. This means that
-									each Punk NFT will have 10k PUNK tokens
-									locked-up. Through the vesting contract, the
-									locked-up tokens will be released over a
-									period of 36 months. During this period (called 
-									the 'vesting period') the Punk owner can claim 
-									vested tokens. Tokens will be released in every block,
-									so in theory, a Punk hodler can claim newly released
-									PUNK tokens every 5 seconds.
+									50% of the total PUNK supply will be
+									'airdropped' on the Punk NFT collection.
+									This means that each Punk NFT will have 10k
+									PUNK tokens locked-up. Through the vesting
+									contract, the locked-up tokens will be
+									released over a period of 36 months. During
+									this period (called the 'vesting period')
+									the Punk owner can claim vested tokens.
+									Tokens will be released in every block, so
+									in theory, a Punk hodler can claim newly
+									released PUNK tokens every 5 seconds.
 									<br />
 									<br />
 									Although the full 10K PUNK tokens will not
-									be released at once, the value of the
-									PUNK tokens (the remaining claim)
-									will be locked-up in the Punk NFT. In
-									theory, this should add value to the Punk NFT
-									itself. The Punk NFTs are tradable and
-									change of ownership during the vesting
-									period also means a change of ownership of the
-									remaining claim.
+									be released at once, the value of the PUNK
+									tokens (the remaining claim) will be
+									locked-up in the Punk NFT. In theory, this
+									should add value to the Punk NFT itself. The
+									Punk NFTs are tradable and change of
+									ownership during the vesting period also
+									means a change of ownership of the remaining
+									claim.
 									<br />
 									<br />
 									The vesting period will start 2 months after
-									the token pre-sale. This to incentivize long-term 
-									commitment to our project, and to give us time to have
-									our upcoming marketplace up and running to
-									alleviate the inflation from the vested
-									tokens.
+									the token pre-sale. This to incentivize
+									long-term commitment to our project, and to
+									give us time to have our upcoming
+									marketplace up and running to alleviate the
+									inflation from the vested tokens.
 								</div>
 							</div>
 							<div className="ContentBlock">
@@ -270,13 +273,13 @@ class Token extends PureComponent {
 									/>
 								</a>
 								<div className="ContentItemContent">
-									Our upcoming marketplace, NiftyFair,
-									is key to our tokenomics. The marketplace,
-									which will live on the xDai blockchain, aims
-									to produce a friction-less experience for creating,
-									minting and trading NFTs. Low gas fees and fast
-									transaction times already reduce friction,
-									but there is more.
+									Our upcoming marketplace, NiftyFair, is key
+									to our tokenomics. The marketplace, which
+									will live on the xDai blockchain, aims to
+									produce a friction-less experience for
+									creating, minting and trading NFTs. Low gas
+									fees and fast transaction times already
+									reduce friction, but there is more.
 									<br />
 									<br />
 									The revenue model of NiftyFair will be based
@@ -289,17 +292,17 @@ class Token extends PureComponent {
 									what makes our marketplace fair.
 									<br />
 									<br />
-									Furthermore, we have given features a lot
-									of thought. On NiftyFair, you can
-									easily create NFTs - or even entire NFT
-									collections - without the need for writing
-									smart contracts. Even an NFT drop is easily
+									Furthermore, we have given features a lot of
+									thought. On NiftyFair, you can easily create
+									NFTs - or even entire NFT collections -
+									without the need for writing smart
+									contracts. Even an NFT drop is easily
 									created. As a buyer, you can easily message
 									sellers to negotiate deals. You even have
 									the option to make a percentage of the sale
-									price, available to promotors to market your 
-									NFT or your NFT collection. This
-									is what makes our marketplace rather nifty.
+									price, available to promotors to market your
+									NFT or your NFT collection. This is what
+									makes our marketplace rather nifty.
 									<br />
 									<br />
 									The backbone of NiftyFair is the PUNK token.
@@ -315,12 +318,12 @@ class Token extends PureComponent {
 									className="ContentItemContent"
 									style={{ paddingBottom: '10px' }}>
 									The total supply of PUNK is 200 million
-									tokens. 50% of the total supply, which is 100
-									million tokens, will be distributed to our
-									vesting program. Tokens will remain
-									locked until the vesting program starts, which is after
-									the token sale ends plus a grace period
-									of 2 months.
+									tokens. 50% of the total supply, which is
+									100 million tokens, will be distributed to
+									our vesting program. Tokens will remain
+									locked until the vesting program starts,
+									which is after the token sale ends plus a
+									grace period of 2 months.
 								</div>
 								<div className="TextImage">
 									<img
@@ -338,9 +341,9 @@ class Token extends PureComponent {
 									<br />
 									25% of the token supply will be used for the
 									token sale. The token sale will start on
-									December 1st through a so-called IBCO (Initial
-									Bond Curve Offering). You can find more
-									details on the token sale below.
+									December 1st through a so-called IBCO
+									(Initial Bond Curve Offering). You can find
+									more details on the token sale below.
 									<br />
 									<br />
 									<span className="SubTitleInline">
@@ -350,8 +353,8 @@ class Token extends PureComponent {
 									20% of the token supply, which is 40 million
 									tokens, will be distributed to our treasury.
 									The treasury will be managed by the DAO. In
-									the current proposal, the tokens that will be
-									available for the treasury will be
+									the current proposal, the tokens that will
+									be available for the treasury will be
 									distributed in the following way:
 									<ul>
 										<li>25% Liquidity</li>
@@ -371,30 +374,31 @@ class Token extends PureComponent {
 										Vesting program
 									</span>
 									<br />
-									50% of the total supply, which is 100 million
-									tokens, will be distributed to Punk owners
-									through the vesting program. The vesting
-									program will airdrop 100 million tokens on
-									the 10.000 Punk NFTs. These tokens will be
-									locked-up and their release will be spread 
-									over the vesting period of 36 months.
+									50% of the total supply, which is 100
+									million tokens, will be distributed to Punk
+									owners through the vesting program. The
+									vesting program will airdrop 100 million
+									tokens on the 10.000 Punk NFTs. These tokens
+									will be locked-up and their release will be
+									spread over the vesting period of 36 months.
 									<br />
 									<br />
-									This means that the value of the tokens is also
-									locked-up in the Punk NFT. During the
-									vesting period of 36 months, a fraction of the 
-									tokens will be unlocked with every block, which 
-									is created every 5 seconds. A Punk owner can opt 
-									to claim these unlocked tokens continuously over 
-									the period, or leave them unclaimed within the 
-									Punk NFT. Tokens will continue to be unlocked 
-									until the vesting period ends.
+									This means that the value of the tokens is
+									also locked-up in the Punk NFT. During the
+									vesting period of 36 months, a fraction of
+									the tokens will be unlocked with every
+									block, which is created every 5 seconds. A
+									Punk owner can opt to claim these unlocked
+									tokens continuously over the period, or
+									leave them unclaimed within the Punk NFT.
+									Tokens will continue to be unlocked until
+									the vesting period ends.
 									<br />
 									<br />
 									If a Punk is traded, the remaining locked
 									and unclaimed tokens will transfer to the
 									new owner. The new unlocked tokens, as well
-									as the unclaimed tokens, can be claimed only 
+									as the unclaimed tokens, can be claimed only
 									by the new owner. Although the value of the
 									tokens is locked-up in the Punk NFT, the
 									Punk NFTs themselves can be traded.
@@ -407,15 +411,16 @@ class Token extends PureComponent {
 								<div
 									className="ContentItemContent"
 									style={{ paddingBottom: '10px' }}>
-									Our token sale will commence on December 1st.
-									25% off the total supply, which is 50 million
-									PUNK tokens, will be available for this
-									event. We want a token sale that
-									is as fair as possible, this is why our
-									token sale will be held through a so-called IBCO
-									(Initial Bond Curve Offering). Although IBCO's can be
-									complex, we chose a simple 'Bonding Curve'. See the
-									graphical example below.
+									Our token sale will commence on December
+									1st. 25% off the total supply, which is 50
+									million PUNK tokens, will be available for
+									this event. We want a token sale that is as
+									fair as possible, this is why our token sale
+									will be held through a so-called IBCO
+									(Initial Bond Curve Offering). Although
+									IBCO's can be complex, we chose a simple
+									'Bonding Curve'. See the graphical example
+									below.
 								</div>
 								<div className="TextImage">
 									<img
@@ -440,16 +445,16 @@ class Token extends PureComponent {
 									released, pro rata, to the participants.
 									Because the amount of tokens is fixed, a
 									price for the token is set. This is done by
-									dividing the total amount of funds sent to 
+									dividing the total amount of funds sent to
 									the contract by the total amount of tokens.
 									<br />
 									<br />
 									In the graphical example above, there is a
 									fixed amount of 1000 tokens and there are 4
 									participants. The total of contributed funds
-									is 100 xDai. When we divide the total supply
-									of 1000 tokens by the contributed funds, we 
-									get a token price of 0.1 xDai. The amount of 
+									is 100 xDai. When we divide the contributed
+									funds by the total supply of 1000 tokens, we
+									get a token price of 0.1 xDai. The amount of
 									tokens Participant 1 is able to claim is 250
 									tokens. Participant 2 can claim 200 tokens,
 									participant 3 can claim 500 tokens and
@@ -460,27 +465,36 @@ class Token extends PureComponent {
 									following properties:
 									<br />
 									<ul>
-										<li>Same settlement price for everyone</li>
+										<li>
+											Same settlement price for everyone
+										</li>
 										<li>No front-running</li>
 										<li>No pumps & dumps by whales</li>
 										<li>No price manipulations</li>
-										<li>Price increases with every purchase</li>
-										<li>Collective, not competitive, contributions</li>
-										<li>Pooling contributions in one batch</li>
+										<li>
+											Price increases with every purchase
+										</li>
+										<li>
+											Collective, not competitive,
+											contributions
+										</li>
+										<li>
+											Pooling contributions in one batch
+										</li>
 									</ul>
 									<br />
 									<span className="SubTitleInline">
 										PUNK token sale
 									</span>
 									<br />
-									Our token sale will commence on December 1st.
-									25% off the total supply, that is 50 million
-									PUNK tokens, will be available for this
-									event. The token sale will happen on the
-									xDai blockchain. The token sale will last 7
-									days. After 7 days, on the 8th of December,
-									participants can claim their PUNK tokens.
-									This claim is pro rata.
+									Our token sale will commence on December
+									1st. 25% off the total supply, that is 50
+									million PUNK tokens, will be available for
+									this event. The token sale will happen on
+									the xDai blockchain. The token sale will
+									last 7 days. After 7 days, on the 8th of
+									December, participants can claim their PUNK
+									tokens. This claim is pro rata.
 									<br />
 									<br />
 									A day after the token sale, liquidity will
@@ -490,33 +504,33 @@ class Token extends PureComponent {
 									<br />
 									<br />
 									The token sale requires no minimal
-									contribution. Contributions are in xDai only.
-									Anyone, who can confirm they
-									are not based in a jurisdiction where
-									buying, trading and/or owning the PUNK token
-									would be prohibited or restricted in any
-									manner, can contribute.
+									contribution. Contributions are in xDai
+									only. Anyone, who can confirm they are not
+									based in a jurisdiction where buying,
+									trading and/or owning the PUNK token would
+									be prohibited or restricted in any manner,
+									can contribute.
 									<br />
 									<br />
 									<span className="SubTitleInline">
 										Token sale legal notice
 									</span>
 									<br />
-									Investment in a token sale entails risk of
-									a partial or complete loss of the investment.
+									Investment in a token sale entails risk of a
+									partial or complete loss of the investment.
 									No guarantee is given regarding the value of
 									the tokens acquired in the offering and the
-									exchange value of said tokens in legal currency.
-									Tokens do not constitute financial instruments
-									or securities tokens and confer no other rights
-									than those described. In addition, the
-									regulatory framework applicable to the
-									offering and to the tokens as well as the
-									tax regime applicable to the holding of
-									tokens are not defined to date in certain
-									jurisdictions. Please consult your local tax
-									and legal advisor before considering
-									purchasing tokens.
+									exchange value of said tokens in legal
+									currency. Tokens do not constitute financial
+									instruments or securities tokens and confer
+									no other rights than those described. In
+									addition, the regulatory framework
+									applicable to the offering and to the tokens
+									as well as the tax regime applicable to the
+									holding of tokens are not defined to date in
+									certain jurisdictions. Please consult your
+									local tax and legal advisor before
+									considering purchasing tokens.
 								</div>
 							</div>
 							<div className="ContentBlock">
@@ -536,18 +550,22 @@ class Token extends PureComponent {
 										Periods
 									</span>
 									<br />
-									Our token sale will start at 2pm CET on December 1st
-									and will end at 6pm CET on December 8th. After the
-									token sale has ended, a grace period of 2 months will
-									begin, after which time the vesting period will commence 
-									for both the team and the Punk owners.
+									Our token sale will start at 2pm CET on
+									December 1st and will end at 6pm CET on
+									December 8th. After the token sale has
+									ended, a grace period of 2 months will
+									begin, after which time the vesting period
+									will commence for both the team and the Punk
+									owners.
 									<br />
 									<br />
-									The grace period and the vesting period still require 
-									DAO approval. The vote for this approval will be held
-									in the first week of the grace period. This means that
-									the grace period and the vesting period may change. The
-									vote will include the participants of the token sale.
+									The grace period and the vesting period
+									still require DAO approval. The vote for
+									this approval will be held in the first week
+									of the grace period. This means that the
+									grace period and the vesting period may
+									change. The vote will include the
+									participants of the token sale.
 								</div>
 							</div>
 							<div className="ContentBlock">
