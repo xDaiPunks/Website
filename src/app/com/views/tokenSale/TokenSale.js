@@ -184,7 +184,7 @@ class TokenSale extends PureComponent {
 												Currently raised
 											</span>
 											<span className="TokenSaleContent">
-												Not started
+												Sale not started
 											</span>
 										</div>
 									</div>
@@ -194,7 +194,7 @@ class TokenSale extends PureComponent {
 												Total supply
 											</span>
 											<span className="TokenSaleContent">
-												50M PUNK
+												50 Million PUNK
 											</span>
 										</div>
 										<div className="TokenSaleSubItem">
