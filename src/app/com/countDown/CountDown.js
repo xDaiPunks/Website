@@ -83,18 +83,14 @@ class CountDown extends PureComponent {
 		const minutes = vm.state.minutes;
 		const seconds = vm.state.seconds;
 
-		if (vm.state.active === false) {
-			return null;
-		} else {
-			return (
-				<>
-					<span className="TimeText">{days + ' Days '}</span>
-					<span className="TimeText">{hours + ' Hours '}</span>
-					<span className="TimeText">{minutes + ' Minutes '}</span>
-					<span className="TimeText">{seconds + ' Seconds'}</span>
-				</>
-			);
-		}
+		return (
+			<>
+				<span className="TimeText">{days + ' Days '}</span>
+				<span className="TimeText">{hours + ' Hours '}</span>
+				<span className="TimeText">{minutes + ' Minutes '}</span>
+				<span className="TimeText">{seconds + ' Seconds'}</span>
+			</>
+		);
 	}
 }
 

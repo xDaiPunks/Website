@@ -37,6 +37,7 @@ class MarketPlace extends PureComponent {
 
 		this.state = {
 			filter: {
+				types: null,
 				statuses: null,
 				attributes: null,
 			},

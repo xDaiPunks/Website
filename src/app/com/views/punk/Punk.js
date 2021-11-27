@@ -297,6 +297,7 @@ class Punk extends PureComponent {
 		const bidData = vm.punkDetails.bidData;
 		const saleData = vm.punkDetails.saleData;
 
+		const type = vm.punkDetails.type;
 		const attributes = vm.punkDetails.attributes;
 		const AttributesComponent = this.attributesComponent;
 
@@ -357,7 +358,7 @@ class Punk extends PureComponent {
 						</div>
 					</div>
 
-					<AttributesComponent attributes={attributes} />
+					<AttributesComponent type={type} attributes={attributes} />
 				</div>
 			</div>
 		);
@@ -618,11 +619,16 @@ class Punk extends PureComponent {
 
 	attributesComponent(props) {
 		const vm = this;
+
+		const type = props.type;
 		const attributes = props.attributes;
 
 		// console.log(attributes);
 		return (
 			<div className="PunkDetailItemAttributes">
+				<div className="PunkDetailItemTitle">Type</div>
+				<div className="PunkDetailItemAttribute">{type}</div>
+				<div style={{height: '10px'}} />
 				<div className="PunkDetailItemTitle">Attributes</div>
 				{attributes.map((item, index) => {
 					return (

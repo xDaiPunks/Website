@@ -44,6 +44,12 @@ class TokenSale extends PureComponent {
 			requestError: false,
 		};
 
+		this.updateTimeout = null;
+		this.updateInterval = null;
+
+		this.updateTimeoutTime = 5000;
+		this.updateIntervalTime = 1000;
+
 		this.loader = React.createRef();
 
 		this.componentName = 'TokenSale';
@@ -74,7 +80,7 @@ class TokenSale extends PureComponent {
 	}
 
 	componentDidMount() {
-		// configService.countDownEnd = 1638018664000;
+		configService.countDownEnd = 1638033858000;
 		configService.countDownStart = 1638017679000;
 
 		const vm = this;
@@ -154,6 +160,11 @@ class TokenSale extends PureComponent {
 				});
 
 				vm.forceUpdate();
+
+				clearTimeout(vm.updateTimeout);
+				vm.updateTimeout = setTimeout(() => {
+					vm.getData();
+				}, vm.updateTimeoutTime);
 			})
 			.catch((responseError) => {
 				view = 'error';
@@ -175,7 +186,17 @@ class TokenSale extends PureComponent {
 					vm.loader.current.hideLoader(true);
 				});
 
+				clearTimeout(vm.updateTimeout);
+				vm.updateTimeout = setTimeout(() => {
+					vm.getData();
+				}, vm.updateTimeoutTime);
+
 				vm.forceUpdate();
+
+				clearTimeout(vm.updateTimeout);
+				vm.updateTimeout = setTimeout(() => {
+					vm.getData();
+				}, vm.updateTimeoutTime);
 			});
 	}
 
@@ -190,6 +211,41 @@ class TokenSale extends PureComponent {
 
 			introStartElement[0].style.height = innerHeight + 'px';
 		}
+	}
+
+	setInterval() {
+		let time;
+		let view;
+		let state;
+
+		let countDownEnd;
+		let countDownStart;
+
+		const vm = this;
+
+		clearInterval(vm.updateInterval);
+
+		vm.updateInterval = setInterval(() => {
+			time = new Date().getTime();
+			state = utilityService.cloneObject(vm.state);
+
+			countDownEnd = configService.countDownEnd;
+			countDownStart = configService.countDownStart;
+
+			if (time < countDownStart) {
+				view = 'countToSale';
+			} else {
+				if (time < countDownEnd) {
+					view = 'countToSaleEnd';
+				} else {
+					view = 'tokenSaleCompleted';
+				}
+			}
+
+			state.view = view;
+
+			vm.setState(state, () => {});
+		}, vm.updateIntervalTime);
 	}
 
 	participate() {
@@ -299,9 +355,8 @@ class TokenSale extends PureComponent {
 	tokenSubComponent() {
 		let raised;
 		let contribution;
-		let currentShare;
 
-		const vm = this;
+		let currentShare;
 
 		const userSignedIn = userService.userSignedIn;
 
@@ -315,9 +370,6 @@ class TokenSale extends PureComponent {
 		} else {
 			raised = tokenSaleService.raised;
 			contribution = tokenSaleService.contribution;
-
-			console.log(raised);
-			console.log(contribution);
 
 			currentShare =
 				BigNumber(contribution)
@@ -384,10 +436,15 @@ class TokenSale extends PureComponent {
 		}
 
 		if (view === 'countToSaleEnd') {
-			// get raised and format;
 			raised =
 				BigNumber(tokenSaleService.raised).div(1e18).toFormat(2) +
 				' xDai';
+
+			tokenPrice =
+				BigNumber(tokenSaleService.raised)
+					.div(1e18)
+					.div(50e6)
+					.toFormat(6) + ' xDai';
 
 			return (
 				<div className="TokenSaleInfo">
@@ -405,9 +462,11 @@ class TokenSale extends PureComponent {
 						<div className="TokenSaleSpacer" />
 						<div className="TokenSaleItem">
 							<span className="TokenSaleTitle">
-								Amount raised
+								Raised : price
 							</span>
-							<span className="TokenSaleContent">{raised}</span>
+							<span className="TokenSaleContent">
+								{raised + ' : ' + tokenPrice}
+							</span>
 						</div>
 					</div>
 					<div className="TokenSaleSubMain">
@@ -460,6 +519,9 @@ class TokenSale extends PureComponent {
 
 	componentWillUnmount() {
 		const vm = this;
+
+		clearTimeout(vm.updateTimeout);
+		clearInterval(vm.updateInterval);
 
 		eventService.off('resize', vm.guid);
 		eventService.off('route:home', vm.guid);
