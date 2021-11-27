@@ -66,7 +66,9 @@ class AppService {
 
 		return new Promise((resolve, reject) => {
 			const promiseArray = [];
+
 			promiseArray.push(web3Service.totalRevenue());
+			promiseArray.push(web3Service.senderContribution());
 
 			Promise.all(promiseArray)
 				.then((responses) => {

@@ -42,6 +42,7 @@ class Modal extends PureComponent {
 		this.bidInput = React.createRef();
 		this.mintInput = React.createRef();
 		this.offerInput = React.createRef();
+		this.contributeInput = React.createRef();
 
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -58,8 +59,12 @@ class Modal extends PureComponent {
 		this.bidModal = this.bidModal.bind(this);
 		this.mintModal = this.mintModal.bind(this);
 		this.offerModal = this.offerModal.bind(this);
+
 		this.alertModal = this.alertModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
+
+		this.participateModal = this.participateModal.bind(this);
+
 		this.languageSwitchModal = this.languageSwitchModal.bind(this);
 	}
 
@@ -519,7 +524,7 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">{'What amount?'}</span>
+						<span className="ModalHeader">{'Amount in xDai?'}</span>
 						<div className="MintInput">
 							<Input
 								ref={vm.bidInput}
@@ -766,6 +771,78 @@ class Modal extends PureComponent {
 		);
 	}
 
+	participateModal(props) {
+		let value;
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.enterBidForPunk) {
+				if (
+					vm.bidInput &&
+					vm.bidInput.current &&
+					vm.bidInput.current.state &&
+					vm.bidInput.current.state.value
+				) {
+					value = vm.bidInput.current.state.value.replace(',', '.');
+					value = parseFloat(value.trim());
+
+					if (value > 0) {
+						props.enterBidForPunk(value);
+					}
+				}
+			}
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">{'Amount in xDai?'}</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.bidInput}
+								id={'inputNumber'}
+								type={'text'}
+								inputType={'input'}
+								defaultValue={''}
+								placeholder={'Enter an amount'}
+							/>
+						</div>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Add contribution'}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
 	languageSwitchModal(props) {
 		let modalClass;
 		let onClick = this.closeModal;
@@ -822,6 +899,7 @@ class Modal extends PureComponent {
 		const OfferModal = this.offerModal;
 		const AlertModal = this.alertModal;
 		const WalletModal = this.walletModal;
+		const ParticipateModal = this.participateModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
 
 		props = utilityService.extendObject(this.state, this.stateProps);
@@ -847,6 +925,9 @@ class Modal extends PureComponent {
 
 			case 'walletModal':
 				return <WalletModal {...props} />;
+
+			case 'participateModal':
+				return <ParticipateModal {...props} />;
 
 			case 'languageModal':
 				return <LanguageSwitchModal {...props} />;

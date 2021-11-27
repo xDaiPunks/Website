@@ -13,6 +13,7 @@ import UserService from 'src/app/services/UserService';
 import EventService from 'src/app/services/EventService';
 import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
+import TokenSaleService from 'src/app/services/TokenSaleService';
 
 let Instance;
 
@@ -25,6 +26,7 @@ const userService = new UserService();
 const eventService = new EventService();
 const configService = new ConfigService();
 const utilityService = new UtilityService();
+const tokenSaleService = new TokenSaleService();
 
 class Web3Service {
 	constructor() {
@@ -68,10 +70,7 @@ class Web3Service {
 		const vm = this;
 
 		vm.ibcoAbi = ibcoAbi;
-		vm.ibcoAddress = vm.ibcoAddress;
-
 		vm.xdaiPunksAbi = xDaiPunksAbi;
-		vm.xDaiPunkAddress = vm.xDaiPunksAddress;
 	}
 
 	setContract() {
@@ -94,7 +93,7 @@ class Web3Service {
 
 		vm.contract = new web3.eth.Contract(
 			vm.xdaiPunksAbi,
-			vm.xDaiPunkAddress
+			vm.xDaiPunksAddress
 		);
 	}
 
@@ -776,7 +775,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -826,7 +825,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -860,7 +859,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -893,7 +892,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -926,7 +925,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -960,7 +959,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -992,7 +991,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -1024,7 +1023,7 @@ class Web3Service {
 
 			contract = new vm.walletProvider.eth.Contract(
 				vm.xdaiPunksAbi,
-				vm.xDaiPunkAddress
+				vm.xDaiPunksAddress
 			);
 
 			contract.methods
@@ -1042,23 +1041,58 @@ class Web3Service {
 		});
 	}
 
+	participate() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
+		});
+	}
+
 	totalRevenue() {
 		const vm = this;
+
 		return new Promise((resolve, reject) => {
 			vm.ibco.methods
 				.totalRevenue()
 				.call()
-				.then((totalRevenue) => {
-					
-					resolve(totalRevenue);
+				.then((raised) => {
+					tokenSaleService.raised = raised;
+					resolve(raised);
 				})
-				.catch((totalRevenueError) => {
-					reject(totalRevenueError);
+				.catch((raisedError) => {
+					reject(raisedError);
 				});
 		});
 	}
 
-	senderContribution() {}
+	senderContribution() {
+		const vm = this;
+
+		const address = userService.address;
+		const userSignedIn = userService.userSignedIn;
+
+		return new Promise((resolve, reject) => {
+			if (userSignedIn !== true) {
+				resolve('0');
+			} else {
+				vm.ibco.methods
+					.senderContribution(address)
+					.call()
+					.then((contribution) => {
+						tokenSaleService.contribution = contribution;
+						resolve(contribution);
+					})
+					.catch((contributionError) => {
+						reject(contributionError);
+					});
+			}
+		});
+	}
 
 	disconnectWallet() {
 		const vm = this;
