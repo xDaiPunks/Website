@@ -760,7 +760,7 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Right"></div>
 						</button>
 						<span className="ModalHeader AlignLeft">
-							{'Connect to a wallet'}
+							{'Connect wallet'}
 						</span>
 						<WalletButtons />
 						<div className="LanguageButtonSpacer"></div>
@@ -784,18 +784,18 @@ class Modal extends PureComponent {
 		const onClickButton = (event) => {
 			vm.closeModal(event);
 
-			if (props.enterBidForPunk) {
+			if (props.participateSale) {
 				if (
-					vm.bidInput &&
-					vm.bidInput.current &&
-					vm.bidInput.current.state &&
-					vm.bidInput.current.state.value
+					vm.contributeInput &&
+					vm.contributeInput.current &&
+					vm.contributeInput.current.state &&
+					vm.contributeInput.current.state.value
 				) {
-					value = vm.bidInput.current.state.value.replace(',', '.');
+					value = vm.contributeInput.current.state.value.replace(',', '.');
 					value = parseFloat(value.trim());
 
 					if (value > 0) {
-						props.enterBidForPunk(value);
+						props.participateSale(value);
 					}
 				}
 			}
@@ -818,7 +818,7 @@ class Modal extends PureComponent {
 						<span className="ModalHeader">{'Amount in xDai?'}</span>
 						<div className="MintInput">
 							<Input
-								ref={vm.bidInput}
+								ref={vm.contributeInput}
 								id={'inputNumber'}
 								type={'text'}
 								inputType={'input'}

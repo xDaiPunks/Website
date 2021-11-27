@@ -1041,15 +1041,30 @@ class Web3Service {
 		});
 	}
 
-	participate() {
+	participateSale(amount) {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			let contract;
+			const value = BigNumber(amount).times(1e18).toFixed();
 
 			if (vm.checkCall() !== true) {
 				return reject({ result: 'error', errorType: 'chainId' });
 			}
+
+			vm.walletProvider.eth
+				.sendTransaction({
+					to: vm.ibcoAddress,
+					from: userService.address,
+
+					value: value,
+					gasPrice: vm.gasPrice,
+				})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
 		});
 	}
 

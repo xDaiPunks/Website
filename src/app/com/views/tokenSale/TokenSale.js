@@ -226,8 +226,8 @@ class TokenSale extends PureComponent {
 			return (
 				<Button
 					type={'navigationButton'}
-					label={'Participate in the token sale'}
-					title={'Participate in the token sale'}
+					label={'Contribute to token sale'}
+					title={'Contribute to token sale'}
 					onClick={(event) => {
 						event.preventDefault();
 
@@ -243,8 +243,8 @@ class TokenSale extends PureComponent {
 			return (
 				<Button
 					type={'navigationButton'}
-					label={'Participate in the token sale'}
-					title={'Participate in the token sale'}
+					label={'Contribute to token sale'}
+					title={'Contribute to token sale'}
 					onClick={(event) => {
 						event.preventDefault();
 
@@ -371,7 +371,7 @@ class TokenSale extends PureComponent {
 					<div className="TokenSaleMain">
 						<div className="TokenSaleItem">
 							<span className="TokenSaleTitle">
-								Token ends starts in
+								Token sale ends in
 							</span>
 							<span className="TokenSaleContent">
 								<CountDown
@@ -487,7 +487,7 @@ class TokenSale extends PureComponent {
 									<span className="IntroPunkSubText">
 										Make sure that you have read all info of
 										the token sale <br />
-										before participating
+										before contributing
 									</span>
 									<div className="HeaderButtonContainer">
 										<ButtonComponent />

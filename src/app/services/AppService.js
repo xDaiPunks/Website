@@ -197,6 +197,19 @@ class AppService {
 				});
 		});
 	}
+
+	participateSale(amount) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.participateSale(amount)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
 }
 
 export default AppService;
