@@ -230,6 +230,8 @@ class Web3Service {
 
 					eventService.dispatchObjectEvent('force:state');
 					eventService.dispatchObjectEvent('hide:preloader');
+
+					eventService.dispatchObjectEvent('account:change');
 				});
 
 				eventService.dispatchObjectEvent('show:preloader');
@@ -262,8 +264,11 @@ class Web3Service {
 						punkService.setPunkDetails();
 					}
 
+					
 					eventService.dispatchObjectEvent('force:state');
 					eventService.dispatchObjectEvent('hide:preloader');
+
+					eventService.dispatchObjectEvent('account:change');
 				});
 
 				eventService.dispatchObjectEvent('show:preloader');

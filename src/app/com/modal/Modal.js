@@ -815,7 +815,7 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">{'Amount in xDai?'}</span>
+						<span className="ModalHeader">{'Amount to contribute?'}</span>
 						<div className="MintInput">
 							<Input
 								ref={vm.contributeInput}
@@ -825,6 +825,7 @@ class Modal extends PureComponent {
 								defaultValue={''}
 								placeholder={'Enter an amount'}
 							/>
+							
 						</div>
 
 						<div className="ModalButton">

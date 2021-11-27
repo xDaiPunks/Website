@@ -779,27 +779,7 @@ class PunkAccount extends PureComponent {
 											</span>
 										</div>
 									</div>
-									<div className="AccountItem">
-										<Button
-											type={'actionButtonIcon'}
-											label={'Withdraw'}
-											title={'Withdraw Punk tokens'}
-											onClick={(event) => {
-												event.preventDefault();
-												vm.withdraw();
-											}}
-											iconImage="/static/media/images/icon-money.svg"
-											cssClass={'ActionButtonAccount'}
-										/>
-										<div className="AccountItemContent">
-											<span className="AccountItemTitleText">
-												Punk available to withdraw
-											</span>
-											<span className="AccountItemContentText">
-												{'0.00 Punk'}
-											</span>
-										</div>
-									</div>
+
 									<div className="AccountItem">
 										<Button
 											type={'actionButtonIcon'}

@@ -53,6 +53,7 @@ class TokenSale extends PureComponent {
 		this.getData = this.getData.bind(this);
 
 		this.participate = this.participate.bind(this);
+		this.claimPunkTokens = this.claimPunkTokens.bind(this);
 		this.participateSale = this.participateSale.bind(this);
 
 		this.buttonComponent = this.buttonComponent.bind(this);
@@ -100,8 +101,13 @@ class TokenSale extends PureComponent {
 		});
 
 		eventService.on('force:state', vm.guid, () => {
-			this.setState(this.state);
-			this.forceUpdate();
+			vm.setState(this.state);
+			vm.forceUpdate();
+		});
+
+		eventService.on('account:change', vm.guid, () => {
+			vm.getData();
+			vm.loader.current.showLoader(false);
 		});
 
 		eventService.dispatchObjectEvent('set:view', this.componentName);
@@ -146,6 +152,8 @@ class TokenSale extends PureComponent {
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
 				});
+
+				vm.forceUpdate();
 			})
 			.catch((responseError) => {
 				view = 'error';
@@ -166,6 +174,8 @@ class TokenSale extends PureComponent {
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
 				});
+
+				vm.forceUpdate();
 			});
 	}
 
@@ -190,6 +200,7 @@ class TokenSale extends PureComponent {
 		if (userSignedIn !== true) {
 			eventService.dispatchObjectEvent('show:modal', {
 				type: 'walletModal',
+				raised: tokenSaleService.raised,
 			});
 		} else {
 			eventService.dispatchObjectEvent('show:modal', {
@@ -197,6 +208,17 @@ class TokenSale extends PureComponent {
 				participateSale: vm.participateSale,
 			});
 		}
+	}
+
+	claimPunkTokens() {
+		appService
+			.claimPunkTokens()
+			.then((response) => {
+				// console.log(response);
+			})
+			.catch((responseError) => {
+				// console.log(responseError);
+			});
 	}
 
 	participateSale(amount) {
@@ -265,7 +287,7 @@ class TokenSale extends PureComponent {
 					onClick={(event) => {
 						event.preventDefault();
 
-						// claim tokens directly
+						vm.claimTokens();
 					}}
 					cssClass={'NavigationButtonAction'}
 					iconImage="/static/media/images/icon-wallet.svg"
@@ -297,10 +319,11 @@ class TokenSale extends PureComponent {
 			console.log(raised);
 			console.log(contribution);
 
-			currentShare = BigNumber(contribution)
-				.div(BigNumber(raised))
-				.times(50e6)
-				.toFormat(0) + ' PUNK';
+			currentShare =
+				BigNumber(contribution)
+					.div(BigNumber(raised))
+					.times(50e6)
+					.toFormat(2) + ' PUNK';
 
 			return (
 				<div className="TokenSaleItem">
@@ -441,6 +464,7 @@ class TokenSale extends PureComponent {
 		eventService.off('resize', vm.guid);
 		eventService.off('route:home', vm.guid);
 		eventService.off('force:state', vm.guid);
+		eventService.off('account:change', vm.guid);
 		eventService.off('preloader:hide', vm.guid);
 	}
 
