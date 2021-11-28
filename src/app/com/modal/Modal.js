@@ -59,8 +59,8 @@ class Modal extends PureComponent {
 		this.bidModal = this.bidModal.bind(this);
 		this.mintModal = this.mintModal.bind(this);
 		this.offerModal = this.offerModal.bind(this);
-
 		this.alertModal = this.alertModal.bind(this);
+		this.legalModal = this.legalModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
 
 		this.participateModal = this.participateModal.bind(this);
@@ -84,11 +84,7 @@ class Modal extends PureComponent {
 		);
 
 		eventService.on('hide:modal', vm.guid, (props) => {
-			if (!props.animate) {
-				animate = true;
-			} else {
-				animate = props.animate;
-			}
+			animate = true;
 
 			vm.hideModal({
 				animate: animate,
@@ -104,7 +100,7 @@ class Modal extends PureComponent {
 				propsObject[key] = props[key];
 			}
 
-			if (!props.animate) {
+			if (!props.hasOwnProperty('animate')) {
 				propsObject.animate = true;
 			} else {
 				propsObject.animate = props.animate;
@@ -122,8 +118,29 @@ class Modal extends PureComponent {
 		$('.Modal')[0].scrollTop;
 
 		if (vm.state.action === 'showModal') {
-			$('.Modal .ModalBackground').removeClass('Hidden');
-			$('.Modal .ModalContentBlock').removeClass('Hidden');
+			if (vm.state.animate !== false) {
+				$('.Modal .ModalBackground').removeClass('Hidden');
+				$('.Modal .ModalContentBlock').removeClass('Hidden');
+			}
+
+			if (vm.state.animate === false) {
+				$('.Modal .ModalBackground').removeClass('Hidden');
+
+				animationPromise = animate.transitionRemoveClass(
+					$('.Modal .ModalContentBlock'),
+					'Hidden'
+				);
+
+				animationPromise.fail((error) => {
+					$('.Modal').addClass('Animate');
+				});
+
+				animationPromise.then((response) => {
+					if (response.result === 'success') {
+						$('.Modal').addClass('Animate');
+					}
+				});
+			}
 		}
 
 		if (vm.state.action === 'hideModal') {
@@ -741,6 +758,48 @@ class Modal extends PureComponent {
 		);
 	}
 
+	legalModal(props) {
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+			localStorage.setItem('legalShow', 'shown');
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal Underlay';
+		} else {
+			modalClass = 'Modal Underlay Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<span className="ModalHeader">{props.header}</span>
+						<span
+							className="ModalContentText"
+							dangerouslySetInnerHTML={{
+								__html: props.content,
+							}}></span>
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClick}>
+								<span className="ModalContentButtonText">
+									{props.buttonText}
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="ModalBackground Dark Hidden"></div>
+			</div>
+		);
+	}
+
 	walletModal(props) {
 		let modalClass;
 		let onClick = this.closeModal;
@@ -905,6 +964,7 @@ class Modal extends PureComponent {
 		const MintModal = this.mintModal;
 		const OfferModal = this.offerModal;
 		const AlertModal = this.alertModal;
+		const LegalModal = this.legalModal;
 		const WalletModal = this.walletModal;
 		const ParticipateModal = this.participateModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
@@ -929,6 +989,9 @@ class Modal extends PureComponent {
 
 			case 'alertModal':
 				return <AlertModal {...props} />;
+
+			case 'legalModal':
+				return <LegalModal {...props} />;
 
 			case 'walletModal':
 				return <WalletModal {...props} />;

@@ -93,14 +93,17 @@ class TokenSale extends PureComponent {
 		vm.getData();
 		vm.loader.current.showLoader(false);
 
-		eventService.dispatchObjectEvent('show:modal', {
-			type: 'alertModal',
-			header: 'Terms of use',
-			animate: false,
-			content:
-				'By using this website and investing in the PUNK token, you will be deemed to have:<br /><br />Read the Legal notice and other informational materials about the operation of this token sale<br /><br />Confirmed that you are not based in a jurisdiction where buying, trading and/or owning the PUNK token would be prohibited or restricted in any manner<br /><br />Understood that, despite our best efforts, there can still be exploit risks that exist within the app. Please do not invest more than you can afford to lose',
-			buttonText: 'Accept',
-		});
+		if (localStorage.getItem('legalShow') !== 'shown') {
+			eventService.dispatchObjectEvent('show:modal', {
+				type: 'legalModal',
+				header: 'Terms of use',
+				animate: false,
+				animateClose: true,
+				content:
+					'By using this website and investing in the PUNK token, you will be deemed to have:<br /><br />Read the Legal notice and other informational materials about the operation of this token sale<br /><br />Confirmed that you are not based in a jurisdiction where buying, trading and/or owning the PUNK token would be prohibited or restricted in any manner<br /><br />Understood that, despite our best efforts, there can still be exploit risks that exist within the app. Please do not invest more than you can afford to lose',
+				buttonText: 'Accept',
+			});
+		}
 
 		eventService.on('resize', vm.guid, () => {
 			setTimeout(() => {

@@ -331,6 +331,24 @@
 		background-color: rgba(70, 10, 130, 0.5);
 	}
 
+	.ModalBackground.Dark {
+		display: block;
+		position: relative;
+
+		top: 0;
+		left: 0;
+
+		width: 100vw;
+		height: 100vh;
+		max-width: 100%;
+
+		opacity: 1;
+
+		perspective: 0;
+
+		background-color: rgba(17, 17, 17, 1);
+	}
+
 	.ModalBackground.Hidden {
 		opacity: 0;
 	}
@@ -340,6 +358,10 @@
 	width: 0;
 	height: 0;
 	visibility: hidden;
+}
+
+.Modal.Underlay {
+	z-index: 78;
 }
 
 .Modal.Animate {
