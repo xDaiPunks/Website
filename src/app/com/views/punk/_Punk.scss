@@ -504,6 +504,51 @@
 						}
 					}
 				}
+
+				.ViewBoxExtra {
+					display: flex;
+					position: relative;
+
+					width: 100%;
+
+					flex-direction: column;
+
+					padding-left: $padding;
+					padding-right: $padding;
+					padding-bottom: $padding;
+
+					@include responsiveMax($responsiveMed) {
+						padding-left: $paddingMed;
+						padding-right: $paddingMed;
+						padding-bottom: $paddingMed;
+					}
+
+					@include responsiveMax($responsiveSmall) {
+						padding-left: $paddingSmall;
+						padding-right: $paddingSmall;
+						padding-bottom: $paddingSmall;
+					}
+
+					.ViewBoxExtraContainer {
+						display: flex;
+						position: relative;
+
+						flex-direction: column;
+
+						width: 33vw;
+						padding-top: 0px;
+
+						@include responsiveMax($responsiveMed) {
+							width: 40vw;
+							padding-top: 0px;
+						}
+
+						@include responsiveMax($responsiveSmall) {
+							width: auto;
+							padding-top: 15px;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -171,6 +171,19 @@ class AppService {
 		});
 	}
 
+	transferPunkAddress(idx, address) {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.transferPunkAddress(idx, address)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
 	withdraw() {
 		return new Promise((resolve, reject) => {
 			web3Service

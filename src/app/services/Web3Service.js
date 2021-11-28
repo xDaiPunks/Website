@@ -1045,6 +1045,38 @@ class Web3Service {
 		});
 	}
 
+	transferPunkAddress(idx, address) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
+			idx = vm.getIdx(idx);
+
+			contract = new vm.walletProvider.eth.Contract(
+				vm.xdaiPunksAbi,
+				vm.xDaiPunksAddress
+			);
+
+			contract.methods
+				.safeTransferFrom(userService.address, address, idx)
+				.send({
+					gasPrice: vm.gasPrice,
+					from: userService.address,
+				})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
 	totalRevenue() {
 		const vm = this;
 

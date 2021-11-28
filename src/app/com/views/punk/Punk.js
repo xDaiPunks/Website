@@ -38,6 +38,7 @@ class Punk extends PureComponent {
 
 		this.buy = this.buy.bind(this);
 		this.enterBid = this.enterBid.bind(this);
+		this.transferPunk = this.transferPunk.bind(this);
 		this.offerForSale = this.offerForSale.bind(this);
 
 		this.buyPunk = this.buyPunk.bind(this);
@@ -46,6 +47,9 @@ class Punk extends PureComponent {
 		this.removeOffer = this.removeOffer.bind(this);
 		this.enterBidForPunk = this.enterBidForPunk.bind(this);
 		this.offerPunkForSale = this.offerPunkForSale.bind(this);
+		this.transferPunkAddress = this.transferPunkAddress.bind(this);
+
+		this.extra = this.extra.bind(this);
 
 		this.punkDataComponent = this.punkDataComponent.bind(this);
 		this.punkButtonComponent = this.punkButtonComponent.bind(this);
@@ -172,6 +176,19 @@ class Punk extends PureComponent {
 		});
 	}
 
+	transferPunk() {
+		let idx;
+		const vm = this;
+
+		idx = vm.punkDetails.idx;
+
+		eventService.dispatchObjectEvent('show:modal', {
+			type: 'transferModal',
+			idx: idx,
+			transferPunkAddress: vm.transferPunkAddress,
+		});
+	}
+
 	offerForSale() {
 		let idx;
 
@@ -282,6 +299,56 @@ class Punk extends PureComponent {
 			.catch((responseError) => {
 				// console.log(responseError);
 			});
+	}
+
+	transferPunkAddress(address) {
+		let idx;
+		const vm = this;
+
+		idx = vm.punkDetails.idx;
+
+		appService
+			.transferPunkAddress(idx, address)
+			.then((response) => {
+				// console.log(response);
+			})
+			.catch((responseError) => {
+				// console.log(responseError);
+			});
+	}
+
+	extra() {
+		let owned;
+
+		const vm = this;
+		const owner = vm.punkDetails.owner;
+
+		if (userService.userSignedIn === true) {
+			if (owner.toLowerCase() === userService.address.toLowerCase()) {
+				owned = true;
+			}
+		}
+
+		if (!owned) {
+			return null;
+		} else {
+			return (
+				<div className="ViewBoxExtra">
+					<div className="ViewBoxExtraContainer">
+						<Button
+							type={'actionButton'}
+							label={'Transfer this Punk'}
+							title={'Transfer this Punk'}
+							onClick={(event) => {
+								event.preventDefault();
+								vm.transferPunk();
+							}}
+							cssClass={'ActionButton'}
+						/>
+					</div>
+				</div>
+			);
+		}
 	}
 
 	punkDataComponent() {
@@ -628,7 +695,7 @@ class Punk extends PureComponent {
 			<div className="PunkDetailItemAttributes">
 				<div className="PunkDetailItemTitle">Type</div>
 				<div className="PunkDetailItemAttribute">{type}</div>
-				<div style={{height: '10px'}} />
+				<div style={{ height: '10px' }} />
 				<div className="PunkDetailItemTitle">Attributes</div>
 				{attributes.map((item, index) => {
 					return (
@@ -657,6 +724,8 @@ class Punk extends PureComponent {
 		let transitionClass;
 
 		const vm = this;
+
+		const Extra = vm.extra;
 
 		const PunkDataComponent = vm.punkDataComponent;
 		const PunkButtonComponent = vm.punkButtonComponent;
@@ -714,6 +783,7 @@ class Punk extends PureComponent {
 					</div>
 					<PunkButtonComponent />
 				</div>
+				<Extra />
 				<Footer />
 			</div>
 		);

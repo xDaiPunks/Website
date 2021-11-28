@@ -42,6 +42,7 @@ class Modal extends PureComponent {
 		this.bidInput = React.createRef();
 		this.mintInput = React.createRef();
 		this.offerInput = React.createRef();
+		this.transferInput = React.createRef();
 		this.contributeInput = React.createRef();
 
 		this.showModal = this.showModal.bind(this);
@@ -62,7 +63,7 @@ class Modal extends PureComponent {
 		this.alertModal = this.alertModal.bind(this);
 		this.blockModal = this.blockModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
-
+		this.transferModal = this.transferModal.bind(this);
 		this.participateModal = this.participateModal.bind(this);
 
 		this.languageSwitchModal = this.languageSwitchModal.bind(this);
@@ -766,7 +767,7 @@ class Modal extends PureComponent {
 		const onClick = (event) => {
 			vm.closeModal(event);
 			console.log(props);
-			
+
 			if (props.hasOwnProperty('blockStorage')) {
 				localStorage.setItem(
 					props.blockStorage,
@@ -832,6 +833,77 @@ class Modal extends PureComponent {
 						</span>
 						<WalletButtons />
 						<div className="LanguageButtonSpacer"></div>
+					</div>
+				</div>
+				<div className="ModalBackground Hidden"></div>
+			</div>
+		);
+	}
+
+	transferModal(props) {
+		let value;
+		let modalClass;
+
+		const vm = this;
+
+		const onClick = (event) => {
+			vm.closeModal(event);
+		};
+
+		const onClickButton = (event) => {
+			vm.closeModal(event);
+
+			if (props.transferPunkAddress) {
+				if (
+					vm.transferInput &&
+					vm.transferInput.current &&
+					vm.transferInput.current.state &&
+					vm.transferInput.current.state.value
+				) {
+					value = vm.transferInput.current.state.value.trim();
+
+					if (web3Service.isAddress(value)) {
+						props.transferPunkAddress(value);
+					}
+				}
+			}
+		};
+
+		if (props.animate !== true) {
+			modalClass = 'Modal';
+		} else {
+			modalClass = 'Modal Animate';
+		}
+
+		return (
+			<div className={modalClass}>
+				<div className="ModalContent">
+					<div className="ModalContentBlock Hidden">
+						<button className="CloseModalButton" onClick={onClick}>
+							<div className="CloseCrossLine Left"></div>
+							<div className="CloseCrossLine Right"></div>
+						</button>
+						<span className="ModalHeader">{'New address'}</span>
+						<div className="MintInput">
+							<Input
+								ref={vm.transferInput}
+								id={'inputAddress'}
+								type={'text'}
+								inputType={'input'}
+								defaultValue={''}
+								placeholder={'Enter new address'}
+							/>
+						</div>
+
+						<div className="ModalButton">
+							<button
+								className="ModalContentButton"
+								onClick={onClickButton}>
+								<span className="ModalContentButtonText">
+									{'Transfer this Punk'}
+								</span>
+							</button>
+						</div>
 					</div>
 				</div>
 				<div className="ModalBackground Hidden"></div>
@@ -973,6 +1045,7 @@ class Modal extends PureComponent {
 		const AlertModal = this.alertModal;
 		const BlockModal = this.blockModal;
 		const WalletModal = this.walletModal;
+		const TransferModal = this.transferModal;
 		const ParticipateModal = this.participateModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
 
@@ -1002,6 +1075,9 @@ class Modal extends PureComponent {
 
 			case 'walletModal':
 				return <WalletModal {...props} />;
+
+			case 'transferModal':
+				return <TransferModal {...props} />;
 
 			case 'participateModal':
 				return <ParticipateModal {...props} />;

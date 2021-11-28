@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 
-import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 
-const configService = new ConfigService();
 const utilityService = new UtilityService();
 
 class CountDown extends PureComponent {

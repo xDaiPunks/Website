@@ -4165,6 +4165,38 @@ body {
         @media screen and (max-width: 800px) {
           #AppRoot .App .ViewContainer .Punk.View .ViewBox .PunkDetailButtons .PunkDetailButtonContainer.Padding {
             padding-bottom: 0px; } }
+  #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-bottom: 48px; }
+    @media screen and (max-width: 1070px) {
+      #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 40px; } }
+    @media screen and (max-width: 800px) {
+      #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px; } }
+    #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra .ViewBoxExtraContainer {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      width: 33vw;
+      padding-top: 0px; }
+      @media screen and (max-width: 1070px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra .ViewBoxExtraContainer {
+          width: 40vw;
+          padding-top: 0px; } }
+      @media screen and (max-width: 800px) {
+        #AppRoot .App .ViewContainer .Punk.View .ViewBoxExtra .ViewBoxExtraContainer {
+          width: auto;
+          padding-top: 15px; } }
 
 #AppRoot .App .ViewContainer .TokenSale.View {
   background: #fff; }
