@@ -58,6 +58,7 @@ class TokenSale extends PureComponent {
 
 		this.getData = this.getData.bind(this);
 
+		this.notStarted = this.notStarted.bind(this);
 		this.participate = this.participate.bind(this);
 		this.claimPunkTokens = this.claimPunkTokens.bind(this);
 		this.participateSale = this.participateSale.bind(this);
@@ -80,8 +81,8 @@ class TokenSale extends PureComponent {
 	}
 
 	componentDidMount() {
-		configService.countDownEnd = 1638033858000;
-		configService.countDownStart = 1638017679000;
+		//configService.countDownEnd = 1638033858000;
+		//configService.countDownStart = 1638102657000;
 
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
@@ -140,7 +141,7 @@ class TokenSale extends PureComponent {
 		appService
 			.getSaleData()
 			.then((response) => {
-				console.log('DONE');
+			
 
 				if (time < countDownStart) {
 					view = 'countToSale';
@@ -248,6 +249,15 @@ class TokenSale extends PureComponent {
 		}, vm.updateIntervalTime);
 	}
 
+	notStarted() {
+		eventService.dispatchObjectEvent('show:modal', {
+			type: 'alertModal',
+			header: 'Not started',
+			content: 'The token sale will start on December 1st at 15:00 UTC',
+			buttonText: 'Ok',
+		});
+	}
+
 	participate() {
 		const vm = this;
 
@@ -267,14 +277,23 @@ class TokenSale extends PureComponent {
 	}
 
 	claimPunkTokens() {
-		appService
-			.claimPunkTokens()
-			.then((response) => {
-				// console.log(response);
-			})
-			.catch((responseError) => {
-				// console.log(responseError);
+		const userSignedIn = userService.userSignedIn;
+
+		if (userSignedIn !== true) {
+			eventService.dispatchObjectEvent('show:modal', {
+				type: 'walletModal',
+				raised: tokenSaleService.raised,
 			});
+		} else {
+			appService
+				.claimPunkTokens()
+				.then((response) => {
+					// console.log(response);
+				})
+				.catch((responseError) => {
+					// console.log(responseError);
+				});
+		}
 	}
 
 	participateSale(amount) {
@@ -294,7 +313,6 @@ class TokenSale extends PureComponent {
 		const vm = this;
 
 		const view = vm.state.view;
-		const userSignedIn = userService.userSignedIn;
 
 		if (view === 'loading') {
 			return null;
@@ -302,52 +320,94 @@ class TokenSale extends PureComponent {
 
 		if (view === 'countToSale') {
 			return (
-				<Button
-					type={'navigationButton'}
-					label={'Contribute to token sale'}
-					title={'Contribute to token sale'}
-					onClick={(event) => {
-						event.preventDefault();
+				<>
+					<Button
+						type={'navigationButton'}
+						label={'Read more'}
+						title={'Read more'}
+						onClick={(event) => {
+							event.preventDefault();
+							vm.scrollToContent();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-read.svg"
+					/>
+					<div className="HeaderButtonSpacer" />
+					<Button
+						type={'navigationButton'}
+						label={'Contribute'}
+						title={'Contribute'}
+						onClick={(event) => {
+							event.preventDefault();
 
-						// show message
-					}}
-					cssClass={'NavigationButtonAction'}
-					iconImage="/static/media/images/icon-wallet.svg"
-				/>
+							vm.notStarted();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+				</>
 			);
 		}
 
 		if (view === 'countToSaleEnd') {
 			return (
-				<Button
-					type={'navigationButton'}
-					label={'Contribute to token sale'}
-					title={'Contribute to token sale'}
-					onClick={(event) => {
-						event.preventDefault();
+				<>
+					<Button
+						type={'navigationButton'}
+						label={'Read more'}
+						title={'Read more'}
+						onClick={(event) => {
+							event.preventDefault();
+							vm.scrollToContent();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-read.svg"
+					/>
+					<div className="HeaderButtonSpacer" />
+					<Button
+						type={'navigationButton'}
+						label={'Contribute'}
+						title={'Contribute'}
+						onClick={(event) => {
+							event.preventDefault();
 
-						vm.participate();
-					}}
-					cssClass={'NavigationButtonAction'}
-					iconImage="/static/media/images/icon-wallet.svg"
-				/>
+							vm.participate();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+				</>
 			);
 		}
 
 		if (view === 'tokenSaleCompleted') {
 			return (
-				<Button
-					type={'navigationButton'}
-					label={'Claim my tokens'}
-					title={'Claim my tokens'}
-					onClick={(event) => {
-						event.preventDefault();
+				<>
+					<Button
+						type={'navigationButton'}
+						label={'Read more'}
+						title={'Read more'}
+						onClick={(event) => {
+							event.preventDefault();
+							vm.scrollToContent();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-read.svg"
+					/>
+					<div className="HeaderButtonSpacer" />
+					<Button
+						type={'navigationButton'}
+						label={'Claim PUNK'}
+						title={'Claim PUNK'}
+						onClick={(event) => {
+							event.preventDefault();
 
-						vm.claimTokens();
-					}}
-					cssClass={'NavigationButtonAction'}
-					iconImage="/static/media/images/icon-wallet.svg"
-				/>
+							vm.claimPunkTokens();
+						}}
+						cssClass={'NavigationButtonAction'}
+						iconImage="/static/media/images/icon-wallet.svg"
+					/>
+				</>
 			);
 		}
 	}
@@ -357,6 +417,9 @@ class TokenSale extends PureComponent {
 		let contribution;
 
 		let currentShare;
+
+		const vm = this;
+		const view = vm.state.view;
 
 		const userSignedIn = userService.userSignedIn;
 
@@ -376,13 +439,21 @@ class TokenSale extends PureComponent {
 					.div(BigNumber(raised))
 					.times(50e6)
 					.toFormat(2) + ' PUNK';
-
-			return (
-				<div className="TokenSaleItem">
-					<span className="TokenSaleTitle">My share</span>
-					<span className="TokenSaleContent">{currentShare}</span>
-				</div>
-			);
+			if (view !== 'tokenSaleCompleted') {
+				return (
+					<div className="TokenSaleItem">
+						<span className="TokenSaleTitle">My share</span>
+						<span className="TokenSaleContent">{currentShare}</span>
+					</div>
+				);
+			} else {
+				return (
+					<div className="TokenSaleItem">
+						<span className="TokenSaleTitle">Unclaimed</span>
+						<span className="TokenSaleContent">{currentShare}</span>
+					</div>
+				);
+			}
 		}
 	}
 
@@ -415,9 +486,7 @@ class TokenSale extends PureComponent {
 						</div>
 						<div className="TokenSaleSpacer" />
 						<div className="TokenSaleItem">
-							<span className="TokenSaleTitle">
-								Amount raised
-							</span>
+							<span className="TokenSaleTitle">Sale status</span>
 							<span className="TokenSaleContent">
 								Sale not started
 							</span>
@@ -494,7 +563,9 @@ class TokenSale extends PureComponent {
 							<span className="TokenSaleTitle">
 								Total amount raised
 							</span>
-							<span className="TokenSaleContent">{raised}</span>
+							<span className="TokenSaleContent">
+								{'50M PUNK : ' + raised}
+							</span>
 						</div>
 						<div className="TokenSaleSpacer" />
 						<div className="TokenSaleItem">
@@ -505,12 +576,7 @@ class TokenSale extends PureComponent {
 						</div>
 					</div>
 					<div className="TokenSaleSubMain">
-						<div className="TokenSaleItem">
-							<span className="TokenSaleTitle">Total supply</span>
-							<span className="TokenSaleContent">
-								50 Million PUNK
-							</span>
-						</div>
+						<TokenSubComponent />
 					</div>
 				</div>
 			);
@@ -534,6 +600,7 @@ class TokenSale extends PureComponent {
 		let transitionClass;
 
 		const vm = this;
+		const view = vm.state.view;
 
 		const ButtonComponent = vm.buttonComponent;
 		const TokenSaleComponent = vm.tokenSaleComponent;
@@ -546,56 +613,125 @@ class TokenSale extends PureComponent {
 			transitionClass = 'Underlay';
 		}
 
-		return (
-			<>
-				<div
-					className={
-						this.componentName +
-						' View ' +
-						transitionClass +
-						' Load'
-					}>
-					<div className="ViewBox">
-						<div className="Intro">
-							<div
-								className="IntroStart"
-								style={{
-									backgroundImage:
-										'url("/static/media/images/token-sale-background.jpg")',
-								}}>
-								<div className="IntroTopGradient" />
-								<TokenSaleComponent />
-								<div className="IntroText">
-									<span className="IntroPunkText">
-										<span className="TextDark">Token</span>
-										<span className="TextDark"> sale</span>
-									</span>
-									<span className="IntroPunkSubText">
-										Make sure that you have read all info of
-										the token sale <br />
-										before contributing
-									</span>
-									<div className="HeaderButtonContainer">
-										<ButtonComponent />
+		if (view !== 'tokenSaleCompleted') {
+			return (
+				<>
+					<div
+						className={
+							this.componentName +
+							' View ' +
+							transitionClass +
+							' Load'
+						}>
+						<div className="ViewBox">
+							<div className="Intro">
+								<div
+									className="IntroStart"
+									style={{
+										backgroundImage:
+											'url("/static/media/images/token-sale-background.jpg")',
+									}}>
+									<div className="IntroTopGradient" />
+									<TokenSaleComponent />
+									<div className="IntroText">
+										<span className="IntroPunkText">
+											<span className="TextDark">
+												Token
+											</span>
+											<span className="TextDark">
+												{' '}
+												sale
+											</span>
+										</span>
+										<span className="IntroPunkSubText">
+											Make sure that you have read all
+											info of the token sale <br />
+											before contributing
+										</span>
+										<div className="HeaderButtonContainer">
+											<ButtonComponent />
+										</div>
 									</div>
+									<div className="IntroBottomGradient" />
 								</div>
-								<div className="IntroBottomGradient" />
-							</div>
-							<div className="IntroContent">
-								<div className="ContentBlock">
-									<div id="PunkToken" className="BlockTitle">
-										PUNK token
+								<div className="IntroContent">
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											PUNK token
+										</div>
+										<div className="ContentItemContent"></div>
 									</div>
-									<div className="ContentItemContent"></div>
 								</div>
 							</div>
 						</div>
+						<Footer />
 					</div>
-					<Footer />
-				</div>
-				<Loader ref={vm.loader} />
-			</>
-		);
+					<Loader ref={vm.loader} />
+				</>
+			);
+		} else {
+			return (
+				<>
+					<div
+						className={
+							this.componentName +
+							' View ' +
+							transitionClass +
+							' Load'
+						}>
+						<div className="ViewBox">
+							<div className="Intro">
+								<div
+									className="IntroStart"
+									style={{
+										backgroundImage:
+											'url("/static/media/images/token-sale-background.jpg")',
+									}}>
+									<div className="IntroTopGradient" />
+									<TokenSaleComponent />
+									<div className="IntroText">
+										<span className="IntroPunkText">
+											<span className="TextDark">
+												Token
+											</span>
+											<span className="TextDark">
+												{' '}
+												sale
+											</span>
+										</span>
+										<span className="IntroPunkSubText">
+											Press 'Claim PUNK' to claim your
+											tokens. After you have claimed your
+											tokens {' '}
+											<br />
+											your unclaimed tokens will be zero
+										</span>
+										<div className="HeaderButtonContainer">
+											<ButtonComponent />
+										</div>
+									</div>
+									<div className="IntroBottomGradient" />
+								</div>
+								<div className="IntroContent">
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											PUNK token
+										</div>
+										<div className="ContentItemContent"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<Footer />
+					</div>
+					<Loader ref={vm.loader} />
+				</>
+			);
+		}
 	}
 }
 

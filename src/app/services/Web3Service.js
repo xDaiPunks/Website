@@ -264,7 +264,6 @@ class Web3Service {
 						punkService.setPunkDetails();
 					}
 
-					
 					eventService.dispatchObjectEvent('force:state');
 					eventService.dispatchObjectEvent('hide:preloader');
 
@@ -1046,33 +1045,6 @@ class Web3Service {
 		});
 	}
 
-	participateSale(amount) {
-		const vm = this;
-
-		return new Promise((resolve, reject) => {
-			const value = BigNumber(amount).times(1e18).toFixed();
-
-			if (vm.checkCall() !== true) {
-				return reject({ result: 'error', errorType: 'chainId' });
-			}
-
-			vm.walletProvider.eth
-				.sendTransaction({
-					to: vm.ibcoAddress,
-					from: userService.address,
-
-					value: value,
-					gasPrice: vm.gasPrice,
-				})
-				.then((response) => {
-					resolve(response);
-				})
-				.catch((responseError) => {
-					reject(responseError);
-				});
-		});
-	}
-
 	totalRevenue() {
 		const vm = this;
 
@@ -1111,6 +1083,63 @@ class Web3Service {
 						reject(contributionError);
 					});
 			}
+		});
+	}
+
+	claimPunkTokens() {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			let contract;
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
+			contract = new vm.walletProvider.eth.Contract(
+				vm.ibcoAbi,
+				vm.ibcoAddress
+			);
+
+			contract.methods
+				.claim()
+				.send({
+					gasPrice: vm.gasPrice,
+					from: userService.address,
+				})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	participateSale(amount) {
+		const vm = this;
+
+		return new Promise((resolve, reject) => {
+			const value = BigNumber(amount).times(1e18).toFixed();
+
+			if (vm.checkCall() !== true) {
+				return reject({ result: 'error', errorType: 'chainId' });
+			}
+
+			vm.walletProvider.eth
+				.sendTransaction({
+					to: vm.ibcoAddress,
+					from: userService.address,
+
+					value: value,
+					gasPrice: vm.gasPrice,
+				})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
 		});
 	}
 

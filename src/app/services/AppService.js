@@ -72,7 +72,6 @@ class AppService {
 
 			Promise.all(promiseArray)
 				.then((responses) => {
-					console.log(responses);
 					resolve({ result: 'success' });
 				})
 				.catch((responsesError) => {
@@ -189,6 +188,19 @@ class AppService {
 		return new Promise((resolve, reject) => {
 			web3Service
 				.pendingWithdrawals(address)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((responseError) => {
+					reject(responseError);
+				});
+		});
+	}
+
+	claimPunkTokens() {
+		return new Promise((resolve, reject) => {
+			web3Service
+				.claimPunkTokens()
 				.then((response) => {
 					resolve(response);
 				})

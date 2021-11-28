@@ -351,7 +351,9 @@ class Navigation extends PureComponent {
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
-											routeService.navigateRoute('/about');
+											routeService.navigateRoute(
+												'/about'
+											);
 										}}
 										cssClass={
 											currentView === 'about'
@@ -370,7 +372,9 @@ class Navigation extends PureComponent {
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
-											routeService.navigateRoute('/token');
+											routeService.navigateRoute(
+												'/token'
+											);
 										}}
 										cssClass={
 											currentView === 'token'
@@ -378,6 +382,27 @@ class Navigation extends PureComponent {
 												: 'NavigationButton'
 										}
 										iconImage="/static/media/images/icon-token-white.svg"
+									/>
+								</li>
+
+								<li>
+									<Button
+										type={'navigationButton'}
+										label={'Token sale'}
+										title={'Token sale'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute(
+												'/token-sale'
+											);
+										}}
+										cssClass={
+											currentView === 'tokenSale'
+												? 'NavigationButton Active'
+												: 'NavigationButton'
+										}
+										iconImage="/static/media/images/icon-token-sale-white.svg"
 									/>
 								</li>
 

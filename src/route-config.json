@@ -11,7 +11,7 @@
 		"path": "/about",
 		"type": "public",
 		"redirect": "none",
-		"animationType": "underlay",
+		"animationType": "overlay",
 		"component": "app/com/views/about/About"
 	},
 
@@ -19,7 +19,7 @@
 		"path": "/token",
 		"type": "public",
 		"redirect": "none",
-		"animationType": "underlay",
+		"animationType": "overlay",
 		"component": "app/com/views/token/Token"
 	},
 
@@ -59,7 +59,7 @@
 		"path": "/token-sale",
 		"type": "public",
 		"redirect": "none",
-		"animationType": "underlay",
+		"animationType": "overlay",
 		"component": "app/com/views/tokenSale/TokenSale"
 	},
 
