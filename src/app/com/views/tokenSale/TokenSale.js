@@ -81,8 +81,8 @@ class TokenSale extends PureComponent {
 	}
 
 	componentDidMount() {
-		// configService.countDownEnd = 1638128859000;
-		// configService.countDownStart = 1638118859000;
+		// configService.countDownEnd = 1638134090000;
+		// configService.countDownStart = 1638132090000;
 
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
@@ -95,10 +95,12 @@ class TokenSale extends PureComponent {
 
 		if (localStorage.getItem('legalShow') !== 'shown') {
 			eventService.dispatchObjectEvent('show:modal', {
-				type: 'legalModal',
+				type: 'blockModal',
 				header: 'Terms of use',
 				animate: false,
 				animateClose: true,
+				blockStorage: 'legalShow',
+				blockStorageValue: 'shown',
 				content:
 					'By using this website and investing in the PUNK token, you will be deemed to have:<br /><br />Read the Legal notice and other informational materials about the operation of this token sale<br /><br />Confirmed that you are not based in a jurisdiction where buying, trading and/or owning the PUNK token would be prohibited or restricted in any manner<br /><br />Understood that, despite our best efforts, there can still be exploit risks that exist within the app. Please do not invest more than you can afford to lose',
 				buttonText: 'Accept',
@@ -164,7 +166,7 @@ class TokenSale extends PureComponent {
 				}
 
 				state.view = view;
-				state.requestError = true;
+				state.requestError = false;
 
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
@@ -192,6 +194,12 @@ class TokenSale extends PureComponent {
 				}
 
 				state.view = view;
+
+				if (tokenSaleService.raised === '0') {
+					state.requestError = true;
+				} else {
+					state.requestError = false;
+				}
 
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
@@ -430,14 +438,18 @@ class TokenSale extends PureComponent {
 			raised = tokenSaleService.raised;
 			contribution = tokenSaleService.contribution;
 
-			if (BigNumber(raised).eq(0)) {
-				currentShare = '0.00 PUNK';
+			if (vm.state.requestError === true) {
+				currentShare = 'Connection error';
 			} else {
-				currentShare =
-					BigNumber(contribution)
-						.div(BigNumber(raised))
-						.times(50e6)
-						.toFormat(2) + ' PUNK';
+				if (BigNumber(raised).eq(0)) {
+					currentShare = '0.00 PUNK';
+				} else {
+					currentShare =
+						BigNumber(contribution)
+							.div(BigNumber(raised))
+							.times(50e6)
+							.toFormat(2) + ' PUNK';
+				}
 			}
 
 			if (view !== 'tokenSaleCompleted') {
@@ -461,6 +473,7 @@ class TokenSale extends PureComponent {
 	tokenSaleComponent() {
 		let raised;
 		let tokenPrice;
+		let raisedText;
 
 		const vm = this;
 
@@ -513,15 +526,21 @@ class TokenSale extends PureComponent {
 		}
 
 		if (view === 'countToSaleEnd') {
-			raised =
-				BigNumber(tokenSaleService.raised).div(1e18).toFormat(2) +
-				' xDai';
+			if (vm.state.requestError === true) {
+				raisedText = 'Connection error';
+			} else {
+				raised =
+					BigNumber(tokenSaleService.raised).div(1e18).toFormat(2) +
+					' xDai';
 
-			tokenPrice =
-				BigNumber(tokenSaleService.raised)
-					.div(1e18)
-					.div(50e6)
-					.toFormat(6) + ' xDai';
+				tokenPrice =
+					BigNumber(tokenSaleService.raised)
+						.div(1e18)
+						.div(50e6)
+						.toFormat(6) + ' xDai';
+
+				raisedText = raised + ' : ' + tokenPrice;
+			}
 
 			return (
 				<div className="TokenSaleInfo">
@@ -549,7 +568,7 @@ class TokenSale extends PureComponent {
 								Raised : price
 							</span>
 							<span className="TokenSaleContent">
-								{raised + ' : ' + tokenPrice}
+								{raisedText}
 							</span>
 						</div>
 					</div>
@@ -561,15 +580,22 @@ class TokenSale extends PureComponent {
 		}
 
 		if (view === 'tokenSaleCompleted') {
-			raised =
-				BigNumber(tokenSaleService.raised).div(1e18).toFormat(2) +
-				' xDai';
+			if (vm.state.requestError === true) {
+				tokenPrice = 'Connection error';
+				raisedText = 'Connection error';
+			} else {
+				raised =
+					BigNumber(tokenSaleService.raised).div(1e18).toFormat(2) +
+					' xDai';
 
-			tokenPrice =
-				BigNumber(tokenSaleService.raised)
-					.div(1e18)
-					.div(50e6)
-					.toFormat(6) + ' xDai';
+				tokenPrice =
+					BigNumber(tokenSaleService.raised)
+						.div(1e18)
+						.div(50e6)
+						.toFormat(6) + ' xDai';
+
+				raisedText = '50M PUNK : ' + raised;
+			}
 
 			return (
 				<div className="TokenSaleInfo">
@@ -586,7 +612,7 @@ class TokenSale extends PureComponent {
 								Total amount raised
 							</span>
 							<span className="TokenSaleContent">
-								{'50M PUNK : ' + raised}
+								{raisedText}
 							</span>
 						</div>
 						<div className="TokenSaleSpacer" />

@@ -60,7 +60,7 @@ class Modal extends PureComponent {
 		this.mintModal = this.mintModal.bind(this);
 		this.offerModal = this.offerModal.bind(this);
 		this.alertModal = this.alertModal.bind(this);
-		this.legalModal = this.legalModal.bind(this);
+		this.blockModal = this.blockModal.bind(this);
 		this.walletModal = this.walletModal.bind(this);
 
 		this.participateModal = this.participateModal.bind(this);
@@ -758,14 +758,21 @@ class Modal extends PureComponent {
 		);
 	}
 
-	legalModal(props) {
+	blockModal(props) {
 		let modalClass;
 
 		const vm = this;
 
 		const onClick = (event) => {
 			vm.closeModal(event);
-			localStorage.setItem('legalShow', 'shown');
+			console.log(props);
+			
+			if (props.hasOwnProperty('blockStorage')) {
+				localStorage.setItem(
+					props.blockStorage,
+					props.blockStorageValue
+				);
+			}
 		};
 
 		if (props.animate !== true) {
@@ -964,7 +971,7 @@ class Modal extends PureComponent {
 		const MintModal = this.mintModal;
 		const OfferModal = this.offerModal;
 		const AlertModal = this.alertModal;
-		const LegalModal = this.legalModal;
+		const BlockModal = this.blockModal;
 		const WalletModal = this.walletModal;
 		const ParticipateModal = this.participateModal;
 		const LanguageSwitchModal = this.languageSwitchModal;
@@ -990,8 +997,8 @@ class Modal extends PureComponent {
 			case 'alertModal':
 				return <AlertModal {...props} />;
 
-			case 'legalModal':
-				return <LegalModal {...props} />;
+			case 'blockModal':
+				return <BlockModal {...props} />;
 
 			case 'walletModal':
 				return <WalletModal {...props} />;

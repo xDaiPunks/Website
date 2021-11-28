@@ -239,68 +239,109 @@ class XDaiOnRamp extends PureComponent {
 				}>
 				<div className="ViewBox">
 					<div className="Spacer" />
-						<div className="PageTextContent">
-							<div className="ContentItem">
-
-								<div className="ContentItemTitle">
+					<div className="PageTextContent">
+						<div className="ContentItem">
+							<div className="ContentItemTitle">
 								<span className="Txt">Getting xDai</span>
-								</div>
-<br/>
-								<div className="ContentItemContent">
-								In order to keep transaction costs near to zero, use xDai to buy Punks or PUNK tokens. Using a new token can seem a little dawnting, however one of the big advantages about xDai that you may not know, is that you can purchase it easily with a bank card, or bridging from other networks.<br /><br />But before you do so, please ensure you have:
-									<ul>
-										<li>1. <a href="https://metamask.io/download" target="_blank">Downloaded and setup MetaMask on your Chrome browser</a></li>
-										<li>2. <a href="https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup#setting-up-metamask-for-xdaiAdded" target="_blank"> Added xDai Network to you Metamask</a> (to see xDai in your wallet)</li>
-									</ul>
-								</div>
-								<div className="ContentItemSubTitle">
-									<span className="Txt">Buy xDai</span>
-								</div>
-
-								<div className="ContentItemContent">
-									To buy xDai with a Credit/Debit card o via bank deposit using <a
-										target="_blank"
-										rel="noreferrer"
-										href="https://buy.ramp.network/?defaultAsset=xDAI">
-										Ramp Network
-									</a>.
-								</div>
+							</div>
+							<br />
+							<div className="ContentItemContent">
+								In order to keep transaction costs near to zero,
+								use xDai to buy Punks or PUNK tokens. Using a
+								new token can seem a little dawnting, however
+								one of the big advantages about xDai that you
+								may not know, is that you can purchase it easily
+								with a bank card, or bridging from other
+								networks.
 								<br />
-								<div className="ContentItemSubTitle">
-									<span className="Txt">
+								<br />
+								But before you do so, please ensure you have:
+								<ul>
+									<li>
+										1.{' '}
+										<a
+											href="https://metamask.io/download"
+											target="_blank"
+											rel="noreferrer">
+											Downloaded and setup MetaMask on
+											your Chrome browser
+										</a>
+									</li>
+									<li>
+										2.{' '}
+										<a
+											href="https://www.xdaichain.com/for-users/wallets/metamask/metamask-setup#setting-up-metamask-for-xdaiAdded"
+											target="_blank"
+											rel="noreferrer">
+											{' '}
+											Added xDai Network to you Metamask
+										</a>{' '}
+										(to see xDai in your wallet)
+									</li>
+								</ul>
+							</div>
+							<div className="ContentItemSubTitle">
+								<span className="Txt">Buy xDai</span>
+							</div>
+
+							<div className="ContentItemContent">
+								To buy xDai with a Credit/Debit card o via bank
+								deposit using{' '}
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://buy.ramp.network/?defaultAsset=xDAI">
+									Ramp Network
+								</a>
+								.
+							</div>
+							<br />
+							<div className="ContentItemSubTitle">
+								<span className="Txt">
 									Bridge from Ethereum
-									</span>
-								</div>
+								</span>
+							</div>
 
-								<div className="ContentItemContent">
-									You can bridge Dai from Ethereum Mainnet through the <a
-										target="_blank"
-										rel="noreferrer"
-										href="https://bridge.xdaichain.com/">xDaiChain bridge</a>.
-										<br/>
-										
-								</div>
+							<div className="ContentItemContent">
+								You can bridge Dai from Ethereum Mainnet through
+								the{' '}
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://bridge.xdaichain.com/">
+									xDaiChain bridge
+								</a>
+								.
 								<br />
-								<div className="ContentItemSubTitle">
-									<span className="Txt">
+							</div>
+							<br />
+							<div className="ContentItemSubTitle">
+								<span className="Txt">
 									Bridge from BSC, Polygon or Fantom
-									</span>
-								</div>
+								</span>
+							</div>
 
-								<div className="ContentItemContent">
-									xDai can be bridged from BSC, Polygon or Fantom through the <a
-										target="_blank"
-										rel="noreferrer"
-										href="https://xpollinate.io/">xPollinate Bridge</a>.
-										<br/><br/>More info
-									on xPollinate can be found {' '}
-									<a
-										target="_blank"
-										rel="noreferrer"
-										href="https://www.xdaichain.com/for-users/bridges/xdai-matic-connext-bridge">
-										here
-									</a>.
-								</div>
+							<div className="ContentItemContent">
+								xDai can be bridged from BSC, Polygon or Fantom
+								through the{' '}
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://xpollinate.io/">
+									xPollinate Bridge
+								</a>
+								.
+								<br />
+								<br />
+								More info on xPollinate can be found{' '}
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://www.xdaichain.com/for-users/bridges/xdai-matic-connext-bridge">
+									here
+								</a>
+								.
+							</div>
 						</div>
 
 						<Footer />
