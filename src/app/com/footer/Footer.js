@@ -152,7 +152,7 @@ class Footer extends PureComponent {
 									title={'Token Sale Contract'}
 									onClick={() => {
 										window.open(
-											'https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/read-contract'
+											'https://blockscout.com/xdai/mainnet/address/0x4b1208Cb7BCaD7b5181c557F1295Fc3c722fa878/transactions'
 										);
 									}}
 									cssClass={'FooterButton'}

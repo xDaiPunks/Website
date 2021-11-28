@@ -28,7 +28,6 @@ class TokenSaleService {
 	}
 
 	set contribution(amount) {
-        console.log(amount);
 		const vm = this;
 		vm.contributionStore = amount;
 	}

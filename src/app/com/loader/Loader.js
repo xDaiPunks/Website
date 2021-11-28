@@ -76,6 +76,7 @@ class Loader extends PureComponent {
 
 		vm.initalize();
 		if (!animation) {
+			vm.setState({ loading: false });
 			vm.spinnerElement.removeClass('Active');
 			vm.preloaderElement.removeClass('Animate');
 

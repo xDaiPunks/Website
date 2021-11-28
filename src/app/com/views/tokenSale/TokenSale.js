@@ -62,7 +62,6 @@ class TokenSale extends PureComponent {
 		this.participate = this.participate.bind(this);
 		this.claimPunkTokens = this.claimPunkTokens.bind(this);
 		this.participateSale = this.participateSale.bind(this);
-
 		this.buttonComponent = this.buttonComponent.bind(this);
 		this.tokenSubComponent = this.tokenSubComponent.bind(this);
 		this.tokenSaleComponent = this.tokenSaleComponent.bind(this);
@@ -170,19 +169,16 @@ class TokenSale extends PureComponent {
 
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
+
+					vm.forceUpdate();
+
+					clearTimeout(vm.updateTimeout);
+					vm.updateTimeout = setTimeout(() => {
+						vm.getData();
+					}, vm.updateTimeoutTime);
 				});
-
-				vm.forceUpdate();
-
-				clearTimeout(vm.updateTimeout);
-				vm.updateTimeout = setTimeout(() => {
-					vm.getData();
-				}, vm.updateTimeoutTime);
 			})
 			.catch((responseError) => {
-				view = 'error';
-				console.log('ERRROR');
-
 				if (time < countDownStart) {
 					view = 'countToSale';
 				} else {
@@ -203,19 +199,14 @@ class TokenSale extends PureComponent {
 
 				vm.setState(state, () => {
 					vm.loader.current.hideLoader(true);
+
+					vm.forceUpdate();
+
+					clearTimeout(vm.updateTimeout);
+					vm.updateTimeout = setTimeout(() => {
+						vm.getData();
+					}, vm.updateTimeoutTime);
 				});
-
-				clearTimeout(vm.updateTimeout);
-				vm.updateTimeout = setTimeout(() => {
-					vm.getData();
-				}, vm.updateTimeoutTime);
-
-				vm.forceUpdate();
-
-				clearTimeout(vm.updateTimeout);
-				vm.updateTimeout = setTimeout(() => {
-					vm.getData();
-				}, vm.updateTimeoutTime);
 			});
 	}
 
@@ -232,7 +223,7 @@ class TokenSale extends PureComponent {
 		}
 	}
 
-	setInterval() {
+	setTimeInterval() {
 		let time;
 		let view;
 		let state;
@@ -271,7 +262,7 @@ class TokenSale extends PureComponent {
 		eventService.dispatchObjectEvent('show:modal', {
 			type: 'alertModal',
 			header: 'Not started',
-			content: 'The token sale will start on December 1st at 15:00 UTC',
+			content: 'The token sale will start on December 1st at 14:00 GMT',
 			buttonText: 'Ok',
 		});
 	}
@@ -738,9 +729,9 @@ class TokenSale extends PureComponent {
 											<br />
 											<br />
 											The token sale will start on
-											December 1st at 15:00 UTC and will
+											December 1st at 14:00 GMT and will
 											last 7 days. The token sale will end
-											on December 8th at 15:00 UTC. The
+											on December 8th at 14:00 GMT. The
 											PUNK tokens can be claimed
 											immediately after the token sale has
 											ended
@@ -960,9 +951,9 @@ class TokenSale extends PureComponent {
 											<br />
 											<br />
 											The token sale will start on
-											December 1st at 15:00 UTC and will
+											December 1st at 14:00 GMT and will
 											last 7 days. The token sale will end
-											on December 8th at 15:00 UTC. The
+											on December 8th at 14:00 GMT. The
 											PUNK tokens can be claimed
 											immediately after the token sale has
 											ended
