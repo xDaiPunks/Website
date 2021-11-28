@@ -548,7 +548,7 @@ class Token extends PureComponent {
 								</div>
 							</div>
 							<div className="ContentBlock">
-								<div className="BlockTitle">Token release</div>
+								<div className="BlockTitle">Token timeline</div>
 								<div className="TextImage">
 									<img
 										alt={''}

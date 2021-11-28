@@ -81,8 +81,8 @@ class TokenSale extends PureComponent {
 	}
 
 	componentDidMount() {
-		//configService.countDownEnd = 1638033858000;
-		//configService.countDownStart = 1638102657000;
+		// configService.countDownEnd = 1638128859000;
+		// configService.countDownStart = 1638118859000;
 
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
@@ -92,6 +92,15 @@ class TokenSale extends PureComponent {
 
 		vm.getData();
 		vm.loader.current.showLoader(false);
+
+		eventService.dispatchObjectEvent('show:modal', {
+			type: 'alertModal',
+			header: 'Terms of use',
+			animate: false,
+			content:
+				'By using this website and investing in the PUNK token, you will be deemed to have:<br /><br />Read the Legal notice and other informational materials about the operation of this token sale<br /><br />Confirmed that you are not based in a jurisdiction where buying, trading and/or owning the PUNK token would be prohibited or restricted in any manner<br /><br />Understood that, despite our best efforts, there can still be exploit risks that exist within the app. Please do not invest more than you can afford to lose',
+			buttonText: 'Accept',
+		});
 
 		eventService.on('resize', vm.guid, () => {
 			setTimeout(() => {
@@ -141,8 +150,6 @@ class TokenSale extends PureComponent {
 		appService
 			.getSaleData()
 			.then((response) => {
-			
-
 				if (time < countDownStart) {
 					view = 'countToSale';
 				} else {
@@ -382,32 +389,18 @@ class TokenSale extends PureComponent {
 
 		if (view === 'tokenSaleCompleted') {
 			return (
-				<>
-					<Button
-						type={'navigationButton'}
-						label={'Read more'}
-						title={'Read more'}
-						onClick={(event) => {
-							event.preventDefault();
-							vm.scrollToContent();
-						}}
-						cssClass={'NavigationButtonAction'}
-						iconImage="/static/media/images/icon-read.svg"
-					/>
-					<div className="HeaderButtonSpacer" />
-					<Button
-						type={'navigationButton'}
-						label={'Claim PUNK'}
-						title={'Claim PUNK'}
-						onClick={(event) => {
-							event.preventDefault();
+				<Button
+					type={'navigationButton'}
+					label={'Claim PUNK'}
+					title={'Claim PUNK'}
+					onClick={(event) => {
+						event.preventDefault();
 
-							vm.claimPunkTokens();
-						}}
-						cssClass={'NavigationButtonAction'}
-						iconImage="/static/media/images/icon-wallet.svg"
-					/>
-				</>
+						vm.claimPunkTokens();
+					}}
+					cssClass={'NavigationButtonAction'}
+					iconImage="/static/media/images/icon-wallet.svg"
+				/>
 			);
 		}
 	}
@@ -434,11 +427,16 @@ class TokenSale extends PureComponent {
 			raised = tokenSaleService.raised;
 			contribution = tokenSaleService.contribution;
 
-			currentShare =
-				BigNumber(contribution)
-					.div(BigNumber(raised))
-					.times(50e6)
-					.toFormat(2) + ' PUNK';
+			if (BigNumber(raised).eq(0)) {
+				currentShare = '0.00 PUNK';
+			} else {
+				currentShare =
+					BigNumber(contribution)
+						.div(BigNumber(raised))
+						.times(50e6)
+						.toFormat(2) + ' PUNK';
+			}
+
 			if (view !== 'tokenSaleCompleted') {
 				return (
 					<div className="TokenSaleItem">
@@ -474,6 +472,13 @@ class TokenSale extends PureComponent {
 			return (
 				<div className="TokenSaleInfo">
 					<div className="TokenSaleMain">
+						<div className="TokenSaleIcon">
+							<img
+								alt={''}
+								className={'TokenSaleIconContent'}
+								src={'/static/media/images/icon-time-blue.svg'}
+							/>
+						</div>
 						<div className="TokenSaleItem">
 							<span className="TokenSaleTitle">
 								Token sale starts in
@@ -518,6 +523,13 @@ class TokenSale extends PureComponent {
 			return (
 				<div className="TokenSaleInfo">
 					<div className="TokenSaleMain">
+						<div className="TokenSaleIcon">
+							<img
+								alt={''}
+								className={'TokenSaleIconContent'}
+								src={'/static/media/images/icon-time-blue.svg'}
+							/>
+						</div>
 						<div className="TokenSaleItem">
 							<span className="TokenSaleTitle">
 								Token sale ends in
@@ -558,6 +570,13 @@ class TokenSale extends PureComponent {
 
 			return (
 				<div className="TokenSaleInfo">
+					<div className="TokenSaleIcon">
+						<img
+							alt={''}
+							className={'TokenSaleIconContent'}
+							src={'/static/media/images/icon-token-blue.svg'}
+						/>
+					</div>
 					<div className="TokenSaleMain">
 						<div className="TokenSaleItem">
 							<span className="TokenSaleTitle">
@@ -659,9 +678,172 @@ class TokenSale extends PureComponent {
 										<div
 											id="PunkToken"
 											className="BlockTitle">
-											PUNK token
+											Information
 										</div>
-										<div className="ContentItemContent"></div>
+										<div className="ContentItemContent">
+											The token sale is a so-called
+											Initial Bond Curve Offering. This
+											means that your share will decrease
+											and the token price will increase
+											when other participants contribute
+											<br />
+											<br />
+											More info on the PUNK token and how
+											an Initial Bond Curve Offering works
+											can be found on the{' '}
+											<a
+												href="/token"
+												onClick={(event) => {
+													event.preventDefault();
+													event.stopPropagation();
+
+													routeService.navigateRoute(
+														'/token'
+													);
+												}}>
+												token page
+											</a>
+											. Please make sure that you have
+											read this page before contributing
+											to the token sale
+											<br />
+											<br />
+											The token sale will start on
+											December 1st at 15:00 UTC and will
+											last 7 days. The token sale will end
+											on December 8th at 15:00 UTC. The
+											PUNK tokens can be claimed
+											immediately after the token sale has
+											ended
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Contribute
+										</div>
+										<div className="ContentItemContent">
+											If you want to participate in the
+											token sale, you can add your
+											contribution by clicking the
+											‘Contribute’ button. A dialog will
+											be shown where you can enter the
+											amount of xDai you want to
+											contribute to the token sale
+											<br />
+											<br />
+											After you have entered the amount
+											and have clicked the ‘Add
+											contribution’ button, MetaMask will
+											ask you to confirm the transaction.
+											Once the transaction is confirmed,
+											this page will show you your share
+											in PUNK tokens
+											<br />
+											<br />
+											You share of the token sale will
+											decrease and the token price will
+											increase, when other participants
+											contribute to the token sale. This
+											will continue until the token sale
+											has ended. Your final share and the
+											final token price will be
+											established after the token sale has
+											ended
+											<br />
+											<br />
+											There is no limit on contributions
+											and participants can contribute
+											multiple times during the token
+											sale. If the token page is
+											unavailable, you can directly send
+											your contribution to the token sale
+											contract. The address of the token
+											sale contract can be found in the
+											footer of this page. Please make
+											sure that you send xDai to this
+											contract
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Claiming tokens
+										</div>
+										<div className="ContentItemContent">
+											Participants will be able to claim
+											their share of PUNK tokens
+											immediately after token sale has
+											ended. Participants can claim tokens
+											on the token sale page
+											<br />
+											<br />
+											When the token sale has ended, this
+											page will display your number of
+											unclaimed PUNK tokens. If you have
+											unclaimed tokens you can claim them
+											by pressing the ‘Claim PUNK’ button
+											<br />
+											<br />
+											MetaMask will ask you to confirm the
+											transaction. After the transaction
+											has been confirmed, the PUNK tokens
+											are added your wallet and unclaimed
+											tokens will display 0.00 PUNK
+											<br />
+											<br />
+											If you want MetaMask to display your
+											PUNK tokens, you will need to add
+											the token to MetaMask. You can do so
+											by clicking ‘Assets’. In this tab,
+											you then click on ‘Import tokens’.
+											In the form you will need to add the
+											contract address of the token. This
+											address can be found in the footer
+											of this page
+											<br />
+											<br />
+											Once you have entered the contract
+											address, the other fields will
+											automatically be filled. If this is
+											not the case, you have to enter
+											‘PUNK’ in the ‘Token Symbol’ field
+											and ’18’ in the in the ‘Token
+											Decimal’ field. Click ‘Add custom
+											token’. If all went well, you will
+											be able to see the PUNK token in the
+											assets tab
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Legal notice
+										</div>
+										<div className="ContentItemContent">
+											Investment in a token sale entails
+											risk of a partial or complete loss
+											of the investment. No guarantee is
+											given regarding the value of the
+											tokens acquired in the offering and
+											the exchange value of said tokens in
+											legal currency. Tokens do not
+											constitute financial instruments or
+											securities tokens and confer no
+											other rights than those described.
+											In addition, the regulatory
+											framework applicable to the offering
+											and to the tokens as well as the tax
+											regime applicable to the holding of
+											tokens are not defined to date in
+											certain jurisdictions. Please
+											consult your local tax and legal
+											advisor before considering
+											purchasing tokens.
+										</div>
 									</div>
 								</div>
 							</div>
@@ -704,8 +886,7 @@ class TokenSale extends PureComponent {
 										<span className="IntroPunkSubText">
 											Press 'Claim PUNK' to claim your
 											tokens. After you have claimed your
-											tokens {' '}
-											<br />
+											tokens <br />
 											your unclaimed tokens will be zero
 										</span>
 										<div className="HeaderButtonContainer">
@@ -719,9 +900,172 @@ class TokenSale extends PureComponent {
 										<div
 											id="PunkToken"
 											className="BlockTitle">
-											PUNK token
+											Information
 										</div>
-										<div className="ContentItemContent"></div>
+										<div className="ContentItemContent">
+											The token sale is a so-called
+											Initial Bond Curve Offering. This
+											means that your share will decrease
+											and the token price will increase
+											when other participants contribute
+											<br />
+											<br />
+											More info on the PUNK token and how
+											an Initial Bond Curve Offering works
+											can be found on the{' '}
+											<a
+												href="/token"
+												onClick={(event) => {
+													event.preventDefault();
+													event.stopPropagation();
+
+													routeService.navigateRoute(
+														'/token'
+													);
+												}}>
+												token page
+											</a>
+											. Please make sure that you have
+											read this page before contributing
+											to the token sale
+											<br />
+											<br />
+											The token sale will start on
+											December 1st at 15:00 UTC and will
+											last 7 days. The token sale will end
+											on December 8th at 15:00 UTC. The
+											PUNK tokens can be claimed
+											immediately after the token sale has
+											ended
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Contribute
+										</div>
+										<div className="ContentItemContent">
+											If you want to participate in the
+											token sale, you can add your
+											contribution by clicking the
+											‘Contribute’ button. A dialog will
+											be shown where you can enter the
+											amount of xDai you want to
+											contribute to the token sale
+											<br />
+											<br />
+											After you have entered the amount
+											and have clicked the ‘Add
+											contribution’ button, MetaMask will
+											ask you to confirm the transaction.
+											Once the transaction is confirmed,
+											this page will show you your share
+											in PUNK tokens
+											<br />
+											<br />
+											You share of the token sale will
+											decrease and the token price will
+											increase, when other participants
+											contribute to the token sale. This
+											will continue until the token sale
+											has ended. Your final share and the
+											final token price will be
+											established after the token sale has
+											ended
+											<br />
+											<br />
+											There is no limit on contributions
+											and participants can contribute
+											multiple times during the token
+											sale. If the token page is
+											unavailable, you can directly send
+											your contribution to the token sale
+											contract. The address of the token
+											sale contract can be found in the
+											footer of this page. Please make
+											sure that you send xDai to this
+											contract
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Claiming tokens
+										</div>
+										<div className="ContentItemContent">
+											Participants will be able to claim
+											their share of PUNK tokens
+											immediately after token sale has
+											ended. Participants can claim tokens
+											on the token sale page
+											<br />
+											<br />
+											When the token sale has ended, this
+											page will display your number of
+											unclaimed PUNK tokens. If you have
+											unclaimed tokens you can claim them
+											by pressing the ‘Claim PUNK’ button
+											<br />
+											<br />
+											MetaMask will ask you to confirm the
+											transaction. After the transaction
+											has been confirmed, the PUNK tokens
+											are added your wallet and unclaimed
+											tokens will display 0.00 PUNK
+											<br />
+											<br />
+											If you want MetaMask to display your
+											PUNK tokens, you will need to add
+											the token to MetaMask. You can do so
+											by clicking ‘Assets’. In this tab,
+											you then click on ‘Import tokens’.
+											In the form you will need to add the
+											contract address of the token. This
+											address can be found in the footer
+											of this page
+											<br />
+											<br />
+											Once you have entered the contract
+											address, the other fields will
+											automatically be filled. If this is
+											not the case, you have to enter
+											‘PUNK’ in the ‘Token Symbol’ field
+											and ’18’ in the in the ‘Token
+											Decimal’ field. Click ‘Add custom
+											token’. If all went well, you will
+											be able to see the PUNK token in the
+											assets tab
+										</div>
+									</div>
+									<div className="ContentBlock">
+										<div
+											id="PunkToken"
+											className="BlockTitle">
+											Legal notice
+										</div>
+										<div className="ContentItemContent">
+											Investment in a token sale entails
+											risk of a partial or complete loss
+											of the investment. No guarantee is
+											given regarding the value of the
+											tokens acquired in the offering and
+											the exchange value of said tokens in
+											legal currency. Tokens do not
+											constitute financial instruments or
+											securities tokens and confer no
+											other rights than those described.
+											In addition, the regulatory
+											framework applicable to the offering
+											and to the tokens as well as the tax
+											regime applicable to the holding of
+											tokens are not defined to date in
+											certain jurisdictions. Please
+											consult your local tax and legal
+											advisor before considering
+											purchasing tokens.
+										</div>
 									</div>
 								</div>
 							</div>

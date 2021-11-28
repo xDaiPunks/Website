@@ -97,14 +97,12 @@ class Footer extends PureComponent {
 									label={'Get xDai'}
 									title={'Get xDai'}
 									onClick={() => {
-										routeService.navigateRoute(
-											'/get-xdai'
-										);
+										routeService.navigateRoute('/get-xdai');
 									}}
 									cssClass={'FooterButton'}
 								/>
 							</span>
-							
+
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
@@ -122,8 +120,50 @@ class Footer extends PureComponent {
 							<span className="FooterMenuItem">
 								<Button
 									type={'footerButton'}
-									label={'xDaiPunks Smart Contract'}
-									title={'xDaiPunks Smart Contract'}
+									label={'PUNK xDai Contract'}
+									title={'PUNK xDai Contract'}
+									onClick={() => {
+										window.open(
+											'https://blockscout.com/xdai/mainnet/token/0x988d1Be68F2C5cDE2516a2287c59Bd6302b7D20D/token-transfers'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'PUNK Ethereum Contract'}
+									title={'PUNK Ethereum Contract'}
+									onClick={() => {
+										window.open(
+											'https://etherscan.io/token/0xd866db204b51ff53b4350fbf415d2e154844698f'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'Token Sale Contract'}
+									title={'Token Sale Contract'}
+									onClick={() => {
+										window.open(
+											'https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/read-contract'
+										);
+									}}
+									cssClass={'FooterButton'}
+								/>
+							</span>
+
+							<span className="FooterMenuItem">
+								<Button
+									type={'footerButton'}
+									label={'xDaiPunks NFT Contract'}
+									title={'xDaiPunks NFT Contract'}
 									onClick={() => {
 										window.open(
 											'https://blockscout.com/xdai/mainnet/address/0x9f0B5B31e7FBDe3D9B1aF4e482Ef262b4ae9Ed90/read-contract'
@@ -181,7 +221,7 @@ class Footer extends PureComponent {
 										}
 									/>
 								</a>
-								
+
 								<div className="FooterSocialSpacer"></div>
 								<a
 									title="Github"

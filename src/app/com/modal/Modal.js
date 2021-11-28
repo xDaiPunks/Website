@@ -720,9 +720,11 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Right"></div>
 						</button>
 						<span className="ModalHeader">{props.header}</span>
-						<span className="ModalContentText">
-							{props.content}
-						</span>
+						<span
+							className="ModalContentText"
+							dangerouslySetInnerHTML={{
+								__html: props.content,
+							}}></span>
 						<div className="ModalButton">
 							<button
 								className="ModalContentButton"
@@ -791,7 +793,10 @@ class Modal extends PureComponent {
 					vm.contributeInput.current.state &&
 					vm.contributeInput.current.state.value
 				) {
-					value = vm.contributeInput.current.state.value.replace(',', '.');
+					value = vm.contributeInput.current.state.value.replace(
+						',',
+						'.'
+					);
 					value = parseFloat(value.trim());
 
 					if (value > 0) {
@@ -815,7 +820,9 @@ class Modal extends PureComponent {
 							<div className="CloseCrossLine Left"></div>
 							<div className="CloseCrossLine Right"></div>
 						</button>
-						<span className="ModalHeader">{'Amount to contribute?'}</span>
+						<span className="ModalHeader">
+							{'Amount to contribute?'}
+						</span>
 						<div className="MintInput">
 							<Input
 								ref={vm.contributeInput}
@@ -825,7 +832,6 @@ class Modal extends PureComponent {
 								defaultValue={''}
 								placeholder={'Enter an amount'}
 							/>
-							
 						</div>
 
 						<div className="ModalButton">
