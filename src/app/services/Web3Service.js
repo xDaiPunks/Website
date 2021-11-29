@@ -46,6 +46,7 @@ class Web3Service {
 
 			Instance.httpProvider = configService.web3.httpProvider;
 			Instance.socketProvider = configService.web3.socketProvider;
+			Instance.cloudFlareProvider = configService.web3.cloudFlareProvider;
 
 			Instance.ibcoAddress = configService.web3.ibcoAddress;
 			Instance.xDaiPunksAddress = configService.web3.xDaiPunksAddress;
@@ -76,6 +77,7 @@ class Web3Service {
 	setContract() {
 		const vm = this;
 		const web3 = new Web3(vm.httpProvider);
+		const web3CloudFlare = new Web3(vm.cloudFlareProvider);
 
 		const web3Socket = new Web3(
 			new Web3.providers.WebsocketProvider(vm.socketProvider, {
@@ -89,11 +91,15 @@ class Web3Service {
 		vm.web3 = web3;
 		web3.eth.Contract.setProvider(web3Socket.currentProvider);
 
-		vm.ibco = new web3.eth.Contract(vm.ibcoAbi, vm.ibcoAddress);
-
 		vm.contract = new web3.eth.Contract(
 			vm.xdaiPunksAbi,
 			vm.xDaiPunksAddress
+		);
+
+		vm.ibco = new web3.eth.Contract(vm.ibcoAbi, vm.ibcoAddress);
+		vm.ibcoCloudFlare = new web3CloudFlare.eth.Contract(
+			vm.ibcoAbi,
+			vm.ibcoAddress
 		);
 	}
 
@@ -1081,7 +1087,7 @@ class Web3Service {
 		const vm = this;
 
 		return new Promise((resolve, reject) => {
-			vm.ibco.methods
+			vm.ibcoCloudFlare.methods
 				.totalRevenue()
 				.call()
 				.then((raised) => {
@@ -1107,7 +1113,7 @@ class Web3Service {
 			if (userSignedIn !== true) {
 				resolve('0');
 			} else {
-				vm.ibco.methods
+				vm.ibcoCloudFlare.methods
 					.senderContribution(address)
 					.call()
 					.then((contribution) => {

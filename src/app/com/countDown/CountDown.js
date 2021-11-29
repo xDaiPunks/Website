@@ -38,18 +38,25 @@ class CountDown extends PureComponent {
 
 		timeDiff = vm.props.endDate - time;
 
-		if (timeDiff >= 0) {
-			state.active = true;
-		} else {
+		if (timeDiff < 0) {
 			state.active = false;
-		}
 
-		state.days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-		state.hours = Math.floor(
-			(timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-		);
-		state.minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-		state.seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+			state.days = 0;
+			state.hours = 0;
+			state.minutes = 0;
+			state.seconds = 0;
+		} else {
+			state.active = true;
+
+			state.days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+			state.hours = Math.floor(
+				(timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+			);
+			state.minutes = Math.floor(
+				(timeDiff % (1000 * 60 * 60)) / (1000 * 60)
+			);
+			state.seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+		}
 
 		vm.setState(state);
 	}

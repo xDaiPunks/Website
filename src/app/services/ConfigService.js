@@ -32,6 +32,7 @@ class ConfigService {
 
 				httpProvider: process.env.REACT_APP_WEB3_HTTP_PROVIDER,
 				socketProvider: process.env.REACT_APP_WEB3_SOCKET_PROVIDER,
+				cloudFlareProvider: process.env.REACT_APP_WEB3_CLOUDFLARE_PROVIDER,
 
 				xdaiConfig: {
 					chainId: process.env.REACT_APP_WEB3_XDAI_CHAIN_ID,

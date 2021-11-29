@@ -81,7 +81,7 @@ class TokenSale extends PureComponent {
 
 	componentDidMount() {
 		// configService.countDownEnd = 1638134090000;
-		// configService.countDownStart = 1638132090000;
+		// configService.countDownStart = 1638228122641;
 
 		const vm = this;
 		const pageElement = $('.' + vm.componentName + '.View');
@@ -90,6 +90,7 @@ class TokenSale extends PureComponent {
 		vm.setPageSize();
 
 		vm.getData();
+
 		vm.loader.current.showLoader(false);
 
 		if (localStorage.getItem('legalShow') !== 'shown') {
@@ -151,6 +152,8 @@ class TokenSale extends PureComponent {
 		const countDownStart = configService.countDownStart;
 
 		state = utilityService.cloneObject(vm.state);
+
+		vm.setTimeInterval();
 
 		if (time < countDownStart) {
 			view = 'countToSale';
@@ -340,9 +343,13 @@ class TokenSale extends PureComponent {
 				}
 			}
 
-			state.view = view;
+			if (view !== state.view) {
+				vm.getData();
 
-			vm.setState(state, () => {});
+				state.view = view;
+
+				vm.setState(state, () => {});
+			}
 		}, vm.updateIntervalTime);
 	}
 
