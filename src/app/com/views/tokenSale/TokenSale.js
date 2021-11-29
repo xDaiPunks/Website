@@ -857,7 +857,7 @@ class TokenSale extends PureComponent {
 											in PUNK tokens
 											<br />
 											<br />
-											You share of the token sale will
+											Your share of the token sale will
 											decrease and the token price will
 											increase, when other participants
 											contribute to the token sale. This
@@ -1079,7 +1079,7 @@ class TokenSale extends PureComponent {
 											in PUNK tokens
 											<br />
 											<br />
-											You share of the token sale will
+											Your share of the token sale will
 											decrease and the token price will
 											increase, when other participants
 											contribute to the token sale. This
