@@ -126,8 +126,8 @@ class TokenSale extends PureComponent {
 		});
 
 		eventService.on('account:change', vm.guid, () => {
-			vm.getData();
 			vm.loader.current.showLoader(false);
+			vm.getData();
 		});
 
 		eventService.dispatchObjectEvent('set:view', this.componentName);
@@ -163,9 +163,9 @@ class TokenSale extends PureComponent {
 
 			vm.setState(state, () => {
 				vm.loader.current.hideLoader(true);
-
-				vm.forceUpdate();
 			});
+
+			vm.forceUpdate();
 		} else {
 			if (time >= countDownEnd) {
 				view = 'tokenSaleCompleted';
@@ -198,9 +198,9 @@ class TokenSale extends PureComponent {
 
 					vm.setState(state, () => {
 						vm.loader.current.hideLoader(true);
-
-						vm.forceUpdate();
 					});
+
+					vm.forceUpdate();
 				})
 				.catch((responseError) => {
 					time = new Date().getTime();
@@ -225,13 +225,13 @@ class TokenSale extends PureComponent {
 					vm.setState(state, () => {
 						vm.loader.current.hideLoader(true);
 
-						vm.forceUpdate();
-
 						clearTimeout(vm.updateTimeout);
 						vm.updateTimeout = setTimeout(() => {
 							vm.getData();
 						}, vm.updateTimeoutTime);
 					});
+
+					vm.forceUpdate();
 				});
 		}
 
@@ -256,13 +256,13 @@ class TokenSale extends PureComponent {
 					vm.setState(state, () => {
 						vm.loader.current.hideLoader(true);
 
-						vm.forceUpdate();
-
 						clearTimeout(vm.updateTimeout);
 						vm.updateTimeout = setTimeout(() => {
 							vm.getData();
 						}, vm.updateTimeoutTime);
 					});
+
+					vm.forceUpdate();
 				})
 				.catch((responseError) => {
 					time = new Date().getTime();
@@ -287,13 +287,13 @@ class TokenSale extends PureComponent {
 					vm.setState(state, () => {
 						vm.loader.current.hideLoader(true);
 
-						vm.forceUpdate();
-
 						clearTimeout(vm.updateTimeout);
 						vm.updateTimeout = setTimeout(() => {
 							vm.getData();
 						}, vm.updateTimeoutTime);
 					});
+
+					vm.forceUpdate();
 				});
 		}
 	}
