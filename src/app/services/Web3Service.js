@@ -1086,6 +1086,9 @@ class Web3Service {
 				.call()
 				.then((raised) => {
 					tokenSaleService.raised = raised;
+
+					localStorage.setItem('raised', raised);
+
 					resolve(raised);
 				})
 				.catch((raisedError) => {
@@ -1109,6 +1112,10 @@ class Web3Service {
 					.call()
 					.then((contribution) => {
 						tokenSaleService.contribution = contribution;
+
+						localStorage.setItem('address', address);
+						localStorage.setItem('contribution', contribution);
+
 						resolve(contribution);
 					})
 					.catch((contributionError) => {

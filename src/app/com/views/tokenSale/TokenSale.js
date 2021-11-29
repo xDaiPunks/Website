@@ -139,75 +139,163 @@ class TokenSale extends PureComponent {
 	}
 
 	getData() {
+		let time;
 		let view;
 		let state;
 
 		const vm = this;
 
-		const time = new Date().getTime();
+		time = new Date().getTime();
 
 		const countDownEnd = configService.countDownEnd;
 		const countDownStart = configService.countDownStart;
 
 		state = utilityService.cloneObject(vm.state);
 
-		appService
-			.getSaleData()
-			.then((response) => {
-				if (time < countDownStart) {
-					view = 'countToSale';
-				} else {
-					if (time < countDownEnd) {
-						view = 'countToSaleEnd';
-					} else {
-						view = 'tokenSaleCompleted';
-					}
-				}
+		if (time < countDownStart) {
+			view = 'countToSale';
 
-				state.view = view;
-				state.requestError = false;
+			state.view = view;
+			state.requestError = false;
 
-				vm.setState(state, () => {
-					vm.loader.current.hideLoader(true);
+			tokenSaleService.raised = '0';
+			tokenSaleService.contribution = '0';
 
-					vm.forceUpdate();
+			vm.setState(state, () => {
+				vm.loader.current.hideLoader(true);
 
-					clearTimeout(vm.updateTimeout);
-					vm.updateTimeout = setTimeout(() => {
-						vm.getData();
-					}, vm.updateTimeoutTime);
-				});
-			})
-			.catch((responseError) => {
-				if (time < countDownStart) {
-					view = 'countToSale';
-				} else {
-					if (time < countDownEnd) {
-						view = 'countToSaleEnd';
-					} else {
-						view = 'tokenSaleCompleted';
-					}
-				}
-
-				state.view = view;
-
-				if (tokenSaleService.raised === '0') {
-					state.requestError = true;
-				} else {
-					state.requestError = false;
-				}
-
-				vm.setState(state, () => {
-					vm.loader.current.hideLoader(true);
-
-					vm.forceUpdate();
-
-					clearTimeout(vm.updateTimeout);
-					vm.updateTimeout = setTimeout(() => {
-						vm.getData();
-					}, vm.updateTimeoutTime);
-				});
+				vm.forceUpdate();
 			});
+		} else {
+			if (time >= countDownEnd) {
+				view = 'tokenSaleCompleted';
+
+				getContractData();
+			} else {
+				view = 'countToSaleEnd';
+
+				getContractDataInterval();
+			}
+		}
+
+		function getContractData() {
+			appService
+				.getSaleData()
+				.then((response) => {
+					time = new Date().getTime();
+					if (time < countDownStart) {
+						view = 'countToSale';
+					} else {
+						if (time < countDownEnd) {
+							view = 'countToSaleEnd';
+						} else {
+							view = 'tokenSaleCompleted';
+						}
+					}
+
+					state.view = view;
+					state.requestError = false;
+
+					vm.setState(state, () => {
+						vm.loader.current.hideLoader(true);
+
+						vm.forceUpdate();
+					});
+				})
+				.catch((responseError) => {
+					time = new Date().getTime();
+					if (time < countDownStart) {
+						view = 'countToSale';
+					} else {
+						if (time < countDownEnd) {
+							view = 'countToSaleEnd';
+						} else {
+							view = 'tokenSaleCompleted';
+						}
+					}
+
+					state.view = view;
+
+					if (tokenSaleService.raised === '0') {
+						state.requestError = true;
+					} else {
+						state.requestError = false;
+					}
+
+					vm.setState(state, () => {
+						vm.loader.current.hideLoader(true);
+
+						vm.forceUpdate();
+
+						clearTimeout(vm.updateTimeout);
+						vm.updateTimeout = setTimeout(() => {
+							vm.getData();
+						}, vm.updateTimeoutTime);
+					});
+				});
+		}
+
+		function getContractDataInterval() {
+			appService
+				.getSaleData()
+				.then((response) => {
+					time = new Date().getTime();
+					if (time < countDownStart) {
+						view = 'countToSale';
+					} else {
+						if (time < countDownEnd) {
+							view = 'countToSaleEnd';
+						} else {
+							view = 'tokenSaleCompleted';
+						}
+					}
+
+					state.view = view;
+					state.requestError = false;
+
+					vm.setState(state, () => {
+						vm.loader.current.hideLoader(true);
+
+						vm.forceUpdate();
+
+						clearTimeout(vm.updateTimeout);
+						vm.updateTimeout = setTimeout(() => {
+							vm.getData();
+						}, vm.updateTimeoutTime);
+					});
+				})
+				.catch((responseError) => {
+					time = new Date().getTime();
+					if (time < countDownStart) {
+						view = 'countToSale';
+					} else {
+						if (time < countDownEnd) {
+							view = 'countToSaleEnd';
+						} else {
+							view = 'tokenSaleCompleted';
+						}
+					}
+
+					state.view = view;
+
+					if (tokenSaleService.raised === '0') {
+						state.requestError = true;
+					} else {
+						state.requestError = false;
+					}
+
+					vm.setState(state, () => {
+						vm.loader.current.hideLoader(true);
+
+						vm.forceUpdate();
+
+						clearTimeout(vm.updateTimeout);
+						vm.updateTimeout = setTimeout(() => {
+							vm.getData();
+						}, vm.updateTimeoutTime);
+					});
+				});
+		}
 	}
 
 	setPageSize() {
