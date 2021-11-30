@@ -138,8 +138,8 @@ class About extends PureComponent {
 								August 2021 on the xDai blockchain. In a matter
 								of days, a vibrant and active community formed
 								with people from all over the world. As a result,
-								the minting phase (which started on 5 September 
-								at 23:55) sold out in just 7 hours. As the 
+								the minting phase, which started on 5 September 
+								at 23:55, sold out in just 7 hours. As the 
 								xDaiPunks marketplace was online from the get-go,
 								trading of Punks started while the minting phase
 								was still in progress.

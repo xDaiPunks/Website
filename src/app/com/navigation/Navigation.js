@@ -427,6 +427,27 @@ class Navigation extends PureComponent {
 									/>
 								</li>
 
+								<li>
+									<Button
+										type={'navigationButton'}
+										label={'Get xDai'}
+										title={'Get xDai'}
+										onClick={(event) => {
+											event.preventDefault();
+											vm.hideMobileMenu();
+											routeService.navigateRoute(
+												'/get-xdai'
+											);
+										}}
+										cssClass={
+											currentView === 'xDaiOnRamp'
+												? 'NavigationButton Active'
+												: 'NavigationButton'
+										}
+										iconImage="/static/media/images/icon-xdai-white.svg"
+									/>
+								</li>
+
 								<li className="Action">
 									<ActionButtonComponent />
 								</li>
