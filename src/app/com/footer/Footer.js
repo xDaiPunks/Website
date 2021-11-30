@@ -196,7 +196,7 @@ class Footer extends PureComponent {
 								<div className="FooterSocialSpacer"></div>
 								<a
 									title="Discord"
-									href="https://discord.gg/zxjzRmEH"
+									href="https://discord.gg/TTZKkY2Ygx"
 									target="_blank"
 									rel="noreferrer">
 									<img
