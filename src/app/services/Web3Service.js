@@ -1208,33 +1208,67 @@ class Web3Service {
 			if (!window.ethereum) {
 				reject({ result: 'error', errorType: 'noMetaMask' });
 			} else {
-				window.ethereum
-					.send('eth_requestAccounts')
-					.then((response) => {
-						vm.provider = window.ethereum;
+				try {
+					window.ethereum
+						.send('eth_requestAccounts')
+						.then((response) => {
+							vm.provider = window.ethereum;
 
-						vm.walletType = 'mm';
-						vm.walletChainId = window.ethereum.chainId;
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
 
-						userService.userSignedIn = true;
-						userService.address = window.ethereum.selectedAddress;
+							userService.userSignedIn = true;
+							userService.address =
+								window.ethereum.selectedAddress;
 
-						vm.walletProvider = new Web3(window.ethereum, {
-							clientConfig: {
-								maxReceivedFrameSize: 200000000, // bytes - default: 1MiB
-								maxReceivedMessageSize: 200000000, // bytes - default: 8MiB
-							},
+							vm.walletProvider = new Web3(window.ethereum, {
+								clientConfig: {
+									maxReceivedFrameSize: 200000000, // bytes - default: 1MiB
+									maxReceivedMessageSize: 200000000, // bytes - default: 8MiB
+								},
+							});
+
+							//setEvents();
+							checkCurrentNetwork();
+						})
+						.catch((responseError) => {
+							console.log(responseError);
+							reject({
+								result: 'error',
+								errorType: 'requestAccountsError',
+							});
 						});
+				} catch (connectError) {
+					window.ethereum
+						.enable()
+						.then((response) => {
+							vm.provider = window.ethereum;
 
-						//setEvents();
-						checkCurrentNetwork();
-					})
-					.catch((responseError) => {
-						reject({
-							result: 'error',
-							errorType: 'requestAccountsError',
+							vm.walletType = 'mm';
+							vm.walletChainId = window.ethereum.chainId;
+
+							userService.userSignedIn = true;
+							userService.address =
+								window.ethereum.selectedAddress;
+
+							vm.walletProvider = new Web3(window.ethereum, {
+								clientConfig: {
+									maxReceivedFrameSize: 200000000, // bytes - default: 1MiB
+									maxReceivedMessageSize: 200000000, // bytes - default: 8MiB
+								},
+							});
+
+							//setEvents();
+							checkCurrentNetwork();
+						})
+						.catch((responseError) => {
+							console.log(responseError);
+							reject({
+								result: 'error',
+								errorType: 'requestAccountsError',
+							});
 						});
-					});
+				}
 			}
 
 			function setEvents() {
