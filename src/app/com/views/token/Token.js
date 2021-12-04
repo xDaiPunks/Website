@@ -10,6 +10,7 @@ import ViewService from 'src/app/services/ViewService';
 import PunkService from 'src/app/services/PunkService';
 import EventService from 'src/app/services/EventService';
 import RouteService from 'src/app/services/RouteService';
+import ConfigService from 'src/app/services/ConfigService';
 import UtilityService from 'src/app/services/UtilityService';
 import TransitionService from 'src/app/services/TransitionService';
 
@@ -19,6 +20,7 @@ const punkService = new PunkService();
 const eventService = new EventService();
 const routeService = new RouteService();
 const utilityService = new UtilityService();
+const configService = new ConfigService();
 const transitionService = new TransitionService();
 
 class Token extends PureComponent {
@@ -115,9 +117,21 @@ class Token extends PureComponent {
 	}
 
 	render() {
+		let timeDiff;
+		let timeDiffDays;
+
 		let transitionClass;
 
 		const vm = this;
+
+		timeDiff = configService.countDownEnd - new Date().getTime();
+
+		if (timeDiff < 0) {
+			timeDiffDays = '0 days';
+		} else {
+			timeDiffDays =
+				Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + ' days';
+		}
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -149,7 +163,7 @@ class Token extends PureComponent {
 								<span className="IntroPunkSubText">
 									The basis of our community & the backbone of
 									our upcoming marketplace. <br />
-									Token sale starts on December 1st
+									Token sale ends in  {timeDiffDays}
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button

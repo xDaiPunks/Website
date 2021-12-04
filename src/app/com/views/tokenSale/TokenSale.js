@@ -823,13 +823,10 @@ class TokenSale extends PureComponent {
 											to the token sale
 											<br />
 											<br />
-											The token sale will start on
-											December 1st at 14:00 GMT and will
-											last 7 days. The token sale will end
-											on December 8th at 14:00 GMT. The
-											PUNK tokens can be claimed
-											immediately after the token sale has
-											ended
+											The token sale will end on December
+											8th at 14:00 GMT. The PUNK tokens
+											can be claimed immediately after the
+											token sale has ended
 										</div>
 									</div>
 									<div className="ContentBlock">
