@@ -327,27 +327,68 @@ class Modal extends PureComponent {
 			'/static/media/images/icon-walletconnect.svg';
 
 		if (mobileDevice !== false) {
-			return (
-				<>
-					<button
-						onClick={(event) => {
-							event.preventDefault();
-							vm.connectWeb3Service('walletConnect');
-						}}
-						className={'WalletConnector'}>
-						<div className="WalletConnectorIcon">
-							<img
-								className="IconImage"
-								alt={''}
-								src={iconImageWalletConnect}
-							/>
-						</div>
-						<span className="WalletConnectorText">
-							{'Wallet connnect'}
-						</span>
-					</button>
-				</>
-			);
+			if (!ethereum) {
+				return (
+					<>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('walletConnect');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageWalletConnect}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'Wallet connnect'}
+							</span>
+						</button>
+					</>
+				);
+			} else {
+				return (
+					<>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('metaMask');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageMetaMask}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'MetaMask'}
+							</span>
+						</button>
+						<button
+							onClick={(event) => {
+								event.preventDefault();
+								vm.connectWeb3Service('walletConnect');
+							}}
+							className={'WalletConnector'}>
+							<div className="WalletConnectorIcon">
+								<img
+									className="IconImage"
+									alt={''}
+									src={iconImageWalletConnect}
+								/>
+							</div>
+							<span className="WalletConnectorText">
+								{'Wallet connnect'}
+							</span>
+						</button>
+					</>
+				);
+			}
 		}
 
 		if (mobileDevice === false) {
