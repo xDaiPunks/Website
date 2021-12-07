@@ -118,7 +118,7 @@ class Token extends PureComponent {
 
 	render() {
 		let timeDiff;
-		let timeDiffDays;
+		let timeDiffHours;
 
 		let transitionClass;
 
@@ -127,10 +127,9 @@ class Token extends PureComponent {
 		timeDiff = configService.countDownEnd - new Date().getTime();
 
 		if (timeDiff < 0) {
-			timeDiffDays = '0 days';
+			timeDiffHours = '0 hours';
 		} else {
-			timeDiffDays =
-				Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + ' days';
+			timeDiffHours = Math.floor(timeDiff / (1000 * 60 * 60)) + ' hours';
 		}
 
 		if (this.props.animationType === 'overlay') {
@@ -161,9 +160,9 @@ class Token extends PureComponent {
 									<span className="TextDark"> token</span>
 								</span>
 								<span className="IntroPunkSubText">
-									The basis of our community & the backbone of
-									our upcoming marketplace. <br />
-									Token sale ends in  {timeDiffDays}
+									Your last chance to get our token at a fair
+									price. Contribute now! <br />
+									Token sale ends in {timeDiffHours}
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
