@@ -110,20 +110,9 @@ class Home extends PureComponent {
 	}
 
 	render() {
-		let timeDiff;
-		let timeDiffHours;
-
 		let transitionClass;
 
 		const vm = this;
-
-		timeDiff = configService.countDownEnd - new Date().getTime();
-
-		if (timeDiff < 0) {
-			timeDiffHours = '0 hours';
-		} else {
-			timeDiffHours = Math.floor(timeDiff / (1000 * 60 * 60)) + ' hours';
-		}
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -153,9 +142,10 @@ class Home extends PureComponent {
 									<span className="TextLight">Punks</span>
 								</span>
 								<span className="IntroPunkSubText">
-									Your last chance to get our token at a fair
-									price. Contribute now! <br />
-									Token sale ends in {timeDiffHours}
+									xDaiPunks is a collection of 3D Punk NFTs, a
+									vibrant community and much more. <br />
+									Be ready for the metaverse and get your NFT
+									or Token now!
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
@@ -174,8 +164,8 @@ class Home extends PureComponent {
 									<div className="HeaderButtonSpacer" />
 									<Button
 										type={'navigationButton'}
-										label={'Token sale'}
-										title={'Token sale'}
+										label={'Claim'}
+										title={'Claim'}
 										onClick={(event) => {
 											event.preventDefault();
 											routeService.navigateRoute(

@@ -117,20 +117,9 @@ class Token extends PureComponent {
 	}
 
 	render() {
-		let timeDiff;
-		let timeDiffHours;
-
 		let transitionClass;
 
 		const vm = this;
-
-		timeDiff = configService.countDownEnd - new Date().getTime();
-
-		if (timeDiff < 0) {
-			timeDiffHours = '0 hours';
-		} else {
-			timeDiffHours = Math.floor(timeDiff / (1000 * 60 * 60)) + ' hours';
-		}
 
 		if (this.props.animationType === 'overlay') {
 			transitionClass = 'Overlay';
@@ -160,9 +149,10 @@ class Token extends PureComponent {
 									<span className="TextDark"> token</span>
 								</span>
 								<span className="IntroPunkSubText">
-									Your last chance to get our token at a fair
-									price. Contribute now! <br />
-									Token sale ends in {timeDiffHours}
+									The basis of our community and the backbone
+									for our upcoming marketplace.
+									<br />
+									Claim your tokens now
 								</span>
 								<div className="HeaderButtonContainer">
 									<Button
@@ -179,8 +169,8 @@ class Token extends PureComponent {
 									<div className="HeaderButtonSpacer" />
 									<Button
 										type={'navigationButton'}
-										label={'Token sale'}
-										title={'Token sale'}
+										label={'Claim'}
+										title={'Claim'}
 										onClick={(event) => {
 											event.preventDefault();
 											routeService.navigateRoute(
