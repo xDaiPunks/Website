@@ -150,22 +150,8 @@ class Home extends PureComponent {
 								<div className="HeaderButtonContainer">
 									<Button
 										type={'navigationButton'}
-										label={'Read more'}
-										title={'Read more'}
-										onClick={(event) => {
-											event.preventDefault();
-											routeService.navigateRoute(
-												'/token'
-											);
-										}}
-										cssClass={'NavigationButtonAction'}
-										iconImage="/static/media/images/icon-read.svg"
-									/>
-									<div className="HeaderButtonSpacer" />
-									<Button
-										type={'navigationButton'}
-										label={'Claim'}
-										title={'Claim'}
+										label={'Claim PUNK'}
+										title={'Claim PUNK'}
 										onClick={(event) => {
 											event.preventDefault();
 											routeService.navigateRoute(
