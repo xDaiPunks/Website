@@ -20,19 +20,18 @@ const routeService = new RouteService();
 const utilityService = new UtilityService();
 const transitionService = new TransitionService();
 
-class XDaiOnRamp extends PureComponent {
+class TradePunk extends PureComponent {
 	constructor(props) {
 		super(props);
 
 		this.state = {};
 
-		this.componentName = 'XDaiOnRamp';
+		this.componentName = 'TradePunk';
 
 		this.guid = utilityService.guid();
 
 		this.getPunkAction = this.getPunkAction.bind(this);
 
-		this.subContentItem = this.subContentItem.bind(this);
 		this.buttonFooterItem = this.buttonFooterItem.bind(this);
 	}
 
@@ -128,38 +127,6 @@ class XDaiOnRamp extends PureComponent {
 		});
 	}
 
-	subContentItem() {
-		// const vm = this;
-
-		const publicSale = punkService.publicSale;
-		const mintsCount = punkService.mintsCount;
-
-		// console.log('minstCount', mintsCount);
-
-		// console.log('XDaiOnRamp publicSale', publicSale);
-		// console.log('XDaiOnRamp mintscount', mintsCount);
-
-		if (publicSale !== true) {
-			return (
-				<div className="CountDownContainer">
-					<span className="MintText">Minting starts in</span>
-					<CountDown />
-				</div>
-			);
-		} else {
-			return (
-				<div className="MintAmountContainer">
-					<span className="MintText">Number of minted punks</span>
-					<div className="MintedItems">
-						<span className="MintedItemsText">
-							{mintsCount} / 1000
-						</span>
-					</div>
-				</div>
-			);
-		}
-	}
-
 	buttonFooterItem() {
 		const vm = this;
 
@@ -242,18 +209,15 @@ class XDaiOnRamp extends PureComponent {
 					<div className="PageTextContent">
 						<div className="ContentItem">
 							<div className="ContentItemTitle">
-								<span className="Txt">Getting xDai</span>
+								<span className="Txt">Trade PUNK</span>
 							</div>
 							<br />
 							<div className="ContentItemContent">
-								In order to keep transaction costs near to zero,
-								use xDai to buy Punks or PUNK tokens. Using a
-								new token can seem a little dawnting, however
-								one of the big advantages about xDai that you
-								may not know, is that you can purchase it easily
-								with a bank card, or bridging from other
-								networks. But before you do so, please ensure
-								you have:
+								Our PUNK token can now be traded on different
+								exchanges. Because of the high gas fees, the
+								current exchanges that can be used to trade PUNK
+								use the xDai blockchain. Before you start
+								trading, make sure you have:
 								<br />
 								<br />
 								<ul>
@@ -274,69 +238,106 @@ class XDaiOnRamp extends PureComponent {
 											Metamask wallet
 										</a>
 									</li>
+									<li>
+										<a
+											href="https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-add-unlisted-tokens-custom-tokens-in-MetaMask"
+											target="_blank"
+											rel="noreferrer">
+											Added the PUNK token to your assets
+											on the xDai network
+										</a>
+									</li>
+									<li>
+										<span
+											style={{
+												color: '#00f5f5',
+											}}>
+											Use contract address:
+											0x988d1Be68F2C5cDE2516a2287c59Bd6302b7D20D
+										</span>
+									</li>
 								</ul>
 							</div>
 							<div className="ContentItemSubTitle">
-								<span className="Txt">Buy xDai</span>
+								<span className="Txt">Use HoneSwap</span>
 							</div>
 
 							<div className="ContentItemContent">
-								To buy xDai with a Credit/Debit card o via bank
-								deposit using{' '}
+								HoneySwap is the biggest decentralized exchange
+								on xDai. The PUNK token has sufficient liquidity
+								and swapping is easy:
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
-									href="https://buy.ramp.network/?defaultAsset=xDAI">
-									Ramp Network
+									href="https://app.honeyswap.org/#/swap?outputCurrency=0x988d1be68f2c5cde2516a2287c59bd6302b7d20d&chainId=100">
+									HoneySwap
 								</a>
-								.
 							</div>
+							<br />
 							<br />
 							<div className="ContentItemSubTitle">
 								<span className="Txt">
-									Bridge from Ethereum
+									MEV protection? Use CowSwap
 								</span>
 							</div>
 
 							<div className="ContentItemContent">
-								You can bridge Dai from Ethereum Mainnet through
-								the{' '}
+								A big problem from a trading perspective is
+								so-called Miner Extractable Value or MEV for
+								short. MEV-type value extraction, executed by
+								miners who hold sole power to organize
+								transactions within a block, is endemic due to
+								the Ethereum Virtual Machine (EVM) mempool
+								design. This element of mempool design has
+								garnered the Cixin Lin-inspired nickname "the
+								dark forest," a side effect of the EVM
+								architecture that goes unnoticed by most users
+								<br />
+								<br />
+								In a nutshell, every transaction on EVM
+								compatible blockchains submitted to the chain is
+								monitored to check if there’s a possibility of
+								taking advantage of it. It’s in the dark forest
+								that the mainstream Ethereum community learned
+								there is often an adversarial relationship
+								between users and miners. The MEV "dark forest"
+								gives rise to two intertwined problems:
+								<br />
+								<br />
+								<ul>
+									<li>
+										DeFi users are constantly suffering from
+										all types of MEV, such as front-running
+										attacks that end up making the users'
+										transactions fail even though they paid
+										to execute them, or back-running attacks
+										where the users get value extracted from
+										their operations solely because the
+										miners are in a privileged position
+									</li>
+									<li>
+										Even when a transaction tries to prevent
+										a possible protocol exploit, it can
+										still lead to a bigger problem because
+										the existence of the transaction itself
+										signals the protocol weakness to
+										everyone else
+									</li>
+								</ul>
+								CowSwap is the first trading interface built on
+								top of Gnosis Protocol v2. It allows you to buy
+								and sell tokens using gas-less orders that are
+								settled peer-to-peer among its users or into any
+								on-chain liquidity source while providing MEV
+								protection: <br />
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
-									href="https://bridge.xdaichain.com/">
-									xDaiChain bridge
+									href="https://cowswap.exchange/#/swap?outputCurrency=0x988d1be68f2c5cde2516a2287c59bd6302b7d20d&chainId=100">
+									CowSwap Exchange
 								</a>
-								.
-								<br />
-							</div>
-							<br />
-							<div className="ContentItemSubTitle">
-								<span className="Txt">
-									Bridge from BSC, Polygon or Fantom
-								</span>
-							</div>
-
-							<div className="ContentItemContent">
-								xDai can be bridged from BSC, Polygon or Fantom
-								through the{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://xpollinate.io/">
-									xPollinate Bridge
-								</a>
-								.
-								<br />
-								<br />
-								More info on xPollinate can be found{' '}
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href="https://www.xdaichain.com/for-users/bridges/xdai-matic-connext-bridge">
-									here
-								</a>
-								.
 							</div>
 						</div>
 
@@ -348,4 +349,4 @@ class XDaiOnRamp extends PureComponent {
 	}
 }
 
-export default XDaiOnRamp;
+export default TradePunk;

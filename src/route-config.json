@@ -63,6 +63,14 @@
 		"component": "app/com/views/tokenSale/TokenSale"
 	},
 
+	"tradePunk": {
+		"path": "/trade-punk",
+		"type": "public",
+		"redirect": "none",
+		"animationType": "overlay",
+		"component": "app/com/views/tradePunk/TradePunk"
+	},
+
 	"xDaiOnRamp": {
 		"path": "/get-xdai",
 		"type": "public",

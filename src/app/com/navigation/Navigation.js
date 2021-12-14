@@ -430,21 +430,21 @@ class Navigation extends PureComponent {
 								<li>
 									<Button
 										type={'navigationButton'}
-										label={'Get xDai'}
-										title={'Get xDai'}
+										label={'Trade PUNK'}
+										title={'Trade PUNK'}
 										onClick={(event) => {
 											event.preventDefault();
 											vm.hideMobileMenu();
 											routeService.navigateRoute(
-												'/get-xdai'
+												'/trade-punk'
 											);
 										}}
 										cssClass={
-											currentView === 'xDaiOnRamp'
+											currentView === 'tradePunk'
 												? 'NavigationButton Active'
 												: 'NavigationButton'
 										}
-										iconImage="/static/media/images/icon-xdai-white.svg"
+										iconImage="/static/media/images/icon-exchange-white.svg"
 									/>
 								</li>
 
