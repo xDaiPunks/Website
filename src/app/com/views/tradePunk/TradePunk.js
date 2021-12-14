@@ -267,6 +267,7 @@ class TradePunk extends PureComponent {
 								on xDai. The PUNK token has sufficient liquidity
 								and swapping is easy:
 								<br />
+								<br />
 								<a
 									target="_blank"
 									rel="noreferrer"
