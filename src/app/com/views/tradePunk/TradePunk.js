@@ -259,7 +259,7 @@ class TradePunk extends PureComponent {
 								</ul>
 							</div>
 							<div className="ContentItemSubTitle">
-								<span className="Txt">Use HoneSwap</span>
+								<span className="Txt">HoneySwap</span>
 							</div>
 
 							<div className="ContentItemContent">
@@ -279,7 +279,7 @@ class TradePunk extends PureComponent {
 							<br />
 							<div className="ContentItemSubTitle">
 								<span className="Txt">
-									MEV protection? Use CowSwap
+									CowSwap for MEV protection
 								</span>
 							</div>
 
@@ -338,6 +338,36 @@ class TradePunk extends PureComponent {
 									rel="noreferrer"
 									href="https://cowswap.exchange/#/swap?outputCurrency=0x988d1be68f2c5cde2516a2287c59bd6302b7d20d&chainId=100">
 									CowSwap Exchange
+								</a>
+							</div>
+							<br />
+							<br />
+							<div className="ContentItemSubTitle">
+								<span className="Txt">
+									Stake your PUNK using ELK
+								</span>
+							</div>
+							<div className="ContentItemContent">
+								You now can stake you PUNK using the PUNK-ELK
+								farm on Elk Finance. It is a dual token farm
+								where the APY consists of both ELK and PUNK. To
+								stake your PUNK using the PUNK-ELK pair, you
+								will need ELK tokens. You can get ELK using the
+								ELK Finance swap.
+								<br />
+								<br />
+								Once you have both PUNK and ELK tokens you can
+								provide liquidity to the PUNK-ELK pool. After
+								that you can stake you liquidity tokens. Tokens
+								are staked every block and you can claim tokens
+								every block
+								<br />
+								<br />
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href="https://app.elk.finance/#/elk">
+									Elk Finance
 								</a>
 							</div>
 						</div>
