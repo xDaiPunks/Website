@@ -227,6 +227,44 @@
 								}
 							}
 
+							.ChristmasContent {
+								display: block;
+								position: absolute;
+
+								z-index: 1;
+
+								top: -66px;
+								left: 64px;
+								width: 160px;
+
+								@include responsiveMax($responsiveMed) {
+									top: -66px;
+									left: 64px;
+									width: 160px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									top: -14vw;
+									left: 13vw;
+									width: 36vw;
+								}
+							}
+
+							.IntroAstronautContent {
+								display: block;
+								position: relative;
+
+								width: 400px;
+
+								@include responsiveMax($responsiveMed) {
+									width: 400px;
+								}
+
+								@include responsiveMax($responsiveSmall) {
+									width: 85vw;
+								}
+							}
+
 							.IntroBottomGradient {
 								display: block;
 								position: absolute;

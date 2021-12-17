@@ -163,11 +163,20 @@ class Home extends PureComponent {
 									/>
 								</div>
 							</div>
-							<img
-								alt={''}
-								className={'IntroAstronaut'}
-								src={'/static/media/images/astronaut.png'}
-							/>
+
+							<div className="IntroAstronaut">
+								<img
+									alt={''}
+									className={'ChristmasContent'}
+									src={'/static/media/images/christmas.png'}
+								/>
+								<img
+									alt={''}
+									className={'IntroAstronautContent'}
+									src={'/static/media/images/astronaut.png'}
+								/>
+							</div>
+
 							<div className="IntroBottomGradient" />
 						</div>
 						<div className="IntroContent">

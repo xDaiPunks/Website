@@ -3129,6 +3129,33 @@ body {
               width: 85vw;
               top: 60px;
               left: 30px; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .ChristmasContent {
+          display: block;
+          position: absolute;
+          z-index: 1;
+          top: -66px;
+          left: 64px;
+          width: 160px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .ChristmasContent {
+              top: -66px;
+              left: 64px;
+              width: 160px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .ChristmasContent {
+              top: -14vw;
+              left: 13vw;
+              width: 36vw; } }
+        #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronautContent {
+          display: block;
+          position: relative;
+          width: 400px; }
+          @media screen and (max-width: 1070px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronautContent {
+              width: 400px; } }
+          @media screen and (max-width: 800px) {
+            #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroAstronautContent {
+              width: 85vw; } }
         #AppRoot .App .ViewContainer .Home.View .ViewBox .Intro .IntroStart .IntroBottomGradient {
           display: block;
           position: absolute;
