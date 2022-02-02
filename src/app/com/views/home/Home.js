@@ -167,11 +167,6 @@ class Home extends PureComponent {
 							<div className="IntroAstronaut">
 								<img
 									alt={''}
-									className={'ChristmasContent'}
-									src={'/static/media/images/christmas.png'}
-								/>
-								<img
-									alt={''}
 									className={'IntroAstronautContent'}
 									src={'/static/media/images/astronaut.png'}
 								/>
@@ -187,7 +182,7 @@ class Home extends PureComponent {
 									that lives on the xDai blockchain. Your
 									xDaiPunk doubles as a membership to our
 									vibrant community. Owning a Punk also allows
-									you to vest the upcomming $PUNK token.
+									you to vest the $PUNK token.
 									<br />
 									<br />
 									The Punks have been created using our Punk
@@ -256,7 +251,7 @@ class Home extends PureComponent {
 									<div className="RoadMapItem">
 										<div className="RoadMapContainer">
 											<span className="RoadMapTitle">
-												January 15th 2022
+												February 28th 2022
 											</span>
 											<span className="RoadMapContent">
 												Beta release of NiftyFair
@@ -266,7 +261,7 @@ class Home extends PureComponent {
 									<div className="RoadMapItem">
 										<div className="RoadMapContainer">
 											<span className="RoadMapTitle">
-												February 15th
+												March 30th
 											</span>
 											<span className="RoadMapContent">
 												Official release of NiftyFair

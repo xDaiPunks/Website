@@ -624,7 +624,7 @@ class Token extends PureComponent {
 									<div className="RoadMapItem">
 										<div className="RoadMapContainer">
 											<span className="RoadMapTitle">
-												January 15th 2022
+												February 28th 2022
 											</span>
 											<span className="RoadMapContent">
 												Beta release NiftyFair
@@ -634,7 +634,7 @@ class Token extends PureComponent {
 									<div className="RoadMapItem">
 										<div className="RoadMapContainer">
 											<span className="RoadMapTitle">
-												February 15th
+												March 30th
 											</span>
 											<span className="RoadMapContent">
 												Official release NiftyFair
