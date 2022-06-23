@@ -37,9 +37,6 @@ class Web3Service {
 			Instance.contract = null;
 			Instance.gasPrice = null;
 
-			Instance.errorTimeout = null;
-			Instance.eventTimeout = null;
-
 			Instance.currentBlockNumber = null;
 
 			Instance.provider = null;
@@ -83,8 +80,17 @@ class Web3Service {
 		const vm = this;
 		const web3 = new Web3(vm.httpProvider);
 
+		const web3Socket = new Web3(
+			new Web3.providers.WebsocketProvider(vm.socketProvider, {
+				clientConfig: {
+					maxReceivedFrameSize: 20000000000,
+					maxReceivedMessageSize: 20000000000,
+				},
+			})
+		);
+
 		vm.web3 = web3;
-		web3.eth.Contract.setProvider(web3.currentProvider);
+		web3.eth.Contract.setProvider(web3Socket.currentProvider);
 
 		vm.contract = new web3.eth.Contract(
 			vm.xdaiPunksAbi,
@@ -275,16 +281,7 @@ class Web3Service {
 
 	setContractEvents() {
 		const vm = this;
-		vm.getBlockNumber()
-			.then((response) => {
-				vm.currentBlockNumber = response;
-				vm.setContractEventPoll();
-			})
-			.catch((responseError) => {
-				setTimeout(() => {
-					vm.setContractEvents();
-				}, 3000);
-			});
+		vm.initializeContractEvents();
 	}
 
 	isAddress(address) {
@@ -1606,8 +1603,6 @@ class Web3Service {
 
 		const punkData = punkService.punkData;
 
-		console.log(event);
-
 		if (event === 'SaleBegins') {
 			punkService.publicSale = true;
 
@@ -1814,7 +1809,6 @@ class Web3Service {
 						blockNumber
 					);
 
-					console.log('No Longer For Sale');
 					eventService.dispatchObjectEvent('change:punkData', {
 						type: 'punkNoLongerForSale',
 						idx: idx,
@@ -1824,66 +1818,29 @@ class Web3Service {
 		}
 	}
 
-	setContractEventPoll() {
-		let currentBlockNumber;
-		let updatedBlockNumber;
-
+	initializeContractEvents() {
 		const vm = this;
 
-		const setEventTimeout = () => {
-			clearTimeout(vm.errorTimeout);
-			clearTimeout(vm.eventTimeout);
-
-			setTimeout(() => {
-				vm.setContractEventPoll();
-			}, 3000);
-		};
-
-		const setErrorTimeout = () => {
-			clearTimeout(vm.errorTimeout);
-			clearTimeout(vm.eventTimeout);
-
-			setTimeout(() => {
-				vm.setContractEventPoll();
-			}, 5000);
-		};
-
-		const handleEventResponses = (responses) => {
-			let i;
-			let count;
-
-			for (i = 0, count = responses.length; i < count; i++) {
-				vm.eventUpdatePunkData(responses[i]);
-			}
-		};
-
-		vm.getBlockNumber()
-			.then((response) => {
-				currentBlockNumber = vm.currentBlockNumber;
-
-				if (response - currentBlockNumber < 200) {
-					updatedBlockNumber = response;
-				} else {
-					updatedBlockNumber = currentBlockNumber + 200;
-				}
-
-				if (updatedBlockNumber <= vm.currentBlockNumber) {
-					setEventTimeout();
-				} else {
-					vm.getPastEvents(currentBlockNumber, updatedBlockNumber)
-						.then((eventResponses) => {
-							vm.currentBlockNumber = updatedBlockNumber;
-
-							handleEventResponses(eventResponses);
-							setEventTimeout();
-						})
-						.catch((eventResponsesError) => {
-							setErrorTimeout();
-						});
-				}
+		vm.contract.events
+			.allEvents()
+			.on('connected', (subscriptionId) => {
+				console.log('Contract connected');
+				/*
+				vm.punkData().catch(error=>{
+					console.log('PunkData not available');
+				})
+				*/
 			})
-			.catch((responseError) => {
-				setErrorTimeout();
+			.on('data', (event) => {
+				vm.eventUpdatePunkData(event);
+			})
+			.on('error', (error, receipt) => {
+				// Check the error event to restart the socket
+				console.log('Reconnecting..');
+				setTimeout(() => {
+					vm.setContract();
+					vm.initializeContractEvents();
+				}, 3000);
 			});
 	}
 }
